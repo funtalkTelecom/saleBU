@@ -1,0 +1,73 @@
+<view class='container'>
+  <view class='filters'>
+    <view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          靓号类型:{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          运营商:{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          低消:{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          筛选:{{array[index]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class='result'>
+    <scroll-view scroll-y="true">
+
+      <view class='box box-1'>
+        <block wx:for="{{phones}}">
+          <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
+            <view>
+              <text class='phone'>{{item.phone}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+           </navigator>
+        </block>
+        <block wx:for="{{phones}}">
+         <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
+            <view>
+              <text class='phone'>{{item.phone}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+          </navigator>
+        </block>
+        <block wx:for="{{phones}}">
+         <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
+            <view>
+              <text class='phone'>{{item.phone}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+           </navigator>
+        </block>
+      </view>
+      <view class="loading">努力加载中…</view>
+
+    </scroll-view>
+
+  </view>
+
+
+
+</view>

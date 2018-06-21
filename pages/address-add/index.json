@@ -1,0 +1,9 @@
+{
+   "navigationBarTitleText": "新增地址",
+   "usingComponents": {
+    "zan-panel": "../../dist/panel/index",
+    "zan-row": "../../dist/row/index",
+    "zan-col": "../../dist/col/index",
+    "zan-toptips": "../../dist/toptips/index"
+  }
+}

@@ -1,0 +1,63 @@
+/* pages/order-detail/index.wxss */
+page{}
+.icon-dizhi {
+  font-size: 100rpx;
+  color: orange;
+}
+.simple-info {
+  font-size: 28rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  line-height: 46rpx;
+}
+.addr {
+  position: relative;
+  border: 1rpx solid #e4e4e4;
+  border-radius: 20rpx;
+  margin: 24rpx 10rpx 20rpx 10rpx;
+}
+.addr-main {
+  display: flex;
+  align-items: center;
+}
+
+.addr-np, .addr-content {
+  margin-left: 8rpx;
+}
+
+.addr-np {
+  display: flex;
+  margin-top: 26rpx;
+  /* line-height: 68rpx; */
+  height: 60rpx;
+  font-size: 28rpx;
+}
+
+.addr-np view:first-child {
+  margin-right: 50rpx;
+}
+
+.addr-content {
+  font-size: 28rpx;
+  /* line-height: 68rpx; */
+  padding-bottom: 32rpx;
+  width: 560rpx;
+}
+.order-info {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height: 180rpx;
+}
+.red {
+  color: red;
+  font-weight: 700;
+}
+.align-r {
+  text-align: right;
+}
+.line-h {
+  line-height: 64rpx;
+  margin-top: 40rpx;
+  border-top: 1rpx solid #F4F4F4;
+}

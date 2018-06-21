@@ -1,0 +1,16 @@
+<view>
+  <zan-panel title="支付方式">
+    <view class='paymode-main'>
+        <view wx:for="{{pay}}" class="{{defaultValue==item.value?item.classStyle:''}}" bindtap='usewxpay' data-wxpay="{{item.value}}">{{item.text}}</view>
+      </view>
+      <view class='offline' wx:if="{{defaultValue==2}}">
+        <view>银行：中信银行</view>
+        <view>户主：林永</view>
+        <view>帐号：6217 6813 0292 6871</view>
+        <view>温馨提示：付款时请备注所拍得到号码，如有任何疑问可拨打客服热线4009-183-365</view>
+      </view>
+  </zan-panel>
+
+  <view class="footer-but {{defaultValue==1?'wx-bgc':'balance-bgc'}}" >{{paytext}}</view>
+
+</view>

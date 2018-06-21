@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "浏览记录",
+  "usingComponents": {
+    "zan-panel": "../../dist/panel/index",
+    "zan-card": "../../dist/card/index"
+  }
+}

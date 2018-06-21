@@ -1,0 +1,88 @@
+<view>
+  <zan-panel>
+    <form bindsubmit="formSubmit">
+      <view class='cell pad'>
+        <view>公司名称</view>
+        <input  name="commpayName" placeholder="请输入公司名称" value='{{agentObj.commpay_name}}' disabled="{{agentObj.commpay_name}}"/>
+      </view>
+      <view class='cell'>
+        <view>法人姓名</view>
+        <input maxlength="4" name="person" placeholder="请输入法人姓名" value='{{agentObj.person}}' disabled="{{agentObj.person}}"/>
+      </view>
+      <view class='cell'>
+        <view>联系电话</view>
+        <input maxlength="11" name="phone" type="number" placeholder="请输入联系方式" value='{{agentObj.phone}}' disabled="{{agentObj.phone}}"/>
+      </view>
+      <view class='cell'>
+        <view>注册地区</view>
+        <picker mode="multiSelector" range-key="name" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{objectMultiArray}}" disabled="{{agentObj.person}}">
+          <view class="picker {{selectaddr=='请选择'?'hui':''}}">
+            {{selectaddr}}
+          </view>
+        </picker>
+      </view>
+      <view class='cell'>
+        <view>街道地址</view>
+        <input placeholder="请输入街道详细地址" name="address" value='{{agentObj.address}}' disabled="{{agentObj.address}}"  />
+      </view>
+
+      <view class='license'>
+        <view class='cell-license'>营业执照</view>
+        <view class='license-img-but'>
+          <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img"></image>
+          <button bindtap="selectimg" size="mini" class='license-but'>选择文件</button>
+        </view>
+      </view>
+
+
+
+
+      <view class='cell cell-submit'>
+        <button size="mini" formType="submit" type='warn'>提交审核</button>
+      </view>
+    </form>
+
+
+  </zan-panel>
+
+  <zan-panel title="已关联账号">
+    <zan-row row-class="guanlian">
+      <zan-col col="12">呜呜呜呜呜呜呜</zan-col>
+      <zan-col col="12">厦门</zan-col>
+    </zan-row>
+    <view class='cell cell-submit'>
+      <button size="mini" type='warn' bindtap='toggleBottomPopup'>关联帐号</button>
+    </view>
+  </zan-panel>
+
+  <!-- 头部提示框 -->
+  <zan-toptips id="zan-toptips" contetn="{{ content }}" />
+
+  <!-- 底部弹出框 -->
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
+    <view class="pop-example__container pop-example__container--bottom">
+
+      <zan-panel title="号码信息">
+        <view class="spacing">
+          <form bindsubmit="correlation">
+            <view class='cell'>
+              <view>乐语账号</view>
+              <input  name="loginName" placeholder="请输入乐语账号" />
+            </view>
+            <view class='cell'>
+              <view>乐语密码</view>
+              <input  name="pwd" placeholder="请输入乐语密码" password/>
+            </view>
+            <view class='cell cell-submit'>
+              <button size="mini" formType="submit" type='warn'>确认关联</button>
+            </view>
+
+          </form>
+        </view>
+
+      </zan-panel>
+
+
+    </view>
+  </zan-popup>
+</view>

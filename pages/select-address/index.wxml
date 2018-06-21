@@ -1,0 +1,40 @@
+<view>
+  <zan-panel>
+    <radio-group class="radio-group" bindchange="radioChange">
+<block wx:for="{{addressList}}" wx:key="id">
+      <zan-row row-class="addr">
+        <zan-col col="24">
+          <zan-row row-class="addr-user">
+            <zan-col col="5"> {{item.personName}} </zan-col>
+            <zan-col col="19">{{item.personTel}} </zan-col>
+          </zan-row>
+          <zan-row row-class="addr-content">
+            <zan-col col="24">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}} </zan-col>
+          </zan-row>
+          <zan-row row-class="addr-selecrt">
+            <zan-col col="15">
+              <label class="radio">
+                <radio value="{{item.id}}" checked="{{item.isDefaultl==1}}" style='transform:scale(0.8);' />默认地址
+              </label>
+            </zan-col>
+            <zan-col col="4" >
+              <navigator url="/pages/address-add/index?id={{item.id}}" hover-class="none">
+              <text class='iconfont icon-bianji'></text>编辑
+              </navigator>
+              
+            </zan-col>
+            <zan-col col="4" offset="1" bindtap='remove' data-id="{{item.id}}" data-index='{{index}}'>
+              <text class='iconfont icon-shanchu'></text>删除 </zan-col>
+          </zan-row>
+        </zan-col>
+      </zan-row>
+      </block>
+    </radio-group>
+  </zan-panel>
+
+  <zan-panel >
+    <navigator url="/pages/address-add/index" class="add-addr" hover-class="none">
+      新增地址
+    </navigator>
+  </zan-panel>
+</view>

@@ -1,0 +1,41 @@
+/* pages/case-deposit/index.wxss */
+page {
+
+}
+.order-info {
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height: 180rpx;
+}
+.case {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items:center;
+}
+.case-date {
+ display: flex;
+ flex-direction: column;
+  justify-content: center; 
+  align-items:center;
+  
+}
+.case-but {
+  font-size:24rpx;
+  padding: 0;
+  /* padding-left:0;
+padding-right:0; */
+/* margin: auto; */
+text-align: center;
+flex: 1;
+margin-left: 6rpx;
+margin-right: 6rpx;
+box-sizing: border-box;
+overflow: visible;
+background-color: #dadada;
+}
+.red {
+  color: red;
+}

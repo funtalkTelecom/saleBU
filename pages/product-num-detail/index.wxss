@@ -1,0 +1,51 @@
+/* pages/product-num-detail/index.wxss */
+
+page {
+  background-color: #f2f2f2;
+}
+
+.cardbody-title {
+  line-height: 114rpx;
+  font-size: 24px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.cardbody-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cardbody-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rpx;
+  width: 49%;
+  background-color: #fff;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.item-phone {
+  font-weight: 700;
+}
+
+.item-price, .item-desc {
+  font-size: 14px;
+}
+
+.color-cyan {
+  color: #00b2ee;
+}
+
+.color-orange {
+  color: orange;
+  font-weight: 700;
+}
+.item-contact {
+  font-size: 12px;
+  color: #999;
+}

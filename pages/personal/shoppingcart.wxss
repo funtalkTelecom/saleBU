@@ -1,0 +1,178 @@
+/* pages/personal/cart.wxss */
+.container {
+  
+}
+.nav {
+  height: 92rpx;
+  
+  margin: 28rpx 20rpx 0;
+  display: flex;
+  text-align: center;
+  line-height: 92rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+}
+
+.nav view {
+  width: 230rpx;
+  border-bottom: 4rpx solid #ccc;
+}
+.nav .active {
+  border-bottom: 6rpx solid #ff9900;
+}
+.hm-cart {
+   /*display: none; 购物车号码 */
+  margin-top: 30rpx;
+}
+.hm-cart-item {
+  padding: 30rpx 20rpx;
+   font-size: 26rpx; 
+  font-weight: 700;
+}
+.icon-weixuanzhongyuanquan {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 20rpx;
+  color: orange;
+   font-weight: 100; 
+}
+/* .radio {
+  width: 24rpx;
+  height: 24rpx;
+  min-height: 24rpx;
+  min-width: 24rpx;
+  border-radius: 50%;
+  border: 1rpx solid orange;
+  display:inline-block;
+  margin-right: 20rpx;
+} */
+.phone {
+  font-size: 32rpx;
+  margin-right: 50rpx;
+}
+.price {
+  margin-right: 60rpx;
+  color: red;
+}
+.dx {
+  margin-right: 20rpx;
+}
+.dx-price {
+  color: #66ccff;
+}
+.bk-cart {
+  /* padding-left: 20rpx; */
+}
+.bk-cart image {
+  width: 180rpx;
+  height: 180rpx;
+  min-height: 180rpx;
+  min-width: 180rpx;
+  /* margin-right: 60rpx;  */
+}
+.bk-cart-item {
+  margin-top: 30rpx;
+   display: flex; 
+   font-size: 28rpx;
+   position: relative;
+}
+/* .bk-cart-item .radio {
+  align-self:center;
+  margin: 0 36rpx 0 24rpx;
+} */
+.bk-cart-item .icon-weixuanzhongyuanquan {
+  align-self:center;
+   margin: 0 36rpx 0 24rpx; 
+    /* font-size: 30rpx;  */
+}
+.bk-cart-item-content {
+  margin-left: 30rpx;
+   /* padding-right: 78rpx;   待定 */
+}
+.bk-cart-item-pname {
+  font-weight: 700;
+  height: 140rpx;
+   padding-right: 78rpx;   /*待定*/
+}
+.red {
+  color: red;
+}
+/* .p-num {
+  border: 1rpx solid red;
+  border-bottom: 0;
+  border-right: 0;
+  display: inline;
+  position: absolute;
+  right: 64rpx;
+  bottom: 32rpx;
+} */
+.p-num {
+  border: 1rpx solid #eee;
+  border-bottom: 0;
+  border-right: 0;
+  display: inline;
+  position: absolute;
+  right: 30rpx;
+  bottom: 10rpx;
+  
+}
+.p-num view {
+  width: 52.5rpx;
+  height: 52.5rpx;
+  border-bottom: 1rpx solid #eee;
+  border-right: 1rpx solid #eee;
+   /* display: inline;  */
+   text-align: center;
+   line-height: 52.5rpx;
+   /* padding: 0;
+   margin: 0; */
+    float: right; 
+}
+.p-num .amount {
+  /* display: flex; */
+  width: 70rpx;
+  /* align-items:flex-start; */
+}
+.amount input {
+  height: 100%;
+  /* line-height: 40rpx; */
+  /* display: inline-block; */
+}
+
+.bottom_bar {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 80rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #000; 
+  border-top: 1rpx solid #000;
+  width: 100%;
+}
+.bail {
+  width: 496rpx;
+  /* background: #4f4f4f; */
+  line-height: 80rpx;
+  display: flex;
+}
+.bail view {
+  padding-right: 20rpx;
+}
+.pay {
+  flex-grow:1;
+  background: orange;
+  line-height: 80rpx;
+}
+/* .bottom_bar .radio{
+  padding: 0;
+  align-self:center;
+  margin: 0 36rpx 0 24rpx;
+} */
+.bottom_bar .icon-weixuanzhongyuanquan{
+  /* padding: 0;
+   align-self:center; */
+  margin: 0 36rpx 0 24rpx; 
+}

@@ -1,0 +1,17 @@
+/* pages/browse-product/index.wxss */
+page {
+  
+}
+.order-info {
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height: 180rpx;
+}
+.order-info button {
+  margin-left: 0;
+  margin-right: 0;
+  align-self:flex-end;
+}
+.red {color:red;}

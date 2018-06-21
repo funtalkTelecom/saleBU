@@ -1,0 +1,40 @@
+/* pages/authorize/index.wxss */
+.container {
+  padding-top: 200rpx;
+  padding-left: 70rpx;
+  padding-right: 70rpx;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main image {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid orange;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 100rpx;
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 20rpx;
+}
+.auth-text {
+  font-weight: 100;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 90rpx;
+}
+.but {
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 16px;
+  color: #fff;
+  background: -webkit-linear-gradient(left , #f39800, orange); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #f39800, orange); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #f39800, orange); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right , #f39800, orange); /* 标准的语法（必须放在最后） */
+}

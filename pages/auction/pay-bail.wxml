@@ -1,0 +1,9 @@
+<!--pages/auction/pay-bail.wxml-->
+<view class='container'>
+  <view class='bail-conten'>
+    <view class='bail-conten-price'>保证金 ：<text class="red">500</text>元</view>
+    <view class='bail-conten-text'>1、若竞拍不成功，保证金将全额退还</view>
+    <view class='bail-conten-text'>2、若竞拍成功，保证金将转为货款一部分，请于2018-05-13前支付尾款，逾期未付款将扣除保证金</view>
+  </view>
+  <view class='agree'>同 意 并 支 付 保 证 金</view>
+</view>

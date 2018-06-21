@@ -1,0 +1,108 @@
+/* pages/index/product-detail.wxss */
+page{
+  padding-bottom: 80rpx;
+}
+@import "../../utils/iconfont.wxss";
+swiper {
+  height: 750rpx;
+  width: 100%;
+  /* padding: 50rpx;
+  box-sizing: border-box; 图片有边距*/
+  border-bottom: 1rpx dotted #ccc;
+}
+image {
+  /* box-sizing: border-box; */
+    /* height: 650rpx; 图片有边距 */
+   height: 750rpx;
+  width: 100%; 
+}
+/* .banner {
+	height: 640rpx;
+  width: 640rpx;
+}  */
+.banner {
+  padding: 36rpx 40rpx 36rpx 32rpx;
+  position: relative;
+  border-bottom: 1rpx dotted #ccc;
+}
+.p-name {
+  font-size: 30rpx;
+  padding-bottom: 52rpx;
+  font-weight: 700;
+}
+.p-superiority {
+  font-size: 30rpx;
+  color: red;
+}
+.collection {
+  position: absolute;
+  top: 20rpx;
+  right: 64rpx;
+  text-align: center;
+}
+.collection text {
+  color: #ccc;
+}
+.collection view {
+  font-size: 24rpx;
+}
+.p-price {
+  font-size: 26rpx;
+  color: red;
+  margin-top: 56rpx;
+}
+.p-num {
+  border: 1rpx solid #eee;
+  border-bottom: 0;
+  border-right: 0;
+  display: inline;
+  position: absolute;
+  right: 64rpx;
+  bottom: 32rpx;
+  
+}
+/* .p-num view {
+  width: 52.5rpx;
+  height: 52.5rpx;
+  border-bottom: 1rpx solid #eee;
+  border-right: 1rpx solid #eee;
+   text-align: center;
+   line-height: 50rpx;
+   float: right;
+} 
+.p-num .amount {
+  width: 70rpx;
+}
+.amount input {
+  height: 100%;
+}*/
+.intro {
+  padding: 16rpx ;
+}
+.intro-head {
+  text-align: center;
+  font-size: 28rpx;
+  clear: both;
+  /* height: 124rpx;  取消浮动？ */
+}
+.intro-head view{
+  padding: 40rpx;
+  float: left;
+  border-top: 6rpx solid orange;
+  border-right: 1rpx dotted #ccc;
+   border-left: 1rpx dotted #ccc;
+}
+.footer-box {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  line-height: 80rpx;
+   color: #fff; 
+  font-size: 36rpx;
+  width: 100%;
+  text-align: center;
+}
+/* 如果有购物车改成50% */
+ .footer-box view{
+  width: 100%;
+} 

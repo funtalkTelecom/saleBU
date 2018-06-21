@@ -1,0 +1,49 @@
+<view>
+  <zan-panel>
+    <form bindsubmit="formSubmit">
+       <view class='cell pad'>
+        <view>收货人</view>
+        <input maxlength="4" name="personName" placeholder="请输入收货人姓名" value='{{addressObj.personName}}'/>
+      </view>
+      <view class='cell'>
+        <view>联系方式</view>
+        <input maxlength="11" name="personTel" placeholder="请输入联系方式" value='{{addressObj.personTel}}'/>
+      </view>
+      <view class='cell'>
+        <view>所在地区</view>
+        <picker mode="multiSelector" range-key="name" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{objectMultiArray}}">
+          <view class="picker {{selectaddr=='请选择'?'hui':''}}">
+            {{selectaddr}}
+          </view>
+        </picker>
+      </view>
+      <view class='cell'>
+        <view>街道地址</view>
+        <input placeholder="请输入详细地址" name="address"  value='{{addressObj.address}}'/>
+      </view> 
+
+
+      <!-- <zan-row row-class="test">
+        <zan-col col="5">
+          街道地址
+        </zan-col>
+        <zan-col col="19"  col-class="testcol">
+          <input maxlength="4" name="username" placeholder="请输入收货人姓名"></input>
+        </zan-col>
+      </zan-row> -->
+
+
+      <zan-panel>
+        <button formType="submit" class='submit'>保存</button>
+      </zan-panel>
+    </form>
+
+
+  <!-- 头部提示框 -->
+  <zan-toptips id="zan-toptips" contetn="{{ content }}" />
+
+  </zan-panel>
+
+
+
+</view>

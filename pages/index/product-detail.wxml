@@ -1,0 +1,105 @@
+<!--pages/index/product-detail.wxml-->
+<view>
+  <!-- 图片部分 -->
+  <view>
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+      <block wx:for="{{goodObj.fileList}}" wx:key="id">
+        <swiper-item>
+          <image src="{{item.fileName}}"  mode="aspectFit" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 标题部分 -->
+  <view class='banner'>
+    <view class='p-name'>
+      {{goodObj.goods.gName}}
+    </view>
+    <view class='p-superiority'>
+      {{goodObj.goods.gAd}}
+    </view>
+    <view class='collection'>
+      <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text>
+      <view>收藏</view>
+    </view>
+
+    <view class="p-price">￥{{goodObj.sku.skuTobPrice}}</view>
+    <view class='p-num'>
+      <!-- <view class='iconfont icon-jia' bindtap='jia'></view>
+      <view class='amount'>
+        <input value='{{amount}}' type="number" bindinput="inputNum"></input>
+      </view>
+      <view class='iconfont icon-jian' bindtap='jian'></view> -->
+
+      <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" max="{{ stepper.max }}" data-component-id="stepper" bind:change="handleZanStepperChange" size='small'>
+        </zan-stepper>
+    </view>
+  </view>
+  <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" bindtabchange="handleTabChange" />
+  <view hidden="{{selectedId!=1 ? true : false}}">
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+
+  </view>
+  <view hidden="{{selectedId!=2 ? true : false}}">
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+    <view>2</view>
+  </view>
+  <!-- <view class='intro'>
+    <view class='intro-head'>
+      <view>商品详情</view>  
+      <view>包装售后</view> 
+    </view>
+     
+  </view> -->
+
+  <view class='footer-box' bindtap='buynow'>
+    <!-- <view style='background-color:orange'>加入购物车</view> -->
+    <view style='background-color:red'>立即购买</view>
+  </view>
+
+
+
+
+</view>

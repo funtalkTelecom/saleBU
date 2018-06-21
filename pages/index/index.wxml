@@ -1,0 +1,179 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='header scrolled'>
+    <view class='location'>
+      <!-- <image class='icon' src="/imgs/index/icon_location.png"></image>  -->
+      <!-- <text>号码归属地：福建 福州</text> -->
+      <text class='iconfont icon-dizhi'></text>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <view class="picker">
+          号码归属地：{{region[1]}}
+        </view>
+      </picker>
+    </view>
+    <view class='search' bindtap='tapSearch'>
+      <!-- <image class='icon' src="/imgs/index/icon_search.png"></image>  -->
+      <text class='iconfont icon-icon--'></text> 生日，车牌号等
+    </view>
+  </view>
+
+  <scroll-view class='main' scroll-into-view="{{toView}}" scroll-y="true">
+    <view>
+      <swiper class='banner' indicator-dots="true" autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{posterList}}" wx:key="id">
+          <swiper-item>
+            <image src="{{item.pic}}" bindtap="tapBanner" data-id='{{item.id}}' mode="aspectFit" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="nav">
+      <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list1"></image>
+      <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list2"></image>
+      <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list3"></image>
+      <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list4"></image>
+    </view>
+    <view class='content'>
+      <view class='border-bottom color-cyan'>
+        <view class='round'>
+          <text class='iconfont icon-jingdian'></text>
+        </view>
+        <view class='nametype'>经典靓号</view>
+        <view class='round'>
+          <text class='iconfont icon-jingdian'></text>
+        </view>
+      </view>
+      <view class='box box-1'>
+        <block wx:for="{{number0}}">
+          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+            <!-- <view> -->
+             <view class='phone'>
+              <text>{{item.numBlock[0]}}</text>
+              <text class='phone-mg'>{{item.numBlock[1]}}</text>
+              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+            <!-- </view> -->
+          </navigator>
+        </block>
+      </view>
+      <view class='border-top font-size-30 color-cyan'>
+        <view class='exchange' bindtap='exchange' data-tag='0'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view>
+
+    </view>
+    <view class='content' id="list1">
+      <view class='border-bottom color-cyan'>
+        <view class='round'>
+          <text class='iconfont icon-fu'></text>
+        </view>
+        <view class='nametype'>吉祥靓号</view>
+        <view class='round'>
+          <text class='iconfont icon-fu'></text>
+        </view>
+      </view>
+      <view class='box box-1'>
+        <block wx:for="{{number1}}">
+         <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+            <view class='phone'>
+              <text>{{item.numBlock[0]}}</text>
+              <text class='phone-mg'>{{item.numBlock[1]}}</text>
+              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+          </navigator>
+        </block>
+      </view>
+      <view class='border-top font-size-30 color-cyan'>
+        <view class='exchange' bindtap='exchange' data-tag='1'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view>
+    </view>
+    <view class='content' id="list2">
+      <view class='border-bottom color-cyan'>
+        <view class='round'>
+          <text class='iconfont icon-king'></text>
+        </view>
+        <view class='nametype'>典藏靓号</view>
+        <view class='round'>
+          <text class='iconfont icon-king'></text>
+        </view>
+      </view>
+      <view class='box box-1'>
+        <block wx:for="{{phones}}">
+          <navigator url='/pages/num-check/index' class='box-item' hover-class="none">
+
+            <view>
+              <text class='phone'>{{item.phone}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+          </navigator>
+        </block>
+      </view>
+      <view class='border-top font-size-30 color-cyan'>
+        <view class='exchange' bindtap='exchange' data-tag='2'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view>
+    </view>
+    <view class='content' id="list3">
+      <view class='border-bottom color-cyan'>
+        <view class='round'>
+          <text class='iconfont icon-shengri'></text>
+        </view>
+        <view class='nametype'>宝宝生日号</view>
+        <view class='round'>
+          <text class='iconfont icon-shengri'></text>
+        </view>
+      </view>
+      <view class='box box-1'>
+        <block wx:for="{{number3}}">
+          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+            <view class='phone'>
+              <text>{{item.numBlock[0]}}</text>
+              <text class='phone-mg'>{{item.numBlock[1]}}</text>
+              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+          </navigator>
+        </block>
+      </view>
+      <view class='border-top font-size-30 color-cyan'>
+        <view class='exchange' bindtap='exchange' data-tag='3'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view>
+    </view>
+    <view class='content' id="list4">
+      <view class='border-bottom color-cyan'>
+        <view class='round'>
+          <text class='iconfont icon-079aiqing'></text>
+        </view>
+        <view class='nametype'>爱情靓号</view>
+        <view class='round'>
+          <text class='iconfont icon-079aiqing'></text>
+        </view>
+      </view>
+      <view class='box box-1'>
+        <block wx:for="{{number4}}">
+          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+            <view class='phone'>
+              <text>{{item.numBlock[0]}}</text>
+              <text class='phone-mg'>{{item.numBlock[1]}}</text>
+              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            </view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+          </navigator>
+        </block>
+      </view>
+      <view class='border-top font-size-30 color-cyan'>
+        <view class='exchange' bindtap='exchange' data-tag='4'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

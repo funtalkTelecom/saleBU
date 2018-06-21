@@ -1,0 +1,78 @@
+/* pages/personal/personal.wxss */
+
+page {
+  font-size: 30rpx;
+}
+
+.iconfont {
+  font-size: 52rpx;
+  /* display: inline-block;  */
+}
+
+/* 头部开始 */
+
+.head {
+  padding-top: 60rpx;
+  padding-bottom: 60rpx;
+  background-color: orange;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  box-shadow: 10rpx 10rpx 5rpx rgba(0, 0, 0, 0.4);
+}
+.line_H {
+  line-height: 50rpx
+}
+/* 通用模板 */
+.cell-panel-demo {
+   display: block; 
+  margin-top: 30rpx;
+  /* border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc; */
+}
+/* 我的订单 */
+ .order-col {
+  text-align: center;
+   padding-top: 40rpx;
+  padding-bottom: 20rpx;
+  /* display: inline-block;  */
+} 
+.col-order {
+  text-align: center;
+   padding-top: 20rpx;
+  padding-bottom: 40rpx;
+}
+.order-text {
+  font-size: 26rpx;
+  line-height: 70rpx;
+}
+/* icon和badge结合 */
+.iconbadge {
+  display: inline-block;
+}
+/* 联系我们 */
+.footer {
+  margin-bottom: 30rpx;
+}
+.service {
+  padding: 15rpx 15rpx 15rpx 30rpx;
+}
+.service-wx {
+  display: flex;
+  align-items:center;
+  /* justify-content:space-around; */
+}
+.qrcode {
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+.tel {
+  line-height: 100rpx;
+}

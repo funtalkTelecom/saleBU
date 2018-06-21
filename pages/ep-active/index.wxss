@@ -1,0 +1,53 @@
+/* pages/ep-active/index.wxss */
+page {}
+.ep {
+  border-bottom: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+}
+.top {
+  position: relative;
+  overflow: hidden;
+}
+.top image {
+width: 100%;
+display: block;
+}
+.top-position {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  font-size: 14px;
+  color: #fff;
+}
+.top-text {
+  /* background-color: orange; */
+  height: 40rpx;
+  width: 160rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+.active-before {
+  background-color: #006600;
+}
+.active-ing {
+  background-color: #FF9900;
+}
+.active-after {
+  background-color: #CC0000;
+}
+.ep-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  line-height: 100rpx;
+  
+}
+.ep-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+.ep-number {
+ font-size: 14px;
+}

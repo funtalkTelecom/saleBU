@@ -1,0 +1,26 @@
+/* pages/mode-payment/index.wxss */
+page{}
+.pay-select {
+  padding-left:32rpx;
+padding-right:32rpx;
+line-height:80rpx;
+font-size: 28rpx;
+}
+.footer-but {
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+.wx-bgc {
+  background-color:#09bb07;
+}
+.balance-bgc {
+background-color:orange;
+}
+.zfb-bgc {
+ background-color:#00aaee;
+}

@@ -1,0 +1,93 @@
+/* {
+  margin: 0;
+  padding: 0;
+} */
+.top {
+  position: relative;
+}
+.top image{
+  width: 100%;
+  /* height: 260rpx; */
+  display: block;
+}
+.top-position {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  font-size: 26rpx;
+  color: #fff;
+}
+.top-text {
+  background-color: orange;
+  height: 40rpx;
+  width: 160rpx;
+  
+  text-align: center;
+  line-height: 40rpx;
+}
+.active-before {
+  background-color: #006600;
+}
+.active-ing {
+  background-color: #FF9900;
+}
+.active-after {
+  background-color: #CC0000;
+}
+.sideBar {
+  height: 120rpx;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  border-bottom: 1rpx dotted #ccc;
+}
+.sideBar-left{
+  line-height: 40rpx;
+  float: left;
+}
+.sideBar-right {
+  /* box-sizing: content-box; */
+  text-align: center;
+  float: right;
+  border-left: 1rpx solid #ccc;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+}
+.content {
+  padding: 12rpx 0 0 8rpx;
+  display: flex;
+  font-size: 28rpx;
+  position: relative;
+}
+.content>view {
+  /* background: pink; */
+  margin: 24rpx 0 0 12rpx;
+}
+.content image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.p-name {
+  font-weight: 700;
+}
+.p-num {
+  margin-top: 48rpx;
+}
+.button{
+  position: absolute;
+  bottom: 0rpx;
+  right: 30rpx;
+  width: 200rpx;
+  height: 44rpx; 
+  border:1rpx solid #ccc;
+  text-align: center;
+  line-height: 44rpx;
+  border-radius: 15rpx;
+  background:#F8F8F8;
+}
+.red {
+  color: red;
+}
+.icon-remindfill {
+  color: yellow;
+}

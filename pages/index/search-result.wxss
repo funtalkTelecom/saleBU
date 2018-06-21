@@ -1,0 +1,64 @@
+page{
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;
+  }
+.container {
+  flex: auto;  
+  display: flex;  
+  flex-direction: column;  
+  background: #fff;  
+}
+.filters{
+display: flex;
+border: 1rpx solid #000;
+border-bottom: 0;
+border-right: 0;
+  z-index: 999;
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+  flex: none;  
+  
+}
+.filters > view{
+  white-space:nowrap; text-overflow:ellipsis;overflow: hidden;
+   border-bottom: 1rpx solid #000;
+   border-right: 1rpx solid #000;
+   width: 25%;
+   text-align: center;
+   font-size: 26rpx;
+   padding: 20rpx 0;
+}
+.result {
+  display: flex;
+}
+.box{
+  display: flex;
+}
+.box-1{
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.box-item{
+  width: 50%;
+  text-align: center;
+  margin-top: 25rpx;
+  /* box-sizing:border-box; */
+  padding: 0;
+}
+.phone{
+  font-weight:600
+}
+ .phone-desc{
+  display: block;
+  font-size: 25rpx;
+  /* position: relative;
+  right: -25rpx; */
+}
+.phone-price{
+  display: block;
+  font-size: 25rpx;
+  /* position: relative;
+  right: -43rpx; */
+} 

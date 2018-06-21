@@ -1,0 +1,60 @@
+page {
+  font-size: 26rpx;
+}
+input {
+  display: inline-block;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cell input,
+.cell picker {
+  flex: 1
+}
+.cell > view {
+  width: 18%;
+}
+ .picker {
+  min-width: 20rpx;
+  margin-right: 20rpx;
+} 
+.hui{
+    color: #808080;
+}
+.submit {
+  position: fixed;
+  bottom: 0;
+  background-color: orange;
+  width: 100%;
+  color: #fff;
+  border-radius:0;
+  line-height: 80rpx;
+  font-size: 36rpx;
+
+}
+.pad {
+  padding-top: 64rpx;
+}
+/* .test {
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.testcol {
+  height: 100rpx;
+  
+}
+.test input {
+ height: 100%;
+ width: 100%;
+} */

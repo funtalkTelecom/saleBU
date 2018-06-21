@@ -1,0 +1,103 @@
+
+<view class="container">
+  <view class='header'>
+    <view class='search'>
+      <view><text class='iconfont icon-icon--'></text></view>
+      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11"></input></view>
+    </view>
+    <view class='but'>
+      <button class="yellow {{searchPhone.length?'':'disabled'}}" disabled="{{!searchPhone.length}}" bindtap="doSearch">搜索</button>
+    </view>
+  </view>
+
+  <view class='main' hidden="{{flag ? true : false}}">
+    <view class='lianghao'>
+      <view class='lianghao-th'>
+        <view class='float-left'><text class='title'>靓号类型 </text></view>
+        <view class='float-right' bindtap='morebut'><text class=" iconfont {{more?'icon-shrink':'icon-extend'}}"></text></view>
+      </view>
+      <view class='options'>
+        <block wx:for="{{lianghao}}" wx:if="{{index<count}}">
+            <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>  
+             <!-- <button size='mini' class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</button>   -->
+
+        </block>
+      </view>
+    </view> 
+    <view class='yunying'>
+      <text class='title'>运营商</text> 
+      <view class='options spacing '>
+        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">电信</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">联通</view>
+      </view>
+    </view>
+    
+    <view class='yunying'>
+      <text class='title'>价格</text> 
+      <view class='options'>
+        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">200以下</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">200-500</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">500-1000</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">1000-3000</view>
+      </view>
+    </view>
+    <view class='yunying'>
+      <text class='title'>吉利号码</text> 
+      <view class='options'>
+        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">大展宏图</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">伴你一生</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">长长久久</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">520</view>
+      </view>
+    </view>
+    <view class='yunying'>
+      <text class='title'>保底消费</text> 
+      <view class='options'>
+        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">89元</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">189元</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">289元</view>
+        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">59元</view>
+      </view>
+    </view>
+
+
+  </view>
+
+
+  <view class='result' hidden="{{flag ? false : true}}">
+    <view class='filters'>
+      <view>靓号类型<text class='iconfont icon-extend'></text></view>
+      <view>运营商</view>
+      <view>最低消费</view>
+      <view>筛选</view>
+    </view>
+    <view>
+    <scroll-view  scroll-y="true">
+      <view class='box box-1'>
+        <block wx:for="{{phones}}">
+          <view class='box-item'>
+            <view><text class='phone'>{{item.phone}}</text></view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+          </view>
+        </block>
+        <block wx:for="{{phones}}">
+          <view class='box-item'>
+            <view><text class='phone'>{{item.phone}}</text></view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+          </view>
+        </block>
+        <block wx:for="{{phones}}">
+          <view class='box-item'>
+            <view><text class='phone'>{{item.phone}}</text></view>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
+          </view>
+        </block>
+      </view>
+      <view class="loading">努力加载中…</view>
+    </scroll-view>
+    </view>
+  </view>  
+</view>

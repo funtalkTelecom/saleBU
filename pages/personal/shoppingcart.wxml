@@ -1,0 +1,145 @@
+<!--pages/personal/cart.wxml-->
+<view class='container'>
+  <view class='nav'>
+    <view bindtap='nav' data-type="hm" class="{{carttype=='hm' ? 'active' : ''}}">号码</view>
+    <view bindtap='nav' data-type="bk"  class="{{carttype=='bk' ? 'active' : ''}}">白卡商品</view>
+  </view>
+  <!-- 号码 -->
+  <view class='hm-cart'  hidden="{{carttype=='hm' ? false : true}}">
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+    <block wx:for="{{hmCart}}">
+      <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <!-- </view> -->
+        <text class='phone'>170-0115-0202</text>
+        <text class='price'>￥ {{item.price}}</text>
+        <text class='dx'>低消</text>
+        <text class='dx-price'>189元</text>
+      </view>
+    </block>
+  </view>
+  <!-- 白卡 -->
+  <view class='bk-cart' hidden="{{carttype=='bk' ? false : true}}">
+    <block wx:for="{{bkCart}}">
+      <view class='bk-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
+        <!-- <view class='radio'></view> -->
+        <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
+        bindtap='select'  data-index='{{index}}'></text>
+        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+        <view class='bk-cart-item-content'>
+          <view class='bk-cart-item-pname'>
+            乐语 联通妙畅聊卡北京-1707107-白卡
+          </view>
+          <view >
+           直供价：<text class='red'>￥ {{item.price}}</text>
+          </view>
+        </view>
+        <view class='p-num'>
+          <view class='iconfont icon-jia' bindtap='jia' data-index='{{index}}'></view>
+          <!-- <view>{{item.amount}}</view> -->
+          <view class='amount'><input value='{{item.amount}}' type="number" bindinput="inputNum" data-index='{{index}}'></input></view>
+          <view class='iconfont icon-jian' bindtap='jian' data-index='{{index}}'></view> 
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 底部结算 -->
+  <view class="bottom_bar">
+    <view class='bail'>
+      <!-- <view class='radio'></view> -->
+      <view hidden="{{carttype=='hm' ? false : true}}" bindtap='selsctAll' >
+        <test class="iconfont icon-weixuanzhongyuanquan {{selectAllHMState? 'icon-30xuanzhongyuanxingfill' : ''}}"></test>
+        <text >全选</text>
+      </view>
+       <view hidden="{{carttype=='bk' ? false : true}}"  bindtap='selsctAll'>
+        <test class="iconfont icon-weixuanzhongyuanquan {{selectAllBKState? 'icon-30xuanzhongyuanxingfill' : ''}}"></test>
+        <text >全选</text>
+      </view> 
+      
+     
+      <view>合计 ： <text class='red'>￥{{totalmoney}}</text></view>
+    </view>
+
+    <view class='pay' bindtap='topay'>结算</view>
+  </view>
+
+
+  <!-- <view class='hm'>
+     <view class='bail'></view>
+  <view> -->
+
+</view>

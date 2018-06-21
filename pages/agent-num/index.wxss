@@ -1,0 +1,55 @@
+/* pages/agent-num/index.wxss */
+page {
+  font-size: 26rpx;
+}
+.num-item {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #F4F4F4;
+  padding-left: 20rpx;
+}
+.num-col {
+  line-height: 64rpx;
+}
+.num-col-but {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128rpx;
+}
+/* 弹窗 */
+.pop-example__container {
+  overflow: hidden;
+  background: #fff;
+}
+
+.pop-example__container--bottom {
+  width: 100vw;
+}
+.num-info {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  text-align: center;
+  line-height: 64rpx;
+}
+.setmeal {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  text-align: center;
+  line-height: 64rpx;
+  justify-content: space-between;
+}
+.s-info view{
+  border: 1rpx solid orange;
+  border-radius: 20rpx;
+  width: 45%;
+  margin-bottom: 20rpx;
+}
+.postage view {
+  border: 1rpx solid orange;
+  border-radius: 20rpx;
+  width: 100%;
+  margin-bottom: 20rpx;
+}

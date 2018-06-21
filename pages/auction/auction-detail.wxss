@@ -1,0 +1,232 @@
+/* pages/auction/auction-detail.wxss */
+page {
+  padding-bottom: 80rpx;
+}
+.ep-swiper {
+  position: relative;
+}
+swiper {
+  height: 750rpx;
+  width: 100%;
+  /* padding: 50rpx;
+  box-sizing: border-box; 图片有边距*/
+  border-bottom: 1rpx dotted #ccc;
+}
+swiper image {
+  /* box-sizing: border-box; */
+    /* height: 650rpx; 图片有边距 */
+   height: 750rpx;
+  width: 100%; 
+}
+.top-position {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  font-size: 26rpx;
+  color: #fff;
+  width: 100%;
+}
+.active-before {
+  background-color: #006600;
+}
+.active-ing {
+  background-color: #FF9900;
+}
+.active-after {
+  background-color: #CC0000;
+}
+ .top-text { 
+  height: 40rpx;
+  width: 160rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+.top-text-ing {
+  height: 40rpx;
+  width: 160rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+.top-date {
+  flex: 1;
+  background: #949494;
+}
+.ep-title {
+  padding-left: 28rpx;
+  padding-top: 28rpx;
+  font-size: 26rpx;
+  height: 140rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #ccc;
+  position: relative;
+}
+.ep-name {
+  font-weight: 700;
+}
+.ep-now-price {
+  padding-top: 28rpx;
+}
+.ep-now-price text {
+  color: red;
+}
+.collection {
+  position: absolute;
+   top: 50%;
+   margin-top: -34rpx;
+   right: 28rpx;
+   text-align: center;
+}
+.collection text {
+  color: #ccc;
+}
+.collection view {
+  font-size: 26rpx;
+}
+.ep-rule {
+  padding-left: 28rpx;
+  font-size: 26rpx;
+  height: 132rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #ccc;
+  line-height: 62rpx;
+}
+.rule-l,.rule-r {
+  float: left
+}
+.rule-l {
+  width: 360rpx;
+}
+.bid {
+  padding-top: 20rpx;
+  height: 130rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #ccc;
+}
+.bid-num {
+  font-size: 26rpx;
+  width: 96rpx;
+   float: left; 
+  text-align: center
+   
+}
+.bid-order {
+  /* border: 1rpx solid #000;
+  border-right: 0;
+  border-bottom: 0; */
+  display: flex;
+  width: 640rpx;
+  height: 96rpx;
+  float: left;
+}
+.bid-order>view {
+  width: 25%;
+  border-right: 1rpx solid #000;
+  border-bottom: 1rpx solid #000;
+  border-top: 1rpx solid #000;
+}
+.bid-orderitme:first-child {
+  border-left: 1rpx solid #000;
+}
+.bid-orderitme {
+  position: relative;
+  width: 160rpx;
+  font-size: 26rpx;
+}
+
+.bid-orderitme text:last-child {
+  color: red;
+}
+.bid-orderitme .out{
+  background: #ccc;
+}
+.bid-orderitme-num {
+  position: absolute;
+  padding-top: 4rpx;
+  top: 0rpx;
+  left: 0;
+  background: orange;
+  border-right: 1rpx solid #000;
+  border-bottom: 1rpx solid #000;
+}
+.bid-orderitme-id {
+  margin-left: 56rpx;
+  width: 100rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+  
+}
+ /* .intro {
+  padding: 16rpx ;
+}
+.intro-head {
+  text-align: center;
+  font-size: 28rpx; */
+  /* clear: both; */
+   /* height: 124rpx;  取消浮动？  */
+/* }
+.intro-head view{
+  padding: 40rpx;
+  float: left;
+  border-top: 6rpx solid orange;
+  border-right: 1rpx dotted #ccc;
+   border-left: 1rpx dotted #ccc;
+}  */
+/* .bottom_bar {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 80rpx;
+} */
+.bottom_bar {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 80rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #fff; 
+  width: 100%;
+}
+/* 支付保证金 */
+.bail {
+  width: 496rpx;
+  background: #4f4f4f;
+  line-height: 80rpx;
+}
+.pay {
+  flex: 1;
+  background: orange;
+  line-height: 40rpx;
+  
+}
+/* 出价 */
+.center,
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stepper{
+  background-color: #fff;
+  color: #000;
+  height: 68rpx;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
+}
+.stepper>view {
+  margin-right: 20rpx;
+}
+.stepper-bid {
+  flex: 1;
+  background: red;
+  line-height: 80rpx;
+  font-size: 16px;
+  font-weight: 700;
+}
+.widthbai {
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "竞拍记录",
+  "usingComponents": {
+    "zan-panel": "../../dist/panel/index",
+    "zan-row": "../../dist/row/index",
+    "zan-col": "../../dist/col/index",
+    "zan-cell": "../../dist/cell/index",
+    "zan-card": "../../dist/card/index"
+  }
+}

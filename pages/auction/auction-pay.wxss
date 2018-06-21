@@ -1,0 +1,184 @@
+@import "../../utils/iconfont.wxss";
+
+.icon-dizhi {
+  font-size: 100rpx;
+  color: orange;
+}
+
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 32rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 地址开始 */
+
+.addr::after {
+  content: "";
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  width: 14rpx;
+  height: 14rpx;
+  border-left: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: translate3d(0, -50%, 0) rotate(135deg);
+  -webkit-transform: translate3d(0, -50%, 0) rotate(135deg);
+}
+
+.addr-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 10rpx 10rpx 0rpx 10rpx;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #333;
+}
+
+.addr-main {
+  display: flex;
+  align-items: center;
+}
+
+.addr-np, .addr-content {
+  margin-left: 8rpx;
+}
+
+.addr-np {
+  display: flex;
+  margin-top: 26rpx;
+  /* line-height: 68rpx; */
+  height: 60rpx;
+  font-size: 28rpx;
+}
+
+.addr-np view:first-child {
+  margin-right: 50rpx;
+}
+
+.addr-content {
+  font-size: 28rpx;
+  /* line-height: 68rpx; */
+  padding-bottom: 32rpx;
+  width: 560rpx;
+}
+
+.addr-icon {
+  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAICAMAAACBHiwPAAAAA3NCSVQICAjb4U/gAAAArlBMVEX////5/f//+fn2+///9PPu9/7r9f7/8O/n9P3/6efg8P7/5uPZ7f3X7P3/3drJ5vz/2NTH5fzC4vz/087/zMez2/uv2fv/xb//wr2k1Pyi0/qe0Pr/urSc0PqTy/n/squPyvmNyfmLyPmJx/n/qqOHxfmFxfiDxPp9wfj/oZn/m5P/lo3/kIf/i4P/ioH/iX//iH3/h3z/hnv/hXr/g3n/g3b/gXb/f3T/fXL/eG1uSK+uAAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAI5JREFUGJVdjtcSgkAQBBcwYg5gFuWMqBg4gv//Y5blrsVcv3Z1zRB9saNcIy364YbIcWaxoWl2j8ukExbWXG2QhjTN2wOaJLLZDPaYqKE0tNPQxK8ui9p6i9HCkWakjXOBGN881xZTuSTQPK91Nh2jUd7/3DLDc+mYhbMKjaGqNP2iyMu8z2K80wHpsfgATZArkBv6B5gAAAAASUVORK5CYII=) repeat-x top left;
+  height: 40rpx;
+  margin: 0rpx 10rpx;
+}
+
+/* 商品开始 */
+
+.product {
+  border: 1rpx solid #e4e4e4;
+  border-radius: 20rpx;
+  margin: 0rpx 10rpx;
+}
+
+.product-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 10rpx 10rpx 0rpx 10rpx;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #333;
+}
+
+.product-main {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 60rpx 20rpx 16rpx;
+}
+
+.product-main image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 40rpx;
+}
+
+.product-np {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.product-content {
+  font-size: 28rpx;
+  display: flex;
+  color: #666;
+  justify-content: space-between;
+}
+
+.product-content text {
+  color: red;
+}
+
+/* 支付方式开始*/
+
+.paymode {
+  border: 1rpx solid #e4e4e4;
+  border-radius: 20rpx;
+  margin: 36rpx 10rpx 80rpx 10rpx;
+}
+
+.paymode-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 10rpx 10rpx 0rpx 10rpx;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #333;
+}
+
+.paymode-main {
+  display: flex;
+}
+
+.paymode-main view {
+  border: 1rpx solid #666;
+  border-radius: 20rpx;
+  padding: 16rpx 56rpx;
+  font-size: 24rpx;
+  margin: 32rpx 20rpx 24rpx;
+}
+
+.offline {
+  font-size: 28rpx;
+  padding: 20rpx;
+  line-height: 30rpx;
+}
+
+.paymode .active {
+  border: 1rpx solid #f60;
+  color: #f60;
+}
+
+.pay {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  padding: 0 30rpx;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  height: 80rpx;
+  border-top: 1rpx solid #e4e4e4;
+}
+.pay view:first-child {
+  color: #ff3300;
+  font-weight: 700;
+}
+.pay view:last-child {
+  background: #ff3300;
+  color: #fff;
+  border-radius: 20rpx;
+  padding: 12rpx 32rpx;
+}

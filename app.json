@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/search",
+    "pages/index/search-result",
+    "pages/index/product-page",
+    "pages/index/product-detail",
+    "pages/ep-active/index",
+    "pages/auction/auction",
+    "pages/auction/pay-bail",
+    "pages/auction/auction-pay",
+    "pages/auction/auction-detail",
+    "pages/personal/personal",
+    "pages/personal/payorder",
+    "pages/personal/shoppingcart",
+    "pages/recharge/recharge",
+    "pages/test/test",
+    "pages/select-address/index",
+    "pages/address-add/index",
+    "pages/agent/index",
+    "pages/agent-num/index",
+    "pages/agent-iccid/index",
+    "pages/my-order/index",
+    "pages/order-detail/index",
+    "pages/case-deposit/index",
+    "pages/browse-product/index",
+    "pages/interest-product/index",
+    "pages/num-check/index",
+    "pages/check-out/index",
+    "pages/mode-payment/index",
+    "pages/authorize/index",
+    "pages/product-num-detail/index",
+    "pages/product-pay/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#66ccff",
+    "navigationBarTitleText": "乐语销售系统",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#FF7F00",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "靓号"
+      },
+      {
+        "pagePath": "pages/ep-active/index",
+        "text": "竞拍"
+      },
+      {
+        "pagePath": "pages/product-num-detail/index",
+        "text": "卡体"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的"
+      }
+    ]
+  }
+}

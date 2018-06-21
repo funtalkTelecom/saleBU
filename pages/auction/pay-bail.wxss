@@ -1,0 +1,41 @@
+page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 32rpx;
+  background: #f5f5f5;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.bail-conten {
+  margin: 70rpx 10rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 20rpx;
+  padding: 6rpx;
+  background: #fff;
+}
+.bail-conten-price {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  margin-bottom: 6rpx;
+  font-weight: 700;
+}
+.red {
+  color: red;
+}
+.bail-conten-text {
+  color: #aeaeae;
+  font-size: 26rpx;
+}
+.agree {
+  margin: auto;
+  width: 640rpx;
+  text-align: center;
+  background: #ff6633;
+  border-radius: 20rpx;
+  line-height: 56rpx;
+  color: #fff;
+  font-size: 26rpx;
+}

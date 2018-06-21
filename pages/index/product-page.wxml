@@ -1,0 +1,31 @@
+<!--pages/index/product-page.wxml-->
+<view class='container'>
+  <!-- <view class='header'>
+    <view>价格</view>
+    <view>销量</view>
+    <view>低消</view>
+    <view>筛选</view>
+  </view> -->
+  <view class='main'>
+  <navigator wx:for="{{goodList}}" wx:key='id' url="/pages/index/product-detail?id={{item.skuId}}" hover-class="none" class='item'>
+    <!-- <view class='item' bindtap='todetail' wx:for="{{goodList}}" wx:key='id' bindtap=''> -->
+      <image class='product-image' src='{{item.fileName}}' mode="aspectFit" ></image>
+      <view class='content'>
+        <view class="name"> 
+            {{item.gName}} {{item.gAd}}
+        </view> 
+        <view class='price'>
+          直供价 ： ￥ {{item.skuTobPrice}}
+        </view>
+        <view class='supplier'>
+          供应商 ： {{item.gSellerName}}
+        </view>
+        <!-- <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text> -->
+      </view>
+    </navigator>
+  
+  
+  </view>
+
+
+</view>

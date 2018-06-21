@@ -1,0 +1,35 @@
+<!--pages/auction/auction.wxml-->
+<view class='container'>
+  <view class='top'>
+    <image src="{{activeObj.epImg}}" mode='widthFix'></image>
+    <view class='top-position'>
+            <view class="top-text {{activeObj.date.statusText=='即将开始'?'active-before':activeObj.date.statusText=='拍卖中'?'active-ing':'active-after'}}">{{activeObj.date.statusText}}</view>
+      <view class='top-date'>剩{{activeObj.date.day}}天 {{activeObj.date.hou}}小时 {{activeObj.date.min}}分钟 {{activeObj.date.sec}}秒</view>
+    </view>
+  </view>
+  <view class='sideBar'>
+    <view class='sideBar-left'>
+      <view>竞拍规则  >></view>
+      <view>竞拍流程  >></view>
+    </view>
+    <view class='sideBar-right'>
+      <text class="iconfont icon-remind {{remindStart?'icon-remindfill':''}}" bindtap='remind'></text>
+      <view>设置提醒</view>
+    </view>
+  </view>
+  <view class='content' wx:for="{{goodsList}}" wx:key="id">
+    <image src='{{item.gImg}}' mode="aspectFit" ></image>
+    <view>
+      <view class='p-name'>
+        {{item.gName}} {{item.gAd}}
+      </view>
+      <view class='p-num'>
+        共 <text class='red'>{{item.priceCount}}</text> 次出价
+      </view>
+      <view class='p-nowprice'>
+        当前价：<text class='red'>￥{{item.currentPrice}}</text>
+      </view>
+      <view class='button' bindtap='gojoin' data-id='{{item.gId}}'>我要参与</view>
+    </view>
+  </view>
+</view>

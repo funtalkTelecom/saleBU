@@ -1,0 +1,92 @@
+<!--pages/agent-num/index.wxml-->
+<view>
+  <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
+  <view hidden="{{selectedId==2 ? true : false}}">
+    <scroll-view scroll-y="true">
+      <zan-panel>
+        <zan-row row-class="num-item">
+          <zan-col col="17" col-class="num-col">
+            <zan-row>
+              <zan-col col="24">号码:17701234567</zan-col>
+            </zan-row>
+            <zan-row>
+              <zan-col col="24">地市:福建福州</zan-col>
+            </zan-row>
+          </zan-col>
+          <zan-col col="7" col-class="num-col-but">
+            <button size="mini" type='warn' bindtap='toggleBottomPopup'>绑定</button>
+          </zan-col>
+        </zan-row>
+      </zan-panel>
+      <zan-panel>
+        <zan-row row-class="num-item">
+          <zan-col col="17" col-class="num-col">
+            <zan-row>
+              <zan-col col="24">号码:17701234567</zan-col>
+            </zan-row>
+            <zan-row>
+              <zan-col col="24">地市:福建福州</zan-col>
+            </zan-row>
+          </zan-col>
+          <zan-col col="7" col-class="num-col-but">
+            <button size="mini" type='warn' bindtap='toggleBottomPopup'>绑定</button>
+          </zan-col>
+        </zan-row>
+      </zan-panel>
+      
+    </scroll-view>
+  </view>
+
+  <view hidden="{{selectedId==1 ? true : false}}">
+    <scroll-view scroll-y="true">
+      <zan-panel>
+        <zan-row row-class="num-item">
+          <zan-col col="24" col-class="num-col">
+            <zan-row>
+              <zan-col col="24">iccid:1111111111111</zan-col>
+            </zan-row>
+            <zan-row>
+              <zan-col col="24">地市:福建福州</zan-col>
+            </zan-row>
+            <zan-row>
+              <zan-col col="24">号码:17701234567</zan-col>
+            </zan-row>
+            <zan-row>
+              <zan-col col="24">套餐:4G不限流量套餐</zan-col>
+            </zan-row>
+          </zan-col>
+        </zan-row>
+      </zan-panel>
+
+    </scroll-view>
+  </view>
+
+  <!-- 底部弹出框 -->
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
+    <view class="pop-example__container pop-example__container--bottom">
+      <zan-panel title="号码信息" class="spacing">
+        <zan-row row-class="num-info">
+          <zan-col col="7">177 0123 4567</zan-col>
+          <zan-col col="10">福建  福州</zan-col>
+          <zan-col col="7">保底消费 189元</zan-col>
+        </zan-row>
+      </zan-panel>
+
+       <zan-panel title="套餐信息" >
+        <view class='setmeal s-info'>
+          <view>4G畅爽国内不限量</view>
+          <view>4G畅爽国内不限量</view>
+          <view>4G畅爽国内不限量</view>
+        </view>
+      </zan-panel>
+
+      <zan-panel title="套餐资费" >
+        <view class='setmeal postage'>
+          <view>国内通话0.15元/分钟，国内短信/彩信0.1元/条</view>
+        </view>
+      </zan-panel>
+
+    </view>
+  </zan-popup>
+
+</view>

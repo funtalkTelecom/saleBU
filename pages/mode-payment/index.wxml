@@ -1,0 +1,18 @@
+<!--pages/mode-payment/index.wxml-->
+<view>
+  <zan-panel title="支付方式">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <zan-row row-class="pay-select">
+          <label class="radio" wx:for="{{pay}}">
+            <zan-col col="21"> {{item.text}} </zan-col>
+            <zan-col col="3">
+              <radio value="{{item.value}}" checked="{{item.value==1?true:false}}" style='transform:scale(0.8);' color="{{item.color}}"/>
+            </zan-col>
+          </label>
+      </zan-row>
+    </radio-group>
+  </zan-panel>
+
+  <view class="footer-but {{defaultValue==1?'wx-bgc':defaultValue==2?'balance-bgc':'zfb-bgc'}}" >{{paytext}}</view>
+
+</view>

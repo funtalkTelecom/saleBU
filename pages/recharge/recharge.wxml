@@ -1,0 +1,18 @@
+
+
+ <navigator url="/pages/personal/shoppingcart?title=navigate">购物车</navigator>
+<navigator url="../test/test">测试</navigator>
+<navigator url="/pages/select-address/index" >我的收货地址</navigator> 
+<navigator url="/pages/address-add/index" >新增地址</navigator> 
+<navigator url="/pages/agent/index" >代理</navigator> 
+<navigator url="/pages/agent-num/index" >代理的号码</navigator> 
+<navigator url="/pages/agent-iccid/index" >代理的白卡</navigator> 
+<navigator url="/pages/my-order/index" >我的订单</navigator>
+<navigator url="/pages/order-detail/index">订单详情</navigator>
+<navigator url="/pages/case-deposit/index">竞拍记录</navigator>
+<navigator url="/pages/browse-product/index">浏览记录</navigator>
+<navigator url="/pages/interest-product/index">我的收藏</navigator>
+<navigator url="/pages/num-check/index">号码下单</navigator>
+<navigator url="/pages/check-out/index">提交订单</navigator>
+<navigator url="/pages/mode-payment/index">支付方式</navigator>
+<navigator url="/pages/test/test">测试</navigator>

@@ -1,0 +1,82 @@
+<view>
+  <zan-panel title="收货地址">
+    <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
+      <text class="iconfont icon-xinzengdizhi"></text>新增收货地址
+    </navigator>
+
+    <view class='addr-main arrow' hidden="{{!curAddressObj}}" bindtap='toggleBottomPopup'>
+      <view>
+        <text class='iconfont icon-dizhi'></text>
+      </view>
+      <view>
+        <view class='addr-np'>
+          <view>{{curAddressObj.personName}}</view>
+          <view>{{curAddressObj.personTel}}</view>
+        </view>
+        <view class='addr-content'>{{curAddressObj.provinceName}}{{curAddressObj.cityName}}{{curAddressObj.districtName}}{{curAddressObj.address}}</view>
+      </view>
+    </view>
+    <view class='addr-icon'></view>
+  </zan-panel>
+
+  <zan-panel title="商品清单">
+    <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+      <view slot="detail-slot" class="zan-card__detail order-info">
+        <view class='p-name'>{{goodObj.goods.gName}}</view>
+        <view class='price-num'>
+          <view class='red'>￥{{goodObj.sku.skuTobPrice}}</view>
+          <view>×{{numcount}}</view>
+        </view>
+
+      </view>
+    </zan-card>
+  </zan-panel>
+
+  <zan-panel title="">
+    <zan-row row-class="simple-info line-h">
+      <zan-col col="12">商品金额</zan-col>
+      <zan-col col="12" col-class="align-r">￥{{goodObj.sku.skuTobPrice*numcount}}</zan-col>
+      <!-- <zan-col col="12">立减</zan-col>
+      <zan-col col="12" col-class="align-r">- ￥
+        <text class='red'>50.00 </text>
+      </zan-col> -->
+      <zan-col col="12">运费</zan-col>
+      <zan-col col="12" col-class="align-r">- ￥
+        <text class='red'>0.00 </text>
+      </zan-col>
+    </zan-row>
+  </zan-panel>
+
+  <!-- 底部弹出框 -->
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
+    <view class="pop-example__container pop-example__container--bottom">
+      <zan-panel title=" 收货地址">
+        <view class="spacing">
+          <scroll-view scroll-y="true">
+            <view class='addr-item' wx:for="{{addressList}}" wx:key="id" bindtap='selectAddr' data-index='{{index}}'>
+              <view class='addr-np'>
+                <view>{{item.personName}}</view>
+                <view>{{item.personTel}}</view>
+              </view>
+              <view class='addr-content'>{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}}</view>
+            </view>
+          </scroll-view>
+        </view>
+        <zan-panel>
+          <navigator url="/pages/address-add/index" class="add-addr" hover-class="none">
+            新增地址
+          </navigator>
+        </zan-panel>
+      </zan-panel>
+    </view>
+  </zan-popup>
+
+  <view class="bottom_bar">
+    <view class='bail'>总计 ￥{{goodObj.sku.skuTobPrice*numcount}}</view>
+    <view class='pay' bindtap='selectpay'>提交订单</view>
+  </view>
+
+
+
+
+</view>

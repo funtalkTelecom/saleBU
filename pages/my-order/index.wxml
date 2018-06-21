@@ -1,0 +1,57 @@
+<!--pages/my-order/index.wxml-->
+<view>
+  <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
+  <view hidden="{{selectedId!=0 ? true : false}}">
+    <scroll-view scroll-y="true">
+      <zan-panel class="cell-panel-demo">
+        <zan-cell title="123456789" value="等待付款" color="#FF6600;"></zan-cell>
+        <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+          <view slot="detail-slot" class="zan-card__detail order-info">
+            <view>乐语 联通妙畅聊卡北京-1707107-白卡sssss</view>
+            <view>订购时间：2018-05-29 14:30</view>
+          </view>
+        </zan-card>
+        <view class='order-pay'>
+        <view>需支付：<text class='red'>80.00</text>元</view>
+         <button size="mini"  bindtap='toggleBottomPopup'>去支付</button> 
+        </view>
+      </zan-panel>
+
+      <zan-panel class="cell-panel-demo">
+        <zan-cell title="123456789" value="已发货" color="#FF6600;"></zan-cell>
+        <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+          <view slot="detail-slot" class="zan-card__detail order-info">
+            <view>乐语 联通妙畅聊卡北京-1707107-白卡sssss</view>
+            <view>订购时间：2018-05-29 14:30</view>
+          </view>
+        </zan-card>
+        <view class='order-pay'>
+        <view>已支付：<text class='red'>80.00</text>元</view>
+         <!-- <button size="mini"  bindtap='toggleBottomPopup'>去支付</button>  -->
+        </view>
+
+
+      </zan-panel>
+    </scroll-view>
+  </view>
+  <view hidden="{{selectedId!=1 ? true : false}}">
+    <scroll-view scroll-y="true">
+      2
+    </scroll-view>
+  </view>
+  <view hidden="{{selectedId!=2 ? true : false}}">
+    <scroll-view scroll-y="true">
+      3
+    </scroll-view>
+  </view>
+  <view hidden="{{selectedId!=3 ? true : false}}">
+    <scroll-view scroll-y="true">
+      4
+    </scroll-view>
+  </view>
+  <view hidden="{{selectedId!=4 ? true : false}}">
+    <scroll-view scroll-y="true">
+      5
+    </scroll-view>
+  </view>
+</view>

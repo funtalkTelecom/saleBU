@@ -1,0 +1,41 @@
+page{}
+
+.paymode-main {
+  display: flex;
+}
+.paymode-main view {
+  border: 1rpx solid #666;
+  border-radius: 20rpx;
+  padding: 16rpx 56rpx;
+  font-size: 24rpx;
+  margin: 32rpx 20rpx 24rpx;
+}
+
+.offline {
+  font-size: 28rpx;
+  padding: 20rpx;
+  line-height: 30rpx;
+}
+.paymode-main .wx {
+  border: 1rpx solid #09bb07;
+  color: #09bb07;
+}
+.paymode-main .balance {
+  border: 1rpx solid #f60;
+  color: #f60;
+}
+.footer-but {
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+.wx-bgc {
+  background-color:#09bb07;
+}
+.balance-bgc {
+background-color:#f60;
+}

@@ -1,0 +1,49 @@
+<view>
+  <zan-panel title="基本信息">
+    <zan-row row-class="simple-info">
+      <zan-col col="24">订单编号：12345678</zan-col>
+      <zan-col col="24">下单时间：2018-05-30 13:41:13</zan-col>
+      <zan-col col="24">支付方式：微信支付</zan-col>
+      <zan-col col="24">支付时间：2018-05-30 13:45:13</zan-col>
+    </zan-row>
+  </zan-panel>
+  <zan-panel title="收货地址">
+    <view class='addr-main'>
+      <view>
+        <text class='iconfont icon-dizhi'></text>
+      </view>
+      <view>
+        <view class='addr-np'>
+          <view>张三</view>
+          <view>18965902602</view>
+        </view>
+        <view class='addr-content'>福建省福州市仓山区东窑街3号下池小区10栋602室</view>
+      </view>
+    </view>
+  </zan-panel>
+
+  <zan-panel title="商品清单">
+    <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+      <view slot="detail-slot" class="zan-card__detail order-info">
+        <view>乐语 联通妙畅聊卡北京-1707107-白卡</view>
+        <view class='red'>￥100.00</view>
+      </view>
+    </zan-card>
+  </zan-panel>
+
+  <zan-panel title="">
+    <zan-row row-class="simple-info line-h">
+      <zan-col col="12">商品总额</zan-col>
+      <zan-col col="12" col-class="align-r">￥100.00</zan-col>
+      <zan-col col="12">商品总额</zan-col>
+      <zan-col col="12" col-class="align-r">￥100.00</zan-col>
+      <zan-col col="24" col-class="align-r">实付款：
+        <text class='red'>￥100.00</text>
+      </zan-col>
+    </zan-row>
+  </zan-panel>
+
+
+
+
+</view>

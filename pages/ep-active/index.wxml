@@ -1,0 +1,28 @@
+<view>
+
+  <zan-panel wx:for="{{epSalesList}}" wx:key="id">
+    <view class='ep'>
+      <navigator url="/pages/auction/auction?id={{item.id}}" hover-class="none">
+        <view class='top'>
+          <image src="{{item.epImg}}" mode='widthFix'></image>
+          <view class='top-position'>
+            <view class="top-text {{item.erSatus==1?'active-before':item.erSatus==2?'active-ing':'active-after'}}">{{item.obj.statusText}}</view>
+            <view class='top-date' hidden="{{item.erSatus==3 ? true : false}}">剩 {{item.obj.day}}天{{item.obj.hou}}小时 {{item.obj.min}}分钟 {{item.obj.sec}}秒</view>
+          </view>
+        </view>
+
+        <view class='ep-content'>
+          <text class='ep-title'>{{item.title}}</text>
+          <view class='ep-number' hidden="{{item.erSatus==2 ? false : true}}">共 {{item.priceCount|0}} 次出价</view>
+        </view>
+
+      </navigator>
+    </view>
+    <view class='divider'></view>
+  </zan-panel>
+
+
+
+
+
+</view>

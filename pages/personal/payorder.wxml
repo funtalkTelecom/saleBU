@@ -1,0 +1,53 @@
+<!--pages/personal/payorder.wxml-->
+<view>
+<!-- 地址 -->
+  <view class='addr'>
+     <navigator hover-class="none" ><!-- url='/pages/auction/auction-detail' -->
+      <view class='addr-np'>
+        <text>张小春</text>
+        <text>189××××2602</text>
+      </view>
+      <view class='addr-content'>
+        <text>福建 福州市 仓山区 临江街道 下渡街道工农街36-91号2楼华睿通讯 (350007)</text>
+      </view>
+    </navigator>
+  </view>
+  <!-- 商品 -->
+  <view class='cart'>
+    <view class='cart-item'>
+      <view>
+        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+      </view>
+      <view class='cart-item-content'>
+        <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>
+        <view>直供价：<text class='red'>￥ 2.00</text> </view>
+      </view>
+    </view>
+    <view class='cart-item'>
+      <view>
+        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+      </view>
+      <view class='cart-item-content'>
+        <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>
+        <view>直供价：<text class='red'>￥ 2.00</text> </view>
+      </view>
+    </view>
+    <view class='cart-item'>
+      <view>
+        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+      </view>
+      <view class='cart-item-content'>
+        <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>
+        <view>直供价：<text class='red'>￥ 2.00</text> </view>
+      </view>
+    </view>
+  </view>
+
+<!-- 提交订单 -->
+  <view class="bottom_bar">
+    <view class='bail'>总计 ￥500.00</view>
+    <view class='pay'>提交订单</view>
+  </view>
+
+
+</view>

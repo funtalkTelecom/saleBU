@@ -1,0 +1,103 @@
+page {
+  font-size: 26rpx;
+}
+input {
+  display: inline-block;
+}
+.pad {
+  padding-top: 64rpx;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cell > view {
+  width: 18%;
+}
+.cell input,
+.cell picker {
+  flex: 1
+}
+ .picker {
+  min-width: 20rpx;
+  margin-right: 20rpx;
+} 
+.hui{
+    color: #808080;
+}
+.submit {
+  position: fixed;
+  bottom: 0;
+  background-color: orange;
+  width: 100%;
+  color: #fff;
+  border-radius:0;
+}
+/* 营业执照 */
+.license {
+   display: flex;
+  justify-content: space-between; 
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cell-license {
+  line-height: 100rpx;
+  width: 18%;
+}
+.license-img-but {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.license-but {
+  margin-left:0;
+margin-right:0;
+}
+/* 提交审核 */
+.cell-submit {
+  /* display: flex; */
+  justify-content:flex-end;
+  height: 100rpx;
+  border-bottom: none;
+}
+.cell-submit button{
+  margin-left:0;
+margin-right:0;
+}
+/* 关联账号 */
+.guanlian {
+    line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+
+/* 弹窗 */
+.pop-example__container {
+  overflow: hidden;
+  background: #fff;
+}
+
+.pop-example__container--bottom {
+  width: 100vw;
+}
+.spacing {
+  height: 450rpx;
+}
+.hui{
+    color: #808080;
+}

@@ -1,0 +1,30 @@
+/* pages/my-order/index.wxss */
+.order-info {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  height: 180rpx;
+}
+.order-pay {
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+font-size: 28rpx;
+text-align: center;
+margin-right: 30rpx;
+padding-top: 10rpx;
+padding-bottom: 10rpx; 
+}
+.order-pay button{
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  margin-left: 50rpx;
+  margin-right: 0;
+  background-color: #fff;
+  border: 1rpx solid #FF6600;
+  color: #FF6600;
+}
+.red {
+  color: red;
+  font-weight: 700;
+}
