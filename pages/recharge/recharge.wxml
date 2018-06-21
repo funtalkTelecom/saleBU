@@ -14,5 +14,5 @@
 <navigator url="/pages/interest-product/index">我的收藏</navigator>
 <navigator url="/pages/num-check/index">号码下单</navigator>
 <navigator url="/pages/check-out/index">提交订单</navigator>
-<navigator url="/pages/mode-payment/index">支付方式</navigator>
+
 <navigator url="/pages/test/test">测试</navigator>

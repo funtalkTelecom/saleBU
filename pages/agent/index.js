@@ -24,12 +24,12 @@ Page({
       url: "query-agent_by_consumerid" ,
       params: {},
       success: (res) => {
-        console.log(res)
-        if (res.data.code == 200) {
-          if (res.data.data.length>0){
+        if(res.data.code == 200) {
+          if(res.data.data.isAgent=="true"){
             this.setData({
-              agentObj: res.data.data[0],
-              selectaddr: res.data.data[0].provinceName + "," + res.data.data[0].cityName + "," + res.data.data[0].districtName
+              agentObj: res.data.data,
+              selectaddr: res.data.data.provinceName + "," + res.data.data.cityName + "," + res.data.data.districtName,
+              avatarUrl: res.data.data.tradingImgUrl
             })
           }
         }
@@ -200,5 +200,5 @@ Page({
       district: districtObj.id,
       selectaddr: provinceObj.name + "," + cityObj.name + "," + districtObj.name
     })
-  },
+  }
 })

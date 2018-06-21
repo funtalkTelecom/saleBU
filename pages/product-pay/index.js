@@ -35,5 +35,5 @@ Page({
       defaultValue: wxpay,
       paytext: paytext
     })
-  },
+  }
 })

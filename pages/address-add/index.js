@@ -1,7 +1,8 @@
 var network = require("../../utils/network.js");
 const Toptips = require('../../dist/toptips/index');
-var provinceData = wx.getStorageSync('provinceData');
-var init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
+var init_city=null;
+var provinceData =null;
+
 Page({
 
   /**
@@ -26,6 +27,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    provinceData = wx.getStorageSync('provinceData');
+    console.log("内存地市数据：" + provinceData);
+    if (!provinceData) provinceData = [{ cityList: [{ districtList: [] }] }];
+    init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
+    this.data.objectMultiArray = init_city;
+
     if (options.id) {
       // 有id时获取地址对象
       network.GET({
@@ -162,5 +169,5 @@ Page({
       districtId: districtObj.id,
       selectaddr: provinceObj.name + "," + cityObj.name + "," + districtObj.name
     })
-  },
+  }
 })

@@ -30,7 +30,7 @@
         <view class='cell-license'>营业执照</view>
         <view class='license-img-but'>
           <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img"></image>
-          <button bindtap="selectimg" size="mini" class='license-but'>选择文件</button>
+          <button bindtap="selectimg" size="mini" class='license-but' hidden='{{agentObj?true:false}}' >选择文件</button>
         </view>
       </view>
 
@@ -38,7 +38,7 @@
 
 
       <view class='cell cell-submit'>
-        <button size="mini" formType="submit" type='warn'>提交审核</button>
+        <button size="mini" formType="submit" type='warn' hidden='{{agentObj?true:false}}' >提交审核</button>
       </view>
     </form>
 

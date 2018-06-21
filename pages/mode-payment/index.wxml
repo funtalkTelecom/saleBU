@@ -1,4 +1,4 @@
-<!--pages/mode-payment/index.wxml-->
+
 <view>
   <zan-panel title="支付方式">
     <radio-group class="radio-group" bindchange="radioChange">

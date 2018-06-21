@@ -83,13 +83,6 @@ Page({
         }
       }
     })
-
-
-
-
-    // wx.navigateTo({
-    //   url: "/pages/mode-payment/index"
-    // })
   },
   toggleBottomPopup() {
     this.setData({

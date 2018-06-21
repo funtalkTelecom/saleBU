@@ -201,5 +201,5 @@ Page({
       }
     }
     return flag;
-  },
+  }
 })

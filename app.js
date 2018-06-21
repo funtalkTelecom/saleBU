@@ -43,6 +43,6 @@ App({
   globalData: {
     userInfo: null,
     header: {'content-type':'application/json','Cookie':''},
-    API_URL:'http://zjc.tunnel.qydev.com/api/'
+    API_URL:'https://www.egt365.com/zjc/lff/api/'
   },
 })

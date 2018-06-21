@@ -140,5 +140,37 @@ Page({
     this.setData({
       [`${componentId}.stepper`]: stepper
     });
+  },
+  bid:function(){
+    network.POST({
+      url: "epSaleGoodsAuciton",
+      params: {
+        skuId: this.data.epSaleGoods.skuId,
+        numId: this.data.epSaleGoods.numId,
+        num: this.data.epSaleGoods.num,
+        gId: this.data.epSaleGoods.gId,
+        gName: this.data.epSaleGoods.gName,
+        price: this.data.stepper.stepper
+      },
+      success: (res) => {
+        console.log(res)
+        if (res.data.code == 200) {
+          
+        } else if (res.data.data) {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: "出价失败",
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
   }
+  
 })

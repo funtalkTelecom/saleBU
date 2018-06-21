@@ -25,10 +25,10 @@
     "pages/case-deposit/index",
     "pages/browse-product/index",
     "pages/interest-product/index",
+    "pages/authorize/index",
     "pages/num-check/index",
     "pages/check-out/index",
     "pages/mode-payment/index",
-    "pages/authorize/index",
     "pages/product-num-detail/index",
     "pages/product-pay/index"
   ],

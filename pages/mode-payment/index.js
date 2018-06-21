@@ -1,4 +1,4 @@
-// pages/mode-payment/index.js
+
 Page({
 
   /**

@@ -88,5 +88,5 @@ Page({
     this.setData({
       index: e.detail.value
     })
-  },
+  }
 })

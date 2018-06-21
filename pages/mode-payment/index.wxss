@@ -1,4 +1,4 @@
-/* pages/mode-payment/index.wxss */
+
 page{}
 .pay-select {
   padding-left:32rpx;

@@ -64,9 +64,9 @@ Page({
 
   },
   bindGetUserInfo: function (e) {
-    if (!e.detail.userInfo) {
-      console.log(2)
-      return;
+    console.log(e)
+    if(!e.detail.userInfo) {
+      return
     }
     var userInfo = e.detail.userInfo;
     wx.setStorageSync('userInfo', userInfo);
@@ -84,7 +84,12 @@ Page({
       },
       success: (res) => {
         console.log(res);
-        if (res.data.code == 200) {
+        wx.showToast({
+          title: "4",
+          icon: 'none',
+          duration: 2000
+        })
+        if(res.data.code == 200) {
           console.log(1);
           wx.switchTab({
             url: "/pages/index/index"
@@ -103,7 +108,7 @@ Page({
   login: function () {
     let that = this;
     let token = wx.getStorageSync('token');
-    if (token) {
+    if(token) {
       // wx.request({
       //   url: 'https://api.it120.cc/' + app.globalData.subDomain + '/user/check-token',
       //   data: {
@@ -128,7 +133,7 @@ Page({
           params: { getcode: res.code },
           success: (res) => {
             console.log(res);
-            if (res.data.code == 200) {
+            if(res.data.code == 200) {
               wx.setStorageSync('token', res.data.data.token)
               getApp().globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
             }
@@ -140,5 +145,5 @@ Page({
         })
       }
     })
-  },
+  }
 })

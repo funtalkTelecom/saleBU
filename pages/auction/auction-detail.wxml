@@ -117,7 +117,7 @@
     <view>2</view>
   </view>
 
-  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==1&&epSaleGoods.gSatus==2?false:true}}'>
+  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==0&&epSaleGoods.gSatus==2?false:true}}'>
     <view class='bail' bindtap='temp'>保证金 ￥{{epSaleGoods.gDeposit}}</view>
     <view class='pay' bindtap='paybail'>
       <view>支付保证金</view>
@@ -125,7 +125,7 @@
     </view>
   </view>
 
-  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==0&&epSaleGoods.gSatus==2?false:true}}'>
+  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==1&&epSaleGoods.gSatus==2?false:true}}'>
     <view class="bail center">
       <view class='stepper'>
         <view>加价</view>

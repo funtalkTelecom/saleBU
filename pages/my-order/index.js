@@ -95,5 +95,5 @@ Page({
     } else if (e.detail == 2) {
       console.log("b")
     }
-  },
+  }
 })

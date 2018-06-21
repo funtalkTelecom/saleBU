@@ -88,5 +88,5 @@ Page({
     this.setData({
       showBottomPopup: !this.data.showBottomPopup
     });
-  },
+  }
 })
