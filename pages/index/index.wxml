@@ -27,12 +27,12 @@
         </block>
       </swiper>
     </view>
-    <view class="nav">
+    <!-- <view class="nav">
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list1"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list2"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list3"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list4"></image>
-    </view>
+    </view> -->
     <view class='content'>
       <view class='border-bottom color-cyan'>
         <view class='round'>

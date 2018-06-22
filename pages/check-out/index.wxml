@@ -20,7 +20,7 @@
   </zan-panel>
 
   <zan-panel title="商品清单">
-    <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+    <zan-card card-class="test-card" thumb="{{goodObj.fileList[0].fileName}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
       <view slot="detail-slot" class="zan-card__detail order-info">
         <view class='p-name'>{{goodObj.goods.gName}}</view>
         <view class='price-num'>

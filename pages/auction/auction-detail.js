@@ -17,9 +17,9 @@ Page({
     },
     selectedId: 1,
     stepper: {
-      stepper: 10,
-      min: 1,
-      step: 2
+      // stepper: 10,
+      // min: 1,
+      // step: 2
     }
   },
 
@@ -27,9 +27,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
-    this.initGood(options.id);
-
+    // this.setData({
+    //   goodsid: options.id
+    // })
+    this.initGood(options.id)
   },
 
   /**
@@ -52,7 +53,10 @@ Page({
   },
 
   paybail :function (){
-    wx.navigateTo({ url: 'pay-bail' });
+    var price = parseFloat(this.data.epSaleGoods.gPriceUp) + parseFloat(this.data.epSaleGoods.currentPrice)
+    wx.navigateTo({ 
+      url: 'pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price
+      });
   },
   temp:function (){
     wx.navigateTo({ url: 'auction-pay' });
@@ -63,12 +67,18 @@ Page({
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
-          var goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
+          var epSaleGoods = res.data.data
+          var goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)
+          this.data.stepper.stepper = goodsAuctionList[0].price ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp):epSaleGoods.gStartPrice
+          this.data.stepper.step = epSaleGoods.gPriceUp;
+          this.data.stepper.min = goodsAuctionList[0].price ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
           this.setData({
             epSaleGoods: res.data.data,
-            goodsAuctionList: goodsAuctionList
+            goodsAuctionList: goodsAuctionList,
+            stepper: this.data.stepper
           })
           this.countDown();
+          this.getLatestGoodsAuctionList();
         }
       }
     })
@@ -129,6 +139,7 @@ Page({
   timeFormat: function (param) {
     return param < 10 ? '0' + param : param;
   },
+  //修改价格
   handleZanStepperChange({
     detail: stepper,
     target: {
@@ -141,6 +152,7 @@ Page({
       [`${componentId}.stepper`]: stepper
     });
   },
+  // 提交出价
   bid:function(){
     network.POST({
       url: "epSaleGoodsAuciton",
@@ -155,22 +167,46 @@ Page({
       success: (res) => {
         console.log(res)
         if (res.data.code == 200) {
-          
+          wx.showToast({
+            title: "本次出价成功",
+            icon: 'success',
+            duration: 3000
+          })
+          var goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
+          this.setData({
+            goodsAuctionList: goodsAuctionList
+          })
+
         } else if (res.data.data) {
           wx.showToast({
             title: res.data.data,
             icon: 'none',
-            duration: 2000
+            duration: 3000
           })
         } else {
           wx.showToast({
             title: "出价失败",
             icon: 'none',
-            duration: 2000
+            duration:3000
           })
         }
       }
     })
+  },
+  getLatestGoodsAuctionList:function(){
+    network.GET({
+      url: "epSaleAuctions/" + this.data.epSaleGoods.numId,
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.setData({
+            goodsAuctionList: res.data.data.goodsAuctionList.map(this.substring)
+          })
+          setTimeout(this.getLatestGoodsAuctionList, 5000);
+        }
+      }
+    })
   }
+
   
 })

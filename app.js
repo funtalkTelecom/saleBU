@@ -44,5 +44,6 @@ App({
     userInfo: null,
     header: {'content-type':'application/json','Cookie':''},
     API_URL:'https://www.egt365.com/zjc/lff/api/'
+    // API_URL: 'http://192.168.1.60:12891/api/'
   },
 })

@@ -47,8 +47,8 @@
 
   <zan-panel title="已关联账号">
     <zan-row row-class="guanlian">
-      <zan-col col="12">呜呜呜呜呜呜呜</zan-col>
-      <zan-col col="12">厦门</zan-col>
+      <zan-col col="12">{{agentObj.loginName}}</zan-col>
+      <zan-col col="12">{{agentObj.cityName}}</zan-col>
     </zan-row>
     <view class='cell cell-submit'>
       <button size="mini" type='warn' bindtap='toggleBottomPopup'>关联帐号</button>
@@ -57,6 +57,10 @@
 
   <!-- 头部提示框 -->
   <zan-toptips id="zan-toptips" contetn="{{ content }}" />
+
+<!-- 自己的头部提示框 -->
+  <!-- <view class='toptips'>申请正在审核中，请耐心等待</view>  -->
+
 
   <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">

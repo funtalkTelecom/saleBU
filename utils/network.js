@@ -38,6 +38,7 @@ function request(method, requestHandler) {
   //注意：可以对params加密等处理
   var params = requestHandler.params;
   params.__sessid = wx.getStorageSync("token");
+  params.__app = "xcx";
   var uri = requestHandler.url;
   wx.request({
     url: API_URL+uri,

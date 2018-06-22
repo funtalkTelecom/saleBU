@@ -17,7 +17,7 @@
       <view>设置提醒</view>
     </view>
   </view>
-  <view class='content' wx:for="{{goodsList}}" wx:key="id">
+  <view class='content' wx:for="{{goodsList}}" wx:key="id"  bindtap='gojoin' data-id='{{item.gId}}'>
     <image src='{{item.gImg}}' mode="aspectFit" ></image>
     <view>
       <view class='p-name'>
@@ -29,7 +29,7 @@
       <view class='p-nowprice'>
         当前价：<text class='red'>￥{{item.currentPrice}}</text>
       </view>
-      <view class='button' bindtap='gojoin' data-id='{{item.gId}}'>我要参与</view>
+      <!-- <view class='button'>我要参与</view> -->
     </view>
   </view>
 </view>

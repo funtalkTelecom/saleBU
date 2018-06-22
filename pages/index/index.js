@@ -48,9 +48,15 @@ Page({
       })
     }
 
+   
+
+
+
+  },
+  onShow: function () {
     network.GET({
       url: "poster",
-      params: { pageNum: 1, limit:999 },
+      params: { pageNum: 1, limit: 999 },
       success: (res) => {
         console.log(res);
         if (res.data.code == 200) {
@@ -65,13 +71,7 @@ Page({
     this.getnumber(2);
     this.getnumber(3);
     this.getnumber(4);
-   
 
-
-
-  },
-  onShow: function () {
-    // this.loadLocation();
   },
   tapSearch: function () {
     wx.navigateTo({ url: 'search' });
@@ -131,7 +131,7 @@ Page({
   getnumber:function(e){
     network.GET({
       url: "number",
-      params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit,tags:e },
+      params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit,tags:e==0?"":e },
       success: (res) => {
         if (res.data.code == 200) {
           var num="number"+e

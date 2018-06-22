@@ -11,7 +11,7 @@ Page({
   data: {
     multiIndex: [0, 0, 0],
     selectaddr: "请选择",
-    objectMultiArray: init_city,
+    // objectMultiArray: init_city,
     province: '',
     city: '',
     district: '',
@@ -28,11 +28,11 @@ Page({
    */
   onLoad: function (options) {
     provinceData = wx.getStorageSync('provinceData');
-    console.log("内存地市数据：" + provinceData);
-    if (!provinceData) provinceData = [{ cityList: [{ districtList: [] }] }];
+    if (!provinceData) return
     init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
-    this.data.objectMultiArray = init_city;
-
+    this.setData({
+      objectMultiArray: init_city,
+    })
     if (options.id) {
       // 有id时获取地址对象
       network.GET({

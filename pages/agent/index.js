@@ -1,8 +1,8 @@
 // pages/agent/index.js
 var network = require("../../utils/network.js")
 const Toptips = require('../../dist/toptips/index');
-var provinceData = wx.getStorageSync('provinceData');
-var init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
+var init_city = null;
+var provinceData = null;
 Page({
 
   /**
@@ -11,7 +11,7 @@ Page({
   data: {
     multiIndex: [0, 0, 0],
     selectaddr: "请选择",
-    objectMultiArray: init_city,
+    // objectMultiArray: init_city,
     avatarUrl: null,
     showBottomPopup: false
   },
@@ -20,6 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    provinceData = wx.getStorageSync('provinceData');
+    console.log(provinceData)
+    if (!provinceData) return
+     init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
+     this.setData({
+       objectMultiArray: init_city,
+     })
     network.GET({
       url: "query-agent_by_consumerid" ,
       params: {},

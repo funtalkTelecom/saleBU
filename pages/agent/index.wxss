@@ -1,5 +1,6 @@
 page {
   font-size: 26rpx;
+  position: relative;
 }
 input {
   display: inline-block;
@@ -100,4 +101,15 @@ margin-right:0;
 }
 .hui{
     color: #808080;
+}
+.toptips {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  line-height: 32px;
+  background-color: orange;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+
 }
