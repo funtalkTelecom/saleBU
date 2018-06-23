@@ -1,9 +1,7 @@
 @import "../../utils/iconfont.wxss";
+@import "../../utils/address.wxss";
 
-.icon-dizhi {
-  font-size: 100rpx;
-  color: orange;
-}
+
 
 page {
   display: flex;
@@ -19,61 +17,7 @@ page {
 
 /* 地址开始 */
 
-.addr::after {
-  content: "";
-  position: absolute;
-  right: 30rpx;
-  top: 50%;
-  width: 14rpx;
-  height: 14rpx;
-  border-left: 1px solid currentColor;
-  border-top: 1px solid currentColor;
-  transform: translate3d(0, -50%, 0) rotate(135deg);
-  -webkit-transform: translate3d(0, -50%, 0) rotate(135deg);
-}
 
-.addr-title {
-  font-size: 30rpx;
-  font-weight: 700;
-  margin: 10rpx 10rpx 0rpx 10rpx;
-  padding: 10rpx;
-  border-bottom: 1rpx solid #e4e4e4;
-  color: #333;
-}
-
-.addr-main {
-  display: flex;
-  align-items: center;
-}
-
-.addr-np, .addr-content {
-  margin-left: 8rpx;
-}
-
-.addr-np {
-  display: flex;
-  margin-top: 26rpx;
-  /* line-height: 68rpx; */
-  height: 60rpx;
-  font-size: 28rpx;
-}
-
-.addr-np view:first-child {
-  margin-right: 50rpx;
-}
-
-.addr-content {
-  font-size: 28rpx;
-  /* line-height: 68rpx; */
-  padding-bottom: 32rpx;
-  width: 560rpx;
-}
-
-.addr-icon {
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAICAMAAACBHiwPAAAAA3NCSVQICAjb4U/gAAAArlBMVEX////5/f//+fn2+///9PPu9/7r9f7/8O/n9P3/6efg8P7/5uPZ7f3X7P3/3drJ5vz/2NTH5fzC4vz/087/zMez2/uv2fv/xb//wr2k1Pyi0/qe0Pr/urSc0PqTy/n/squPyvmNyfmLyPmJx/n/qqOHxfmFxfiDxPp9wfj/oZn/m5P/lo3/kIf/i4P/ioH/iX//iH3/h3z/hnv/hXr/g3n/g3b/gXb/f3T/fXL/eG1uSK+uAAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAI5JREFUGJVdjtcSgkAQBBcwYg5gFuWMqBg4gv//Y5blrsVcv3Z1zRB9saNcIy364YbIcWaxoWl2j8ukExbWXG2QhjTN2wOaJLLZDPaYqKE0tNPQxK8ui9p6i9HCkWakjXOBGN881xZTuSTQPK91Nh2jUd7/3DLDc+mYhbMKjaGqNP2iyMu8z2K80wHpsfgATZArkBv6B5gAAAAASUVORK5CYII=) repeat-x top left;
-  height: 40rpx;
-  margin: 0rpx 10rpx;
-}
 
 /* 商品开始 */
 

@@ -12,7 +12,7 @@
       <image class='product-image' src='{{item.fileName}}' mode="aspectFit" ></image>
       <view class='content'>
         <view class="name"> 
-            {{item.gName}} {{item.gAd}}
+            {{item.gName}}
         </view> 
         <view class='price'>
           直供价 ： ￥ {{item.skuTobPrice}}

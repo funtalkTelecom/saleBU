@@ -86,17 +86,22 @@ Page({
       },
       success: (res) => {
         console.log(res)
-        if (res.data.code == 200) {
-          // wx.showToast({
-          //   title: "本次出价成功",
-          //   icon: 'success',
-          //   duration: 3000
-          // })
-          // var goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
-          // this.setData({
-          //   goodsAuctionList: goodsAuctionList
-          // })
-
+        if (res.data.code == 604) {
+          wx.requestPayment({
+            'timeStamp': res.data.data.timeStamp,
+            'nonceStr': res.data.data.nonceStr,
+            'package': res.data.data.package,
+            'signType': 'MD5',
+            'paySign': res.data.data.paySign,
+            'success': function (res) {
+              wx.navigateBack({
+                delta: 1
+              })
+            },
+            'fail': function (res) {
+              console.log("尚未付款成功");
+            }
+          })
         } else if (res.data.data) {
           wx.showToast({
             title: res.data.data,

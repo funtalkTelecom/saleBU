@@ -1,4 +1,5 @@
 // pages/auction/auction-pay.js
+var network = require("../../utils/network.js")
 Page({
 
   /**
@@ -26,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.initAddress();
   },
 
   /**
@@ -68,5 +69,38 @@ Page({
     this.setData({
       wxpay: e.currentTarget.dataset.wxpay
     })
+  },
+  toggleBottomPopup() {
+    this.setData({
+      showBottomPopup: !this.data.showBottomPopup
+    });
+  },
+  initAddress: function () {
+    network.GET({
+      url: "deliveryAddresss",
+      params: {},
+      success: (res) => {
+        console.log(res);
+        if (res.data.code == 200) {
+          if (res.data.data.length > 0) {
+            this.setData({
+              curAddressObj: res.data.data[0],
+              addressList: res.data.data
+            })
+          } else {
+            this.setData({
+              curAddressObj: null
+            })
+          }
+        }
+      }
+    })
+  },
+  selectAddr: function (e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      curAddressObj: this.data.addressList[index]
+    })
+    this.toggleBottomPopup();
   }
 })

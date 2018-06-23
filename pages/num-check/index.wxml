@@ -68,7 +68,7 @@
     <view>确认支付</view>
   </view> -->
   <view class="bottom_bar">
-    <view class='bail'> ￥{{numberObj.skuTocPrice}}元</view>
+    <view class='bail'> ￥{{numberObj.skuTobPrice}}元</view>
     <view class='pay' bindtap='createOrder'>立即购买</view>
   </view>
 

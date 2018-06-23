@@ -1,5 +1,5 @@
 <view class='container'>
-  <view class='addr'>
+  <!-- <view class='addr'>
     <view class='addr-title'>
       收货地址
     </view>
@@ -16,7 +16,26 @@
       </view>
     </view>
     <view class='addr-icon'></view>
-  </view>
+  </view> -->
+  <zan-panel title="收货地址">
+    <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
+      <text class="iconfont icon-xinzengdizhi"></text>新增收货地址
+    </navigator>
+
+    <view class='addr-main arrow' hidden="{{!curAddressObj}}" bindtap='toggleBottomPopup'>
+      <view>
+        <text class='iconfont icon-dizhi'></text>
+      </view>
+      <view>
+        <view class='addr-np'>
+          <view>{{curAddressObj.personName}}</view>
+          <view>{{curAddressObj.personTel}}</view>
+        </view>
+        <view class='addr-content'>{{curAddressObj.provinceName}}{{curAddressObj.cityName}}{{curAddressObj.districtName}}{{curAddressObj.address}}</view>
+      </view>
+    </view>
+    <view class='addr-icon'></view>
+  </zan-panel>
 
   <view class='product'>
     <view class='product-title'>
@@ -47,7 +66,7 @@
     </view>
     <view class='paymode-main'>
       <view class="{{wxpay=='true'?'active':''}}" bindtap='usewxpay' data-wxpay="true">微信支付</view>
-      <view class="{{wxpay=='false'?'active':''}}"  bindtap='usewxpay' data-wxpay="false">线下支付</view>
+      <view class="{{wxpay=='false'?'active':''}}" bindtap='usewxpay' data-wxpay="false">线下支付</view>
     </view>
     <view class='offline' wx:if="{{wxpay=='false'}}">
       <view>银行：中信银行</view>
@@ -61,5 +80,29 @@
     <view>￥2000.00</view>
     <view>确认支付</view>
   </view>
+
+    <!-- 底部弹出框 -->
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
+    <view class="pop-example__container pop-example__container--bottom">
+      <zan-panel title=" 收货地址">
+        <view class="spacing">
+          <scroll-view scroll-y="true">
+            <view class='addr-item' wx:for="{{addressList}}" wx:key="id" bindtap='selectAddr' data-index='{{index}}'>
+              <view class='addr-np'>
+                <view>{{item.personName}}</view>
+                <view>{{item.personTel}}</view>
+              </view>
+              <view class='addr-content'>{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.address}}</view>
+            </view>
+          </scroll-view>
+        </view>
+        <zan-panel>
+          <navigator url="/pages/address-add/index" class="add-addr" hover-class="none">
+            新增地址
+          </navigator>
+        </zan-panel>
+      </zan-panel>
+    </view>
+  </zan-popup>
 
 </view>

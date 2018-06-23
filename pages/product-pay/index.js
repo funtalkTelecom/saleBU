@@ -1,4 +1,5 @@
 // pages/product-pay/index.js
+var network = require("../../utils/network.js");
 Page({
 
   /**
@@ -16,7 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var orderid = options.orderid;
+
+    this.setData({
+      orderid:options.orderid
+    })
   },
 
   /**
@@ -24,6 +28,52 @@ Page({
    */
   onShow: function () {
   
+  }, 
+  pay:function(){
+    network.POST({
+      url: "pay-order",
+      params: {
+        orderId: this.data.orderid,
+      },
+      success: (res) => {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.requestPayment({
+            'timeStamp': res.data.data.timeStamp,
+            'nonceStr': res.data.data.nonceStr,
+            'package': res.data.data.package,
+            'signType': 'MD5',
+            'paySign': res.data.data.paySign,
+            'success': function (res) {
+              wx.redirectTo({
+                url: "/pages/my-order/index?tabtype=0"
+              })
+            },
+            'fail': function (res) {
+              // console.log("尚未付款成功");
+            console.log(res);
+              wx.showToast({
+                title: res.data.data,
+                icon: 'none',
+                duration: 3000
+              })
+            }
+          })
+        } else if (res.data.data) {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 3000
+          })
+        } else {
+          wx.showToast({
+            title: "支付失败",
+            icon: 'none',
+            duration: 3000
+          })
+        }
+      }
+    })
   },
   usewxpay: function (e) {
     var paytext = "";

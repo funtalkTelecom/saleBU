@@ -27,9 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   goodsid: options.id
-    // })
+    this.setData({
+      goodsid: options.id
+    })
     this.initGood(options.id)
   },
 
@@ -37,14 +37,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.initGood(this.data.goodsid)
   },
   handleTabChange: function (e) {
     this.setData({
@@ -52,16 +52,16 @@ Page({
     })
   },
 
-  paybail :function (){
+  paybail: function () {
     var price = parseFloat(this.data.epSaleGoods.gPriceUp) + parseFloat(this.data.epSaleGoods.currentPrice)
-    wx.navigateTo({ 
+    wx.navigateTo({
       url: 'pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price
-      });
+    });
   },
-  temp:function (){
+  temp: function () {
     wx.navigateTo({ url: 'auction-pay' });
   },
-  initGood:function(id){
+  initGood: function (id) {
     network.GET({
       url: "epSaleGoods/" + id,
       params: {},
@@ -69,7 +69,7 @@ Page({
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
           var goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)
-          this.data.stepper.stepper = goodsAuctionList[0].price ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp):epSaleGoods.gStartPrice
+          this.data.stepper.stepper = goodsAuctionList[0].price ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
           this.data.stepper.step = epSaleGoods.gPriceUp;
           this.data.stepper.min = goodsAuctionList[0].price ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
           this.setData({
@@ -83,8 +83,8 @@ Page({
       }
     })
   },
-  substring: function (element){
-    element.id= element.id.substr(element.id.length - 6, element.id.length);
+  substring: function (element) {
+    element.id = element.id.substr(element.id.length - 6, element.id.length);
     return element;
   },
   countDown: function () {
@@ -121,6 +121,7 @@ Page({
         sec: this.timeFormat(sec),
         statusText: "拍卖中"
       }
+      this.data.epSaleGoods.gSatus = 2
     } else {//活动已结束，全部设置为'00'
       date = {
         day: '00',
@@ -129,12 +130,16 @@ Page({
         sec: '00',
         statusText: "已结束"
       }
+      this.data.epSaleGoods.gSatus = 3
     }
     this.data.epSaleGoods.date = date
     this.setData({
       epSaleGoods: this.data.epSaleGoods
     })
-    setTimeout(this.countDown, 1000);
+    if (this.data.epSaleGoods.gSatus != 3) {
+      setTimeout(this.countDown, 5000);
+    }
+
   },
   timeFormat: function (param) {
     return param < 10 ? '0' + param : param;
@@ -153,7 +158,7 @@ Page({
     });
   },
   // 提交出价
-  bid:function(){
+  bid: function () {
     network.POST({
       url: "epSaleGoodsAuciton",
       params: {
@@ -187,26 +192,29 @@ Page({
           wx.showToast({
             title: "出价失败",
             icon: 'none',
-            duration:3000
+            duration: 3000
           })
         }
       }
     })
   },
-  getLatestGoodsAuctionList:function(){
-    network.GET({
-      url: "epSaleAuctions/" + this.data.epSaleGoods.numId,
-      params: {},
-      success: (res) => {
-        if (res.data.code == 200) {
-          this.setData({
-            goodsAuctionList: res.data.data.goodsAuctionList.map(this.substring)
-          })
-          setTimeout(this.getLatestGoodsAuctionList, 5000);
+  getLatestGoodsAuctionList: function () {
+    if (this.data.epSaleGoods.gSatus == 2) {
+      network.GET({
+        url: "epSaleAuctions/" + this.data.epSaleGoods.numId,
+        params: {},
+        success: (res) => {
+          if (res.data.code == 200) {
+            this.setData({
+              goodsAuctionList: res.data.data.goodsAuctionList.map(this.substring)
+            })
+            setTimeout(this.getLatestGoodsAuctionList, 5000);
+          }
         }
-      }
-    })
+      })
+    }
+
   }
 
-  
+
 })
