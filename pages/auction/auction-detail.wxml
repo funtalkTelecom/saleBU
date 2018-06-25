@@ -10,8 +10,8 @@
       </block>
     </swiper>
     <view class='top-position'>
-      <view class="top-text {{epSaleGoods.date.statusText=='即将开始'?'active-before':epSaleGoods.date.statusText=='拍卖中'?'active-ing':'active-after'}}">{{epSaleGoods.date.statusText}}</view>
-      <view class='top-date' hidden="{{epSaleGoods.gSatus==3 ? true : false}}">剩{{epSaleGoods.date.day}}天 {{epSaleGoods.date.hou}}小时 {{epSaleGoods.date.min}}分钟 {{epSaleGoods.date.sec}}秒</view>
+      <view class="top-text {{epSaleGoods.date[4]=='即将开始'?'active-before':epSaleGoods.date[4]=='拍卖中'?'active-ing':'active-after'}}">{{epSaleGoods.date[4]}}</view>
+      <view class='top-date' hidden="{{epSaleGoods.gSatus==3 ? true : false}}">剩{{epSaleGoods.date[0]}}天 {{epSaleGoods.date[1]}}小时 {{epSaleGoods.date[2]}}分钟 {{epSaleGoods.date[3]}}秒</view>
     </view>
   </view>
   <!-- 标题部分 -->
@@ -40,7 +40,7 @@
     </view>
   </view>
   <!-- 出价部分 -->
-  <view class='bid'>
+   <view class='bid'  hidden="{{epSaleGoods.gSatus==1 ? true : false}}" >
     <view class='bid-num'>
       <view>共{{epSaleGoods.priceCount}}</view>
       <view>次出价</view>
@@ -54,7 +54,7 @@
         </view>
       </block>
     </view>
-  </view>
+  </view> 
 
   <!-- <view class='intro'>
     <view class='intro-head'>

@@ -53,7 +53,7 @@ Page({
               // console.log("尚未付款成功");
             console.log(res);
               wx.showToast({
-                title: res.data.data,
+                title: "取消支付",
                 icon: 'none',
                 duration: 3000
               })

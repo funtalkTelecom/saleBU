@@ -15,7 +15,8 @@ App({
             // responseType: 'text',
             success: function(res) {
               console.log(res);
-              wx.setStorageSync('token', res.data.data)
+              wx.setStorageSync('token', res.data.data.__sessid)
+              wx.setStorageSync('consumer_id', res.data.data.consumer_id)
               that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
             },
             fail: function(res) {},

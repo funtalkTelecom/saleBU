@@ -32,7 +32,6 @@ Page({
     number3: [],
     number4: [],
     limit:2,
-   
     pageNumList: [{ pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }],
     totalList: []
   },
@@ -47,11 +46,6 @@ Page({
         url: "/pages/authorize/index"
       })
     }
-
-   
-
-
-
   },
   onShow: function () {
     network.GET({

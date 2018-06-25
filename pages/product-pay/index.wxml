@@ -11,6 +11,6 @@
       </view>
   </zan-panel>
 
-  <view class="footer-but {{defaultValue==1?'wx-bgc':'balance-bgc'}}" bindtap='pay' >{{paytext}}</view>
+  <view  hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==1?'wx-bgc':'balance-bgc'}}" bindtap='pay' >{{paytext}}</view>
 
 </view>

@@ -120,7 +120,7 @@ Page({
         console.log(res)
         if (res.data.code == 200) {
           wx.navigateTo({
-            url: '/pages/product-pay/index?orderid=' + res.data.code
+            url: '/pages/product-pay/index?orderid=' + res.data.data
           })
         } else if (res.data.data){
           wx.showToast({

@@ -3,8 +3,8 @@
   <view class='top'>
     <image src="{{activeObj.epImg}}" mode='widthFix'></image>
     <view class='top-position'>
-            <view class="top-text {{activeObj.date.statusText=='即将开始'?'active-before':activeObj.date.statusText=='拍卖中'?'active-ing':'active-after'}}">{{activeObj.date.statusText}}</view>
-      <view class='top-date'>剩{{activeObj.date.day}}天 {{activeObj.date.hou}}小时 {{activeObj.date.min}}分钟 {{activeObj.date.sec}}秒</view>
+            <view class="top-text {{activeObj.date[4]=='即将开始'?'active-before':activeObj.date[4]=='拍卖中'?'active-ing':'active-after'}}">{{activeObj.date[4]}}</view>
+      <view class='top-date'>剩{{activeObj.date[0]}}天 {{activeObj.date[1]}}小时 {{activeObj.date[2]}}分钟 {{activeObj.date[3]}}秒</view>
     </view>
   </view>
   <view class='sideBar'>
@@ -21,13 +21,13 @@
     <image src='{{item.gImg}}' mode="aspectFit" ></image>
     <view>
       <view class='p-name'>
-        {{item.gName}} {{item.gAd}}
+        {{item.gName}}
       </view>
       <view class='p-num'>
-        共 <text class='red'>{{item.priceCount}}</text> 次出价
+        共 <text class='red'>{{item.priceCount||0}}</text> 次出价
       </view>
       <view class='p-nowprice'>
-        当前价：<text class='red'>￥{{item.currentPrice}}</text>
+        当前价：<text class='red'>￥{{item.currentPrice||item.gStartPrice}}</text>
       </view>
       <!-- <view class='button'>我要参与</view> -->
     </view>

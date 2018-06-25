@@ -21,6 +21,7 @@ Page({
       gId: options.gId,
       gName: options.gName,
       price: options.price,
+      gDeposit: options.gDeposit,
     })
 
   },
