@@ -17,11 +17,11 @@
       <view>设置提醒</view>
     </view>
   </view>
-  <view class='content' wx:for="{{goodsList}}" wx:key="id"  bindtap='gojoin' data-id='{{item.gId}}'>
+  <view class='content' wx:for="{{goodsList}}" wx:key="id"  bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}'>
     <image src='{{item.gImg}}' mode="aspectFit" ></image>
     <view>
       <view class='p-name'>
-        {{item.gName}}
+        {{item.num}}
       </view>
       <view class='p-num'>
         共 <text class='red'>{{item.priceCount||0}}</text> 次出价

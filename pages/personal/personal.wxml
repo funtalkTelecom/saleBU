@@ -19,9 +19,10 @@
   </zan-panel>
 
   <zan-panel class="cell-panel-demo " title="我的订单">
+  <!-- <view class='all-order'>全部订单</view> -->
     <zan-row>
       <zan-col col="6" col-class="custom-zan-col">
-        <navigator url="/pages/my-order/index?tabtype=1" class='order-col' hover-class="none">
+        <navigator url="/pages/my-order/index?tabtype=0" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <zan-badge>9</zan-badge>
             <text class="iconfont icon-daifukuan1"></text>

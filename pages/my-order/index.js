@@ -1,5 +1,6 @@
 // pages/my-order/index.js
 var network = require("../../utils/network.js");
+const util = require('../../utils/util.js')
 Page({
 
   /**
@@ -12,13 +13,13 @@ Page({
         title: '全部'
       }, {
         id: 1,
-        title: '代付款'
+        title: '待付款'
       }, {
         id: 2,
-        title: '代发货'
+        title: '待发货'
       }, {
         id: 3,
-        title: '代收货'
+        title: '待收货'
       }, {
         id: 4,
         title: '已完成'
@@ -26,8 +27,10 @@ Page({
     },
     selectedId: 0,
     showBottomPopup: false,
-    pageNumList: [{ pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }],
-    totalList: []
+    pageNum: 0 ,
+    limit: 5,
+    hasMore: true,
+    order:[]
   },
 
   /**
@@ -37,7 +40,7 @@ Page({
     this.setData({
       selectedId: options.tabtype
     })
-    this.initOrder()
+    this.loadMoreOrder(options.tabtype)
   },
   /**
    * 生命周期函数--监听页面显示
@@ -45,27 +48,54 @@ Page({
   onShow: function () {
 
   },
+  // 触底加载更多
+  onReachBottom: function () {
+    this.data.isTabChange[this.data.selectedId]=false
+    this.loadMoreOrder(this.data.selectedId);
+  },
   handleTabChange: function (e) {
     this.setData({
-      selectedId: e.detail
+      selectedId: e.detail,
+      pageNum:0,
+      order:[],
+      hasMore:true
     })
-    console.log(e.detail)
-    if (e.detail == 1) {
-      console.log("a")
-    } else if (e.detail == 2) {
-      console.log("b")
-    }
+    this.loadMoreOrder(e.detail)
   },
-  initOrder:function(){
-    network.GET({
-      url: "order?pageNum=1&limit=15",
-      params: {},
-      success: (res) => {
-        if (res.data.code == 200) {
-         console.log(res)
-
+  loadMoreOrder:function(e){
+    if (!this.data.hasMore) return;
+      network.GET({
+        url: "order",
+        params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
+        success: (res) => {
+          console.log(res)
+          if (res.data.code == 200) {
+            var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
+            // var total = "totalList[" + e + "].total"
+            var count = parseInt(res.data.data.total);
+            var flag = this.data.pageNum * this.data.limit < count;
+            this.setData({
+              order: orders,
+              hasMore: flag,
+            })
+          }
         }
-      }
-    })
+      })
+  },
+  // 时间和订单状态格式化
+  formatTime: function (element) {
+    element.addDate = util.formatTime(new Date(element.add_date))
+    element.orderText = util.orderText(element.status)
+    return element
+  },
+  orderdetail:function(e){
+    wx.navigateTo({
+      url: '/pages/order-detail/index?id=' + e.currentTarget.dataset.id
+    });
+  },
+  topay:function(e){
+    wx.navigateTo({
+      url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
+    });
   }
 })

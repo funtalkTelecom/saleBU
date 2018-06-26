@@ -21,7 +21,7 @@
     </view>
     <view class="ep-now-price">
       当前价
-      <text>￥ {{epSaleGoods.currentPrice}}</text>
+      <text>￥ {{epSaleGoods.currentPrice||0}}</text>
     </view>
     <view class='collection'>
       <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text>

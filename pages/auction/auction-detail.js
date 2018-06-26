@@ -20,12 +20,14 @@ Page({
     stepper: {},
     goodsAuctionListFlag: true,  //状态一变成状态二时开始请求出价数据
     clearTimeoutCountDown: '',  //倒计时定时器的值
-    clearTimeoutgoodsAuctionList: '' //数据请求定时器的值
+    clearTimeoutgoodsAuctionList: '', //数据请求定时器的值
+    lastRequest:true
 
   },
   onLoad: function (options) {
     this.setData({
-      goodsid: options.id
+      gId: options.gId,
+      numId: options.numId
     })
   },
 
@@ -34,7 +36,7 @@ Page({
     //   goodsAuctionListFlag: true
     // })
     //初始化数据
-    this.initGood(this.data.goodsid)
+    this.initGood(this.data.gId, this.data.numId)
 
   },
   onUnload: function () {
@@ -76,13 +78,14 @@ Page({
     wx.navigateTo({ url: 'auction-pay' });
   },
   //根据id查数据
-  initGood: function (id) {
+  initGood: function (gId,numId) {
     var goodsAuctionList = null;
     network.GET({
-      url: "epSaleGoods/" + id,
+      url: "epSaleGoods/" + numId + "/" + gId,
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
+          console.log(res.data.data)
           var epSaleGoods = res.data.data
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
@@ -121,14 +124,16 @@ Page({
     this.setData({
       epSaleGoods: this.data.epSaleGoods
     })
-    //状态1，2都要倒计时定时器
-    if (this.data.epSaleGoods.gSatus != 3) {
-      this.data.clearTimeoutCountDown = setTimeout(this.countDown, 1000);
-    }
+    
     //状态从一变二时开始查询出价记录，仅一次
     if (this.data.goodsAuctionListFlag && this.data.epSaleGoods.gSatus == 2) {
       this.getLatestGoodsAuctionList();
     }
+    //状态1，2都要倒计时定时器
+    if (this.data.epSaleGoods.gSatus != 3) {
+      this.data.clearTimeoutCountDown = setTimeout(this.countDown, 1000);
+    }
+    
   },
 
   //修改价格
@@ -169,7 +174,8 @@ Page({
             this.data.stepper.stepper = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)//计数器加值
           this.data.stepper.min = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)//计数器最小值
           this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price,  //最高价
-            this.data.epSaleGoods.priceCount = this.data.epSaleGoods.priceCount + 1 //次数加1
+            // this.data.epSaleGoods.priceCount = this.data.epSaleGoods.priceCount + 1 //次数加1
+            this.data.epSaleGoods.priceCount = res.data.data.priceCount 
           this.setData({
             stepper: this.data.stepper,
             epSaleGoods: this.data.epSaleGoods,
@@ -195,9 +201,9 @@ Page({
   //定时器查出价数据
   getLatestGoodsAuctionList: function () {
     var goodsAuctionList = null;
-    if (this.data.epSaleGoods.gSatus == 2) {
+    if (this.data.epSaleGoods.gSatus == 2 || this.data.lastRequest) {
       network.GET({
-        url: "epSaleAuctions/" + this.data.epSaleGoods.numId,
+        url: "epSaleAuctions/" + this.data.numId + "/" + this.data.gId,
         params: {},
         success: (res) => {
           if (res.data.code == 200) {
@@ -211,13 +217,18 @@ Page({
             } else {
               goodsAuctionList = []
             }
+            this.data.epSaleGoods.priceCount = res.data.data.priceCount||0
             this.setData({
               epSaleGoods: this.data.epSaleGoods,
               goodsAuctionList: goodsAuctionList,
               stepper: this.data.stepper,
               goodsAuctionListFlag: false
             })
+           
             this.data.clearTimeoutgoodsAuctionList = setTimeout(this.getLatestGoodsAuctionList, 5000);
+            //  if (this.data.epSaleGoods.gSatus == 3 ) {
+            //   this.data.lastRequest=false
+            // }
           }
         }
       })

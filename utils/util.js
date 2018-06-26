@@ -9,6 +9,21 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+const orderText = status => {
+  var statusText;
+  if (status==1){
+    statusText ="待付款"
+  } else if(status == 2 || status == 3){
+    statusText = "待发货"
+  } else if (status == 4 || status == 5){
+    statusText = "待收货"
+  } else if (status == 6) {
+    statusText = "已完成"
+  }
+
+  return statusText;
+}
+
 const epSaleGoodFormatTime = epSaleGood => {
   let newTime = new Date().getTime();
   let endTime = epSaleGood.gEndTime;
@@ -66,5 +81,6 @@ const parseIntTime = time => {
 module.exports = {
   activeObjFormatTime: activeObjFormatTime,
   formatTime: formatTime,
-  epSaleGoodFormatTime: epSaleGoodFormatTime
+  epSaleGoodFormatTime: epSaleGoodFormatTime,
+  orderText: orderText
 }
