@@ -53,18 +53,20 @@ Page({
     })
   },
   showModal: function () {
-    if (this.data.epSaleGoods.gSatus == 3) {
+    // if (this.data.epSaleGoods.gSatus == 3) {
       wx.showModal({
         content: '您有一个竞拍订单等待支付尾款，是否继续支付',
-        success: function (res) {
+        success:  (res) =>{
           if (res.confirm) {
-            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/auction/auction-pay?orderId=' + this.data.goodsAuctionList[0].orderId,
+            })
           } else if (res.cancel) {
-            console.log('用户点击取消')
+            // console.log('用户点击取消')
           }
         }
       })
-    }
+    // }
 
   },
   //去出价
@@ -84,8 +86,8 @@ Page({
       url: "epSaleGoods/" + numId + "/" + gId,
       params: {},
       success: (res) => {
+        console.log(res.data.data)
         if (res.data.code == 200) {
-          console.log(res.data.data)
           var epSaleGoods = res.data.data
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
@@ -100,21 +102,28 @@ Page({
             this.data.stepper.min = goodsAuctionList[0] ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
           }
           this.setData({
-            epSaleGoods: res.data.data,
+            epSaleGoods: epSaleGoods,
             goodsAuctionList: goodsAuctionList,
             stepper: this.data.stepper
           })
           // 执行倒计时定时器
           this.countDown();
           // 弹窗
-          // this.showModal();
+          if (epSaleGoods.gSatus == 3 && goodsAuctionList[0].consumerId == wx.getStorageSync("consumer_id") && goodsAuctionList[0].orderStatus==1){
+            this.showModal();
+          }
         }
       }
     })
   },
   //截取id后6位
   substring: function (element) {
-    element.id = element.id.substr(element.id.length - 6, element.id.length);
+    if (element.consumerId == wx.getStorageSync("consumer_id")){
+      element.text="本人"
+    }else{
+      element.text = element.consumerId.substr(element.consumerId.length - 6, element.consumerId.length);
+    }
+    
     return element;
   },
   // 时间定时器
@@ -175,7 +184,8 @@ Page({
           this.data.stepper.min = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)//计数器最小值
           this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price,  //最高价
             // this.data.epSaleGoods.priceCount = this.data.epSaleGoods.priceCount + 1 //次数加1
-            this.data.epSaleGoods.priceCount = res.data.data.priceCount 
+            this.data.epSaleGoods.priceCount = res.data.data.priceCount ,
+            // this.data.epSaleGoods.serviceTime = res.data.data.serviceTime,//待定
           this.setData({
             stepper: this.data.stepper,
             epSaleGoods: this.data.epSaleGoods,
@@ -206,6 +216,7 @@ Page({
         url: "epSaleAuctions/" + this.data.numId + "/" + this.data.gId,
         params: {},
         success: (res) => {
+          console.log(res)
           if (res.data.code == 200) {
             //判断是否有出价记录数据
             if (res.data.data.goodsAuctionList) {
@@ -218,17 +229,21 @@ Page({
               goodsAuctionList = []
             }
             this.data.epSaleGoods.priceCount = res.data.data.priceCount||0
+            // this.data.epSaleGoods.serviceTime = res.data.data.serviceTime,//待定
             this.setData({
               epSaleGoods: this.data.epSaleGoods,
               goodsAuctionList: goodsAuctionList,
               stepper: this.data.stepper,
               goodsAuctionListFlag: false
             })
-           
+            if (this.data.epSaleGoods.gSatus == 3 && goodsAuctionList[0].orderId){
+              this.data.lastRequest = false;
+              if (goodsAuctionList[0].consumerId == wx.getStorageSync("consumer_id") && goodsAuctionList[0].orderStatus == 1){
+                this.showModal();
+              }
+            }
             this.data.clearTimeoutgoodsAuctionList = setTimeout(this.getLatestGoodsAuctionList, 5000);
-            //  if (this.data.epSaleGoods.gSatus == 3 ) {
-            //   this.data.lastRequest=false
-            // }
+            
           }
         }
       })

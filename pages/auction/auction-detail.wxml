@@ -10,18 +10,18 @@
       </block>
     </swiper>
     <view class='top-position'>
-      <view class="top-text {{epSaleGoods.date[4]=='即将开始'?'active-before':epSaleGoods.date[4]=='拍卖中'?'active-ing':'active-after'}}">{{epSaleGoods.date[4]}}</view>
+      <view class="top-text {{epSaleGoods.gSatus==1?'active-before':epSaleGoods.gSatus==2?'active-ing':'active-after'}}">{{epSaleGoods.date[4]}}</view>
       <view class='top-date' hidden="{{epSaleGoods.gSatus==3 ? true : false}}">剩{{epSaleGoods.date[0]}}天 {{epSaleGoods.date[1]}}小时 {{epSaleGoods.date[2]}}分钟 {{epSaleGoods.date[3]}}秒</view>
     </view>
   </view>
   <!-- 标题部分 -->
   <view class='ep-title'>
     <view class='ep-name'>
-      {{epSaleGoods.gName}} {{epSaleGoods.gAd}}
+      {{epSaleGoods.num}} 
     </view>
     <view class="ep-now-price">
       当前价
-      <text>￥ {{epSaleGoods.currentPrice||0}}</text>
+      <text>￥ {{epSaleGoods.currentPrice||epSaleGoods.gStartPrice}}</text>
     </view>
     <view class='collection'>
       <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text>
@@ -49,7 +49,7 @@
       <block wx:for="{{goodsAuctionList}}" wx:key="id" wx:if="{{index<4}}">
         <view class='bid-orderitme'>
           <text class="bid-orderitme-num {{index==0?'':'out'}}">{{index==0?'领先':'出局'}}</text>
-          <view class='bid-orderitme-id'>{{item.id}}</view>
+          <view class='bid-orderitme-id'>{{item.text}}</view>
           <text>￥{{item.price}}</text>
         </view>
       </block>

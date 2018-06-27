@@ -4,16 +4,17 @@
   <zan-panel>
     <zan-row row-class="head">
       <zan-col col="3" offset="1" col-class="custom-zan-col">
-        <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg' class='avatar'></image>
+         <image src="{{userInfo.avatarUrl||'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}" class='avatar'></image> 
+        <!-- <open-data type="userAvatarUrl" class='avatar' ></open-data>   -->
       </zan-col>
       <zan-col col="19" offset="1" col-class="custom-zan-col">
         <zan-row row-class="line_H">
-          <zan-col col="24" col-class="custom-zan-col">乐山</zan-col>
+          <zan-col col="24" col-class="custom-zan-col"><open-data type="userNickName" lang="zh_CN"></open-data></zan-col>
         </zan-row>
-        <zan-row row-class="line_H">
+        <!-- <zan-row row-class="line_H">
           <zan-col col="5" col-class="custom-zan-col">张弓长</zan-col>
           <zan-col col="19" col-class="custom-zan-col">福建华睿通讯科技有限公司</zan-col>
-        </zan-row>
+        </zan-row> -->
       </zan-col>
     </zan-row>
   </zan-panel>

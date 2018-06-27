@@ -27,10 +27,10 @@ Page({
     },
     selectedId: 0,
     showBottomPopup: false,
-    pageNum: 0 ,
+    pageNum: 0,
     limit: 5,
     hasMore: true,
-    order:[]
+    order: []
   },
 
   /**
@@ -50,37 +50,36 @@ Page({
   },
   // 触底加载更多
   onReachBottom: function () {
-    this.data.isTabChange[this.data.selectedId]=false
     this.loadMoreOrder(this.data.selectedId);
   },
   handleTabChange: function (e) {
     this.setData({
       selectedId: e.detail,
-      pageNum:0,
-      order:[],
-      hasMore:true
+      pageNum: 0,
+      order: [],
+      hasMore: true
     })
     this.loadMoreOrder(e.detail)
   },
-  loadMoreOrder:function(e){
+  loadMoreOrder: function (e) {
     if (!this.data.hasMore) return;
-      network.GET({
-        url: "order",
-        params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
-        success: (res) => {
-          console.log(res)
-          if (res.data.code == 200) {
-            var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
-            // var total = "totalList[" + e + "].total"
-            var count = parseInt(res.data.data.total);
-            var flag = this.data.pageNum * this.data.limit < count;
-            this.setData({
-              order: orders,
-              hasMore: flag,
-            })
-          }
+    network.GET({
+      url: "order",
+      params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
+      success: (res) => {
+        console.log(res)
+        if (res.data.code == 200) {
+          var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
+          // var total = "totalList[" + e + "].total"
+          var count = parseInt(res.data.data.total);
+          var flag = this.data.pageNum * this.data.limit < count;
+          this.setData({
+            order: orders,
+            hasMore: flag,
+          })
         }
-      })
+      }
+    })
   },
   // 时间和订单状态格式化
   formatTime: function (element) {
@@ -88,12 +87,14 @@ Page({
     element.orderText = util.orderText(element.status)
     return element
   },
-  orderdetail:function(e){
+  // 去订单详情
+  orderdetail: function (e) {
     wx.navigateTo({
       url: '/pages/order-detail/index?id=' + e.currentTarget.dataset.id
     });
   },
-  topay:function(e){
+  // 去支付
+  topay: function (e) {
     wx.navigateTo({
       url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
     });

@@ -26,7 +26,7 @@ page {
   box-shadow: 10rpx 10rpx 5rpx rgba(0, 0, 0, 0.4);
 }
 .line_H {
-  line-height: 50rpx
+  line-height: 100rpx
 }
 /* 通用模板 */
 .cell-panel-demo {

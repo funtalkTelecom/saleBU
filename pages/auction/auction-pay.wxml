@@ -65,10 +65,10 @@
       支付方式
     </view>
     <view class='paymode-main'>
-      <view class="{{wxpay=='true'?'active':''}}" bindtap='usewxpay' data-wxpay="true">微信支付</view>
-      <view class="{{wxpay=='false'?'active':''}}" bindtap='usewxpay' data-wxpay="false">线下支付</view>
+      <view class="{{wxpay==1?'active':''}}" bindtap='usewxpay' data-wxpay="1">微信支付</view>
+      <view class="{{wxpay==3?'active':''}}" bindtap='usewxpay' data-wxpay="3">线下支付</view>
     </view>
-    <view class='offline' wx:if="{{wxpay=='false'}}">
+    <view class='offline' wx:if="{{wxpay==3}}">
       <view>银行：中信银行</view>
       <view>户主：林永</view>
       <view>帐号：6217 6813 0292 6871</view>
@@ -78,7 +78,7 @@
 
   <view class='pay'>
     <view>￥2000.00</view>
-    <view>确认支付</view>
+    <view bindtap='surePay'>确认支付</view>
   </view>
 
     <!-- 底部弹出框 -->

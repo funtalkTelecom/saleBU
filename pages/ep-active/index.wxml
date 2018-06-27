@@ -4,10 +4,10 @@
     <view class='ep'>
       <navigator url="/pages/auction/auction?id={{item.id}}" hover-class="none">
         <view class='top'>
-          <image src="{{item.epImg}}" mode='widthFix'></image>
+          <image src="{{item.epImg}}" mode='widthFix' style="background:#000"></image>
           <view class='top-position'>
-            <view class="top-text {{item.erSatus==1?'active-before':item.erSatus==2?'active-ing':'active-after'}}">{{item.obj.statusText}}</view>
-            <view class='top-date' hidden="{{item.erSatus==3 ? true : false}}">剩 {{item.obj.day}}天{{item.obj.hou}}小时 {{item.obj.min}}分钟 {{item.obj.sec}}秒</view>
+            <view class="top-text {{item.erSatus==1?'active-before':item.erSatus==2?'active-ing':'active-after'}}">{{item.date[4]}}</view>
+            <view class='top-date' hidden="{{item.erSatus==3 ? true : false}}">剩 {{item.date[0]}}天{{item.date[1]}}小时 {{item.date[2]}}分钟 {{item.date[3]}}秒</view>
           </view>
         </view>
 

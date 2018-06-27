@@ -6,14 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wxpay:'true',
+    wxpay:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      orderId: options.orderId
+    })
+    this.initOrderDetail(options.orderId)
   },
 
   /**
@@ -102,5 +105,69 @@ Page({
       curAddressObj: this.data.addressList[index]
     })
     this.toggleBottomPopup();
+  },
+  initOrderDetail:function(id){
+    network.GET({
+      url: "order/" + id,
+      params: {},
+      success: (res) => {
+        console.log(res)
+        if (res.data.code == 200) {
+          this.setData({
+            order: res.data.data.order,
+            orderItem: res.data.data.orderItem,
+          })
+        }
+      }
+    })
+  },
+  surePay:function(){
+    if (!this.data.curAddressObj) {
+      // wx.hideLoading();
+      wx.showModal({
+        content: '请先设置您的收货地址！',
+        showCancel: false
+      })
+      return;
+    }
+    var params = new Object();
+    params.payMenthodId = this.data.wxpay;
+    params.addressId = this.data.curAddressObj.id;
+    params.orderId = this.data.orderId;
+    network.POST({
+      url: "pay-balance",
+      params: params,
+      success: (res) => {
+        console.log(res);
+        if (res.data.code == 200) {
+          if (this.data.wxpay==1){
+            wx.requestPayment({
+              'timeStamp': res.data.data.timeStamp,
+              'nonceStr': res.data.data.nonceStr,
+              'package': res.data.data.package,
+              'signType': 'MD5',
+              'paySign': res.data.data.paySign,
+              'success': function (res) {
+                wx.redirectTo({
+                  url: "/pages/my-order/index?tabtype=0"
+                })
+              },
+              'fail': function (res) {
+                console.log(res);
+                wx.showToast({
+                  title: "取消支付",
+                  icon: 'none',
+                  duration: 3000
+                })
+              }
+            })
+          }
+          
+        }
+      }
+    })
+
+
+
   }
 })

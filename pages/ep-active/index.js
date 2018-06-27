@@ -1,98 +1,66 @@
 // pages/ep-active/index.js
 var network = require("../../utils/network.js");
+const util = require('../../utils/util.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    clearTimeoutCountDown: '',  //倒计时定时器的值
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    
+  },
+  
+  onShow: function () {
+    this.initEpSales();
+  },
+  onUnload: function () {
+    clearTimeout(this.data.clearTimeoutCountDown)
+  },
+  onHide: function () {
+    clearTimeout(this.data.clearTimeoutCountDown)
+  },
+  // 竟拍活动列表
+  initEpSales:function(){
     network.GET({
       url: "epSales",
       params: {},
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
-          if (res.data.data.length>0){
+          if (res.data.data.length > 0) {
             this.setData({
               epSalesList: res.data.data
             })
-            this.setTimeoutCountDown();
+            // this.setTimeoutCountDown();
+            this.countDown();
           }
+          //TODO--如果没有活动的情况下
         }
       }
     })
   },
-  
- 
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  },
-  countDown: function(n) {
-    let newTime = new Date().getTime();
-    let endTime = n.endTime;
-    let startTime = n.startTime;
-    let erSatus = n.erSatus;
-    let obj = null;
-    if (erSatus==1){
-      let time = (startTime - newTime) / 1000;
-      // 获取天、时、分、秒
-      let day = parseInt(time / (60 * 60 * 24), 10);
-      let hou = parseInt(time % (60 * 60 * 24) / 3600, 10);
-      let min = parseInt(time % (60 * 60 * 24) % 3600 / 60, 10);
-      let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60, 10);
-      obj = {
-        day: this.timeFormat(day),
-        hou: this.timeFormat(hou),
-        min: this.timeFormat(min),
-        sec: this.timeFormat(sec),
-        statusText: "即将开始"
-      }
-    } else if (erSatus == 2) {
-      let time = (endTime - newTime) / 1000;
-      // 获取天、时、分、秒
-      let day = parseInt(time / (60 * 60 * 24), 10);
-      let hou = parseInt(time % (60 * 60 * 24) / 3600, 10);
-      let min = parseInt(time % (60 * 60 * 24) % 3600 / 60, 10);
-      let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60, 10);
-      
-      obj = {
-        day: this.timeFormat(day),
-        hou: this.timeFormat(hou),
-        min: this.timeFormat(min),
-        sec: this.timeFormat(sec),
-        statusText:"拍卖中"
-      }
-    } else {//活动已结束，全部设置为'00'
-      obj = {
-        day: '00',
-        hou: '00',
-        min: '00',
-        sec: '00',
-        statusText: "已结束"
-      }
-    }
-    n.obj=obj;
-    return n;
-  },
-  timeFormat: function (param) {
-    return param < 10 ? '0' + param : param;
-  },
-  setTimeoutCountDown:function(){
-    var epSalesList = this.data.epSalesList.map(this.countDown)
+  countDown: function() {
+    var epSalesList = this.data.epSalesList.map(util.epSalesItemFormatTime);
     this.setData({
       epSalesList: epSalesList
     })
-    setTimeout(this.setTimeoutCountDown, 1000);
-  }
+    //状态1，2都要倒计时定时器
+    // if (this.data.epSalesList.gSatus != 3) {
+    //   this.data.clearTimeoutCountDown = setTimeout(this.countDown, 1000);
+    // }
+    for (var i=0;i<epSalesList.length;i++){
+      // console.log(epSalesList[i].erSatus)
+      if (epSalesList[i].erSatus != 3){
+        this.data.clearTimeoutCountDown = setTimeout(this.countDown, 1000);
+        break;
+      }
+    }
+  },
+ 
+  // setTimeoutCountDown:function(){
+  //   var epSalesList = this.data.epSalesList.map(this.countDown)
+  //   this.setData({
+  //     epSalesList: epSalesList
+  //   })
+  //   setTimeout(this.setTimeoutCountDown, 1000);
+  // }
 
 })

@@ -2,7 +2,7 @@
 page {}
 .ep {
   border-bottom: 1rpx solid #ccc;
-  border-top: 1rpx solid #ccc;
+  /* border-top: 1rpx solid #ccc; */
 }
 .top {
   position: relative;

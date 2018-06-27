@@ -25,7 +25,7 @@ const orderText = status => {
 }
 
 const epSaleGoodFormatTime = epSaleGood => {
-  let newTime = new Date().getTime();
+  let newTime = epSaleGood.serviceTime;
   let endTime = epSaleGood.gEndTime;
   let startTime = epSaleGood.gStartTime;
   let date = null;
@@ -43,10 +43,11 @@ const epSaleGoodFormatTime = epSaleGood => {
     epSaleGood.gSatus = 3
   }
   epSaleGood.date = date;
+  epSaleGood.serviceTime = epSaleGood.serviceTime + 1000;
   return epSaleGood;
 }
 const activeObjFormatTime = activeObj => {
-  let newTime = new Date().getTime();
+  let newTime = activeObj.serviceTime;
   let endTime = activeObj.endTime;
   let startTime = activeObj.startTime;
   let date = null;
@@ -64,8 +65,33 @@ const activeObjFormatTime = activeObj => {
     activeObj.gSatus = 3
   }
   activeObj.date = date;
+  activeObj.serviceTime = activeObj.serviceTime + 1000;
   return activeObj;
 }
+
+const epSalesItemFormatTime = epSalesItem => {
+  let newTime = epSalesItem.serviceTime;
+  let endTime = epSalesItem.endTime;
+  let startTime = epSalesItem.startTime;
+  let date = null;
+  if (startTime - newTime > 0) {
+    let time = (startTime - newTime) / 1000;
+    date = parseIntTime(time);
+    date[4] = "即将开始"
+  } else if (endTime - newTime > 0) {
+    let time = (endTime - newTime) / 1000;
+    date = parseIntTime(time);
+    date[4] = "拍卖中";
+    epSalesItem.erSatus = 2
+  } else {//活动已结束，全部设置为'00'
+    date = ['00', '00', '00', '00', "已结束"];
+    epSalesItem.erSatus = 3
+  }
+  epSalesItem.date = date;
+  epSalesItem.serviceTime = epSalesItem.serviceTime+1000;
+  return epSalesItem;
+}
+
 
 const formatNumber = n => {
   n = n.toString()
@@ -82,5 +108,6 @@ module.exports = {
   activeObjFormatTime: activeObjFormatTime,
   formatTime: formatTime,
   epSaleGoodFormatTime: epSaleGoodFormatTime,
+  epSalesItemFormatTime: epSalesItemFormatTime,
   orderText: orderText
 }

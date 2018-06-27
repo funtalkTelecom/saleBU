@@ -3,31 +3,33 @@
   <view class='top'>
     <image src="{{activeObj.epImg}}" mode='widthFix'></image>
     <view class='top-position'>
-            <view class="top-text {{activeObj.date[4]=='即将开始'?'active-before':activeObj.date[4]=='拍卖中'?'active-ing':'active-after'}}">{{activeObj.date[4]}}</view>
-      <view class='top-date'>剩{{activeObj.date[0]}}天 {{activeObj.date[1]}}小时 {{activeObj.date[2]}}分钟 {{activeObj.date[3]}}秒</view>
+      <view class="top-text {{activeObj.erSatus==1?'active-before':activeObj.erSatus==2?'active-ing':'active-after'}}">{{activeObj.date[4]}}</view>
+      <view class='top-date' hidden="{{activeObj.erSatus==3 ? true : false}}">剩{{activeObj.date[0]}}天 {{activeObj.date[1]}}小时 {{activeObj.date[2]}}分钟 {{activeObj.date[3]}}秒</view>
     </view>
   </view>
   <view class='sideBar'>
     <view class='sideBar-left'>
-      <view>竞拍规则  >></view>
-      <view>竞拍流程  >></view>
+      <view>竞拍规则 >></view>
+      <view>竞拍流程 >></view>
     </view>
     <view class='sideBar-right'>
       <text class="iconfont icon-remind {{remindStart?'icon-remindfill':''}}" bindtap='remind'></text>
       <view>设置提醒</view>
     </view>
   </view>
-  <view class='content' wx:for="{{goodsList}}" wx:key="id"  bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}'>
-    <image src='{{item.gImg}}' mode="aspectFit" ></image>
+  <view class='content' wx:for="{{goodsList}}" wx:key="id" bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}'>
+    <image src='{{item.gImg}}' mode="aspectFit"></image>
     <view>
       <view class='p-name'>
         {{item.num}}
       </view>
       <view class='p-num'>
-        共 <text class='red'>{{item.priceCount||0}}</text> 次出价
+        共
+        <text class='red'>{{item.priceCount||0}}</text> 次出价
       </view>
       <view class='p-nowprice'>
-        当前价：<text class='red'>￥{{item.currentPrice||item.gStartPrice}}</text>
+        当前价：
+        <text class='red'>￥{{item.currentPrice||item.gStartPrice}}</text>
       </view>
       <!-- <view class='button'>我要参与</view> -->
     </view>
