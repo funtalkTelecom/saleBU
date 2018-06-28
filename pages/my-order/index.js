@@ -95,8 +95,14 @@ Page({
   },
   // 去支付
   topay: function (e) {
-    wx.navigateTo({
-      url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
-    });
+    if (e.currentTarget.dataset.ordertype==3){
+      wx.navigateTo({
+        url: '/pages/auction/auction-pay?orderId=' + e.currentTarget.dataset.id,
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
+      });
+    }
   }
 })

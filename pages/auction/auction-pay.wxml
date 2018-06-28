@@ -41,19 +41,19 @@
     <view class='product-title'>
       商品清单
     </view>
-    <view class='product-main'>
+    <view class='product-main' wx:for="{{orderItem}}">
       <view>
-        <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg"></image>
+        <image src="{{item.picUrl}}"></image>
       </view>
       <view>
         <view class='product-np'>
-          <view>乐语 联通妙畅聊卡北京-1707107-白卡</view>
+          <view>{{item.num}}{{item.isShipment==1?"(白卡)":""}}</view>
         </view>
         <view class='product-content'>
           <view>竞拍价
-            <text>￥2300.00</text> </view>
+            <text>￥{{item.total}}</text> </view>
           <view>保证金：
-            <text>￥300.00</text>
+            <text>￥{{goods.gDeposit}}</text>
           </view>
         </view>
       </view>
@@ -77,7 +77,7 @@
   </view>
 
   <view class='pay'>
-    <view>￥2000.00</view>
+    <view>￥{{order.total-goods.gDeposit}}</view>
     <view bindtap='surePay'>确认支付</view>
   </view>
 

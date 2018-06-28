@@ -9,7 +9,7 @@ page {
 }
 .container {
 	height: 100%;    
-  padding: 95rpx 0 0 0;
+  /* padding: 95rpx 0 0 0; */
   width: 100%;
 }
 .header{

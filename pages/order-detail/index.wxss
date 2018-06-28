@@ -61,3 +61,8 @@ page{}
   margin-top: 40rpx;
   border-top: 1rpx solid #F4F4F4;
 }
+.price-num {
+display:flex;
+justify-content:space-between;
+
+}

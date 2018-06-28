@@ -116,6 +116,7 @@ Page({
           this.setData({
             order: res.data.data.order,
             orderItem: res.data.data.orderItem,
+            goods: res.data.data.goods
           })
         }
       }
@@ -161,8 +162,19 @@ Page({
                 })
               }
             })
+          } else {
+            wx.showToast({
+              title: "登记成功，请您及时付款",
+              icon: 'none',
+              duration: 3000
+            })
           }
-          
+        }else{
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 3000
+          })
         }
       }
     })
