@@ -4,26 +4,28 @@
   <zan-panel>
     <zan-row row-class="head">
       <zan-col col="3" offset="1" col-class="custom-zan-col">
-         <image src="{{userInfo.avatarUrl||'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}" class='avatar'></image> 
+        <image src="{{userInfo.avatarUrl||'../../imgs/personal/logo.png'}}" class='avatar' mode='aspectFit'></image>
         <!-- <open-data type="userAvatarUrl" class='avatar' ></open-data>   -->
       </zan-col>
       <zan-col col="19" offset="1" col-class="custom-zan-col">
         <zan-row row-class="line_H">
-          <zan-col col="24" col-class="custom-zan-col"><open-data type="userNickName" lang="zh_CN"></open-data></zan-col>
+          <zan-col col="24" col-class="custom-zan-col">
+            <open-data type="userNickName" lang="zh_CN"></open-data>
+          </zan-col>
         </zan-row>
         <!-- <zan-row row-class="line_H">
           <zan-col col="5" col-class="custom-zan-col">张弓长</zan-col>
-          <zan-col col="19" col-class="custom-zan-col">福建华睿通讯科技有限公司</zan-col>
+          <zan-col col="19" col-class="custom-zan-col">福建华睿通讯科技有限公司 userInfo.avatarUrl||</zan-col>
         </zan-row> -->
       </zan-col>
     </zan-row>
   </zan-panel>
 
   <zan-panel class="cell-panel-demo " title="我的订单">
-  <!-- <view class='all-order'>全部订单</view> -->
+    <!-- <view class='all-order'>全部订单</view> -->
     <zan-row>
       <zan-col col="6" col-class="custom-zan-col">
-        <navigator url="/pages/my-order/index?tabtype=0" class='order-col' hover-class="none">
+        <navigator url="/pages/my-order/index?tabtype=1" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <!-- <zan-badge>9</zan-badge> -->
             <text class="iconfont icon-daifukuan1"></text>
@@ -37,7 +39,7 @@
             <!-- <zan-badge>9</zan-badge> -->
             <text class="iconfont icon-untitled3"></text>
           </view>
-          <view class='order-text'>待收货</view>
+          <view class='order-text'>待发货</view>
         </navigator>
       </zan-col>
       <zan-col col="6" col-class="custom-zan-col">
@@ -46,21 +48,21 @@
             <!-- <zan-badge>9</zan-badge> -->
             <text class="iconfont icon-pingjia-"></text>
           </view>
-          <view class='order-text'>待评价</view>
+          <view class='order-text'>待收货</view>
         </navigator>
       </zan-col>
       <zan-col col="6" col-class="custom-zan-col">
-        <navigator url="/pages/my-order/index?tabtype=4" class='order-col' hover-class="none">
+        <navigator url="/pages/my-order/index?tabtype=0" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <!-- <zan-badge>9</zan-badge> -->
             <text class="iconfont icon-shouhou"></text>
           </view>
-          <view class='order-text'>退换/售后</view>
+          <view class='order-text'>所有订单</view>
         </navigator>
       </zan-col>
     </zan-row>
 
-    <zan-row row-class="order-row">
+    <!-- <zan-row row-class="order-row">
       <zan-col col="6" col-class="custom-zan-col col-order">
         <navigator url="/pages/interest-product/index" hover-class="none">
           <view>30</view>
@@ -85,14 +87,19 @@
           <view class='order-text'>关注商品</view>
         </navigator>
       </zan-col>
-    </zan-row>
+    </zan-row> -->
   </zan-panel>
 
   <zan-panel class="cell-panel-demo" title="常用设置">
     <zan-cell-group>
-      <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
+ 
+        <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
+
+      <view hidden='{{toBingding?false:true}}'>
+        <zan-cell title="号码绑定" is-link url="/pages/agent-num/index"></zan-cell>
+      </view>
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
-      <zan-cell title="我的分享" is-link url="/pages/agent-num/index"></zan-cell>
+      <!-- <zan-cell title="我的分享" is-link url="/pages/agent-num/index"></zan-cell> -->
     </zan-cell-group>
   </zan-panel>
 
@@ -100,7 +107,7 @@
     <zan-row row-class="service">
       <zan-col col="12" col-class="custom-zan-col service-wx">
         <view>微信：E购通</view>
-        <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg' class='qrcode'></image>
+        <image src='../../imgs/personal/qrcode.jpg' class='qrcode'></image>
       </zan-col>
       <zan-col col="12" col-class="custom-zan-col tel">
         <view>客服热线：4009-183-365</view>

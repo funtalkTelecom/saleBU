@@ -1,21 +1,42 @@
 <view>
   <zan-panel>
     <form bindsubmit="formSubmit">
-      <view class='cell pad'>
+      <view hidden="{{agentObj.tyep==2&&agentObj.isAgent=='true'?false:true}}">
+        <zan-panel title="已关联账号">
+          <zan-row row-class="guanlian">
+            <zan-col col="12">
+              <text>{{agentObj.loginName}}</text>
+            </zan-col>
+            <zan-col col="12">
+              <text>{{agentObj.cityName}}</text>
+            </zan-col>
+          </zan-row>
+          <!-- <view class='cell cell-submit'>
+        <button size="mini" type='warn' bindtap='toggleBottomPopup'>关联帐号</button>
+      </view> -->
+        </zan-panel>
+      </view>
+
+
+      <view class='pad'>
+        <view hidden="{{agentObj.tyep==2&&agentObj.isAgent=='true'?false:true}}">
+          <zan-panel title="关联账号信息"></zan-panel>
+        </view>
+      <view class='cell'>
         <view>公司名称</view>
-        <input  name="commpayName" placeholder="请输入公司名称" value='{{agentObj.commpay_name}}' disabled="{{agentObj.commpay_name}}"/>
+        <input name="commpayName" placeholder="请输入公司名称" value='{{agentObj.commpay_name}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
         <view>法人姓名</view>
-        <input maxlength="4" name="person" placeholder="请输入法人姓名" value='{{agentObj.person}}' disabled="{{agentObj.person}}"/>
+        <input maxlength="4" name="person" placeholder="请输入法人姓名" value='{{agentObj.person}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
         <view>联系电话</view>
-        <input maxlength="11" name="phone" type="number" placeholder="请输入联系方式" value='{{agentObj.phone}}' disabled="{{agentObj.phone}}"/>
+        <input maxlength="11" name="phone" type="number" placeholder="请输入联系方式" value='{{agentObj.phone}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
         <view>注册地区</view>
-        <picker mode="multiSelector" range-key="name" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{objectMultiArray}}" disabled="{{agentObj.person}}">
+        <picker mode="multiSelector" range-key="name" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{objectMultiArray}}" disabled="{{agentStatus==1||agentStatus==2}}">
           <view class="picker {{selectaddr=='请选择'?'hui':''}}">
             {{selectaddr}}
           </view>
@@ -23,43 +44,56 @@
       </view>
       <view class='cell'>
         <view>街道地址</view>
-        <input placeholder="请输入街道详细地址" name="address" value='{{agentObj.address}}' disabled="{{agentObj.address}}"  />
+        <input placeholder="请输入街道详细地址" name="address" value='{{agentObj.address}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
 
       <view class='license'>
         <view class='cell-license'>营业执照</view>
         <view class='license-img-but'>
           <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img"></image>
-          <button bindtap="selectimg" size="mini" class='license-but' hidden='{{agentObj?true:false}}' >选择文件</button>
+          <button bindtap="selectimg" size="mini" class='license-but' hidden='{{agentStatus==1||agentStatus==2}}'>选择文件</button>
         </view>
       </view>
 
-
-
-
       <view class='cell cell-submit'>
-        <button size="mini" formType="submit" type='warn' hidden='{{agentObj?true:false}}' >提交审核</button>
+        <button size="mini" formType="submit" type='warn' hidden='{{agentStatus==1||agentStatus==2}}'>提交审核</button>
       </view>
+
+
+
+
+      </view>
+
+
+
+
     </form>
 
 
   </zan-panel>
 
-  <zan-panel title="已关联账号">
-    <zan-row row-class="guanlian">
-      <zan-col col="12">{{agentObj.loginName}}</zan-col>
-      <zan-col col="12">{{agentObj.cityName}}</zan-col>
-    </zan-row>
-    <view class='cell cell-submit'>
-      <button size="mini" type='warn' bindtap='toggleBottomPopup'>关联帐号</button>
-    </view>
-  </zan-panel>
+  <view hidden='{{agentStatus==1||agentStatus==2}}'>
+    <zan-panel title="已关联账号">
+      <zan-row row-class="guanlian">
+        <zan-col col="12">
+          <text hidden='{{agentStatus==3}}'>{{agentObj.loginName}}</text>
+        </zan-col>
+        <zan-col col="12">
+          <text hidden='{{agentStatus==3}}'>{{agentObj.cityName}}</text>
+        </zan-col>
+      </zan-row>
+      <view class='cell cell-submit'>
+        <button size="mini" type='warn' bindtap='toggleBottomPopup'>关联帐号</button>
+      </view>
+    </zan-panel>
+  </view>
+
 
   <!-- 头部提示框 -->
   <zan-toptips id="zan-toptips" contetn="{{ content }}" />
 
-<!-- 自己的头部提示框 -->
-  <!-- <view class='toptips'>申请正在审核中，请耐心等待</view>  -->
+  <!-- 自己的头部提示框 -->
+  <view class="toptips {{agentStatus==1?'bgc-ing':agentStatus==2?'bgc-suc':'bgc-fai'}}" hidden='{{agentObj.tyep==1&&agentStatus?false:true}}'>{{ststusText}}</view>
 
 
   <!-- 底部弹出框 -->
@@ -71,11 +105,11 @@
           <form bindsubmit="correlation">
             <view class='cell'>
               <view>乐语账号</view>
-              <input  name="loginName" placeholder="请输入乐语账号" />
+              <input name="loginName" placeholder="请输入乐语账号" value='{{loginNameValue}}' />
             </view>
             <view class='cell'>
               <view>乐语密码</view>
-              <input  name="pwd" placeholder="请输入乐语密码" password/>
+              <input name="pwd" placeholder="请输入乐语密码" password value='{{pwdValue}}'/>
             </view>
             <view class='cell cell-submit'>
               <button size="mini" formType="submit" type='warn'>确认关联</button>

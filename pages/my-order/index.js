@@ -83,7 +83,7 @@ Page({
   },
   // 时间和订单状态格式化
   formatTime: function (element) {
-    element.addDate = util.formatTime(new Date(element.add_date))
+    // element.addDate = util.formatTime(new Date(element.add_date))
     element.orderText = util.orderText(element.status)
     return element
   },
@@ -104,5 +104,43 @@ Page({
         url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
       });
     }
+  },
+  //签收
+  sureharvest:function(e){
+    // e.currentTarget.dataset.id
+    // e.currentTarget.dataset.index
+    wx.showModal({
+      content: '您确认签收此订单吗？',
+      success: function (res) {
+        if (res.confirm) {
+          network.POST({
+            url: "orderSign",
+            params: { orderId: e.currentTarget.dataset.id },
+            success: (res) => {
+              console.log(res)
+              if (res.data.code == 200) {
+                wx.showToast({
+                  title: '操作成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+                this.data.order.splice(e.currentTarget.dataset.index, 1);
+                this.setData({
+                  order: this.data.order
+                })
+
+
+              }else{
+                wx.showToast({
+                  title: res.data.data,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        } 
+      }
+    })
   }
 })

@@ -52,11 +52,21 @@
         <view class='product-content'>
           <view>竞拍价
             <text>￥{{item.total}}</text> </view>
-          <view>保证金：
-            <text>￥{{goods.gDeposit}}</text>
-          </view>
+         
         </view>
       </view>
+    </view>
+  </view>
+
+  <view class='bail'>
+    <view class='product-title'>
+      保证金
+    </view>
+    <view class='bail-main' >
+       <view>已付保证金：
+             <text>￥{{goods.gDeposit}}</text> 
+            <!-- <text>￥100</text> -->
+          </view>
     </view>
   </view>
 

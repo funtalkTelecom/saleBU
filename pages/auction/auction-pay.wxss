@@ -63,13 +63,25 @@ page {
 .product-content text {
   color: red;
 }
-
+/* 保证金开始 */
+.bail {
+  border: 1rpx solid #e4e4e4;
+  border-radius: 20rpx;
+  margin: 30rpx 10rpx 0rpx 10rpx;
+}
+.bail-main {
+  padding: 20rpx 16rpx;
+  font-size: 26rpx;
+}
+.bail-main text {
+  color: red;
+}
 /* 支付方式开始*/
 
 .paymode {
   border: 1rpx solid #e4e4e4;
   border-radius: 20rpx;
-  margin: 36rpx 10rpx 80rpx 10rpx;
+  margin: 30rpx 10rpx 80rpx 10rpx;
 }
 
 .paymode-title {
@@ -115,6 +127,8 @@ page {
   box-sizing: border-box;
   height: 80rpx;
   border-top: 1rpx solid #e4e4e4;
+  z-index: 999;
+  background-color: #fff;
 }
 .pay view:first-child {
   color: #ff3300;

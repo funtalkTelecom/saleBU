@@ -106,5 +106,11 @@ console.log('log')
    */
   onShareAppMessage: function () {
   
+  },
+  abc:function(){
+    wx.showModal({
+      title: '',
+      content: '<view>1<view>',
+    })
   }
 })

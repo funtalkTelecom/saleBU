@@ -107,9 +107,17 @@ margin-right:0;
   top: 0;
   width: 100%;
   line-height: 32px;
-  background-color: orange;
+  /* background-color: orange; */
   text-align: center;
   font-size: 14px;
   color: #fff;
-
+}
+.bgc-ing {
+  background-color: #FF9900;
+}
+.bgc-suc {
+  background-color: #006600;
+}
+.bgc-fai {
+  background-color: #E64340;
 }

@@ -3,6 +3,7 @@ var network = require("../../utils/network.js")
 const Toptips = require('../../dist/toptips/index');
 var init_city = null;
 var provinceData = null;
+
 Page({
 
   /**
@@ -13,35 +14,17 @@ Page({
     selectaddr: "请选择",
     // objectMultiArray: init_city,
     avatarUrl: null,
-    showBottomPopup: false
+    showBottomPopup: false,
+    loginNameValue:'',
+    pwdValue:''
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    provinceData = wx.getStorageSync('provinceData');
-    console.log(provinceData)
-    if (!provinceData) return
-     init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
-     this.setData({
-       objectMultiArray: init_city,
-     })
-    network.GET({
-      url: "query-agent_by_consumerid" ,
-      params: {},
-      success: (res) => {
-        if(res.data.code == 200) {
-          if(res.data.data.isAgent=="true"){
-            this.setData({
-              agentObj: res.data.data,
-              selectaddr: res.data.data.provinceName + "," + res.data.data.cityName + "," + res.data.data.districtName,
-              avatarUrl: res.data.data.tradingImgUrl
-            })
-          }
-        }
-      }
-    })
+   this.queryAgent()
   },
 
 
@@ -51,6 +34,52 @@ Page({
    */
   onShow: function () {
 
+  },
+  queryAgent:function(){
+    var ststusText = null
+    provinceData = wx.getStorageSync('provinceData');
+    if (!provinceData) return
+    init_city = [provinceData, provinceData[0].cityList, provinceData[0].cityList[0].districtList];
+    this.setData({
+      objectMultiArray: init_city,
+    })
+    network.GET({
+      url: "query-agent_by_consumerid",
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          var agentObj = res.data.data
+          if (agentObj.isAgent == "true") {
+            if (agentObj.status == 1) {
+              ststusText = "您的资料正在审核中，请耐心等待"
+            } else if (agentObj.status == 2) {
+              ststusText = "您申请的资料已通过审核"
+            } else if (agentObj.status == 3) {
+              ststusText = "您的资料由于" + agentObj.checkRemark + "未通过审核"
+              this.setDBSaveAddressId(agentObj);
+              var init_city = [provinceData, provinceData[this.data.selProvinceIndex].cityList, provinceData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList];
+              var multiIndex = [this.data.selProvinceIndex, this.data.selCityIndex, this.data.selDistrictIndex];
+              this.setDBSelectAddress(multiIndex);
+              this.setData({
+                objectMultiArray: init_city,
+                multiIndex: multiIndex,
+              })
+            } 
+            this.setData({
+              agentObj: agentObj,
+              selectaddr: agentObj.provinceName + "," + agentObj.cityName + "," + agentObj.districtName,
+              avatarUrl: agentObj.tradingImgUrl,
+              agentStatus: agentObj.status,
+              ststusText: ststusText
+            })
+          } else {
+            this.setData({
+              agentObj: agentObj
+            })
+          }
+        }
+      }
+    })
   },
   selectimg: function () {
     var that = this;
@@ -107,6 +136,13 @@ Page({
       Toptips('请输入详细地址');
       return
     }
+    if (!this.data.avatarUrl) {
+      Toptips('请选择图片');
+      return
+    }
+    if (this.data.agentObj.id){
+      formData.id = this.data.agentObj.id
+    }
     formData.province = this.data.province;
     formData.city = this.data.city;
     formData.district = this.data.district;
@@ -118,8 +154,28 @@ Page({
         "Content-Type": "multipart/form-data"
       },
       formData: formData,
-      success: function (res) {
-        console.log(res)
+      success:  (res)=> {
+        var res=JSON.parse(res.data); 
+        if(res.code==200){
+          wx.showToast({
+            title: res.data,
+            icon: 'success',
+            duration: 2000
+          })
+          this.setData({
+            agentStatus: 1,
+            "agentObj.tyep": 1,
+            ststusText: "您的资料正在审核中，请耐心等待"
+          })
+        }else{
+          wx.showToast({
+            title: res.data,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+       
+
       }
     })
 
@@ -145,15 +201,11 @@ Page({
             icon: 'success',
             duration: 2000,
             success:  (res)=> {
-              this.setData({
-                showBottomPopup: !this.data.showBottomPopup
-              });
+              this.queryAgent();
+              this.toggleBottomPopup();
             }
           })
         }else{
-          this.setData({
-            showBottomPopup: !this.data.showBottomPopup
-          });
           Toptips(res.data.data);
         }
       },
@@ -161,6 +213,12 @@ Page({
 
   },
   toggleBottomPopup() {
+    if (!this.data.showBottomPopup) {
+      this.setData({
+        loginNameValue: '',
+        pwdValue: ''
+      })
+    }
     this.setData({
       showBottomPopup: !this.data.showBottomPopup
     });
@@ -195,6 +253,24 @@ Page({
         break;
     }
     this.setData(data)
+  },
+  // 修改地址时获得省市区的索引，传当前地址对象
+  setDBSaveAddressId: function (data) {
+    for (var i = 0; i < provinceData.length; i++) {
+      if (data.provinceId == provinceData[i].id) {
+        this.data.selProvinceIndex = i;
+        for (var j = 0; j < provinceData[i].cityList.length; j++) {
+          if (data.cityId == provinceData[i].cityList[j].id) {
+            this.data.selCityIndex = j;
+            for (var k = 0; k < provinceData[i].cityList[j].districtList.length; k++) {
+              if (data.districtId == provinceData[i].cityList[j].districtList[k].id) {
+                this.data.selDistrictIndex = k;
+              }
+            }
+          }
+        }
+      }
+    }
   },
   // 选择省市区时设置省市区id,传索引
   setDBSelectAddress: function (e) {
