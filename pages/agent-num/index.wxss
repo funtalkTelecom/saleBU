@@ -37,21 +37,25 @@ page {
   padding-top: 20rpx;
   padding-left: 32rpx;
   padding-right: 32rpx;
-  text-align: center;
+  text-align: left;
   line-height: 64rpx;
   justify-content: space-between;
 }
 .s-info view{
   border: 1rpx solid orange;
   border-radius: 20rpx;
-  width: 45%;
+  width: 100%;
   margin-bottom: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 .postage view {
   border: 1rpx solid orange;
   border-radius: 20rpx;
   width: 100%;
   margin-bottom: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 .iccid-info {
   padding-left: 32rpx;
@@ -62,6 +66,9 @@ page {
   padding-bottom: 10rpx;
   border-bottom: 1rpx solid #F4F4F4;
 }
+.iccid-info input {
+  border: 1rpx solid #ccc;
+}
 .footer-but {
   bottom: 0;
   color: #fff;
@@ -71,4 +78,8 @@ page {
   text-align: center;
   background-color: red;
   border-radius: 0;
+}
+.red-weight {
+  color: red;
+  font-weight: 700;
 }

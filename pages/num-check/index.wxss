@@ -31,6 +31,7 @@ page {
   width: 100%;
   margin-bottom: 20rpx;
   padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 .postage view {
   border: 1rpx solid orange;
@@ -38,6 +39,7 @@ page {
   width: 100%;
   margin-bottom: 20rpx;
   padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 .red-weight {
   color: red;

@@ -92,7 +92,7 @@
     <zan-cell-group>
       <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
-      <zan-cell title="我的分享" is-link url="/pages/dashboard/index"></zan-cell>
+      <zan-cell title="我的分享" is-link url="/pages/agent-num/index"></zan-cell>
     </zan-cell-group>
   </zan-panel>
 

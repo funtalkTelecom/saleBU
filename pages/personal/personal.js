@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      c:getApp().globalData.userInfo
+      userInfo: wx.getStorageSync('userInfo')
     })
     
   

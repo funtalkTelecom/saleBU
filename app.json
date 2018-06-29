@@ -33,11 +33,9 @@
     "pages/product-pay/index"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#66ccff",
     "navigationBarTitleText": "乐语销售系统",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#FF7F00",

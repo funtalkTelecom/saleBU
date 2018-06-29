@@ -35,8 +35,9 @@ Page({
       url: "order/"+id,
       params: {},
       success: (res) => {
-        console.log(res)
+        console.log(res.data.data.order)
         if (res.data.code == 200) {
+          // console.log(this.formatTime(res.data.data.order))
          this.setData({
            order: this.formatTime(res.data.data.order),
            orderItem: res.data.data.orderItem
@@ -48,7 +49,7 @@ Page({
   // 时间和订单状态格式化
   formatTime: function (element) {
     element.addDate = util.formatTime(new Date(element.addDate))
-    element.payDate = util.formatTime(new Date(element.payDate))
+    // element.payDate = util.formatTime(new Date(element.payDate))
     element.orderText = util.orderText(element.status)
     return element
   },

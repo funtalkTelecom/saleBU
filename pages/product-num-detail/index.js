@@ -8,7 +8,7 @@ Page({
   data: {
     hasMore: true,
     pageNum: 0,
-    limit:16,
+    limit:20,
     numberTypeList:[]
   },
 

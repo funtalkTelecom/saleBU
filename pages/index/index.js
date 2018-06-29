@@ -31,7 +31,7 @@ Page({
     number2: [],
     number3: [],
     number4: [],
-    limit:2,
+    limit:10,
     pageNumList: [{ pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }],
     totalList: []
   },

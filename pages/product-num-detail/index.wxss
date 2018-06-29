@@ -23,7 +23,7 @@ page {
   justify-content: center;
   align-items: center;
   margin-top: 12rpx;
-  width: 100%;
+  width: 49%;
   background-color: #fff;
   padding-top: 10rpx;
   padding-bottom: 10rpx;

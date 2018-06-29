@@ -1,21 +1,35 @@
 <!--pages/agent-num/index.wxml-->
 <view>
   <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
-  <view hidden="{{selectedId==2 ? true : false}}">
+  <view>
     <scroll-view scroll-y="true">
       <zan-panel wx:for="{{numberCard}}" wx:key="id">
         <zan-row row-class="num-item">
           <zan-col col="17" col-class="num-col">
+            <view hidden="{{selectedId==0 ? true : false}}">
+              <zan-row>
+                <zan-col col="24">iccid:{{item.iccid}}</zan-col>
+              </zan-row>
+            </view>
             <zan-row>
               <zan-col col="24">号码:{{item.num}}</zan-col>
             </zan-row>
             <zan-row>
               <zan-col col="24">地市:{{item.cityName}}</zan-col>
             </zan-row>
+            <view hidden="{{selectedId==0 ? true : false}}">
+              <zan-row>
+                <zan-col col="24">套餐:{{item.mealName}}</zan-col>
+              </zan-row>
+            </view>
+
           </zan-col>
-          <zan-col col="7" col-class="num-col-but">
-            <button size="mini" type='warn' bindtap='binding' data-id='{{item.id}}'>绑定</button>
-          </zan-col>
+          <view hidden="{{selectedId==1 ? true : false}}">
+            <zan-col col="7" col-class="num-col-but" hidden="{{selectedId==1 ? true : false}}">
+              <button size="mini" type='warn' bindtap='binding' data-id='{{item.id}}' data-index='{{index}}'>绑定</button>
+            </zan-col>
+          </view>
+
         </zan-row>
       </zan-panel>
 
@@ -23,7 +37,7 @@
     </scroll-view>
   </view>
 
-  <view hidden="{{selectedId==1 ? true : false}}">
+  <!-- <view hidden="{{selectedId==0 ? true : false}}">
     <scroll-view scroll-y="true">
       <zan-panel>
         <zan-row row-class="num-item">
@@ -45,7 +59,7 @@
       </zan-panel>
 
     </scroll-view>
-  </view>
+  </view> -->
 
   <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
@@ -53,31 +67,34 @@
       <form bindsubmit="formSubmit">
         <zan-panel title="号码信息" class="spacing">
           <zan-row row-class="num-info">
-            <zan-col col="7">177 0123 4567</zan-col>
-            <zan-col col="10">福建 福州</zan-col>
-            <zan-col col="7">保底消费 189元</zan-col>
+            <zan-col col="7" col-class="red-weight">
+              <text>{{numberObj.numBlock[0]}}</text>
+              <text class='phone-mg'>{{numberObj.numBlock[1]}}</text>
+              <text>{{numberObj.numBlock[2]}}</text>
+            </zan-col>
+            <zan-col col="10">{{numberObj.cityName}}</zan-col>
+            <zan-col col="7">保底消费 {{numberObj.lowConsume}}元</zan-col>
           </zan-row>
         </zan-panel>
 
         <zan-panel title="白卡信息">
           <zan-row row-class="iccid-info">
             <zan-col col="24">
-              <input name="iccidId" placeholder="请输入绑定的ICCID" />
+              <input name="iccid" placeholder="请输入绑定的ICCID" value='{{iccidValue}}' />
             </zan-col>
           </zan-row>
         </zan-panel>
 
         <zan-panel title="套餐信息">
           <view class='setmeal s-info'>
-            <view>4G畅爽国内不限量</view>
-            <view>4G畅爽国内不限量</view>
-            <view>4G畅爽国内不限量</view>
+            <view>{{mealObj.mealName}}</view>
+
           </view>
         </zan-panel>
 
         <zan-panel title="套餐资费">
           <view class='setmeal postage'>
-            <view>国内通话0.15元/分钟，国内短信/彩信0.1元/条</view>
+            <view>{{mealObj.mealDesc}}</view>
           </view>
         </zan-panel>
 

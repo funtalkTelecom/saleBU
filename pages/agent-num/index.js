@@ -8,25 +8,26 @@ Page({
   data: {
     tab: {
       list: [{
-        id: 1,
+        id: 0,
         title: '未绑定'
       }, {
-        id: 2,
+        id: 1,
         title: '已绑定'
       }]
     },
-    selectedId:1,
+    selectedId:0,
     showBottomPopup: false,
     pageNum: 0,
     limit: 5,
     hasMore: true,
+    iccidValue:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadMoreOrder();
+    this.loadMoreOrder(this.data.selectedId);
   },
 
   /**
@@ -42,11 +43,14 @@ Page({
   onShow: function () {
   
   },
-
+  // 触底加载更多
+  onReachBottom: function () {
+    this.loadMoreOrder(this.data.selectedId);
+  },
   loadMoreOrder: function (e) {
     if (!this.data.hasMore) return;
     network.GET({
-      url: "numUnBoundList",
+      url: "numBoundList/"+e,
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit },
       success: (res) => {
         console.log(res)
@@ -63,12 +67,21 @@ Page({
   },
   handleTabChange:function(e){
     this.setData({
-      selectedId: e.detail
+      selectedId: e.detail,
+      pageNum: 0,
+      numberCard: [],
+      hasMore: true
     })
+    this.loadMoreOrder(e.detail)
   },
   binding:function(e){
+    this.setData({
+      index: e.currentTarget.dataset.index,
+      numid: e.currentTarget.dataset.id
+    })
     this.initNumber(e.currentTarget.dataset.id)
     this.initMeal(e.currentTarget.dataset.id)
+    this.toggleBottomPopup()
   },
   initNumber: function (id) {
     network.GET({
@@ -97,6 +110,11 @@ Page({
     })
   },
   toggleBottomPopup() {
+    if (!this.data.showBottomPopup){
+      this.setData({
+        iccidValue:''
+      })
+    }
     this.setData({
       showBottomPopup: !this.data.showBottomPopup
     });
@@ -104,7 +122,7 @@ Page({
   // form表单提交事件
   formSubmit: function (e) {
     var formData = e.detail.value;
-    if (!formData.iccidId) {
+    if (!formData.iccid) {
       wx.showToast({
         title: '请输入绑定的ICCID',
         icon: 'none',
@@ -112,26 +130,33 @@ Page({
       })
       return
     }
-    
-    // formData.provinceId = this.data.provinceId;
-    // formData.cityId = this.data.cityId;
-    // formData.districtId = this.data.districtId;
-    
-    // network.POST({
-    //   url: "deliveryAddress",
-    //   params: formData,
-    //   success: (res) => {
-    //     if (res.data.code == 200) {
-    //       wx.showToast({
-    //         title: '操作成功',
-    //         icon: 'success',
-    //         duration: 2000,
-    //         success: function (res) {
-    //           wx.navigateBack();
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    formData.id = this.data.numid;
+    formData.mealMid = this.data.mealObj.mid;
+    network.POST({
+      url: "boundNum",
+      params: formData,
+      success: (res) => {
+        console.log(res)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'success',
+            duration: 2000,
+          })
+          this.data.numberCard.splice(this.data.index, 1);
+          this.setData({
+            numberCard: this.data.numberCard
+          })
+          this.toggleBottomPopup();
+          //刷新页面
+        }else{
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 2000,
+          })
+        }
+      }
+    })
   }
 })
