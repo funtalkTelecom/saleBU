@@ -17,7 +17,7 @@
         <view class='float-right' bindtap='morebut'><text class=" iconfont {{more?'icon-shrink':'icon-extend'}}"></text></view>
       </view>
       <view class='options'>
-        <block wx:for="{{lianghao}}" wx:if="{{index<count}}">
+        <block wx:for="{{lianghao}}" wx:if="{{index<count}}" wx:key="id">
             <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>  
              <!-- <button size='mini' class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</button>   -->
 
@@ -74,21 +74,21 @@
     <view>
     <scroll-view  scroll-y="true">
       <view class='box box-1'>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
           <view class='box-item'>
             <view><text class='phone'>{{item.phone}}</text></view>
             <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.desc}}元</text>
           </view>
         </block>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
           <view class='box-item'>
             <view><text class='phone'>{{item.phone}}</text></view>
             <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.desc}}元</text>
           </view>
         </block>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
           <view class='box-item'>
             <view><text class='phone'>{{item.phone}}</text></view>
             <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>

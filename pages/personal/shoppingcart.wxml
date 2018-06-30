@@ -6,7 +6,7 @@
   </view>
   <!-- 号码 -->
   <view class='hm-cart'  hidden="{{carttype=='hm' ? false : true}}">
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -18,7 +18,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -30,7 +30,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -42,7 +42,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -54,7 +54,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -66,7 +66,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -78,7 +78,7 @@
         <text class='dx-price'>189元</text>
       </view>
     </block>
-    <block wx:for="{{hmCart}}">
+    <block wx:for="{{hmCart}}" wx:key="id">
       <view class='hm-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 
@@ -93,7 +93,7 @@
   </view>
   <!-- 白卡 -->
   <view class='bk-cart' hidden="{{carttype=='bk' ? false : true}}">
-    <block wx:for="{{bkCart}}">
+    <block wx:for="{{bkCart}}" wx:key="id">
       <view class='bk-cart-item' bindlongpress="sureDel" data-index='{{index}}'>
         <!-- <view class='radio'></view> -->
         <text class="iconfont icon-weixuanzhongyuanquan {{item.select? 'icon-30xuanzhongyuanxingfill' : ''}}" 

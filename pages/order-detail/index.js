@@ -35,12 +35,12 @@ Page({
       url: "order/"+id,
       params: {},
       success: (res) => {
-        console.log(res.data.data.order)
+        console.log(res.data.data)
         if (res.data.code == 200) {
           // console.log(this.formatTime(res.data.data.order))
          this.setData({
            order: this.formatTime(res.data.data.order),
-           orderItem: res.data.data.orderItem
+           orderItem: res.data.data.orderItem.map(this.formatName)
          })
         }
       }
@@ -53,4 +53,12 @@ Page({
     element.orderText = util.orderText(element.status)
     return element
   },
+  formatName:function(item){
+    if (item.skuGoodsType == 1||item.skuGoodsType==2){
+      item.productName = item.itemName
+    } else if (item.skuGoodsType == 3 || item.skuGoodsType == 4){
+      item.productName = item.num
+    }
+    return item
+  }
 })

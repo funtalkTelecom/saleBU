@@ -31,7 +31,7 @@
   <zan-panel title="商品清单">
     <zan-card card-class="test-card" thumb="{{item.picUrl}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" wx:for="{{orderItem}}" wx:key="id">
       <view slot="detail-slot" class="zan-card__detail order-info">
-        <view>{{item.num}}{{item.isShipment==1?"(白卡)":""}}</view>
+        <view>{{item.productName}}{{item.isShipment==1&&item.skuGoodsType==4?"(白卡)":""}}</view>
         <view class='price-num'>
         <view class='red' >￥{{item.price}}</view>
         <view>×{{item.quantity}}</view>

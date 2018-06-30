@@ -3,7 +3,7 @@
   <zan-panel title="支付方式">
     <radio-group class="radio-group" bindchange="radioChange">
       <zan-row row-class="pay-select">
-          <label class="radio" wx:for="{{pay}}">
+          <label class="radio" wx:for="{{pay}}" wx:key="id">
             <zan-col col="21"> {{item.text}} </zan-col>
             <zan-col col="3">
               <radio value="{{item.value}}" checked="{{item.value==1?true:false}}" style='transform:scale(0.8);' color="{{item.color}}"/>

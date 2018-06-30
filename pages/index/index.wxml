@@ -43,7 +43,7 @@
         </view>
       </view>
       <view class='box box-1'>
-        <block wx:for="{{number0}}">
+        <block wx:for="{{number0}}" wx:key="id">
           <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
             <!-- <view> -->
              <view class='phone'>
@@ -74,14 +74,14 @@
         </view>
       </view>
       <view class='box box-1'>
-        <block wx:for="{{number1}}">
+        <block wx:for="{{number1}}" wx:key="id">
          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -102,15 +102,15 @@
         </view>
       </view>
       <view class='box box-1'>
-        <block wx:for="{{number2}}">
-          <navigator url='/pages/num-check/index' class='box-item' hover-class="none">
+        <block wx:for="{{number2}}" wx:key="id">
+          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
 
             <view class='phone'>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -131,14 +131,14 @@
         </view>
       </view>
       <view class='box box-1'>
-        <block wx:for="{{number3}}">
+        <block wx:for="{{number3}}" wx:key="id">
           <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -159,14 +159,14 @@
         </view>
       </view>
       <view class='box box-1'>
-        <block wx:for="{{number4}}">
+        <block wx:for="{{number4}}" wx:key="id">
           <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTocPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>

@@ -41,7 +41,7 @@
     <view class='product-title'>
       商品清单
     </view>
-    <view class='product-main' wx:for="{{orderItem}}">
+    <view class='product-main' wx:for="{{orderItem}}" wx:key="id">
       <view>
         <image src="{{item.picUrl}}"></image>
       </view>

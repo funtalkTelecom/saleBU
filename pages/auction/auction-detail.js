@@ -89,6 +89,9 @@ Page({
         console.log(res.data.data)
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
+          wx.setNavigationBarTitle({
+            title: epSaleGoods.num+"--竞拍"
+          })
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
             goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)
@@ -229,6 +232,7 @@ Page({
               goodsAuctionList = []
             }
             this.data.epSaleGoods.priceCount = res.data.data.priceCount||0
+            this.data.epSaleGoods.idDeposit = res.data.data.idDeposit
             // this.data.epSaleGoods.serviceTime = res.data.data.serviceTime,//待定
             this.setData({
               epSaleGoods: this.data.epSaleGoods,

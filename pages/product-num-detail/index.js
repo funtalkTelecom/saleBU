@@ -9,7 +9,8 @@ Page({
     hasMore: true,
     pageNum: 0,
     limit:20,
-    numberTypeList:[]
+    numberTypeList:[],
+    hiddentop:true
   },
 
   /**
@@ -61,6 +62,11 @@ Page({
       success: (res) => {
         if (res.data.code == 200) {
           var numberTypeList = this.data.numberTypeList.concat(res.data.data.list);
+          if (numberTypeList.length>0&&numberTypeList[0].isAgent == 1){
+            this.setData({
+              hiddentop:false
+            })
+          }
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
           this.setData({

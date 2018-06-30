@@ -17,10 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       orderid:options.orderid
     })
+    this.initOrderDetail(options.orderid);
   },
 
   /**
@@ -29,14 +29,34 @@ Page({
   onShow: function () {
   
   }, 
+  initOrderDetail: function (id) {
+    network.GET({
+      url: "order/" + id,
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          var orderItem=res.data.data.orderItem;
+          for (var i=0;i<orderItem.length;i++){
+            if (orderItem[i].skuGoodsType==3){
+              this.setData({
+                skuGoodsType: 3
+              })
+              break
+            }
+          }
+        }
+      }
+    })
+  },
   pay:function(){
+    var that=this;
     network.POST({
       url: "pay-order",
       params: {
-        orderId: this.data.orderid,
+        orderId: that.data.orderid,
       },
       success: (res) => {
-        console.log(res)
+
         if (res.data.code == 200) {
           wx.requestPayment({
             'timeStamp': res.data.data.timeStamp,
@@ -45,11 +65,19 @@ Page({
             'signType': 'MD5',
             'paySign': res.data.data.paySign,
             'success': function (res) {
-              wx.redirectTo({
-                url: "/pages/my-order/index?tabtype=0"
-              })
+              
+              if (that.data.skuGoodsType==3){
+                wx.redirectTo({
+                  url: "/pages/agent-num/index"
+                })
+              }else{
+                wx.redirectTo({
+                  url: "/pages/my-order/index?tabtype=0"
+                })
+              }
             },
             'fail': function (res) {
+              
               // console.log("尚未付款成功");
             console.log(res);
               wx.showToast({
@@ -60,12 +88,14 @@ Page({
             }
           })
         } else if (res.data.data) {
+          
           wx.showToast({
             title: res.data.data,
             icon: 'none',
             duration: 3000
           })
         } else {
+          
           wx.showToast({
             title: "支付失败",
             icon: 'none',

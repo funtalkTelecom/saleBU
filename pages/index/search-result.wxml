@@ -34,7 +34,7 @@
     <scroll-view scroll-y="true">
 
       <view class='box box-1'>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
           <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
             <view>
               <text class='phone'>{{item.phone}}</text>
@@ -43,7 +43,7 @@
             <text class='phone-desc'>保底消费：{{item.desc}}元</text>
            </navigator>
         </block>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
          <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
             <view>
               <text class='phone'>{{item.phone}}</text>
@@ -52,7 +52,7 @@
             <text class='phone-desc'>保底消费：{{item.desc}}元</text>
           </navigator>
         </block>
-        <block wx:for="{{phones}}">
+        <block wx:for="{{phones}}" wx:key="id">
          <navigator url="/pages/num-check/index" class='box-item' hover-class="none">
             <view>
               <text class='phone'>{{item.phone}}</text>

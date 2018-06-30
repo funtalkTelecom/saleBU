@@ -1,5 +1,5 @@
 <view>
-  <navigator url="/pages/index/product-page" hover-class="none" class='cardbody-title' hidden='{{numberTypeList[0].isAgent==0}}'>白卡&普号采购专场入口</navigator>
+  <navigator url="/pages/index/product-page" hover-class="none" class='cardbody-title' hidden='{{hiddentop}}'>白卡&普号采购专场入口</navigator>
   <view class='cardbody-main'>
     <view class='cardbody-item' wx:for="{{numberTypeList}}" wx:key="id" bindtap='tonumcheck' data-id='{{item.id}}' data-isAgent='{{item.isAgent}}'>
       <text class='item-phone' >{{item.numBlock[0]}}{{item.numBlock[1]}}<text class='.color-cyan'>{{item.numBlock[2]}}</text></text>
