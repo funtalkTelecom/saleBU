@@ -61,13 +61,13 @@ Page({
       },
       success: (res) => {
         if (res.data.code == 200) {
-          var numberTypeList = this.data.numberTypeList.concat(res.data.data.list);
-          if (numberTypeList.length>0&&numberTypeList[0].isAgent == 1){
+          var numberTypeList = this.data.numberTypeList.concat(res.data.data.pm.list);
+          if (res.data.data.isAgent == 1){
             this.setData({
               hiddentop:false
             })
           }
-          var count = parseInt(res.data.data.total);
+          var count = parseInt(res.data.data.pm.total);
           var flag = this.data.pageNum * this.data.limit < count;
           this.setData({
             numberTypeList: numberTypeList,

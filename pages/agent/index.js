@@ -60,6 +60,17 @@ Page({
               var init_city = [provinceData, provinceData[this.data.selProvinceIndex].cityList, provinceData[this.data.selProvinceIndex].cityList[this.data.selCityIndex].districtList];
               var multiIndex = [this.data.selProvinceIndex, this.data.selCityIndex, this.data.selDistrictIndex];
               this.setDBSelectAddress(multiIndex);
+              wx.downloadFile({
+                url: agentObj.tradingImgUrl, //仅为示例，并非真实的资源
+                success:  (res)=> {
+                  // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+                  if (res.statusCode === 200) {
+                    this.setData({
+                      tempFilePaths: [res.tempFilePath]
+                    })
+                  }
+                }
+              })
               this.setData({
                 objectMultiArray: init_city,
                 multiIndex: multiIndex,

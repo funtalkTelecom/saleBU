@@ -16,6 +16,7 @@
   display: flex;
   font-size: 26rpx;
   color: #fff;
+  width: 100%;
 }
 .top-text {
   background-color: orange;
@@ -24,6 +25,10 @@
   
   text-align: center;
   line-height: 40rpx;
+}
+.top-date {
+  flex: 1;
+  background: rgba(0, 0, 0, .5 );
 }
 .active-before {
   background-color: #006600;

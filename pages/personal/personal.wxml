@@ -37,7 +37,7 @@
         <navigator url="/pages/my-order/index?tabtype=2" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <!-- <zan-badge>9</zan-badge> -->
-            <text class="iconfont icon-untitled3"></text>
+            <text class="iconfont icon-daifahuo1"></text>
           </view>
           <view class='order-text'>待发货</view>
         </navigator>
@@ -46,7 +46,7 @@
         <navigator url="/pages/my-order/index?tabtype=3" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <!-- <zan-badge>9</zan-badge> -->
-            <text class="iconfont icon-pingjia-"></text>
+            <text class="iconfont icon-untitled3"></text>
           </view>
           <view class='order-text'>待收货</view>
         </navigator>
@@ -55,7 +55,7 @@
         <navigator url="/pages/my-order/index?tabtype=0" class='order-col' hover-class="none">
           <view class='iconbadge'>
             <!-- <zan-badge>9</zan-badge> -->
-            <text class="iconfont icon-shouhou"></text>
+            <text class="iconfont icon-2suoyoudingdan"></text>
           </view>
           <view class='order-text'>所有订单</view>
         </navigator>
@@ -98,7 +98,9 @@
       <view hidden='{{toBingding?false:true}}'>
         <zan-cell title="号码绑定" is-link url="/pages/agent-num/index"></zan-cell>
       </view>
+      <zan-cell title="我的保证金" is-link url="/pages/case-deposit/index"></zan-cell>
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
+      
       <!-- <zan-cell title="我的分享" is-link url="/pages/agent-num/index"></zan-cell> -->
     </zan-cell-group>
   </zan-panel>

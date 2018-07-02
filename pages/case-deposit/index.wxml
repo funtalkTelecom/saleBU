@@ -1,9 +1,9 @@
 <view>
-  <zan-panel>
-    <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+  <zan-panel wx:for="{{auctionDepositList}}">
+    <zan-card card-class="test-card" thumb="{{item.gImg}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
       <view slot="detail-slot" class="zan-card__detail order-info">
-        <view>乐语 联通妙畅聊卡北京-1707107-白卡sssss</view>
-        <view >金额：<text class='red'>80.00</text>元</view>
+        <view>{{item.num}}</view>
+        <view >金额：<text class='red'>{{item.price}}</text>元</view>
         <view class='case'>
           <view class='case-date'>
             <view>支付时间：2018-05-29 14:30</view>
@@ -14,7 +14,7 @@
       </view>
     </zan-card>
   </zan-panel>
-   <zan-panel>
+   <!-- <zan-panel>
     <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
       <view slot="detail-slot" class="zan-card__detail order-info">
         <view>乐语 联通妙畅聊卡北京-1707107-白卡sssss</view>
@@ -27,8 +27,8 @@
         </view>
       </view>
     </zan-card>
-  </zan-panel>
-  <zan-panel>
+  </zan-panel> -->
+  <!-- <zan-panel>
     <zan-card card-class="test-card" thumb="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imageView2/2/w/200/h/200/q/90/format/jpeg" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
       <view slot="detail-slot" class="zan-card__detail order-info">
         <view>乐语 联通妙畅聊卡北京-1707107-白卡sssss</view>
@@ -41,7 +41,8 @@
         </view>
       </view>
     </zan-card>
-  </zan-panel> 
-
+  </zan-panel>  -->
+      <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+      <view class="loadmore" wx:else>已经没有更多了</view>
 
 </view>

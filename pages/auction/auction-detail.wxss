@@ -49,7 +49,7 @@ swiper image {
 }
 .top-date {
   flex: 1;
-  background: #949494;
+  background: rgba(0, 0, 0, .5 );
 }
 .ep-title {
   padding-left: 28rpx;
