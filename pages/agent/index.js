@@ -26,7 +26,12 @@ Page({
   onLoad: function (options) {
    this.queryAgent()
   },
-
+  previewImage:function(){
+    var url = this.data.agentObj.tradingImgUrl||this.data.avatarUrl
+    wx.previewImage({
+      urls: [url] // 需要预览的图片http链接列表
+    })
+  },
 
 
   /**

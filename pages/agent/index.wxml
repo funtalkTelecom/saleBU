@@ -50,7 +50,7 @@
       <view class='license'>
         <view class='cell-license'>营业执照</view>
         <view class='license-img-but'>
-          <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img"></image>
+          <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img" bindtap="previewImage"></image>
           <button bindtap="selectimg" size="mini" class='license-but' hidden='{{agentStatus==1||agentStatus==2}}'>选择文件</button>
         </view>
       </view>
