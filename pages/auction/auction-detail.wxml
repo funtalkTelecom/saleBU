@@ -118,7 +118,7 @@
   </view>
 
   <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==0&&epSaleGoods.gSatus==2?false:true}}'>
-    <view class='bail' bindtap='temp'>保证金 ￥{{epSaleGoods.gDeposit}}</view>
+    <view class='bail'>保证金 ￥{{epSaleGoods.gDeposit}}</view>
     <view class='pay' bindtap='paybail'>
       <view>支付保证金</view>
       <view>（支付后将出价）</view>

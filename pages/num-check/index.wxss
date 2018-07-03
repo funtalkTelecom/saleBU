@@ -1,13 +1,13 @@
 @import "../../utils/address.wxss";
 page {
-   height: 100%; 
+   /* height: 100%;  */
   font-size: 26rpx;
   padding-bottom: 80rpx;
 }
-.abc {
+/* .abc {
   padding-bottom: 100rpx;
   overflow: hidden;
-}
+} */
 
 .num-info {
   padding-left: 32rpx;

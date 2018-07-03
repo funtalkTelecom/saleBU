@@ -9,6 +9,7 @@ Page({
     hasMore: true,
     pageNum: 0,
     limit: 15,
+    auctionDepositList:[]
   },
 
   /**
@@ -35,7 +36,7 @@ Page({
       success: (res) => {
         console.log(res)
         if (res.data.code == 200) {
-          var auctionDepositList = res.data.data.auctionDepositList.list
+          var auctionDepositList = this.data.auctionDepositList.concat(res.data.data.auctionDepositList.list);
           // var total = "totalList[" + e + "].total"
           var count = parseInt(res.data.data.auctionDepositList.total);
           var flag = this.data.pageNum * this.data.limit < count;

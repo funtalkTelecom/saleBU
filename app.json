@@ -30,7 +30,8 @@
     "pages/check-out/index",
     "pages/mode-payment/index",
     "pages/product-num-detail/index",
-    "pages/product-pay/index"
+    "pages/product-pay/index",
+    "pages/num-iccard/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",

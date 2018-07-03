@@ -48,7 +48,7 @@ Page({
   },
   // 时间和订单状态格式化
   formatTime: function (element) {
-    element.addDate = util.formatTime(new Date(element.addDate))
+    // element.addDate = util.formatTime(new Date(element.addDate))
     // element.payDate = util.formatTime(new Date(element.payDate))
     element.orderText = util.orderText(element.status)
     return element

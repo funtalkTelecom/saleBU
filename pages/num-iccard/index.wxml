@@ -1,0 +1,54 @@
+<view>
+  <form bindsubmit="formSubmit">
+    <zan-panel title="号码信息">
+      <zan-row row-class="num-info">
+        <zan-col col="7" col-class="red-weight">
+          <text>{{numberObj.numBlock[0]}}</text>
+          <text class='phone-mg'>{{numberObj.numBlock[1]}}</text>
+          <text>{{numberObj.numBlock[2]}}</text>
+        </zan-col>
+        <zan-col col="10">{{numberObj.cityName}}</zan-col>
+        <zan-col col="7">保底消费 {{numberObj.lowConsume}}元</zan-col>
+      </zan-row>
+
+    </zan-panel>
+
+    <zan-panel title="入网信息">
+      <view class='cell'>
+        <view>机主姓名</view>
+        <input name="commpayName" placeholder="请输入机主姓名" />
+      </view>
+      <view class='cell'>
+        <view>身份证号</view>
+        <input name="idnumber" placeholder="请输入身份证号" />
+      </view>
+      <view class='cell'>
+        <view>身份证正面</view>
+
+        <view class='img-view' wx:if="{{idcardFront}}">
+
+          <image  src="{{idcardFront}}" mode="aspectFit" ></image>
+        </view>
+
+        <view class='icon-view'  wx:if="{{!idcardFront}}">
+          <text class="iconfont icon-jia1" bindtap='selectIdcardFront'></text>
+        </view>
+
+
+
+
+
+
+
+        <view class='case'>示例</view>
+        <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
+      </view>
+
+
+
+
+
+    </zan-panel>
+
+  </form>
+</view>

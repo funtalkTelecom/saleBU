@@ -76,9 +76,6 @@ Page({
       url: 'pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price + "&&gDeposit=" + this.data.epSaleGoods.gDeposit
     });
   },
-  temp: function () {
-    wx.navigateTo({ url: 'auction-pay' });
-  },
   //根据id查数据
   initGood: function (gId,numId) {
     var goodsAuctionList = null;

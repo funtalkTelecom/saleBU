@@ -1,0 +1,60 @@
+/* pages/num-iccard/index.wxss */
+page {
+  font-size: 26rpx;
+  padding-bottom: 80rpx;
+}
+.icon-jia1 {
+  font-size: 80rpx;
+ 
+}
+.num-info {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  text-align: center;
+  line-height: 64rpx;
+}
+.red-weight {
+  color: red;
+  font-weight: 700;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cell > view:first-child {
+  text-align: right;
+  width: 24%;
+  margin-right: 20rpx;
+}
+.cell input,
+.cell picker {
+  flex: 1
+}
+.cell .icon-view {
+  display: flex;
+   justify-content: flex-end; 
+  align-items: center;
+  width: 40%;
+}
+
+.cell .img-view {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 40%;
+}
+.img-view image {
+  width:80rpx;
+  height:80rpx;
+}
+.case {
+  width: 19%;
+  text-align: right;
+  margin-right: 20rpx;
+}
