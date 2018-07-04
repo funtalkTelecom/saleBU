@@ -1,4 +1,5 @@
 <!--pages/auction/auction.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <view class='container'>
   <view class='top'>
     <image src="{{activeObj.epImg}}" mode='widthFix'></image>
@@ -34,4 +35,11 @@
       <!-- <view class='button'>我要参与</view> -->
     </view>
   </view>
+
+
+  <!-- <view>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  
+  
+  </view> -->
 </view>

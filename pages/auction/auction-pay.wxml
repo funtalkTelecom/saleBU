@@ -87,7 +87,7 @@
   </view>
 
   <view class='pay'>
-    <view>￥{{order.total-goods.gDeposit}}</view>
+    <view>￥{{money}}</view>
     <view bindtap='surePay'>确认支付</view>
   </view>
 

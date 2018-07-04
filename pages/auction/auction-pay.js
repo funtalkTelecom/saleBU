@@ -116,7 +116,8 @@ Page({
           this.setData({
             order: res.data.data.order,
             orderItem: res.data.data.orderItem,
-            goods: res.data.data.goods
+            goods: res.data.data.goods,
+            money: (res.data.data.order.total - res.data.data.goods.gDeposit).toFixed(2)
           })
         }
       }

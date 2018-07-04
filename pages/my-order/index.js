@@ -84,6 +84,7 @@ Page({
   // 时间和订单状态格式化
   formatTime: function (element) {
     // element.addDate = util.formatTime(new Date(element.add_date))
+    element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
     return element
   },
@@ -124,12 +125,12 @@ Page({
                   icon: 'success',
                   duration: 2000
                 })
-                this.data.order.splice(e.currentTarget.dataset.index, 1);
                 this.setData({
-                  order: this.data.order
+                  pageNum: 0,
+                  order: [],
+                  hasMore: true
                 })
-
-
+                this.loadMoreOrder(this.data.selectedId)
               }else{
                 wx.showToast({
                   title: res.data.data,

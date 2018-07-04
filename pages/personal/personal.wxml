@@ -36,7 +36,7 @@
       <zan-col col="6" col-class="custom-zan-col">
         <navigator url="/pages/my-order/index?tabtype=2" class='order-col' hover-class="none">
           <view class='iconbadge'>
-            <!-- <zan-badge>9</zan-badge> -->
+             <!-- <zan-badge>9</zan-badge>  -->
             <text class="iconfont icon-daifahuo1"></text>
           </view>
           <view class='order-text'>待发货</view>

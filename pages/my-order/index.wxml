@@ -16,7 +16,7 @@
           <view>
             <text hidden='{{item.status==1?false:true}}'>需</text>
             <text hidden='{{item.status==1?true:false}}'>已</text>支付：
-            <text class='red'>{{item.order_type==3?item.total-item.gDeposit:item.total}}</text>元</view>
+            <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元</view>
           <button size="mini" bindtap='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>
           <button size="mini" bindtap='sureharvest' hidden='{{item.status==4||item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>签收</button>
         </view>

@@ -1,1 +1,13 @@
 /* pages/test.wxss */
+.img-view {
+  margin: 100px;
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+}
+.icon-shanchu3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

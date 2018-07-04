@@ -1,5 +1,6 @@
 var network = require("../../utils/network.js");
 const util = require('../../utils/util.js')
+// var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -73,6 +74,7 @@ Page({
             activeObj: res.data.data[0],
             goodsList: res.data.data[0].goodsList
           })
+          // WxParse.wxParse('article', 'html', res.data.data[0].erRule, this, 5)
           this.countDown();
         }
       }

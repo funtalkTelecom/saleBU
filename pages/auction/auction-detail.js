@@ -32,9 +32,9 @@ Page({
   },
 
   onShow: function () {
-    // this.setData({
-    //   goodsAuctionListFlag: true
-    // })
+    this.setData({
+      goodsAuctionListFlag: true
+    })
     //初始化数据
     this.initGood(this.data.gId, this.data.numId)
 

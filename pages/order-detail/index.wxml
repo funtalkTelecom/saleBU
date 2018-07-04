@@ -29,7 +29,7 @@
 
 
   <zan-panel title="商品清单">
-    <zan-card card-class="test-card" thumb="{{item.picUrl}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" wx:for="{{orderItem}}" wx:key="id">
+    <zan-card card-class="test-card" thumb="{{item.picUrl}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" wx:for="{{orderItem}}" wx:key="id"  hidden="{{item.isShipment==1&&item.skuGoodsType==2}}">
       <view slot="detail-slot" class="zan-card__detail order-info">
         <view>{{item.productName}}{{item.isShipment==1&&item.skuGoodsType==4?"(白卡)":""}}</view>
         <view class='price-num'>
