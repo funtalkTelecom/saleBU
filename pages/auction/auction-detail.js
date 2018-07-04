@@ -97,9 +97,9 @@ Page({
           }
           //判断状态2和已支付时设置计数器的数值
           if (epSaleGoods.idDeposit == 1 && epSaleGoods.gSatus == 2) {
-            this.data.stepper.stepper = goodsAuctionList[0] ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
+            this.data.stepper.stepper = goodsAuctionList[0] ? (parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp)).toFixed(2) : epSaleGoods.gStartPrice
             this.data.stepper.step = epSaleGoods.gPriceUp;
-            this.data.stepper.min = goodsAuctionList[0] ? parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp) : epSaleGoods.gStartPrice
+            this.data.stepper.min = goodsAuctionList[0] ? (parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp)).toFixed(2) : epSaleGoods.gStartPrice
           }
           this.setData({
             epSaleGoods: epSaleGoods,
@@ -180,8 +180,8 @@ Page({
           })
           var goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
           this.data.epSaleGoods.gEndTime = goodsAuctionList[0].endTime.time,//设置最新的结束时间
-            this.data.stepper.stepper = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)//计数器加值
-          this.data.stepper.min = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)//计数器最小值
+            this.data.stepper.stepper = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2)//计数器加值
+          this.data.stepper.min = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2)//计数器最小值
           this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price,  //最高价
             // this.data.epSaleGoods.priceCount = this.data.epSaleGoods.priceCount + 1 //次数加1
             this.data.epSaleGoods.priceCount = res.data.data.priceCount ,
@@ -222,8 +222,8 @@ Page({
             if (res.data.data.goodsAuctionList) {
               goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
               this.data.epSaleGoods.gEndTime = goodsAuctionList[0].endTime,//设置最新的结束时间
-                this.data.stepper.stepper = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)
-              this.data.stepper.min = parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)
+                this.data.stepper.stepper = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2)
+              this.data.stepper.min = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2)
               this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price
             } else {
               goodsAuctionList = []
