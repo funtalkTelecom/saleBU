@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
 } */
-/* @import "/wxParse/wxParse.wxss"; */
 .top {
   position: relative;
 }

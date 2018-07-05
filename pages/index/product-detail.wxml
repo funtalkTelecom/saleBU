@@ -1,4 +1,5 @@
 <!--pages/index/product-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <view>
   <!-- 图片部分 -->
   <view>
@@ -37,37 +38,7 @@
   </view>
   <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" bindtabchange="handleTabChange" />
   <view hidden="{{selectedId!=1 ? true : false}}">
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
   <view hidden="{{selectedId!=2 ? true : false}}">
     <view>2</view>

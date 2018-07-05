@@ -7,7 +7,7 @@
     <view>筛选</view>
   </view> -->
   <view class='main'>
-  <navigator wx:for="{{goodList}}" wx:key='id' url="/pages/index/product-detail?id={{item.skuId}}" hover-class="none" class='item'>
+  <navigator wx:for="{{goodList}}" wx:key='id' url="/pages/index/product-detail?id={{item.skuId}}&gId={{item.gId}}" hover-class="none" class='item'>
     <!-- <view class='item' bindtap='todetail' wx:for="{{goodList}}" wx:key='id' bindtap=''> -->
       <image class='product-image' src='{{item.fileName}}' mode="aspectFit" ></image>
       <view class='content'>

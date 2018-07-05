@@ -1,4 +1,5 @@
 /* pages/auction/auction-detail.wxss */
+@import "/wxParse/wxParse.wxss"; 
 page {
   padding-bottom: 80rpx;
 }
@@ -229,4 +230,7 @@ swiper image {
 }
 .widthbai {
   width: 100%;
+}
+.stepper .zan-stepper .zan-stepper__text{
+  width: 80px;
 }

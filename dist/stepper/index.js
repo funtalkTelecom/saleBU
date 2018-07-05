@@ -22,6 +22,10 @@ Component({
     step: {
       type: Number,
       value: 1
+    },
+    width: {
+      type: String,
+      value: ''
     }
   },
 
@@ -41,7 +45,6 @@ Component({
       } else if (type === 'plus') {
         stepper += step;
       }
-
       this.triggerEvent('change', stepper);
       this.triggerEvent(type);
     },
@@ -50,6 +53,13 @@ Component({
     },
     handleZanStepperPlus: function handleZanStepperPlus(e) {
       this.handleZanStepperChange(e, 'plus');
+    },
+    handleZanStepperFocus: function handleZanStepperFocus(e){
+      this.triggerEvent("focus", true);
+    },
+    handleZanStepperInput: function handleZanStepperInput(e){
+      var value = e.detail.value;
+      this.triggerEvent("input", value);
     },
     handleZanStepperBlur: function handleZanStepperBlur(e) {
       var _this = this;
@@ -73,7 +83,7 @@ Component({
       } else if (value < min) {
         value = min;
       }
-
+      this.triggerEvent("focus",false);
       this.triggerEvent('change', value);
     }
   }

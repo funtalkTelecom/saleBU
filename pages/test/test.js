@@ -112,5 +112,8 @@ console.log('log')
       title: '',
       content: '<view>1<view>',
     })
-  }
+  },
+  inputbind: function (e) { console.log(e.detail )},
+  focusbind: function (e) { console.log(e.detail ) },
+  blurbind: function (e) { console.log(e.detail ) }
 })

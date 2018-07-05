@@ -1,4 +1,5 @@
 <!--pages/auction/auction-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
 <view>
   <!-- 图片部分 -->
   <view class='ep-swiper'>
@@ -67,37 +68,7 @@
   </view> -->
   <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" bindtabchange="handleTabChange" />
   <view hidden="{{selectedId!=1 ? true : false}}">
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" /> 
   </view>
   <view hidden="{{selectedId!=2 ? true : false}}">
     <view>2</view>
@@ -129,7 +100,7 @@
     <view class="bail center">
       <view class='stepper'>
         <view>加价</view>
-        <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" step="{{ stepper.step }}" data-component-id="stepper" bind:change="handleZanStepperChange" size='small'>
+        <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" step="{{ stepper.step }}" data-component-id="stepper" bind:change="handleZanStepperChange" bind:focus="handleZanStepperFocus" bind:input="handleZanStepperInput" size='large' width="80px">
         </zan-stepper>
       </view>
     </view>

@@ -1,5 +1,4 @@
 <!--pages/auction/auction.wxml-->
-<import src="../../wxParse/wxParse.wxml" />
 <view class='container'>
   <view class='top'>
     <image src="{{activeObj.epImg}}" mode='widthFix'></image>
@@ -10,7 +9,7 @@
   </view>
   <view class='sideBar'>
     <view class='sideBar-left'>
-      <view>竞拍规则 >></view>
+      <navigator url='/pages/ep-rule/index?id={{epSalesId}}'>竞拍规则 >></navigator>
       <view>竞拍流程 >></view>
     </view>
     <view class='sideBar-right'>
@@ -37,9 +36,5 @@
   </view>
 
 
-  <!-- <view>
-  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-  
-  
-  </view> -->
+
 </view>

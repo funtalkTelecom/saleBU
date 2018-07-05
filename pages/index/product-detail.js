@@ -1,5 +1,6 @@
 // pages/index/product-detail.js
-var network = require("../../utils/network.js")
+var network = require("../../utils/network.js");
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -29,6 +30,7 @@ Page({
    */
   onLoad: function (options) {
     this.initGoods(options.id)
+    this.goodsInfo(options.gId);
   },
 
   /**
@@ -43,6 +45,17 @@ Page({
    */
   onShow: function () {
   
+  },
+  goodsInfo: function (gid) {
+    network.GET({
+      url: "goods-info/" + gid,
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          WxParse.wxParse('article', 'html', res.data.data, this, 5)
+        }
+      }
+    })
   },
   initGoods:function(id){
     network.GET({

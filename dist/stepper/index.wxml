@@ -12,6 +12,9 @@
     value="{{ stepper }}"
     disabled="{{ min >= max }}"
     bindblur="handleZanStepperBlur"
+    style="width:{{width}}"
+    bindfocus="handleZanStepperFocus"
+    bindinput="handleZanStepperInput"
   />
   <view
     class="zan-stepper__plus {{ stepper >= max ? 'zan-stepper--disabled' : '' }}"

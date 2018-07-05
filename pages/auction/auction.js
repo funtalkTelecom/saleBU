@@ -1,6 +1,6 @@
 var network = require("../../utils/network.js");
 const util = require('../../utils/util.js')
-// var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**

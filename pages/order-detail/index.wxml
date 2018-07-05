@@ -3,42 +3,46 @@
     <zan-row row-class="simple-info">
       <zan-col col="24">订单编号：{{order.orderId}}</zan-col>
       <zan-col col="24">下单时间：{{order.addDate}}</zan-col>
-       <view hidden='{{order.status==1?true:false}}'> 
-      <zan-col col="24">支付方式：{{order.payMenthod}}</zan-col>
-      <zan-col col="24">支付时间：{{order.payDate}}</zan-col>
-       </view> 
-      
+      <view hidden='{{order.status==1?true:false}}'>
+        <zan-col col="24">支付方式：{{order.payMenthod}}</zan-col>
+        <zan-col col="24">支付时间：{{order.payDate}}</zan-col>
+      </view>
+
     </zan-row>
   </zan-panel>
   <view hidden="{{order.address?false:true}}">
-  <zan-panel title="收货地址" >
-    <view class='addr-main'>
-      <view>
-        <text class='iconfont icon-dizhi'></text>
-      </view>
-      <view>
-        <view class='addr-np'>
-          <view>{{order.personName}}</view>
-          <view>{{order.personTel}}</view>
+    <zan-panel title="收货地址">
+      <view class='addr-main'>
+        <view>
+          <text class='iconfont icon-dizhi'></text>
         </view>
-        <view class='addr-content'>{{order.address}}</view>
+        <view>
+          <view class='addr-np'>
+            <view>{{order.personName}}</view>
+            <view>{{order.personTel}}</view>
+          </view>
+          <view class='addr-content'>{{order.address}}</view>
+        </view>
       </view>
-    </view>
-  </zan-panel>
+    </zan-panel>
   </view>
 
 
   <zan-panel title="商品清单">
-    <zan-card card-class="test-card" thumb="{{item.picUrl}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" wx:for="{{orderItem}}" wx:key="id"  hidden="{{item.isShipment==1&&item.skuGoodsType==2}}">
-      <view slot="detail-slot" class="zan-card__detail order-info">
-        <view>{{item.productName}}{{item.isShipment==1&&item.skuGoodsType==4?"(白卡)":""}}</view>
-        <view class='price-num'>
-        <view class='red' >￥{{item.price}}</view>
-        <view>×{{item.quantity}}</view>
+    <view wx:for="{{orderItem}}" wx:key="id" hidden="{{item.isShipment==1&&item.skuGoodsType==2}}">
+      <zan-card card-class="test-card" thumb="{{item.picUrl}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
+        <view slot="detail-slot" class="zan-card__detail order-info">
+          <view>{{item.productName}}{{item.isShipment==1&&item.skuGoodsType==4?"(白卡)":""}}</view>
+          <view class='price-num'>
+            <view class='red'>￥{{item.price}}</view>
+            <view>×{{item.quantity}}</view>
+          </view>
+
         </view>
-        
-      </view>
-    </zan-card>
+      </zan-card>
+
+    </view>
+
   </zan-panel>
 
   <zan-panel title="">
@@ -48,8 +52,8 @@
       <zan-col col="12">运费</zan-col>
       <zan-col col="12" col-class="align-r">￥{{order.shippingTotal}}</zan-col>
       <zan-col col="24" col-class="align-r">
-      <text hidden='{{order.status==1?false:true}}'>应</text>
-      <text hidden='{{order.status==1?true:false}}'>实</text>付款：
+        <text hidden='{{order.status==1?false:true}}'>应</text>
+        <text hidden='{{order.status==1?true:false}}'>实</text>付款：
         <text class='red'>￥{{order.total}}</text>
       </zan-col>
     </zan-row>
