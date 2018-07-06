@@ -83,7 +83,7 @@ Page({
   },
   // 时间和订单状态格式化
   formatTime: function (element) {
-    // element.addDate = util.formatTime(new Date(element.add_date))
+    element.addDate = util.formatTime(new Date(element.add_date))
     element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
     return element

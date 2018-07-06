@@ -18,7 +18,7 @@ Page({
     selectedId:0,
     showBottomPopup: false,
     pageNum: 0,
-    limit: 5,
+    limit: 15,
     hasMore: true,
     iccidValue:''
   },

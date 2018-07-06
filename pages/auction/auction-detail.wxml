@@ -70,22 +70,8 @@
   <view hidden="{{selectedId!=1 ? true : false}}">
     <template is="wxParse" data="{{wxParseData:article.nodes}}" /> 
   </view>
-  <view hidden="{{selectedId!=2 ? true : false}}">
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
-    <view>2</view>
+  <view hidden="{{selectedId!=2 ? true : false}}" style='height:80rpx;'>
+    
   </view>
 
   <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==0&&epSaleGoods.gSatus==2?false:true}}'>

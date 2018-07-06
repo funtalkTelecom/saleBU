@@ -60,7 +60,10 @@
 
     </scroll-view>
   </view> -->
+<view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+      <view class="loadmore" wx:else>已经没有更多了</view>
 
+      
   <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
     <view class="pop-example__container pop-example__container--bottom">
