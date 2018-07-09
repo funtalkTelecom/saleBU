@@ -28,7 +28,7 @@ Page({
     selectedId: 0,
     showBottomPopup: false,
     pageNum: 0,
-    limit: 5,
+    limit: 10,
     hasMore: true,
     order: []
   },
@@ -112,7 +112,7 @@ Page({
     // e.currentTarget.dataset.index
     wx.showModal({
       content: '您确认签收此订单吗？',
-      success: function (res) {
+      success:  (res) =>{
         if (res.confirm) {
           network.POST({
             url: "orderSign",

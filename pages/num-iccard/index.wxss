@@ -1,4 +1,5 @@
 /* pages/num-iccard/index.wxss */
+ @import "../product-pay/index.wxss"; 
 page {
   font-size: 26rpx;
   padding-bottom: 80rpx;

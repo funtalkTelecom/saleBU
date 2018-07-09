@@ -143,26 +143,37 @@ Page({
         console.log(res);
         if (res.data.code == 200) {
           if (this.data.wxpay==1){
-            wx.requestPayment({
-              'timeStamp': res.data.data.timeStamp,
-              'nonceStr': res.data.data.nonceStr,
-              'package': res.data.data.package,
-              'signType': 'MD5',
-              'paySign': res.data.data.paySign,
-              'success': function (res) {
-                wx.redirectTo({
-                  url: "/pages/my-order/index?tabtype=0"
-                })
-              },
-              'fail': function (res) {
-                console.log(res);
-                wx.showToast({
-                  title: "取消支付",
-                  icon: 'none',
-                  duration: 3000
-                })
-              }
-            })
+            if (res.data.data.paySuccess) {
+              wx.showToast({
+                title: "成功",
+                icon: 'success',
+                duration: 3000
+              })
+              wx.redirectTo({
+                url: "/pages/my-order/index?tabtype=0"
+              })
+            }else{
+              wx.requestPayment({
+                'timeStamp': res.data.data.timeStamp,
+                'nonceStr': res.data.data.nonceStr,
+                'package': res.data.data.package,
+                'signType': 'MD5',
+                'paySign': res.data.data.paySign,
+                'success': function (res) {
+                  wx.redirectTo({
+                    url: "/pages/my-order/index?tabtype=0"
+                  })
+                },
+                'fail': function (res) {
+                  console.log(res);
+                  wx.showToast({
+                    title: "取消支付",
+                    icon: 'none',
+                    duration: 3000
+                  })
+                }
+              })
+            }
           } else {
             wx.showToast({
               title: "登记成功，请您及时付款",

@@ -26,6 +26,8 @@
   
   
   </view>
+  <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+      <view class="loadmore" wx:else>已经没有更多了</view>
 
 
 </view>

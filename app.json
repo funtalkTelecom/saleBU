@@ -32,7 +32,8 @@
     "pages/product-num-detail/index",
     "pages/product-pay/index",
     "pages/num-iccard/index",
-    "pages/ep-rule/index"
+    "pages/ep-rule/index",
+    "pages/auction-text/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",

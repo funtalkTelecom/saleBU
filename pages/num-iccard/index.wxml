@@ -10,9 +10,7 @@
         <zan-col col="10">{{numberObj.cityName}}</zan-col>
         <zan-col col="7">保底消费 {{numberObj.lowConsume}}元</zan-col>
       </zan-row>
-
     </zan-panel>
-
     <zan-panel title="入网信息">
       <view class='cell'>
         <view>机主姓名</view>
@@ -24,40 +22,63 @@
       </view>
       <view class='cell'>
         <view>身份证正面</view>
-        <view class='img-view' wx:if="{{idcardFront}}">
+        <view class='img-view' wx:if="{{tempFilePaths[0]}}">
           <view class='img-view-pos'>
-            <view class='del'>×</view>
-            <image src="{{idcardFront}}" mode="aspectFit"></image>
+            <view class='del' bindtap='delimg' data-index='0' >×</view>
+            <image src="{{tempFilePaths[0]}}" mode="aspectFit" bindtap="previewImage" data-index='0'></image>
           </view>
         </view>
-        <view class='icon-view' wx:if="{{!idcardFront}}">
-          <text class="iconfont icon-jia1" bindtap='selectIdcardFront'></text>
+        <view class='icon-view' wx:if="{{!tempFilePaths[0]}}">
+          <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='0' ></text>
         </view>
         <view class='case'>示例</view>
         <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
       </view>
-
       <view class='cell'>
         <view>身份证反面</view>
-        <view class='img-view' wx:if="{{idcardBehind}}">
+        <view class='img-view' wx:if="{{tempFilePaths[1]}}">
           <view class='img-view-pos'>
           <!-- <text class='iconfont icon-shanchu3'></text> -->
-          <view class='del'>×</view>
-            <image src="{{idcardBehind}}" mode="aspectFit"></image>
+          <view class='del' bindtap='delimg' data-index='1'>×</view>
+            <image src="{{tempFilePaths[1]}}" mode="aspectFit" bindtap="previewImage" data-index='1'></image>
           </view>
         </view>
-        <view class='icon-view' wx:if="{{!idcardBehind}}">
-          <text class="iconfont icon-jia1" bindtap='selectIdcardBehind'></text>
+        <view class='icon-view' wx:if="{{!tempFilePaths[1]}}">
+          <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='1'></text>
         </view>
         <view class='case'>示例</view>
         <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
       </view>
-
-
-
-
-
+      <view class='cell'>
+        <view>手持身份证照</view>
+        <view class='img-view' wx:if="{{tempFilePaths[2]}}">
+          <view class='img-view-pos'>
+          <!-- <text class='iconfont icon-shanchu3'></text> -->
+          <view class='del' bindtap='delimg' data-index='2' >×</view>
+            <image src="{{tempFilePaths[2]}}" mode="aspectFit" bindtap="previewImage" data-index='2'></image>
+          </view>
+        </view>
+        <view class='icon-view' wx:if="{{!tempFilePaths[2]}}">
+          <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='2'></text>
+        </view>
+        <view class='case'>示例</view>
+        <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
+      </view>
     </zan-panel>
+
+
+
+    <zan-panel title="支付方式">
+    <view class='paymode-main'>
+        <view wx:for="{{pay}}" wx:key="id" class="{{defaultValue==item.value?item.classStyle:''}}" bindtap='usewxpay' data-wxpay="{{item.value}}">{{item.text}}</view>
+      </view>
+      <view class='offline' wx:if="{{defaultValue==2}}">
+        <view>银行：中信银行</view>
+        <view>户主：林永</view>
+        <view>帐号：6217 6813 0292 6871</view>
+        <view>温馨提示：付款时请备注所拍得到号码，如有任何疑问可拨打客服热线4009-183-365</view>
+      </view>
+  </zan-panel>
 
   </form>
 </view>

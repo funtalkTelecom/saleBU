@@ -8,7 +8,7 @@ Page({
     paytext:"微信支付",
     defaultValue:1,
     pay: [{ text: "微信支付", value: 1, color: "#09bb07" },
-      { text: "余额支付", value: 2, color: "orange"  }, 
+      { text: "线下支付", value: 2, color: "orange"  }, 
       { text: "支付宝支付", value: 3, color: "#00aaee" }]
   },
 
@@ -71,7 +71,7 @@ Page({
     var paytext="";
     if (e.detail.value==1){
       paytext ="微信支付"
-    } else if (e.detail.value == 2) { paytext = "余额支付"}
+    } else if (e.detail.value == 2) { paytext = "线下支付"}
     else if (e.detail.value == 3) { paytext = "支付宝支付" }
     this.setData({
       defaultValue: e.detail.value,
