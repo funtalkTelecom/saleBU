@@ -1,0 +1,106 @@
+<!--pages/auction/auction-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view>
+  <!-- 图片部分 -->
+  <view class='ep-swiper'>
+    <swiper autoplay="true" interval="3000" duration="500">
+      <block wx:for="{{epSaleGoods.gImgList}}" wx:key="id">
+        <swiper-item>
+          <image src="{{item.gImg}}" mode="aspectFit" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='top-position'>
+      <view class="top-text {{epSaleGoods.gSatus==1?'active-before':epSaleGoods.gSatus==2?'active-ing':'active-after'}}">{{epSaleGoods.date[4]}}</view>
+      <view class='top-date' hidden="{{epSaleGoods.gSatus==3 ? true : false}}">剩{{epSaleGoods.date[0]}}天 {{epSaleGoods.date[1]}}小时 {{epSaleGoods.date[2]}}分钟 {{epSaleGoods.date[3]}}秒</view>
+    </view>
+  </view>
+  <!-- 标题部分 -->
+  <view class='ep-title'>
+    <view class='ep-name'>
+      {{epSaleGoods.num}} 
+    </view>
+    <view class="ep-now-price">
+      当前价
+      <text>￥ {{epSaleGoods.currentPrice||epSaleGoods.gStartPrice}}</text>
+    </view>
+    <view class='collection'>
+      <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text>
+      <view>收藏</view>
+    </view>
+  </view>
+  <!-- 规则部分 -->
+  <view class='ep-rule'>
+    <view class='rule-l'>
+      <view>起拍价：{{epSaleGoods.gStartPrice}}元</view>
+      <view>保证金：{{epSaleGoods.gDeposit}}元</view>
+    </view>
+    <view class='rule-r'>
+      <view>加价幅度：{{epSaleGoods.gPriceUp}}元</view>
+      <view>延时周期：{{epSaleGoods.gLoopTime}}分钟/次</view>
+    </view>
+  </view>
+  <!-- 出价部分 -->
+   <view class='bid'  hidden="{{epSaleGoods.gSatus==1 ? true : false}}" >
+    <view class='bid-num'>
+      <view>共{{epSaleGoods.priceCount}}</view>
+      <view>次出价</view>
+    </view>
+    <view class='bid-order'>
+      <block wx:for="{{goodsAuctionList}}" wx:key="id" wx:if="{{index<4}}">
+        <view class='bid-orderitme'>
+          <text class="bid-orderitme-num {{index==0?'':'out'}}">{{index==0?'领先':'出局'}}</text>
+          <view class='bid-orderitme-id'>{{item.text}}</view>
+          <text>￥{{item.price}}</text>
+        </view>
+      </block>
+    </view>
+  </view> 
+
+  <!-- <view class='intro'>
+    <view class='intro-head'>
+      <view>商品详情</view>
+      <view>包装售后</view>
+    </view>
+    <view>1</view>
+    <view>1</view>
+    
+  </view> -->
+  <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" bindtabchange="handleTabChange" />
+  <view hidden="{{selectedId!=1 ? true : false}}">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" /> 
+  </view>
+  <view hidden="{{selectedId!=2 ? true : false}}" style='height:80rpx;'>
+    
+  </view>
+
+  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==0&&epSaleGoods.gSatus==2?false:true}}'>
+    <view class='bail'>保证金 ￥{{epSaleGoods.gDeposit}}</view>
+    <view class='pay' bindtap='paybail'>
+      <view>支付保证金</view>
+      <view>（支付后将出价）</view>
+    </view>
+  </view>
+
+  <view class="bottom_bar" hidden='{{epSaleGoods.idDeposit==1&&epSaleGoods.gSatus==2?false:true}}'>
+    <view class="bail center">
+      <view class='stepper'>
+        <view>加价</view>
+        <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" step="{{ stepper.step }}" data-component-id="stepper" bind:change="handleZanStepperChange" bind:focus="handleZanStepperFocus" bind:input="handleZanStepperInput" size='large' width="80px">
+        </zan-stepper>
+      </view>
+    </view>
+    <view class='stepper-bid' bindtap='bid'>
+      <view>出价</view>
+    </view>
+  </view>
+
+  <view class="bottom_bar" hidden='{{epSaleGoods.gSatus==1?false:true}}'>
+    <view class='bail widthbai'>拍卖未开始</view>
+  </view>
+
+  <view class="bottom_bar" hidden='{{epSaleGoods.gSatus==3?false:true}}'>
+    <view class='bail widthbai'>拍卖已结束</view>
+  </view>
+
+</view>

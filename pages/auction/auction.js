@@ -42,12 +42,12 @@ Page({
   //我要参与
   gojoin: function (e) {
     // console.log(e)
-    wx.navigateTo({
-      url: 'auction-detail?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid
-      });
     // wx.navigateTo({
-    //   url: '/pages/auction-text/index?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid
+    //   url: 'auction-detail?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid
     //   });
+    wx.navigateTo({
+      url: '/pages/auction-text/index?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid
+      });
   },
   //设置提醒
   remind: function () {
