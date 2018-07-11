@@ -14,13 +14,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      orderId: options.orderId,
-      numId: options.numId
+      orderId: options.orderId
     })
-    console.log(options.orderId)
-    console.log(options.numId)
     this.initOrderDetail(options.orderId)
-    this.initMeal(options.numId)
   },
 
   /**
@@ -141,12 +137,14 @@ Page({
       success: (res) => {
         console.log(res)
         if (res.data.code == 200) {
+          this.initMeal(res.data.data.orderItem[0].numId)
           this.setData({
             order: res.data.data.order,
             orderItem: res.data.data.orderItem,
             goods: res.data.data.goods,
             money: (res.data.data.order.total - res.data.data.goods.gDeposit).toFixed(2)
           })
+
         }
       }
     })
