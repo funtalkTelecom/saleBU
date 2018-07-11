@@ -17,25 +17,7 @@
     </view>
     <view class='addr-icon'></view>
   </view> -->
-  <zan-panel title="收货地址">
-    <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
-      <text class="iconfont icon-xinzengdizhi"></text>新增收货地址
-    </navigator>
-
-    <view class='addr-main arrow' hidden="{{!curAddressObj}}" bindtap='toggleBottomPopup'>
-      <view>
-        <text class='iconfont icon-dizhi'></text>
-      </view>
-      <view>
-        <view class='addr-np'>
-          <view>{{curAddressObj.personName}}</view>
-          <view>{{curAddressObj.personTel}}</view>
-        </view>
-        <view class='addr-content'>{{curAddressObj.provinceName}}{{curAddressObj.cityName}}{{curAddressObj.districtName}}{{curAddressObj.address}}</view>
-      </view>
-    </view>
-    <view class='addr-icon'></view>
-  </zan-panel>
+ 
 
   <view class='product'>
     <view class='product-title'>
@@ -69,6 +51,40 @@
           </view>
     </view>
   </view>
+
+   <zan-panel title="收货地址">
+    <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
+      <text class="iconfont icon-xinzengdizhi"></text>新增收货地址
+    </navigator>
+
+    <view class='addr-main arrow' hidden="{{!curAddressObj}}" bindtap='toggleBottomPopup'>
+      <view>
+        <text class='iconfont icon-dizhi'></text>
+      </view>
+      <view>
+        <view class='addr-np'>
+          <view>{{curAddressObj.personName}}</view>
+          <view>{{curAddressObj.personTel}}</view>
+        </view>
+        <view class='addr-content'>{{curAddressObj.provinceName}}{{curAddressObj.cityName}}{{curAddressObj.districtName}}{{curAddressObj.address}}</view>
+      </view>
+    </view>
+    <view class='addr-icon'></view>
+  </zan-panel>
+
+  <zan-panel title="套餐信息">
+      <view class='setmeal s-info'>
+        <view>{{mealObj.mealName}}</view>
+        <!-- <view>4G畅爽国内不限量</view>
+        <view>4G畅爽国内不限量</view> -->
+      </view>
+    </zan-panel>
+
+    <zan-panel title="套餐资费">
+      <view class='setmeal postage'>
+        <view>{{mealObj.mealDesc}}</view>
+      </view>
+    </zan-panel>
 
   <view class='paymode'>
     <view class='paymode-title'>

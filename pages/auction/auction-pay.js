@@ -14,9 +14,13 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      orderId: options.orderId
+      orderId: options.orderId,
+      numId: options.numId
     })
+    console.log(options.orderId)
+    console.log(options.numId)
     this.initOrderDetail(options.orderId)
+    this.initMeal(options.numId)
   },
 
   /**
@@ -67,11 +71,35 @@ Page({
   onShareAppMessage: function () {
   
   },
+  initMeal: function (id) {
+    network.GET({
+      url: "meal/n" + id,
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.setData({
+            mealObj: res.data.data[0]
+          })
+        }
+      }
+    })
+  },
   usewxpay:function(e){
-    console.log(e.currentTarget.dataset.wxpay);
     this.setData({
       wxpay: e.currentTarget.dataset.wxpay
     })
+    // wx.createSelectorQuery().select('.paymode').boundingClientRect(function (rect) {
+    //   console.log(rect)
+    //   // 使页面滚动到底部
+    //   wx.pageScrollTo({
+    //     scrollTop: rect.bottom,
+    //     duration: 800
+    //   })
+    // }).exec()
+    // wx.pageScrollTo({
+    //     scrollTop: 100,
+
+    //   })
   },
   toggleBottomPopup() {
     this.setData({
@@ -136,6 +164,7 @@ Page({
     params.payMenthodId = this.data.wxpay;
     params.addressId = this.data.curAddressObj.id;
     params.orderId = this.data.orderId;
+    params.mealId = this.data.mealObj.mid;
     network.POST({
       url: "pay-balance",
       params: params,

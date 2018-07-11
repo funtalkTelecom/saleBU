@@ -75,7 +75,7 @@ Page({
       success: (res) => {
         if (res.confirm) {
           wx.navigateTo({
-            url: '/pages/auction/auction-pay?orderId=' + this.data.goodsAuctionList[0].orderId,
+            url: '/pages/auction/auction-pay?orderId=' + this.data.goodsAuctionList[0].orderId + "&numId=" + this.data.numId,
           })
         } else if (res.cancel) {
           // console.log('用户点击取消')
