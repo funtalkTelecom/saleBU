@@ -63,7 +63,6 @@ Page({
       url: "order",
       params: params,
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           wx.navigateTo({
             url: '/pages/product-pay/index?orderid=' + res.data.data
@@ -94,7 +93,6 @@ Page({
       url: "deliveryAddresss",
       params: {},
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           if (res.data.data.length > 0) {
             this.setData({

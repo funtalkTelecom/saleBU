@@ -53,7 +53,6 @@ Page({
       url: "numBoundList/"+e,
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
@@ -136,7 +135,6 @@ Page({
       url: "boundNum",
       params: formData,
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.data,

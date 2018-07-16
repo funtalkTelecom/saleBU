@@ -67,7 +67,6 @@ Page({
       url: "order",
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
           // var total = "totalList[" + e + "].total"
@@ -118,7 +117,6 @@ Page({
             url: "orderSign",
             params: { orderId: e.currentTarget.dataset.id },
             success: (res) => {
-              console.log(res)
               if (res.data.code == 200) {
                 wx.showToast({
                   title: '操作成功',

@@ -63,7 +63,6 @@ Page({
       url: "goods-info/" + gid,
       params: {},
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           WxParse.wxParse('article', 'html', res.data.data, this, 5)
         }
@@ -172,7 +171,6 @@ Page({
       }
     }
   }) {
-    console.log(stepper)
     this.setData({
       [`${componentId}.stepper`]: parseFloat(stepper.toFixed(2))
     });
@@ -202,7 +200,6 @@ Page({
         price: this.data.stepper.stepper
       },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           wx.showToast({
             title: "本次出价成功",
@@ -271,7 +268,6 @@ Page({
     wx.onSocketMessage( (res)=> {
       var goodsAuctionList = null;
       var response = JSON.parse(res.data)
-      console.log(response.data[0])
       if(response.code==200){
         if (response.data[0].goodsAuctionList) {
           goodsAuctionList = response.data[0].goodsAuctionList.map(this.substring)

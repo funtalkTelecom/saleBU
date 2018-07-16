@@ -73,7 +73,6 @@ Page({
       url: "query-agent_by_consumerid",
       params: {},
       success: (res) => {
-        console.log(1)
         if (res.data.code == 200) {
           var agentObj = res.data.data
           if (agentObj.isAgent == "true") {

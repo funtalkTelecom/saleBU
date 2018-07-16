@@ -60,7 +60,6 @@ function request(method, requestHandler) {
         wx.login({
           success: res => {
             if (res.code) {
-              console.log(res.code)
               wx.request({
                 url: API_URL + 'get_open_id',
                 data: { getcode: res.code },
@@ -69,7 +68,6 @@ function request(method, requestHandler) {
                 dataType: 'json',
                 // responseType: 'text',
                 success: function (res) {
-                  console.log(res);
                   wx.setStorageSync('token', res.data.data.__sessid)
                   wx.setStorageSync('consumer_id', res.data.data.consumer_id)
                   getApp().globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");

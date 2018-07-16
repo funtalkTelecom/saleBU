@@ -68,7 +68,6 @@ Page({
       url: "deliveryAddresss",
       params: {},
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           this.setData({
             addressList: res.data.data

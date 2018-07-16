@@ -79,7 +79,6 @@ Page({
             'fail': function (res) {
               
               // console.log("尚未付款成功");
-            console.log(res);
               wx.showToast({
                 title: "取消支付",
                 icon: 'none',

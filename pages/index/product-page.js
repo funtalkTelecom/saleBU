@@ -28,7 +28,6 @@ Page({
       url: "goods",
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;

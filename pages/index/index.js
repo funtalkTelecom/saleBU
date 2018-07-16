@@ -36,23 +36,21 @@ Page({
     totalList: []
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     let that = this
     let userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
     if (!userInfo) {
-      console.log(3)
       wx.navigateTo({
         url: "/pages/authorize/index"
       })
     }
   },
   onShow: function () {
+
     network.GET({
       url: "poster",
       params: { pageNum: 1, limit: 999 },
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           this.setData({
             posterList: res.data.data.list
@@ -117,7 +115,6 @@ Page({
     this.setData({
       toView: id
     })
-    console.log(this.data.toView)
   },
   tapBanner: function (e) {
     wx.navigateTo({ url: 'product-page' });
@@ -139,7 +136,6 @@ Page({
     })
   },
   exchange:function(e){
-    console.log(e.currentTarget.dataset.tag)
     var tag = e.currentTarget.dataset.tag
     var str = "pageNumList[" + tag + "].pageNum"
     if (this.data.pageNumList[tag].pageNum * this.data.limit >= this.data.totalList[tag].total){

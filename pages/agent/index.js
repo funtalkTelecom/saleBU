@@ -105,7 +105,6 @@ Page({
       sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function (res) {
-        console.log(res)
         // 获取成功,将获取到的地址赋值给临时变量
         // var tempFilePaths = res.tempFilePaths;
         that.setData({
@@ -210,7 +209,6 @@ Page({
       url: "save-agent-leyu",
       params: formData,
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.data,

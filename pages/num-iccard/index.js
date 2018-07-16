@@ -75,13 +75,11 @@ Page({
       sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success:  (res)=> {
-        console.log(res)
         this.data.tempFilePaths.splice(index,1,res.tempFilePaths[0])
         that.setData({
           tempFilePaths: this.data.tempFilePaths,
           // idcardBehind: res.tempFilePaths[0]
         })
-        console.log(this.data.tempFilePaths)
       }
     })
   },
@@ -91,7 +89,6 @@ Page({
     this.setData({
       tempFilePaths: this.data.tempFilePaths
     })
-    console.log(this.data.tempFilePaths)
   },
   previewImage: function (e) {
     var index = e.currentTarget.dataset.index;

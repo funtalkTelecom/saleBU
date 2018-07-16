@@ -15,7 +15,6 @@ Page({
     
   },
   bindGetUserInfo: function (e) {
-    console.log(e)
     if(!e.detail.userInfo) {
       return;
     }
@@ -34,14 +33,12 @@ Page({
         'city': userInfo.city
       },
       success: (res) => {
-        console.log(res);
         wx.showToast({
           title: "4",
           icon: 'none',
           duration: 2000
         })
         if(res.data.code == 200) {
-          console.log(1);
           wx.switchTab({
             url: "/pages/index/index"
           })
@@ -83,7 +80,6 @@ Page({
           url: "get_open_id",
           params: { getcode: res.code },
           success: (res) => {
-            console.log(res);
             if(res.data.code == 200) {
               wx.setStorageSync('token', res.data.data.token)
               getApp().globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");

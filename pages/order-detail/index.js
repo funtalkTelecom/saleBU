@@ -35,7 +35,6 @@ Page({
       url: "order/"+id,
       params: {},
       success: (res) => {
-        console.log(res.data.data)
         if (res.data.code == 200) {
           // console.log(this.formatTime(res.data.data.order))
          this.setData({

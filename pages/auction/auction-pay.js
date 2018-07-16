@@ -107,7 +107,6 @@ Page({
       url: "deliveryAddresss",
       params: {},
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           if (res.data.data.length > 0) {
             this.setData({
@@ -135,7 +134,6 @@ Page({
       url: "order/" + id,
       params: {},
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           this.initMeal(res.data.data.orderItem[0].numId)
           this.setData({
@@ -167,7 +165,6 @@ Page({
       url: "pay-balance",
       params: params,
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           if (this.data.wxpay==1){
             if (res.data.data.paySuccess) {
@@ -192,7 +189,6 @@ Page({
                   })
                 },
                 'fail': function (res) {
-                  console.log(res);
                   wx.showToast({
                     title: "取消支付",
                     icon: 'none',

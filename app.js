@@ -5,7 +5,6 @@ App({
     wx.login({
       success: res => {
         if (res.code) {
-          console.log(res.code)
           wx.request({
             url: this.globalData.API_URL+'get_open_id',
             data: { getcode: res.code },
@@ -14,12 +13,21 @@ App({
             dataType: 'json',
             // responseType: 'text',
             success: function(res) {
-              console.log(res);
-              wx.setStorageSync('token', res.data.data.__sessid)
-              wx.setStorageSync('consumer_id', res.data.data.consumer_id)
-              that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
+              // if (res.statusCode==404){
+                
+              // }else{
+                wx.setStorageSync('token', res.data.data.__sessid)
+                wx.setStorageSync('consumer_id', res.data.data.consumer_id)
+                that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
+              // }
+              
             },
-            fail: function(res) {},
+            fail: function(res) {
+              // console.log("fail");
+              // wx.navigateBack({
+              //   delta: 1
+              // })
+            },
             complete: function(res) {},
           })
         } else {

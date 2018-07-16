@@ -61,7 +61,6 @@ Page({
       url: "goods-info/" + gid,
       params: {},
       success: (res) => {
-        console.log(res);
         if (res.data.code == 200) {
           WxParse.wxParse('article', 'html', res.data.data, this, 5)
         }
@@ -99,7 +98,6 @@ Page({
       url: "epSaleGoods/" + numId + "/" + gId,
       params: {},
       success: (res) => {
-        console.log(res.data.data)
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
           wx.setNavigationBarTitle({
@@ -170,7 +168,6 @@ Page({
       }
     }
   }) {
-    console.log(stepper)
     this.setData({
       [`${componentId}.stepper`]: parseFloat(stepper.toFixed(2))
     });
@@ -200,7 +197,6 @@ Page({
         price: this.data.stepper.stepper
       },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           wx.showToast({
             title: "本次出价成功",
@@ -245,7 +241,6 @@ Page({
         url: "epSaleAuctions/" + this.data.numId + "/" + this.data.gId,
         params: {},
         success: (res) => {
-          console.log(res)
           if (res.data.code == 200) {
             //判断是否有出价记录数据
             if (res.data.data.goodsAuctionList) {

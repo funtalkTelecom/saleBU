@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  console.log("rukou...onload")
+
   },
 
   /**
@@ -26,21 +26,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("rukou...onShow")
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log("rukou...onHide")
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("rukou...onUnload")
+
   },
 
   /**
@@ -64,6 +64,6 @@ Page({
   
   },
   ale:function(){
-console.log(1)
+
   }
 })

@@ -80,11 +80,5 @@ Page({
     this.setData({
       selectedId: e.detail
     })
-    console.log(e.detail)
-    if (e.detail == 1) {
-      console.log("a")
-    } else if (e.detail == 2) {
-      console.log("b")
-    }
   }
 })

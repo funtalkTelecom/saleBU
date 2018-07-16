@@ -34,7 +34,6 @@ Page({
       url: "epSaleAuctionDeposits",
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit},
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           var auctionDepositList = this.data.auctionDepositList.concat(res.data.data.auctionDepositList.list);
           // var total = "totalList[" + e + "].total"

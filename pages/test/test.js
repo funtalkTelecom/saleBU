@@ -14,7 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("ceshi...onload")
     // console.log(network.formatTime(new Date()))
     var params={
       "pageNum": 1,
@@ -66,7 +65,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("ceshi...onShow")
+
     // setInterval(this.console,1000)
   },
 
@@ -74,17 +73,17 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log("ceshi...onHide")
+
   },
 
 console:function(){
-console.log('log')
+
 },
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("ceshi...onUnload")
+ 
   },
 
   /**
@@ -113,7 +112,7 @@ console.log('log')
       content: '<view>1<view>',
     })
   },
-  inputbind: function (e) { console.log(e.detail )},
-  focusbind: function (e) { console.log(e.detail ) },
-  blurbind: function (e) { console.log(e.detail ) }
+  inputbind: function (e) { },
+  focusbind: function (e) {  },
+  blurbind: function (e) {  }
 })
