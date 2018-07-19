@@ -17,7 +17,7 @@
     </view>
     <view class='addr-icon'></view>
   </view> -->
- 
+
 
   <view class='product'>
     <view class='product-title'>
@@ -34,7 +34,7 @@
         <view class='product-content'>
           <view>竞拍价
             <text>￥{{item.total}}</text> </view>
-         
+
         </view>
       </view>
     </view>
@@ -44,15 +44,15 @@
     <view class='product-title'>
       保证金
     </view>
-    <view class='bail-main' >
-       <view>已付保证金：
-             <text>￥{{goods.gDeposit}}</text> 
-            <!-- <text>￥100</text> -->
-          </view>
+    <view class='bail-main'>
+      <view>已付保证金：
+        <text>￥{{goods.gDeposit}}</text>
+        <!-- <text>￥100</text> -->
+      </view>
     </view>
   </view>
 
-   <zan-panel title="收货地址">
+  <zan-panel title="收货地址">
     <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
       <text class="iconfont icon-xinzengdizhi"></text>新增收货地址
     </navigator>
@@ -73,18 +73,77 @@
   </zan-panel>
 
   <zan-panel title="套餐信息">
-      <view class='setmeal s-info'>
-        <view>{{mealObj.mealName}}</view>
-        <!-- <view>4G畅爽国内不限量</view>
+    <view class='setmeal s-info'>
+      <view>{{mealObj.mealName}}</view>
+      <!-- <view>4G畅爽国内不限量</view>
         <view>4G畅爽国内不限量</view> -->
-      </view>
-    </zan-panel>
+    </view>
+  </zan-panel>
 
-    <zan-panel title="套餐资费">
-      <view class='setmeal postage'>
-        <view>{{mealObj.mealDesc}}</view>
+  <zan-panel title="套餐资费">
+    <view class='setmeal postage'>
+      <view>{{mealObj.mealDesc}}</view>
+    </view>
+  </zan-panel>
+
+  <zan-panel title="入网信息">
+    <view class='cell'>
+      <view>机主姓名</view>
+      <input name="commpayName" placeholder="请输入机主姓名" />
+    </view>
+    <view class='cell'>
+      <view>身份证号</view>
+      <input name="idnumber" placeholder="请输入身份证号" />
+    </view>
+    <view class='cell'>
+      <view>身份证正面</view>
+      <view class='img-view' wx:if="{{tempFilePaths[0]}}">
+        <view class='img-view-pos'>
+          <view class='del' bindtap='delimg' data-index='0'>×</view>
+          <image src="{{tempFilePaths[0]}}" mode="aspectFit" bindtap="previewImage" data-index='0'></image>
+        </view>
       </view>
-    </zan-panel>
+      <view class='icon-view' wx:if="{{!tempFilePaths[0]}}">
+        <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='0'></text>
+      </view>
+      <view class='case'>示例</view>
+      <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
+    </view>
+    <view class='cell'>
+      <view>身份证反面</view>
+      <view class='img-view' wx:if="{{tempFilePaths[1]}}">
+        <view class='img-view-pos'>
+          <!-- <text class='iconfont icon-shanchu3'></text> -->
+          <view class='del' bindtap='delimg' data-index='1'>×</view>
+          <image src="{{tempFilePaths[1]}}" mode="aspectFit" bindtap="previewImage" data-index='1'></image>
+        </view>
+      </view>
+      <view class='icon-view' wx:if="{{!tempFilePaths[1]}}">
+        <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='1'></text>
+      </view>
+      <view class='case'>示例</view>
+      <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
+    </view>
+    <view class='cell'>
+      <view>手持身份证照</view>
+      <view class='img-view' wx:if="{{tempFilePaths[2]}}">
+        <view class='img-view-pos'>
+          <!-- <text class='iconfont icon-shanchu3'></text> -->
+          <view class='del' bindtap='delimg' data-index='2'>×</view>
+          <image src="{{tempFilePaths[2]}}" mode="aspectFit" bindtap="previewImage" data-index='2'></image>
+        </view>
+      </view>
+      <view class='icon-view' wx:if="{{!tempFilePaths[2]}}">
+        <text class="iconfont icon-jia1" bindtap='selectIdcardImg' data-index='2'></text>
+      </view>
+      <view class='case'>示例</view>
+      <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
+    </view>
+  </zan-panel>
+
+
+
+
 
   <view class='paymode'>
     <view class='paymode-title'>
@@ -107,7 +166,7 @@
     <view bindtap='surePay'>确认支付</view>
   </view>
 
-    <!-- 底部弹出框 -->
+  <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
     <view class="pop-example__container pop-example__container--bottom">
       <zan-panel title=" 收货地址">

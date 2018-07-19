@@ -29,6 +29,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      id: options.id,
+      gId: options.gId
+    })
     this.initGoods(options.id)
     this.goodsInfo(options.gId);
   },
@@ -45,6 +49,9 @@ Page({
    */
   onShow: function () {
   
+  },
+  onShareAppMessage: function () {
+    return network.share("id=" + this.data.id + "&gId=" + this.data.gId);
   },
   goodsInfo: function (gid) {
     network.GET({

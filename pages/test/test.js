@@ -14,43 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(network.formatTime(new Date()))
-    var params={
-      "pageNum": 1,
-      "pageSize": 5,
-    }
-    // network.POST(
-    //   {
-    //     url:"cps",
-    //     params: params,
-    //     success: function (res) {
-    //       console.log(res)
-    //       //拿到解密后的数据，进行代码逻辑
-
-    //     },
-    //     fail: function () {
-    //       //失败后的逻辑
-
-    //     },
-    //   })
-   
-
-    // network.GET(
-    //   {
-    //     url: "cps",
-    //     params: '',
-    //     success: function (res) {
-    //       console.log(res)
-    //       //拿到解密后的数据，进行代码逻辑
-
-    //     },
-    //     fail: function () {
-    //       //失败后的逻辑
-
-    //     },
-    //   })
-
-
   
   },
 
@@ -75,10 +38,6 @@ Page({
   onHide: function () {
 
   },
-
-console:function(){
-
-},
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -105,14 +64,5 @@ console:function(){
    */
   onShareAppMessage: function () {
   
-  },
-  abc:function(){
-    wx.showModal({
-      title: '',
-      content: '<view>1<view>',
-    })
-  },
-  inputbind: function (e) { },
-  focusbind: function (e) {  },
-  blurbind: function (e) {  }
+  }
 })

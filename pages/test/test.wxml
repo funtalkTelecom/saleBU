@@ -1,12 +1,3 @@
 <!--pages/test.wxml-->
 <text>pages/test.wxml</text>
-<button bindtap='abc'>1</button>
-
-
-
-<view class='img-view'>
-<text class='iconfont icon-shanchu3 '></text>
-<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:180rpx;height:180rpx;'></image>
-</view> 
-
-<input bindinput="inputbind" bindfocus="focusbind" bindblur="blurbind"></input>
+<button bindtap='abc'>分享朋友圈</button>

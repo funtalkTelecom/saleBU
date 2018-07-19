@@ -42,6 +42,18 @@ function DELETE(requestHandler) {
   request('DELETE', requestHandler)
 }
 
+//分享
+function share(params) {
+  var path = getCurrentPages()[getCurrentPages().length - 1].route + "?userid=" + wx.getStorageSync('consumer_id')+"&";
+  if (params){
+    path+=params
+  }
+  return {
+    title: "乐语销售系统",
+    path: path
+  }
+}
+
 function request(method, requestHandler) {
   //注意：可以对params加密等处理
   var params = requestHandler.params;
@@ -112,5 +124,6 @@ module.exports = {
   GET: GET,
   POST: POST,
   PUT: PUT,
-  DELETE: DELETE
+  DELETE: DELETE,
+  share: share
 }

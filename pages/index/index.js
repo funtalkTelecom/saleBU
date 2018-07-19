@@ -5,24 +5,6 @@ var network = require("../../utils/network.js")
 
 Page({
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    phones: [
-      { phone: 17001150202, price: 2000, desc: 189 },
-      { phone: 17001020202, price: 5000, desc: 189 },
-      { phone: 17001150202, price: 2000, desc: 189 },
-      { phone: 17001020202, price: 5000, desc: 189 },
-      { phone: 17001150202, price: 2000, desc: 189 },
-      { phone: 17001020202, price: 5000, desc: 189 },
-      { phone: 17001150202, price: 2000, desc: 189 },
-      { phone: 17001020202, price: 5000, desc: 189 },
-      { phone: 17001150202, price: 2000, desc: 189 },
-      { phone: 17001020202, price: 5000, desc: 189 }
-    ],
-    // region: ['北京市', '北京市','东城区'],
     region: ['全国', '全国', '全国'],
     toView: '',
     posterList:[],//海报数据
@@ -64,6 +46,9 @@ Page({
     this.getnumber(3);
     this.getnumber(4);
 
+  },
+  onShareAppMessage: function () {
+    return network.share();
   },
   tapSearch: function () {
     wx.navigateTo({ url: 'search' });

@@ -22,6 +22,9 @@ Page({
   onReachBottom: function () {
     this.loadMoreOrder();
   },
+  onShareAppMessage: function () {
+    return network.share();
+  },
   loadMoreOrder: function (e) {
     if (!this.data.hasMore) return;
     network.GET({

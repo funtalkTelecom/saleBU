@@ -1,5 +1,8 @@
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
+    if (options.scene == 1007 && options.scene == 1008){
+      //推荐有奖
+    }
     var that = this;
     // 登录
     wx.login({

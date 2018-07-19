@@ -16,7 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      id: options.id
+    })
     this.initNumber(options.id);
     this.initMeal(options.id);
     
@@ -37,7 +39,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return network.share("id=" + this.data.id );
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);

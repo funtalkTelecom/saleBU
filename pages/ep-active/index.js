@@ -18,6 +18,9 @@ Page({
   onHide: function () {
     clearTimeout(this.data.clearTimeoutCountDown)
   },
+  onShareAppMessage: function () {
+    return network.share();
+  },
   // 竟拍活动列表
   initEpSales:function(){
     network.GET({

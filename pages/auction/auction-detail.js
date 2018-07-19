@@ -51,6 +51,9 @@ Page({
     clearTimeout(this.data.clearTimeoutCountDown)
     clearTimeout(this.data.clearTimeoutgoodsAuctionList)
   },
+  onShareAppMessage: function () {
+    return network.share("gId=" + this.data.gId + "&numId=" + this.data.numId);
+  },
   handleTabChange: function (e) {
     this.setData({
       selectedId: e.detail
