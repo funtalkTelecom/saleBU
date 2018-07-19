@@ -33,18 +33,11 @@ Page({
         'city': userInfo.city
       },
       success: (res) => {
-        wx.showToast({
-          title: "4",
-          icon: 'none',
-          duration: 2000
-        })
         if(res.data.code == 200) {
           wx.switchTab({
             url: "/pages/index/index"
           })
-
         }
-
       },
       fail: () => {
         //失败后的逻辑
