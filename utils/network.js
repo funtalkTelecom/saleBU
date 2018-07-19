@@ -41,6 +41,11 @@ function DELETE(requestHandler) {
   header['content-type'] = "application/x-www-form-urlencoded"
   request('DELETE', requestHandler)
 }
+function BarTitle(title){
+  wx.setNavigationBarTitle({
+    title: title +"--靓号优选"
+  })
+}
 
 function request(method, requestHandler) {
   //注意：可以对params加密等处理
@@ -112,5 +117,6 @@ module.exports = {
   GET: GET,
   POST: POST,
   PUT: PUT,
-  DELETE: DELETE
+  DELETE: DELETE,
+  BarTitle: BarTitle
 }

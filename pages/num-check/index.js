@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    network.BarTitle("靓号订购")
     this.initNumber(options.id);
     this.initMeal(options.id);
     

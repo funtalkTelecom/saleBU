@@ -100,9 +100,7 @@ Page({
       success: (res) => {
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
-          wx.setNavigationBarTitle({
-            title: epSaleGoods.num + "--竞拍"
-          })
+            network.BarTitle(epSaleGoods.num)
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
             goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)

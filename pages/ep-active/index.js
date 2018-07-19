@@ -6,7 +6,7 @@ Page({
     clearTimeoutCountDown: '',  //倒计时定时器的值
   },
   onLoad: function (options) {
-    
+    network.BarTitle("竞拍活动")
   },
   
   onShow: function () {

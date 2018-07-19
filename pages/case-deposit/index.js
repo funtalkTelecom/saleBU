@@ -16,6 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    network.BarTitle("我的保证金")
     this.loadMoreOrder()
   },
   /**
