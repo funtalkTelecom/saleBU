@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "竞拍下单",
   "usingComponents": {
     "zan-panel": "../../dist/panel/index",
     "zan-popup": "../../dist/popup/index"

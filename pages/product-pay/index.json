@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "支付方式",
   "usingComponents": {
     "zan-panel": "../../dist/panel/index",
     "zan-row": "../../dist/row/index",

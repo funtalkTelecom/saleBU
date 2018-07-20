@@ -79,6 +79,7 @@ Page({
             activeObj: res.data.data[0],
             goodsList: res.data.data[0].goodsList
           })
+          network.BarTitle(res.data.data[0].title)
           // WxParse.wxParse('article', 'html', res.data.data[0].erRule, this, 5)
           this.countDown();
         }

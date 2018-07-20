@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    network.BarTitle("保证金支付")
     this.setData({
       skuId: options.skuId,
       numId: options.numId,

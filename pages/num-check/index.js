@@ -19,6 +19,7 @@ Page({
     this.setData({
       id: options.id
     })
+    network.BarTitle("靓号订购")
     this.initNumber(options.id);
     this.initMeal(options.id);
     
