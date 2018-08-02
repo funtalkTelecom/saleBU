@@ -18,7 +18,7 @@
         <text hidden='{{item.status==1?true:false}}'>已</text>支付：
         <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元</view>
       <button size="mini" bindtap='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>
-      <button size="mini" bindtap='cancelOrder' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>取消订单</button>
+      <button size="mini" bindtap='cancelOrder' hidden='{{item.status==1&&item.order_type!=3?false:true}}' data-id="{{item.order_id}}" >取消订单</button>
       <button size="mini" bindtap='sureharvest' hidden='{{item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>签收</button>
     </view>
   </zan-panel>
@@ -40,17 +40,8 @@
       <form bindsubmit="formSubmit">
         <view class='dialog-bd'>
           <radio-group class="radio-group" bindchange="radioChange" name="radio">
-            <label class="radio">
-              <radio value="1" checked="{{checked}}" style='transform:scale(0.7);'/>1.下错单了,想重新下单
-            </label>
-            <label class="radio">
-              <radio value="2"  style='transform:scale(0.7);'/>2.暂时不想买了
-            </label>
-            <label class="radio">
-              <radio value="3"  style='transform:scale(0.7);'/>3.地址填错了
-            </label>
-            <label class="radio">
-              <radio value="4" style='transform:scale(0.7);'/>4.其他
+            <label class="radio" wx:for='{{rodioList}}' wx:key="id">
+              <radio value="{{item.value}}" checked="{{item.checked}}" style='transform:scale(0.7);'/>{{item.textarea}}
             </label>
             <textarea hidden='{{!textareaFlag}}' placeholder="请填写其他原因" name="textarea" show-confirm-bar="{{false}}"
               adjust-position="{{false}}" bindfocus="focusHandle" bindblur="blurHandle" value='{{textareaValue}}'/>

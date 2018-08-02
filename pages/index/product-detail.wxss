@@ -122,7 +122,7 @@ image {
   width: 100%;
 } 
 .footer-box .buy {
-background-color:red;
+background-color:#00b2ee;
 }
 .footer-box .disabled{
   background-color:#ccc;

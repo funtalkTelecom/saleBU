@@ -31,10 +31,15 @@ Page({
     limit: 10,
     hasMore: true,
     order: [],
-    textareaFlag:false,
-    dialogpos:'',//遮罩获得焦点的样式
-    textareaValue:'',
-    checked:"checked"
+    textareaFlag: false,
+    dialogpos: '',//遮罩获得焦点的样式
+    textareaValue: '',
+    checked: "checked",
+    rodioList: [{ value: 0, checked: "checked", textarea: "1、操作错误(商品、地址选错)"},
+      { value: 1, checked: false, textarea: "2、其他渠道有更低的价格" },
+      { value: 2, checked: false, textarea: "3、暂时不想买了" },
+      { value: 3, checked: false, textarea: "4、重复下单或者误下单" },
+      { value: 4, checked: false, textarea: "5、其他原因" }]
   },
 
   /**
@@ -44,7 +49,7 @@ Page({
     this.setData({
       selectedId: options.tabtype
     })
-    this.loadMoreOrder(options.tabtype,"up")
+    this.loadMoreOrder(options.tabtype, "up")
   },
   /**
    * 生命周期函数--监听页面显示
@@ -66,7 +71,7 @@ Page({
   },
   // 触底加载更多
   onReachBottom: function () {
-    this.loadMoreOrder(this.data.selectedId,"up");
+    this.loadMoreOrder(this.data.selectedId, "up");
   },
   handleTabChange: function (e) {
     this.setData({
@@ -75,7 +80,7 @@ Page({
       order: [],
       hasMore: true
     })
-    this.loadMoreOrder(e.detail,"up")
+    this.loadMoreOrder(e.detail, "up")
   },
   loadMoreOrder: function (e, touchType) {
     if (!this.data.hasMore) return;
@@ -94,9 +99,9 @@ Page({
           })
         }
       },
-      complete:(res)=>{
-        if (touchType=="down"){
-          wx.hideNavigationBarLoading(); 
+      complete: (res) => {
+        if (touchType == "down") {
+          wx.hideNavigationBarLoading();
           wx.stopPullDownRefresh();
         }
       }
@@ -117,23 +122,23 @@ Page({
   },
   // 去支付
   topay: function (e) {
-    if (e.currentTarget.dataset.ordertype==3){
+    if (e.currentTarget.dataset.ordertype == 3) {
       wx.navigateTo({
         url: '/pages/auction/auction-pay?orderId=' + e.currentTarget.dataset.id,
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/product-pay/index?orderid=' + e.currentTarget.dataset.id
       });
     }
   },
   //签收
-  sureharvest:function(e){
+  sureharvest: function (e) {
     // e.currentTarget.dataset.id
     // e.currentTarget.dataset.index
     wx.showModal({
       content: '您确认签收此订单吗？',
-      success:  (res) =>{
+      success: (res) => {
         if (res.confirm) {
           network.POST({
             url: "orderSign",
@@ -150,8 +155,8 @@ Page({
                   order: [],
                   hasMore: true
                 })
-                this.loadMoreOrder(this.data.selectedId,"up")
-              }else{
+                this.loadMoreOrder(this.data.selectedId, "up")
+              } else {
                 wx.showToast({
                   title: res.data.data,
                   icon: 'none',
@@ -160,22 +165,24 @@ Page({
               }
             }
           })
-        } 
+        }
       }
     })
   },
-  cancelOrder:function(){//显示遮罩
+  cancelOrder: function (e) {//显示遮罩
+    console.log(e.currentTarget.dataset.id)
     this.setData({
-      maskFlag: true
+      maskFlag: true,
+      cancelOrderId: e.currentTarget.dataset.id
     })
   },
   radioChange: function (e) {//显示textarea
-    if(e.detail.value==4){
+    if (e.detail.value == this.data.rodioList[this.data.rodioList.length-1].value) {
       this.setData({
-        textareaFlag:true,
+        textareaFlag: true,
         // radioValue: e.detail.value
       })
-    }else{
+    } else {
       this.setData({
         textareaFlag: false,
         // radioValue: e.detail.value
@@ -185,23 +192,65 @@ Page({
   hideMask: function () {//隐藏遮罩
     this.setData({
       maskFlag: false,
-      textareaValue:'',
+      textareaValue: '',
       textareaFlag: false,
-      checked:"checked"
+      checked: "checked",
+      cancelOrderId: null
       // radioValue:1
     })
   },
-  focusHandle:function(){//获得焦点
+  focusHandle: function () {//获得焦点
     this.setData({
-      dialogpos:'dialogpos'
+      dialogpos: 'dialogpos'
     })
   },
-  blurHandle:function(){//失去焦点
+  blurHandle: function () {//失去焦点
     this.setData({
       dialogpos: ''
     })
   },
-  formSubmit:function(e){//取消订单
-    console.log(e)
+  formSubmit: function (e) {//取消订单请求
+    var radiovalue=e.detail.value.radio
+    var rodioList = this.data.rodioList
+    var textarea = rodioList[radiovalue].textarea
+    var index=textarea.indexOf("、")
+    var reason=textarea.substring(index+1)
+    if (radiovalue == rodioList[rodioList.length - 1].value){
+      if(e.detail.value.textarea){
+        reason = e.detail.value.textarea
+      }else{
+        wx.showToast({
+          icon:'none',
+          title: '请填写其他原因',
+        })
+        return
+      }
+    }
+    network.GET({
+      url: "cancel-order",
+      params: { orderId: this.data.cancelOrderId, reason: reason },
+      success: (res) => {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'success',
+            duration: 2000
+          })
+          this.hideMask();
+          this.setData({
+            pageNum: 0,
+            order: [],
+            hasMore: true
+          })
+          this.loadMoreOrder(this.data.selectedId, "up")
+        } else {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
   }
 })

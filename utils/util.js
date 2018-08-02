@@ -19,6 +19,8 @@ const orderText = status => {
     statusText = "待收货"
   } else if (status == 6) {
     statusText = "已完成"
+  } else if (status == 7) {
+    statusText = "已取消"
   }
 
   return statusText;

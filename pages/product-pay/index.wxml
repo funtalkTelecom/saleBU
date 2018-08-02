@@ -4,7 +4,7 @@
       <!-- <view wx:for="{{pay}}" wx:key="id" class="{{defaultValue==item.value?item.classStyle:''}}" bindtap='usewxpay' data-wxpay="{{item.value}}">{{item.text}}</view> -->
       <view class="{{defaultValue==1?'wx':''}}" bindtap='usewxpay' data-wxpay="{{1}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/wxzf.png'></image>微信支付</view>
       <view class="{{defaultValue==2?'balance':''}}" bindtap='usewxpay' data-wxpay="{{2}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/kazhifu.png'></image>线下支付</view>
-      <view  class="{{defaultValue==3?'instalment':''}}" bindtap='usewxpay' data-wxpay="{{3}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/fenqi.png'></image>分期付款</view>
+      <view  class="{{defaultValue==4?'instalment':''}}" bindtap='usewxpay' data-wxpay="{{4}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/fenqi.png'></image>分期付款</view>
       </view>
       <view class='offline' wx:if="{{defaultValue==2}}">
         <view>银行：中信银行</view>
@@ -12,7 +12,7 @@
         <view>帐号：6217 6813 0292 6871</view>
         <view class='tishi'>【温馨提示】付款时请备注所拍得到号码，如有任何疑问可拨打客服热线4009-183-365</view>
       </view>
-      <view class='offline' wx:if="{{defaultValue==3}}">
+      <view class='offline' wx:if="{{defaultValue==4}}">
         <view class='beizhu'>备注：</view>
         <view>1. 分期手续费仅当日可退还</view>
         <view>2. 分期手续费仅费仅当日可当日可退还</view>
@@ -22,6 +22,6 @@
   </zan-panel>
 
   <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==1?'wx-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
-  <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==3?'instalment-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
+  <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==4?'instalment-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
 
 </view>
