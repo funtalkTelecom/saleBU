@@ -9,8 +9,8 @@
       </zan-col>
       <zan-col col="19" offset="1" col-class="custom-zan-col">
         <zan-row row-class="line_H">
-          <zan-col col="24" col-class="custom-zan-col">
-            <open-data type="userNickName" lang="zh_CN"></open-data>
+          <zan-col col="24" col-class="custom-zan-col username">
+            <open-data type="userNickName" lang="zh_CN" style='color:#fff;'></open-data>
           </zan-col>
         </zan-row>
         <!-- <zan-row row-class="line_H">
@@ -21,7 +21,7 @@
     </zan-row>
   </zan-panel>
 
-  <zan-panel class="cell-panel-demo " title="我的订单">
+  <zan-panel class="cell-panel-demo bob" title="我的订单">
     <!-- <view class='all-order'>全部订单</view> -->
     <zan-row>
       <zan-col col="6" col-class="custom-zan-col">
@@ -90,7 +90,7 @@
     </zan-row> -->
   </zan-panel>
 
-  <zan-panel class="cell-panel-demo" title="常用设置">
+  <zan-panel class="cell-panel-demo bob" title="常用设置">
     <zan-cell-group>
  
         <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
@@ -107,11 +107,11 @@
 
   <zan-panel class="cell-panel-demo footer" title="联系我们">
     <zan-row row-class="service">
-      <zan-col col="12" col-class="custom-zan-col service-wx">
+      <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
         <view>微信：E购通</view>
         <image src='../../imgs/personal/qrcode.jpg' class='qrcode'></image>
       </zan-col>
-      <zan-col col="12" col-class="custom-zan-col tel">
+      <zan-col col="24" col-class="custom-zan-col tel">
         <view>客服热线：4009-183-365</view>
       </zan-col>
     </zan-row>

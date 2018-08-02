@@ -1,3 +1,6 @@
+.container {
+  margin: 0 5%;
+}
 page {
   height: 100%;
   display: flex;
@@ -10,32 +13,40 @@ page {
   flex-direction: column;
 }
 .bail-conten {
-  margin: 70rpx 10rpx;
-  border: 1rpx solid #ddd;
+  margin: 40rpx 0 70rpx;
+  border: 1rpx solid #dedede;
   border-radius: 20rpx;
-  padding: 6rpx;
-  background: #fff;
+  padding: 4%;
+  background: #fef9e3;
 }
 .bail-conten-price {
-  font-size: 30rpx;
+  font-size: 34rpx;
+  height: 80rpx;
   line-height: 80rpx;
-  margin-bottom: 6rpx;
-  font-weight: 700;
+  margin-top: 8%;
+  font-weight: bold;
+  border-bottom: 2rpx solid #4bc5ee;
+  padding-left: 70rpx;
+  background: url("data:image/png;base64,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") no-repeat 0 center;
+	background-size: 54rpx;
 }
 .red {
   color: red;
+  margin: 0 10rpx;
+  font-size: 34rpx;
+  line-height: 90rpx;
 }
 .bail-conten-text {
-  color: #aeaeae;
-  font-size: 26rpx;
+  color: #d26d15;
+  font-size: 24rpx;
+  line-height: 42rpx;
 }
 .agree {
-  margin: auto;
-  width: 640rpx;
   text-align: center;
-  background: #ff6633;
-  border-radius: 20rpx;
-  line-height: 56rpx;
+  background: #4bc5ee;
+  border-radius: 14rpx;
+  height: 76rpx;
+  line-height: 76rpx;
   color: #fff;
-  font-size: 26rpx;
+  font-size: 30rpx;
 }

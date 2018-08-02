@@ -1,3 +1,5 @@
+.clearfix:after{content:"";height:0;visibility:hidden;display:block;clear:both;}
+
 /* pages/index/product-detail.wxss */
 page{
   padding-bottom: 80rpx;
@@ -21,23 +23,36 @@ image {
   width: 640rpx;
 }  */
 .banner {
-  padding: 36rpx 40rpx 36rpx 32rpx;
+  padding: 36rpx 32rpx 50rpx;
   position: relative;
-  border-bottom: 1rpx dotted #ccc;
+  border-bottom: 20rpx solid #f2f2f2;
 }
 .p-name {
   font-size: 30rpx;
-  padding-bottom: 52rpx;
+  padding-bottom: 36rpx;
   font-weight: 700;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  margin-right: 60rpx;
 }
 .p-superiority {
   font-size: 30rpx;
   color: red;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
 }
 .collection {
   position: absolute;
   top: 20rpx;
-  right: 64rpx;
+  right: 32rpx;
   text-align: center;
 }
 .collection text {
@@ -57,7 +72,7 @@ image {
   border-right: 0;
   display: inline;
   position: absolute;
-  right: 64rpx;
+  right: 32rpx;
   bottom: 32rpx;
   
 }

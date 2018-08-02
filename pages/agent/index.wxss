@@ -6,7 +6,7 @@ input {
   display: inline-block;
 }
 .pad {
-  padding-top: 64rpx;
+  padding-top: 34rpx;
 }
 .cell {
   display: flex;
@@ -75,7 +75,8 @@ margin-right:0;
 }
 .cell-submit button{
   margin-left:0;
-margin-right:0;
+  margin-right:0;
+  background-color:#4bc5ee;
 }
 /* 关联账号 */
 .guanlian {

@@ -83,3 +83,9 @@ page {
   color: red;
   font-weight: 700;
 }
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
+}

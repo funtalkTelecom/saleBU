@@ -19,23 +19,24 @@ display: block;
   font-size: 14px;
   color: #fff;
   width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 .top-text {
   /* background-color: orange; */
-  height: 40rpx;
   width: 160rpx;
   text-align: center;
-  line-height: 40rpx;
 }
 .top-date {
   flex: 1;
-  background: rgba(0, 0, 0, .5 );
+  background: rgba(255, 153, 0, .6 );
+  padding-left: 5%;
 }
 .active-before {
   background-color: #006600;
 }
 .active-ing {
-  background-color: #FF9900;
+  background-color: #4bc5ee;
 }
 .active-after {
   background-color: #CC0000;
@@ -55,4 +56,9 @@ display: block;
 }
 .ep-number {
  font-size: 14px;
+}
+
+.chujia {
+  color: #fb2929;
+  display: inline-block;
 }

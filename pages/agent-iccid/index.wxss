@@ -4,8 +4,7 @@ page {
 }
 .num-item {
   margin-top: 20rpx;
-  border-top: 1rpx solid #F4F4F4;
-  padding-left: 20rpx;
+  padding: 20rpx 20rpx 20rpx 30rpx;
 }
 .num-col {
   line-height: 64rpx;
@@ -52,4 +51,18 @@ page {
   border-radius: 20rpx;
   width: 100%;
   margin-bottom: 20rpx;
+}
+.bangding {
+  display: inline-block;
+  background-color: #00b2ee;
+  color: #fff;
+  margin: 0;
+}
+.iccid {
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
 }

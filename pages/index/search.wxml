@@ -18,7 +18,7 @@
       </view>
       <view class='options'>
         <block wx:for="{{lianghao}}" wx:if="{{index<count}}" wx:key="id">
-            <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>  
+            <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>
         </block>
       </view>
     </view> 

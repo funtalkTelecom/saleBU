@@ -5,18 +5,24 @@ page {
 }
 
 .iconfont {
-  font-size: 52rpx;
+  font-size: 54rpx;
   /* display: inline-block;  */
 }
 
 /* 头部开始 */
 
 .head {
-  padding-top: 60rpx;
-  padding-bottom: 60rpx;
-  background-color: orange;
+  padding: 60rpx 30rpx;
+  background-color: #ffa500;
+  background: -webkit-gradient(linear,top,bottom, color-stop(#ffc863), color-stop(#ffa500));
+  background: -webkit-linear-gradient(top #ffc863, #ffa500,);
+  background: linear-gradient(to bottom, #ffc863, #ffa500);
   border-bottom-left-radius: 30rpx;
   border-bottom-right-radius: 30rpx;
+}
+.username {
+  padding-left: 3%;
+  font-size: 32rpx;
 }
 
 .avatar {
@@ -77,4 +83,8 @@ page {
 }
 .tel {
   line-height: 100rpx;
+}
+
+.bob {
+  border-bottom: 20rpx solid #f2f2f2;
 }

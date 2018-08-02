@@ -38,8 +38,8 @@
 /* 功能封装：加载更多样式 */
 
 .loadmore {
-    color: #888;
-    font-size: 16px;
+    color: #00b2ee;
+    font-size: 32rpx;
     line-height: 100rpx;
     text-align: center;
 }

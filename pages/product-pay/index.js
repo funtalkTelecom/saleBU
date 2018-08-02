@@ -10,7 +10,7 @@ Page({
     defaultValue: 1,
     pay: [{ text: "微信支付", value: 1, classStyle: "wx" },
       { text: "线下支付", value: 2, classStyle: "balance" },
-      { text: "分期付款", value: 4, classStyle: "wx" }],
+      { text: "分期付款", value: 4, classStyle: "instalment" }],
     fenqiFlag:false
   },
 

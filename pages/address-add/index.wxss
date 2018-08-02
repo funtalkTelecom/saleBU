@@ -12,7 +12,7 @@ input {
   margin-right: 20rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  border-bottom: 1rpx solid #ccc;
+  border-bottom: 2rpx solid #dedede;
 }
 .cell input,
 .cell picker {
@@ -31,16 +31,16 @@ input {
 .submit {
   position: fixed;
   bottom: 0;
-  background-color: orange;
+  background-color: #4bc5ee;
   width: 100%;
   color: #fff;
   border-radius:0;
   line-height: 80rpx;
-  font-size: 36rpx;
+  font-size: 32rpx;
 
 }
 .pad {
-  padding-top: 64rpx;
+  padding-top: 34rpx;
 }
 /* .test {
   line-height: 100rpx;

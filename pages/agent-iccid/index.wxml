@@ -6,31 +6,35 @@
     <scroll-view scroll-y="true">
       <zan-panel>
         <zan-row row-class="num-item">
-          <zan-col col="17" col-class="num-col">
+          <zan-col col="19" col-class="num-col">
             <zan-row>
-              <zan-col col="24">iccid:1111111111111</zan-col>
+              <zan-col col-class='iccid' col="4">iccid:</zan-col>
+              <zan-col col-class='iccid' col="20">1111111111111</zan-col>
             </zan-row>
             <zan-row>
-              <zan-col col="24">地市:福建福州</zan-col>
+              <zan-col col="4">地市:</zan-col>
+              <zan-col col="20"> 福建福州</zan-col>
             </zan-row>
           </zan-col>
-          <zan-col col="7" col-class="num-col-but">
-            <button size="mini" type='warn' bindtap='toggleBottomPopup'>绑定</button>
+          <zan-col col="5" col-class="num-col-but bdbtn">
+            <button size="mini" bindtap='toggleBottomPopup' class='bangding'>绑定</button>
           </zan-col>
         </zan-row>
       </zan-panel>
       <zan-panel>
         <zan-row row-class="num-item">
-          <zan-col col="17" col-class="num-col">
+          <zan-col col="19" col-class="num-col">
             <zan-row>
-              <zan-col col="24">iccid:1111111111111</zan-col>
+              <zan-col col-class='iccid' col="4">iccid:</zan-col>
+              <zan-col col-class='iccid' col="20">1111111111111</zan-col>
             </zan-row>
             <zan-row>
-              <zan-col col="24">地市:福建福州</zan-col>
+              <zan-col col="4">地市:</zan-col>
+              <zan-col col="20">福建福州</zan-col>
             </zan-row>
           </zan-col>
-          <zan-col col="7" col-class="num-col-but">
-            <button size="mini" type='warn'>绑定</button>
+          <zan-col col="5" col-class="num-col-but bdbtn">
+            <button size="mini" class='bangding'>绑定</button>
           </zan-col>
         </zan-row>
       </zan-panel>
@@ -43,16 +47,20 @@
         <zan-row row-class="num-item">
           <zan-col col="24" col-class="num-col">
             <zan-row>
-              <zan-col col="24">iccid:1111111111111</zan-col>
+              <zan-col col="3">iccid:</zan-col>
+              <zan-col col="21">1111111111111</zan-col>
             </zan-row>
             <zan-row>
-              <zan-col col="24">地市:福建福州</zan-col>
+              <zan-col col="3">地市:</zan-col>
+              <zan-col col="21">福建福州</zan-col>
             </zan-row>
             <zan-row>
-              <zan-col col="24">号码:17701234567</zan-col>
+              <zan-col col="3">号码:</zan-col>
+              <zan-col col="21">17701234567</zan-col>
             </zan-row>
             <zan-row>
-              <zan-col col="24">套餐:4G不限流量套餐</zan-col>
+              <zan-col col="3">套餐:</zan-col>
+              <zan-col col="21">4G不限流量套餐</zan-col>
             </zan-row>
           </zan-col>
         </zan-row>

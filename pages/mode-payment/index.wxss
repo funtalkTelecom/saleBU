@@ -2,9 +2,9 @@
 page{}
 .pay-select {
   padding-left:32rpx;
-padding-right:32rpx;
-line-height:80rpx;
-font-size: 28rpx;
+  padding-right:32rpx;
+  line-height:80rpx;
+  font-size: 28rpx;
 }
 .footer-but {
   position: fixed;
@@ -12,7 +12,7 @@ font-size: 28rpx;
   color: #fff;
   width: 100%;
   line-height: 80rpx;
-  font-size: 36rpx;
+  font-size: 32rpx;
   text-align: center;
 }
 .wx-bgc {
@@ -23,4 +23,9 @@ background-color:orange;
 }
 .zfb-bgc {
  background-color:#00aaee;
+}
+.zficon {
+  width: 44rpx;
+  vertical-align: text-top;
+  margin-right: 12rpx;
 }

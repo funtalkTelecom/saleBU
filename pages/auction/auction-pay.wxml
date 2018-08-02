@@ -17,7 +17,7 @@
     </view>
     <view class='addr-icon'></view>
   </view> -->
-
+ 
 
   <view class='product'>
     <view class='product-title'>
@@ -163,7 +163,7 @@
   </view>
 
   <view class='pay'>
-    <view>￥{{money}}</view>
+    <view class='zonge'>￥{{money}}</view>
     <view bindtap='surePay'>确认支付</view>
   </view>
 

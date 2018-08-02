@@ -13,6 +13,6 @@
     </radio-group>
   </zan-panel>
 
-  <view class="footer-but {{defaultValue==1?'wx-bgc':defaultValue==2?'balance-bgc':'zfb-bgc'}}" >{{paytext}}</view>
+  <view class="footer-but {{defaultValue==1?'wx-bgc':defaultValue==2?'balance-bgc':'zfb-bgc'}}" ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
 
 </view>
