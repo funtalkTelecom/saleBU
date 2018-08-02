@@ -22,8 +22,8 @@ Page({
     goodsAuctionListFlag: true,  //状态一变成状态二时开始请求出价数据
     clearTimeoutCountDown: '',  //倒计时定时器的值
     clearTimeoutgoodsAuctionList: '', //数据请求定时器的值
-    lastRequest: true,//状态2变3最后请求一次数据
-    getFocus: false //input框是否有焦点
+    getFocus: false, //input框是否有焦点,
+    websocketFlag:false
 
 
   },
@@ -46,20 +46,24 @@ Page({
   onUnload: function () {
     clearTimeout(this.data.clearTimeoutCountDown)
     clearTimeout(this.data.clearTimeoutgoodsAuctionList)
+    if (this.data.websocketFlag) {
+      this.closeSocket()
+    }
+
   },
   onHide: function () {
     clearTimeout(this.data.clearTimeoutCountDown)
     clearTimeout(this.data.clearTimeoutgoodsAuctionList)
-  },
-  onShareAppMessage: function () {
-    return network.share("gId=" + this.data.gId + "&numId=" + this.data.numId);
+    if (this.data.websocketFlag) {
+      this.closeSocket()
+    }
   },
   handleTabChange: function (e) {
     this.setData({
       selectedId: e.detail
     })
   },
-  goodsInfo:function(gid){
+  goodsInfo: function (gid) {
     network.GET({
       url: "goods-info/" + gid,
       params: {},
@@ -87,11 +91,11 @@ Page({
     // }
 
   },
-  //去出价
+  //去支付保证金
   paybail: function () {
     var price = (parseFloat(this.data.epSaleGoods.gPriceUp) + parseFloat(this.data.epSaleGoods.currentPrice)) || parseFloat(this.data.epSaleGoods.gStartPrice)
     wx.navigateTo({
-      url: 'pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price + "&&gDeposit=" + this.data.epSaleGoods.gDeposit
+      url: '/pages/auction/pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price + "&&gDeposit=" + this.data.epSaleGoods.gDeposit
     });
   },
   //根据id查数据
@@ -101,9 +105,12 @@ Page({
       url: "epSaleGoods/" + numId + "/" + gId,
       params: {},
       success: (res) => {
+
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
-            network.BarTitle(epSaleGoods.num)
+          wx.setNavigationBarTitle({
+            title: epSaleGoods.num + "--竞拍"
+          })
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
             goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)
@@ -113,8 +120,8 @@ Page({
           //判断状态2和已支付时设置计数器的数值
           // if (epSaleGoods.idDeposit == 1 && epSaleGoods.gSatus == 2) {
           this.data.stepper.stepper = goodsAuctionList[0] ? parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp)).toFixed(2)) : epSaleGoods.gStartPrice
-            this.data.stepper.step = epSaleGoods.gPriceUp;
-            this.data.stepper.min = goodsAuctionList[0] ? parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp)).toFixed(2)) : epSaleGoods.gStartPrice
+          this.data.stepper.step = epSaleGoods.gPriceUp;
+          this.data.stepper.min = goodsAuctionList[0] ? parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(epSaleGoods.gPriceUp)).toFixed(2)) : epSaleGoods.gStartPrice
           // }
           this.setData({
             epSaleGoods: epSaleGoods,
@@ -162,12 +169,12 @@ Page({
 
   // //修改价格
   handleZanStepperChange({
-    detail: stepper,
-    target: {
-      dataset: {
-        componentId
+      detail: stepper,
+      target: {
+          dataset: {
+              componentId
+          }
       }
-    }
   }) {
     this.setData({
       [`${componentId}.stepper`]: parseFloat(stepper.toFixed(2))
@@ -204,20 +211,6 @@ Page({
             icon: 'success',
             duration: 3000
           })
-          var goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
-          this.data.epSaleGoods.gEndTime = goodsAuctionList[0].endTime.time,//设置最新的结束时间
-            this.data.stepper.stepper = parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2))//计数器加值
-          this.data.stepper.min = parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2))//计数器最小值
-          this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price,  //最高价
-            // this.data.epSaleGoods.priceCount = this.data.epSaleGoods.priceCount + 1 //次数加1
-            this.data.epSaleGoods.priceCount = res.data.data.priceCount,
-            // this.data.epSaleGoods.serviceTime = res.data.data.serviceTime,//待定
-            this.setData({
-              stepper: this.data.stepper,
-              epSaleGoods: this.data.epSaleGoods,
-              goodsAuctionList: goodsAuctionList
-            })
-
         } else if (res.data.data) {
           wx.showToast({
             title: res.data.data,
@@ -234,51 +227,89 @@ Page({
       }
     })
   },
-  //定时器查出价数据
+  //websocket查出价数据
   getLatestGoodsAuctionList: function () {
-    var goodsAuctionList = null;
-    if (this.data.epSaleGoods.gSatus == 2 || this.data.lastRequest) {
-      network.GET({
-        url: "epSaleAuctions/" + this.data.numId + "/" + this.data.gId,
-        params: {},
-        success: (res) => {
-          if (res.data.code == 200) {
-            //判断是否有出价记录数据
-            if (res.data.data.goodsAuctionList) {
-              goodsAuctionList = res.data.data.goodsAuctionList.map(this.substring)
-              this.data.epSaleGoods.gEndTime = goodsAuctionList[0].endTime//设置最新的结束时间
-              var stepperValue = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp))
-              if (!this.data.getFocus && parseFloat(this.data.stepper.stepper) < parseFloat(stepperValue)) {
-                this.data.stepper.stepper = parseFloat(stepperValue.toFixed(2))
-              }
-              this.data.stepper.min = parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2))
-              this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price
-            } else {
-              goodsAuctionList = []
-            }
-            this.data.epSaleGoods.priceCount = res.data.data.priceCount || 0  //出价次数
-            this.data.epSaleGoods.idDeposit = res.data.data.idDeposit       //是否支付保证金
-            // this.data.epSaleGoods.serviceTime = res.data.data.serviceTime,//待定
-            this.setData({
-              epSaleGoods: this.data.epSaleGoods,
-              goodsAuctionList: goodsAuctionList,
-              stepper: this.data.stepper,
-              goodsAuctionListFlag: false
-            })
-            if (this.data.epSaleGoods.gSatus == 3 && goodsAuctionList[0].orderId) {
-              this.data.lastRequest = false;
-              if (goodsAuctionList[0].consumerId == wx.getStorageSync("consumer_id") && goodsAuctionList[0].orderStatus == 1) {
-                this.showModal();
-              }
-            }
-            this.data.clearTimeoutgoodsAuctionList = setTimeout(this.getLatestGoodsAuctionList, 5000);
 
+    this.setData({
+      goodsAuctionListFlag: false,
+      websocketFlag:true
+    })
+    this.connectSocket();
+
+    // this.onSocketOpen();
+    //监听WebSocket接受到服务器的消息事件。
+    this.onSocketMessage();
+    this.onSocketClose();
+
+  },
+  currentIdDeposit: function (e) {
+    return e.consumer_id == wx.getStorageSync("consumer_id")
+  },
+  //创建一个 WebSocket 连接
+  connectSocket: function () {
+
+    // console.log(util.formatTime(new Date()))
+    wx.connectSocket({
+      url: "wss://www.egt365.com/zjc/lff/websocket/" + this.data.numId + "/" + this.data.gId,
+      // url: "wss://192.168.1.131/zjc/zqf/websocket/" + this.data.numId + "/" + this.data.gId,
+    })
+  },
+  //监听WebSocket连接打开事件。
+  onSocketOpen: function () {
+    wx.onSocketOpen((res) => {
+      //通过 WebSocket 连接发送数据
+      wx.sendSocketMessage({
+        data: 1
+      })
+    })
+  },
+  onSocketMessage: function () {
+    wx.onSocketMessage((res) => {
+      var goodsAuctionList = null;
+      var response = JSON.parse(res.data)
+
+      if (response.code == 200) {
+        if (response.data[0].goodsAuctionList) {
+          goodsAuctionList = response.data[0].goodsAuctionList.map(this.substring)
+          this.data.epSaleGoods.gEndTime = goodsAuctionList[0].endTime.time//设置最新的结束时间
+          var stepperValue = (parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp))
+          if (!this.data.getFocus && parseFloat(this.data.stepper.stepper) < parseFloat(stepperValue)) {
+            this.data.stepper.stepper = parseFloat(stepperValue.toFixed(2))
+          }
+          this.data.stepper.min = parseFloat((parseFloat(goodsAuctionList[0].price) + parseFloat(this.data.epSaleGoods.gPriceUp)).toFixed(2))
+          this.data.epSaleGoods.currentPrice = goodsAuctionList[0].price
+          if (response.data[0].goodsAuctionDepositList.some(this.currentIdDeposit)) {
+            this.data.epSaleGoods.idDeposit = 1
+          } else {
+            this.data.epSaleGoods.idDeposit = 0
+          }
+        } else {
+          goodsAuctionList = []
+        }
+        this.data.epSaleGoods.priceCount = response.data[0].priceCount || 0  //出价次数
+
+        this.setData({
+          epSaleGoods: this.data.epSaleGoods,
+          goodsAuctionList: goodsAuctionList,
+          stepper: this.data.stepper,
+          goodsAuctionListFlag: false
+        })
+        if (goodsAuctionList[0].orderId) {
+          if (goodsAuctionList[0].consumerId == wx.getStorageSync("consumer_id") && goodsAuctionList[0].orderStatus == 1) {
+            this.showModal();
           }
         }
+      }
+    })
+  },
+  onSocketClose: function () {
+    wx.onSocketClose( () =>{
+      this.setData({
+        websocketFlag:false
       })
-    }
-
+    })
+  },
+  closeSocket: function () {
+    wx.closeSocket()
   }
-
-
 })
