@@ -24,6 +24,13 @@
   border: 1rpx solid #FF6600;
   color: #FF6600;
 }
+.order-pay button::after{ 
+  border: none; 
+}
+.order-pay .topay{
+  background-color: #FF6600;
+  color: #fff;
+}
 .red {
   color: red;
   font-weight: 700;
