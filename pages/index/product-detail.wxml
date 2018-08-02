@@ -53,7 +53,7 @@
 
   <view class='footer-box' bindtap='buynow'>
     <!-- <view style='background-color:orange'>加入购物车</view> -->
-    <view style='background-color:red'>立即购买</view>
+    <view style='background-color:#00b2ee'>立即购买</view>
   </view>
 
 

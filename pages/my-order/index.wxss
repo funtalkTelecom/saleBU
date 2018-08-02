@@ -9,15 +9,15 @@
   display: flex;
   justify-content:flex-end;
   align-items: center;
-font-size: 28rpx;
-text-align: center;
-margin-right: 30rpx;
-padding-top: 10rpx;
-padding-bottom: 10rpx; 
+  font-size: 28rpx;
+  text-align: center;
+  margin-right: 30rpx;
+  padding-top: 10rpx;
+  padding-bottom: 26rpx; 
 }
 .order-pay button{
-  padding-left: 60rpx;
-  padding-right: 60rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
   margin-left: 50rpx;
   margin-right: 0;
   background-color: #fff;
@@ -27,4 +27,10 @@ padding-bottom: 10rpx;
 .red {
   color: red;
   font-weight: 700;
+}
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
 }

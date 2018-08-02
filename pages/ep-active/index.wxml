@@ -13,7 +13,7 @@
 
         <view class='ep-content'>
           <text class='ep-title'>{{item.title}}</text>
-          <view class='ep-number' hidden="{{item.erSatus==2 ? false : true}}">共 {{item.priceCount|0}} 次出价</view>
+          <view class='ep-number' hidden="{{item.erSatus==2 ? false : true}}">共 <view class='chujia'>{{item.priceCount|0}}</view> 次出价</view>
         </view>
 
       </navigator>

@@ -14,7 +14,7 @@
           <zan-row row-class="addr-selecrt">
             <zan-col col="15">
               <label class="radio">
-                <radio value="{{item.id}}" checked="{{item.isDefaultl==1}}" style='transform:scale(0.8);' />默认地址
+                <radio color='#00b2ee' value="{{item.id}}" checked="{{item.isDefaultl==1}}" style='transform:scale(0.8);' />默认地址
               </label>
             </zan-col>
             <zan-col col="4" >

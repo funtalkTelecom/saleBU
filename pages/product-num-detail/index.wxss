@@ -15,6 +15,8 @@ page {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  background-color: #f2f2f2;
+  margin: 2%;
 }
 
 .cardbody-item {
@@ -22,15 +24,16 @@ page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 12rpx;
-  width: 49%;
+  margin: 1.5%;
+  width: 47%;
   background-color: #fff;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+  padding:20rpx 0;
+  box-shadow: 4rpx 4rpx 12rpx #ddd;
+  border-radius: 20rpx;
 }
 
 .item-phone {
-  font-weight: 700;
+  margin-bottom: 6rpx;
 }
 
 .item-price, .item-desc {
@@ -46,6 +49,14 @@ page {
   font-weight: 700;
 }
 .item-contact {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #999;
+  line-height: 40rpx;
+}
+
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
 }

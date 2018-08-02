@@ -3,28 +3,32 @@
     <view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
-          靓号类型:{{array[index]}}
+          <view class='sx'>靓号类型:</view>
+          <view class='sxs'>{{array[index]}}</view>
         </view>
       </picker>
     </view>
     <view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
-          运营商:{{array[index]}}
+          <view class='sx'>运营商:</view>
+          <view class='sxs'>{{array[index]}}</view>
         </view>
       </picker>
     </view>
     <view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
-          低消:{{array[index]}}
+          <view class='sx'>低消:</view>
+          <view class='sxs'>{{array[index]}}</view>
         </view>
       </picker>
     </view>
     <view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
-          筛选:{{array[index]}}
+          <view class='sx'>筛选:</view>
+          <view class='sxs'>{{array[index]}}</view>
         </view>
       </picker>
     </view>

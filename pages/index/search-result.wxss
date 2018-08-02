@@ -2,33 +2,43 @@ page{
   display: flex;  
   flex-direction: column;  
   height: 100%;
-  }
+}
 .container {
   flex: auto;  
   display: flex;  
+  background-color: #f2f2f2;
   flex-direction: column;  
-  background: #fff;  
 }
 .filters{
-display: flex;
-border: 1rpx solid #000;
-border-bottom: 0;
-border-right: 0;
+  display: flex;
   z-index: 999;
   box-sizing: border-box;
   background-color: #fff;
   width: 100%;
   flex: none;  
-  
+  border-bottom: 2rpx solid #dedede;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  box-shadow: 6rpx 6rpx 6rpx #ddd;
 }
 .filters > view{
-  white-space:nowrap; text-overflow:ellipsis;overflow: hidden;
-   border-bottom: 1rpx solid #000;
-   border-right: 1rpx solid #000;
-   width: 25%;
-   text-align: center;
-   font-size: 26rpx;
-   padding: 20rpx 0;
+  white-space:nowrap; 
+  text-overflow:ellipsis;
+  overflow: hidden;
+  width: 25%;
+  text-align: center;
+  font-size: 26rpx;
+  border-right: 1rpx solid #dedede;
+  padding: 16rpx 0;
+}
+.sx {
+  font-size: 32rpx;
+}
+.sxs {
+  font-size: 22rpx;
+  white-space: pre-wrap;
+  color: #555;
+  margin-top: 6rpx;
 }
 .result {
   display: flex;
@@ -39,18 +49,26 @@ border-right: 0;
 .box-1{
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 2%;
 }
 .box-item{
-  width: 50%;
+  width: 47%;
   text-align: center;
-  margin-top: 25rpx;
+  margin: 1.5%;
   /* box-sizing:border-box; */
-  padding: 0;
+  background-color: #fff;
+  padding: 2% 0 3%;
+  border-radius: 20rpx;
+  box-shadow: 4rpx 4rpx 12rpx #ddd;
 }
 .phone{
-  font-weight:600
+  font-weight:600;
+  font-size: 28rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin-bottom: 12rpx;
 }
- .phone-desc{
+.phone-desc{
   display: block;
   font-size: 25rpx;
   /* position: relative;
@@ -58,7 +76,19 @@ border-right: 0;
 }
 .phone-price{
   display: block;
-  font-size: 25rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
   /* position: relative;
   right: -43rpx; */
 } 
+
+.loading {
+  text-align: center;
+  margin: 40rpx 0 16rpx;
+  font-size: 26rpx;
+  color: #00b2ee;
+}
+.color-orange {
+  color: orange;
+  margin-right: 4rpx;
+}

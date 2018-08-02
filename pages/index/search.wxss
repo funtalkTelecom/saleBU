@@ -1,6 +1,6 @@
 /* 头部开始 */
 .header {
-  background: orange;
+  background: #66ccff;
   padding: 20rpx;
   display: flex;
    position: fixed;
@@ -9,18 +9,20 @@
   width: 100%;
   box-sizing: border-box;
   z-index: 999;
+  margin-top: 2rpx;
 }
 .search {
   display: flex;
   flex: 1;
   background: #fff;
-  border: 1rpx solid orange;
   border-radius: 30rpx;
   align-items:center;
 }
 .search text {
   height: 100%;
-  margin: 10rpx;
+  margin: 10rpx 20rpx;
+  color: #999;
+  font-size: 40rpx;
 }
 .search input {
   font-size: 30rpx;
@@ -76,8 +78,9 @@
   margin-right: 40rpx;
 }
 .options .active {
-  background: orange;
+  background: #66ccff;
   color: #fff;
+  border: 2rpx solid #66ccff;
 }
 
 /* 条件结束 */

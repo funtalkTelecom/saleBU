@@ -101,7 +101,7 @@ page {
 .paymode-main view {
   border: 1rpx solid #666;
   border-radius: 20rpx;
-  padding: 16rpx 56rpx;
+  padding: 16rpx 46rpx;
   font-size: 24rpx;
   margin: 32rpx 20rpx 24rpx;
 }
@@ -141,6 +141,14 @@ page {
   border-radius: 20rpx;
   padding: 12rpx 32rpx;
 }
+.zffs {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 12rpx;
+  vertical-align: middle;
+  margin-top: -8rpx;
+}
+
 /* 套餐相关 */
 .setmeal {
   display: flex;
@@ -169,3 +177,4 @@ page {
   padding-left: 10rpx;
   padding-right: 10rpx;
 }
+

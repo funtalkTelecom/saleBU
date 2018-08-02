@@ -3,7 +3,7 @@
   <view class='header'>
     <view class='search'>
       <view><text class='iconfont icon-icon--'></text></view>
-      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11"></input></view>
+      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11" ></input></view>
     </view>
     <view class='but'>
       <button class="yellow {{searchPhone.length?'':'disabled'}}" disabled="{{!searchPhone.length}}" bindtap="doSearch">搜索</button>

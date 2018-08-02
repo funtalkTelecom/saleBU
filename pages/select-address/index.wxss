@@ -3,11 +3,11 @@ page {
   padding-bottom: 80rpx;
 }
  .addr {
-   padding-left: 15rpx;
-  padding-right: 15rpx; 
+  padding: 0 3% 3%;
   margin-top: 15rpx;
   /* border-top: 1rpx solid #ccc;
   border-bottom: 1rpx solid #ccc; */
+  border-bottom: 20rpx solid #f2f2f2;
 } 
 .addr-user {
   line-height: 64rpx;
@@ -17,17 +17,24 @@ page {
   border-bottom: 1rpx solid #ccc;
 }
 .addr-selecrt {
-  padding-top: 10rpx;
+  padding-top: 16rpx;
   padding-bottom: 10rpx;
 }
 .add-addr {
   position: fixed;
   bottom: 0;
-  background-color: orange;
+  background-color: #4bc5ee;
   text-align: center;
   line-height: 80rpx;
   width: 100%;
   color: #fff;
-  font-size:36rpx;
+  font-size:32rpx;
   z-index: 999;
+}
+
+.icon-bianji, .icon-shanchu {
+  font-size: 32rpx;
+}
+.icon-shanchu {
+  margin-right: 4rpx;
 }

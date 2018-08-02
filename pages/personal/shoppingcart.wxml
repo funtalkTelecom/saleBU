@@ -1,8 +1,8 @@
 <!--pages/personal/cart.wxml-->
 <view class='container'>
   <view class='nav'>
-    <view bindtap='nav' data-type="hm" class="{{carttype=='hm' ? 'active' : ''}}">号码</view>
-    <view bindtap='nav' data-type="bk"  class="{{carttype=='bk' ? 'active' : ''}}">白卡商品</view>
+    <view bindtap='nav' data-type="hm" class="borr {{carttype=='hm' ? 'active' : ''}}"><view class='navv'>号码</view></view>
+    <view bindtap='nav' data-type="bk"  class="{{carttype=='bk' ? 'active' : ''}}"><view class='navv'>白卡商品</view></view>
   </view>
   <!-- 号码 -->
   <view class='hm-cart'  hidden="{{carttype=='hm' ? false : true}}">
@@ -123,7 +123,7 @@
       <!-- <view class='radio'></view> -->
       <view hidden="{{carttype=='hm' ? false : true}}" bindtap='selsctAll' >
         <test class="iconfont icon-weixuanzhongyuanquan {{selectAllHMState? 'icon-30xuanzhongyuanxingfill' : ''}}"></test>
-        <text >全选</text>
+        <text class='chooseall' >全选</text>
       </view>
        <view hidden="{{carttype=='bk' ? false : true}}"  bindtap='selsctAll'>
         <test class="iconfont icon-weixuanzhongyuanquan {{selectAllBKState? 'icon-30xuanzhongyuanxingfill' : ''}}"></test>
@@ -131,7 +131,7 @@
       </view> 
       
      
-      <view>合计 ： <text class='red'>￥{{totalmoney}}</text></view>
+      <view class='heji'>合计 ： <text class='red'>￥{{totalmoney}}</text></view>
     </view>
 
     <view class='pay' bindtap='topay'>结算</view>

@@ -43,7 +43,7 @@
   <!-- 出价部分 -->
    <view class='bid'  hidden="{{epSaleGoods.gSatus==1 ? true : false}}" >
     <view class='bid-num'>
-      <view>共{{epSaleGoods.priceCount}}</view>
+      <view>共<view class='chujia'>22{{epSaleGoods.priceCount}}</view></view>
       <view>次出价</view>
     </view>
     <view class='bid-order'>

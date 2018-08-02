@@ -22,7 +22,7 @@ Page({
     searchPhone: "",
     flag: false,
     more: false,
-    array: ['美1111111111国', '中国', '巴西', '日本'],
+    array: ['美111111国', '中国', '巴西', '日本'],
     index: 0,
   
   },

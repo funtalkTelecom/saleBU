@@ -1,3 +1,5 @@
+.clearfix:after{content:"";height:0;visibility:hidden;display:block;clear:both;}
+image {width: 100%;max-width: 100%;}
 /* pages/personal/payorder.wxss */
 .addr {
   padding: 40rpx;
@@ -15,11 +17,10 @@
     border-left: 1px solid currentColor;
     border-top: 1px solid currentColor;
     transform: translate3d(0,-50%,0) rotate(135deg);
-     -webkit-transform: translate3d(0,-50%,0) rotate(135deg); 
+    -webkit-transform: translate3d(0,-50%,0) rotate(135deg); 
 }
 .addr-np {
-  font-size: 32rpx;
-  font-weight: 700;
+  font-size: 34rpx;
   margin-bottom: 10rpx;
 }
 .addr-np text {
@@ -28,30 +29,33 @@
 .addr-content {
   font-size: 26rpx;
   margin-right: 26rpx;
-  line-height: 26rpx;
+  line-height: 36rpx;
 }
 .cart {
-  margin-top: 26rpx;
-  margin-left: 20rpx;
+  margin: 6% 3%;
 }
 .cart-item {
-  display: flex;
+  margin-bottom: 2%;
 }
-.cart-item image {
-  width: 120rpx;
-  height: 120rpx;
-  margin-right: 14rpx;
+.cartl {
+  width: 17%;
+  float: left;
 }
 .cart-item-content {
   font-size: 28rpx;
-  margin-top: 20rpx;
+  margin-top: 10rpx;
+  width: 80%;
+  float: right;
 }
 .cart-item-content-name {
   height: 56rpx;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .red {
-  color: red;
+  color: #ff3300;
 }
 .bottom_bar {
   position: fixed;
@@ -68,12 +72,12 @@
 }
 .bail {
   width: 496rpx;
-  background: #4f4f4f;
+  background:#4bc5ee ;
   line-height: 80rpx;
 }
 .pay {
   flex-grow:1;
   /* width: 254rpx;  */
-  background: orange;
+  background: #ff3300;
   line-height: 80rpx;
 }

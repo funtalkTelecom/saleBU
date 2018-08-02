@@ -91,8 +91,8 @@
       支付方式
     </view>
     <view class='paymode-main'>
-      <view class="{{wxpay==1?'active':''}}" bindtap='usewxpay' data-wxpay="1">微信支付</view>
-      <view class="{{wxpay==3?'active':''}}" bindtap='usewxpay' data-wxpay="3">线下支付</view>
+      <view class="{{wxpay==1?'active':''}}" bindtap='usewxpay' data-wxpay="1"><image class='zffs' mode="widthFix" src="../../imgs/personal/weixin.png"></image>微信支付</view>
+      <view class="{{wxpay==3?'active':''}}" bindtap='usewxpay' data-wxpay="3"><image class='zffs' mode="widthFix" src="../../imgs/personal/zhifubao.png"></image>线下支付</view>
     </view>
     <view class='offline' wx:if="{{wxpay==3}}">
       <view>银行：中信银行</view>
@@ -103,7 +103,7 @@
   </view>
 
   <view class='pay'>
-    <view>￥{{money}}</view>
+    <view class='zonge'>￥{{money}}</view>
     <view bindtap='surePay'>确认支付</view>
   </view>
 

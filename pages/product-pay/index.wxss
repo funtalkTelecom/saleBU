@@ -2,19 +2,33 @@ page{}
 
 .paymode-main {
   display: flex;
+  justify-content: center;
 }
 .paymode-main view {
-  border: 1rpx solid #666;
+  border: 1rpx solid #bbb;
   border-radius: 20rpx;
-  padding: 16rpx 56rpx;
+  padding: 16rpx 30rpx 16rpx;
+  text-align: center;
   font-size: 24rpx;
   margin: 32rpx 20rpx 24rpx;
 }
 
 .offline {
-  font-size: 28rpx;
-  padding: 20rpx;
+  margin: 30rpx;
+  padding: 30rpx;
   line-height: 30rpx;
+  background-color: #fef9e3;
+  border-radius: 20rpx;
+}
+.zffs {
+  width: 40rpx;
+  vertical-align: text-top;
+  margin-right: 8rpx;
+}
+.offline view {
+  font-size: 24rpx;
+  color: #d26d15;
+  line-height: 44rpx;
 }
 .paymode-main .wx {
   border: 1rpx solid #09bb07;
@@ -23,6 +37,10 @@ page{}
 .paymode-main .balance {
   border: 1rpx solid #f60;
   color: #f60;
+}
+.paymode-main .instalment {
+  border: 1rpx solid #00b2ee;
+  color: #00b2ee;
 }
 .footer-but {
   position: fixed;
@@ -38,4 +56,15 @@ page{}
 }
 .balance-bgc {
 background-color:#f60;
+}
+.instalment-bgc {
+background-color:#00b2ee;
+}
+.zficon {
+  width: 44rpx;
+  vertical-align: text-top;
+  margin-right: 12rpx;
+}
+.tishi {
+  margin-top: 2%;
 }

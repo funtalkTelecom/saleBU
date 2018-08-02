@@ -27,7 +27,7 @@
   
   </view>
   <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
-      <view class="loadmore" wx:else>已经没有更多了</view>
+  <view class="loadmore nomore" wx:else><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>已经没有更多了~</view>
 
 
 </view>

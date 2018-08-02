@@ -14,27 +14,27 @@
   </view>
   <!-- 商品 -->
   <view class='cart'>
-    <view class='cart-item'>
-      <view>
-        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+    <view class='cart-item clearfix'>
+      <view class='cartl'>
+        <image mode='widthFix' src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
       </view>
       <view class='cart-item-content'>
         <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>
         <view>直供价：<text class='red'>￥ 2.00</text> </view>
       </view>
     </view>
-    <view class='cart-item'>
-      <view>
-        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+    <view class='cart-item clearfix'>
+      <view class='cartl'>
+        <image mode='widthFix' src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
       </view>
       <view class='cart-item-content'>
         <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>
         <view>直供价：<text class='red'>￥ 2.00</text> </view>
       </view>
     </view>
-    <view class='cart-item'>
-      <view>
-        <image src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
+    <view class='cart-item clearfix'>
+      <view class='cartl'>
+        <image mode='widthFix' src='https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3808792960,3316510060&fm=27&gp=0.jpg'></image>
       </view>
       <view class='cart-item-content'>
         <view class='cart-item-content-name'>乐语 联通妙畅聊卡北京-1707107-白卡</view>

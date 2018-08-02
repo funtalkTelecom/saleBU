@@ -13,5 +13,10 @@ page {
   margin-left: 0;
   margin-right: 0;
   align-self:flex-end;
+  background-color: #00b2ee;
+  color: #fff;
 }
 .red {color:red;}
+.jine {
+  margin-top: 3%;
+}

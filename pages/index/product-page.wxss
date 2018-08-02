@@ -60,3 +60,11 @@
 .content .active {
   color: red;
 }
+
+
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
+}

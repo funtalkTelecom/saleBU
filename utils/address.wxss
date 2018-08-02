@@ -6,7 +6,7 @@ align-items: center;
 
 }
 .icon-xinzengdizhi {
-  font-size: 100rpx;
+  font-size: 70rpx;
   color: orange;
   margin-right: 50rpx;
 }

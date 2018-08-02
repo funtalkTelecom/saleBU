@@ -8,9 +8,9 @@ Page({
   data: {
     paytext: "微信支付",
     defaultValue: 1,
-    pay: [{ text: "微信支付", value: 1, classStyle: "wx" },
-      { text: "线下支付", value: 2, classStyle: "balance" }]
-
+    // pay: [{ text: "微信支付", value: 1, classStyle: "wx" },
+    //   { text: "线下支付", value: 2, classStyle: "balance" },
+    //   { text: "分期付款", value: 3, classStyle: "instalment"}]
   },
 
   /**
@@ -111,9 +111,10 @@ Page({
     if (wxpay == 1) {
       paytext = "微信支付"
     } else if (wxpay == 2) { paytext = "线下支付" }
+    else if (wxpay == 3) { paytext = "分期付款" }
     this.setData({
       defaultValue: wxpay,
       paytext: paytext
-    })
+    }) 
   }
 })

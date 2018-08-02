@@ -6,9 +6,8 @@ page{}
 }
 .simple-info {
   font-size: 28rpx;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
-  line-height: 46rpx;
+  padding: 20rpx 30rpx;
+  line-height: 50rpx;
 }
 .addr {
   position: relative;
@@ -59,10 +58,12 @@ page{}
 .line-h {
   line-height: 64rpx;
   margin-top: 40rpx;
-  border-top: 1rpx solid #F4F4F4;
 }
 .price-num {
 display:flex;
 justify-content:space-between;
 
+}
+.bbor {
+  border-bottom: 20rpx solid #f2f2f2;
 }

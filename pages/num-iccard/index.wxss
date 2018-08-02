@@ -5,7 +5,7 @@ page {
   padding-bottom: 80rpx;
 }
 .icon-jia1 {
-  font-size: 80rpx;
+  font-size: 60rpx;
 }
 /* .icon-shanchu3 {
   position: absolute;
@@ -42,7 +42,6 @@ page {
   border-bottom: 1rpx solid #ccc;
 }
 .cell > view:first-child {
-  text-align: right;
   width: 24%;
   margin-right: 20rpx;
 }
@@ -93,4 +92,7 @@ page {
   width: 19%;
   text-align: right;
   margin-right: 20rpx;
+}
+.zan-panel__title {
+  border-top: 20rpx solid #f2f2f2;
 }
