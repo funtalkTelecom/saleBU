@@ -1,6 +1,6 @@
 <!--pages/auction/pay-bail.wxml-->
 <view class='container'>
-  <view class='bail-conten-price'>保证金：<text class="red">{{gDeposit}}6585</text>元</view>
+  <view class='bail-conten-price'>保证金：<text class="red">{{gDeposit}}</text>元</view>
   <view class='bail-conten'>
     <view class='bail-conten-text'>备注：</view>
     <view class='bail-conten-text'>1、若竞拍不成功，保证金将全额退还</view>
