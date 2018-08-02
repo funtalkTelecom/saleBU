@@ -2,8 +2,8 @@
 <view class="container">
   <view class='header'>
     <view class='search'>
-      <view><text class='iconfont icon-icon--'></text></view>
-      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11" type='number'></input></view>
+      <view class='sicon'><text class='iconfont icon-icon--'></text></view>
+      <view class='sinput'><input placeholder="请输入您喜欢的数字(如生日，车牌号等）"  focus="true" bindinput="inputSearch" maxlength="11" type='number'></input></view>
     </view>
     <view class='but'>
       <button class="yellow {{searchPhone.length?'':'disabled'}}" disabled="{{!searchPhone.length}}" bindtap="doSearch">搜索</button>

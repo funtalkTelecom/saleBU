@@ -12,7 +12,7 @@
     </view> -->
     <view class='search' bindtap='tapSearch'>
 
-      <text class='iconfont icon-icon--'></text> 生日，车牌号等
+      <text class='iconfont icon-icon--'></text> 请输入您喜欢的数字(如生日，车牌号等）
     </view>
   </view> 
 

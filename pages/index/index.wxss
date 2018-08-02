@@ -18,7 +18,7 @@ page {
 }
 .header{
   position: fixed;
-  display: -webkit-flex;
+  /* display: -webkit-flex; */
   top:0;
   left: 0;
   width: 100%;
@@ -28,7 +28,7 @@ page {
   -webkit-transition: background 0.5s ease-in-out;
 }
 .header.scrolled {
-	background: #feb70f;
+	background: #66ccff;
 }
 /* .header text {
   vertical-align:middle;
@@ -37,6 +37,7 @@ page {
 	width: 40rpx;
 	height: 40rpx;
 	vertical-align: top; 
+
 }
 .header .location {
 	color: #fff;
@@ -51,14 +52,21 @@ page {
 	vertical-align: middle;
 }
 .header .search{
-  -webkit-flex: 1;
+  /* -webkit-flex: 1; */
   color: #888;
-	font-size: 25rpx;
+	font-size: 26rpx;
 	line-height: 40rpx;
   padding: 10rpx;
 	border-radius: 30rpx;
 	background: #fff;
+  height: 40rpx;
 } 
+.search .icon-icon--{
+   vertical-align:text-top; 
+  font-size: 40rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}
 .banner {
 	height: 320rpx;
   width: 100%;
