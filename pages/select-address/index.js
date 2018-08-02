@@ -110,7 +110,7 @@ Page({
       success: (res) => {
         if (res.data.code == 200) {
           wx.showToast({
-            title: '成功',
+            title: '设置成功',
             icon: 'success',
             duration: 1000
           })
