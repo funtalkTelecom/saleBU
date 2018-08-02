@@ -86,7 +86,7 @@
     </view>
   </zan-panel>
 
-  <zan-panel title="入网信息">
+   <!-- <zan-panel title="入网信息">
     <view class='cell'>
       <view>机主姓名</view>
       <input name="commpayName" placeholder="请输入机主姓名" />
@@ -113,7 +113,6 @@
       <view>身份证反面</view>
       <view class='img-view' wx:if="{{tempFilePaths[1]}}">
         <view class='img-view-pos'>
-          <!-- <text class='iconfont icon-shanchu3'></text> -->
           <view class='del' bindtap='delimg' data-index='1'>×</view>
           <image src="{{tempFilePaths[1]}}" mode="aspectFit" bindtap="previewImage" data-index='1'></image>
         </view>
@@ -128,7 +127,6 @@
       <view>手持身份证照</view>
       <view class='img-view' wx:if="{{tempFilePaths[2]}}">
         <view class='img-view-pos'>
-          <!-- <text class='iconfont icon-shanchu3'></text> -->
           <view class='del' bindtap='delimg' data-index='2'>×</view>
           <image src="{{tempFilePaths[2]}}" mode="aspectFit" bindtap="previewImage" data-index='2'></image>
         </view>
@@ -139,7 +137,7 @@
       <view class='case'>示例</view>
       <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1530610678772&di=1b3083f546aa7dceb6f93e62a1931cea&imgtype=0&src=http%3A%2F%2Fwww.mbajyz.com%2F_uploads%2Fimage%2F2015-09-23%2F2.jpg" mode="aspectFit" style='width:80rpx;height:80rpx;'></image>
     </view>
-  </zan-panel>
+  </zan-panel>  -->
 
 
 
