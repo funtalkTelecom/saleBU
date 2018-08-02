@@ -9,8 +9,9 @@ Page({
     paytext: "微信支付",
     defaultValue: 1,
     pay: [{ text: "微信支付", value: 1, classStyle: "wx" },
-      { text: "线下支付", value: 2, classStyle: "balance" }]
-
+      { text: "线下支付", value: 2, classStyle: "balance" },
+      { text: "分期付款", value: 4, classStyle: "wx" }],
+    fenqiFlag:false
   },
 
   /**
@@ -36,6 +37,11 @@ Page({
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
+          if (res.data.data.order.total>=200){
+            this.setData({
+              fenqiFlag:true
+            })
+          }
           var orderItem=res.data.data.orderItem;
           for (var i=0;i<orderItem.length;i++){
             if (orderItem[i].skuGoodsType==3){
@@ -50,52 +56,52 @@ Page({
     })
   },
   pay:function(){
-    var that=this;
     network.POST({
       url: "pay-order",
       params: {
-        orderId: that.data.orderid,
+        orderId: this.data.orderid,
+        payMenthodId: this.data.defaultValue
       },
       success: (res) => {
-
         if (res.data.code == 200) {
-          wx.requestPayment({
-            'timeStamp': res.data.data.timeStamp,
-            'nonceStr': res.data.data.nonceStr,
-            'package': res.data.data.package,
-            'signType': 'MD5',
-            'paySign': res.data.data.paySign,
-            'success': function (res) {
-              
-              if (that.data.skuGoodsType==3){
-                wx.redirectTo({
-                  url: "/pages/agent-num/index"
-                })
-              }else{
-                wx.redirectTo({
-                  url: "/pages/my-order/index?tabtype=0"
+          if (this.data.defaultValue==1){//微信
+            wx.requestPayment({
+              'timeStamp': res.data.data.timeStamp,
+              'nonceStr': res.data.data.nonceStr,
+              'package': res.data.data.package,
+              'signType': 'MD5',
+              'paySign': res.data.data.paySign,
+              'success': function (res) {
+                if (this.data.skuGoodsType == 3) {
+                  wx.redirectTo({
+                    url: "/pages/agent-num/index"
+                  })
+                } else {
+                  wx.redirectTo({
+                    url: "/pages/my-order/index?tabtype=0"
+                  })
+                }
+              },
+              'fail': function (res) {
+                wx.showToast({
+                  title: "取消支付",
+                  icon: 'none',
+                  duration: 3000
                 })
               }
-            },
-            'fail': function (res) {
-              
-              // console.log("尚未付款成功");
-              wx.showToast({
-                title: "取消支付",
-                icon: 'none',
-                duration: 3000
-              })
-            }
-          })
+            })
+          } else if (this.data.defaultValue == 4){//分期
+            wx.navigateTo({
+              url: '/pages/instalments/index?src=' + encodeURIComponent(res.data.data.trade_qrcode),
+            })
+          }
         } else if (res.data.data) {
-          
           wx.showToast({
             title: res.data.data,
             icon: 'none',
             duration: 3000
           })
         } else {
-          
           wx.showToast({
             title: "支付失败",
             icon: 'none',
@@ -111,6 +117,7 @@ Page({
     if (wxpay == 1) {
       paytext = "微信支付"
     } else if (wxpay == 2) { paytext = "线下支付" }
+    else if (wxpay == 4) { paytext = "分期付款" }
     this.setData({
       defaultValue: wxpay,
       paytext: paytext

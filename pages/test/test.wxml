@@ -1,3 +1,76 @@
 <!--pages/test.wxml-->
-<text>pages/test.wxml</text>
-<button bindtap='abc'>分享朋友圈</button>
+<view>
+  <text>pages/test.wxml</text>
+  <button bindtap='share'>分享朋友圈</button>
+    <button bindtap='toweb'>web-view</button>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+  <view>11111111111</view>
+
+  <!-- <view class='zhezhao' hidden='{{flag}}'>    
+      <view class='zhongxin'>    
+     <canvas canvas-id="myCanvas" style="border: 1px solid #fff;" /> 
+    <image mode="scaleToFill" src="{{imagePath}}"></image>
+    <view class='save' bindtap='save'>保存分享图</view>
+      </view>    
+
+    </view>     -->
+   <view class="canvas-box"> 
+    <canvas  canvas-id="myCanvas" />
+   </view> 
+
+
+  <view class="mask" hidden='{{!maskFlag}}' >
+     <view class='mask-view' bindtap='hideMask'></view> 
+    <view class='zhongxin'>
+      <image  src="{{imagePath}}"></image>
+      <view class='save' catchtap='save'>保存分享图</view>
+    </view>
+
+  </view>
+</view>

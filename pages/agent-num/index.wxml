@@ -83,7 +83,7 @@
         <zan-panel title="白卡信息">
           <zan-row row-class="iccid-info">
             <zan-col col="24">
-              <input name="iccid" placeholder="请输入绑定的ICCID" value='{{iccidValue}}' />
+              <input name="iccid" placeholder="请输入绑定的ICCID" value='{{iccidValue}}' maxlength='19' type="number"/>
             </zan-col>
           </zan-row>
         </zan-panel>

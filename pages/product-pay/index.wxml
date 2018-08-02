@@ -1,7 +1,9 @@
 <view>
   <zan-panel title="支付方式">
     <view class='paymode-main'>
-        <view wx:for="{{pay}}" wx:key="id" class="{{defaultValue==item.value?item.classStyle:''}}" bindtap='usewxpay' data-wxpay="{{item.value}}">{{item.text}}</view>
+        <view  class="{{defaultValue==1?'wx':''}}" bindtap='usewxpay' data-wxpay="1">微信支付</view>
+        <view  class="{{defaultValue==2?'balance':''}}" bindtap='usewxpay' data-wxpay="2">线下支付</view>
+        <view  class="{{defaultValue==4?'wx':''}}" bindtap='usewxpay' data-wxpay="4" hidden='{{!fenqiFlag}}'>分期付款</view>
       </view>
       <view class='offline' wx:if="{{defaultValue==2}}">
         <view>银行：中信银行</view>

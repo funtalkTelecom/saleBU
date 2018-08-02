@@ -1,5 +1,9 @@
 App({
   onLaunch: function (options) {
+    console.log(options)
+    console.log(options.scene)
+    var scene = decodeURIComponent(options.scene)
+    console.log(scene)
     if (options.scene == 1007 && options.scene == 1008){
       //推荐有奖
     }

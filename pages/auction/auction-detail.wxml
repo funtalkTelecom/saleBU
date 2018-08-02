@@ -86,7 +86,7 @@
     <view class="bail center">
       <view class='stepper'>
         <view>加价</view>
-        <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" step="{{ stepper.step }}" data-component-id="stepper" bind:change="handleZanStepperChange" bind:focus="handleZanStepperFocus" bind:input="handleZanStepperInput" size='large' width="80px">
+        <zan-stepper stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" step="{{ stepper.step }}" data-component-id="stepper" bind:change="handleZanStepperChange" bind:focus="handleZanStepperFocus" bind:input="handleZanStepperInput" size='large' width="80px" inputType="digit">
         </zan-stepper>
       </view>
     </view>

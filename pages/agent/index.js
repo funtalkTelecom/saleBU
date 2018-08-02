@@ -132,7 +132,11 @@ Page({
       return
     }
     if (!formData.phone) {
-      Toptips('请输入联系方式');
+      Toptips('请输入联系号码');
+      return
+    }
+    if (!(/^1[3456789]\d{9}$/.test(formData.phone))) {
+      Toptips('联系号码格式有误');
       return
     }
     if (!this.data.province) {

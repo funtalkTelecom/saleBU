@@ -19,7 +19,7 @@ input {
   flex: 1
 }
 .cell > view {
-  width: 18%;
+  width: 20%;
 }
  .picker {
   min-width: 20rpx;

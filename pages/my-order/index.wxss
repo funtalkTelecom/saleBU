@@ -16,9 +16,9 @@ padding-top: 10rpx;
 padding-bottom: 10rpx; 
 }
 .order-pay button{
-  padding-left: 60rpx;
-  padding-right: 60rpx;
-  margin-left: 50rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin-left: 20rpx;
   margin-right: 0;
   background-color: #fff;
   border: 1rpx solid #FF6600;
@@ -27,4 +27,89 @@ padding-bottom: 10rpx;
 .red {
   color: red;
   font-weight: 700;
+}
+/* 遮罩 */
+ .mask {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color:rgba(0, 0, 0, 0.5); 
+} 
+.dialog {
+  position: fixed;
+    z-index: 5000;
+    width: 80%;
+    max-width: 600rpx;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.dialogpos {
+  top: 30%;
+}
+.dialog-hd {
+  padding: 40rpx 50rpx 12rpx;
+}
+.dialog-hd-title {
+  font-size: 16px;
+}
+.dialog-bd {
+  padding: 0 50rpx 12rpx;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 14px;
+}
+.radio-group textarea {
+  width: auto;
+  line-height: 52rpx;
+  height: 104rpx;
+  border: 1px solid #ccc;
+}
+.radio-group .radio {
+  line-height: 52rpx;
+}
+.dialog-ft {
+  position: relative;
+    line-height: 96rpx;
+    font-size: 16px;
+    display: -webkit-flex;
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+.dialog-ft-cancel,
+.dialog-ft-sure {
+flex: 1;
+}
+.dialog-ft-sure {
+  color: #0bb20c;
+  border-left: 1px solid #ccc;
+  box-sizing: border-box;
+  padding:0;
+  font-size: 16px;
+  line-height: 96rpx;
+  border-radius:0;
+  background-color:#fff;
+}
+/* 模拟page */
+.page {
+  display: block;
+  min-height: 100%;
+   height: 100%; 
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
 }

@@ -30,7 +30,11 @@ Page({
     pageNum: 0,
     limit: 10,
     hasMore: true,
-    order: []
+    order: [],
+    textareaFlag:false,
+    dialogpos:'',//遮罩获得焦点的样式
+    textareaValue:'',
+    checked:"checked"
   },
 
   /**
@@ -40,7 +44,7 @@ Page({
     this.setData({
       selectedId: options.tabtype
     })
-    this.loadMoreOrder(options.tabtype)
+    this.loadMoreOrder(options.tabtype,"up")
   },
   /**
    * 生命周期函数--监听页面显示
@@ -48,9 +52,21 @@ Page({
   onShow: function () {
 
   },
+  /**
+  * 页面相关事件处理函数--监听用户下拉动作
+  */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    this.setData({
+      pageNum: 0,
+      order: [],
+      hasMore: true
+    })
+    this.loadMoreOrder(this.data.selectedId, "down")
+  },
   // 触底加载更多
   onReachBottom: function () {
-    this.loadMoreOrder(this.data.selectedId);
+    this.loadMoreOrder(this.data.selectedId,"up");
   },
   handleTabChange: function (e) {
     this.setData({
@@ -59,9 +75,9 @@ Page({
       order: [],
       hasMore: true
     })
-    this.loadMoreOrder(e.detail)
+    this.loadMoreOrder(e.detail,"up")
   },
-  loadMoreOrder: function (e) {
+  loadMoreOrder: function (e, touchType) {
     if (!this.data.hasMore) return;
     network.GET({
       url: "order",
@@ -76,6 +92,12 @@ Page({
             order: orders,
             hasMore: flag,
           })
+        }
+      },
+      complete:(res)=>{
+        if (touchType=="down"){
+          wx.hideNavigationBarLoading(); 
+          wx.stopPullDownRefresh();
         }
       }
     })
@@ -128,7 +150,7 @@ Page({
                   order: [],
                   hasMore: true
                 })
-                this.loadMoreOrder(this.data.selectedId)
+                this.loadMoreOrder(this.data.selectedId,"up")
               }else{
                 wx.showToast({
                   title: res.data.data,
@@ -141,5 +163,45 @@ Page({
         } 
       }
     })
+  },
+  cancelOrder:function(){//显示遮罩
+    this.setData({
+      maskFlag: true
+    })
+  },
+  radioChange: function (e) {//显示textarea
+    if(e.detail.value==4){
+      this.setData({
+        textareaFlag:true,
+        // radioValue: e.detail.value
+      })
+    }else{
+      this.setData({
+        textareaFlag: false,
+        // radioValue: e.detail.value
+      })
+    }
+  },
+  hideMask: function () {//隐藏遮罩
+    this.setData({
+      maskFlag: false,
+      textareaValue:'',
+      textareaFlag: false,
+      checked:"checked"
+      // radioValue:1
+    })
+  },
+  focusHandle:function(){//获得焦点
+    this.setData({
+      dialogpos:'dialogpos'
+    })
+  },
+  blurHandle:function(){//失去焦点
+    this.setData({
+      dialogpos: ''
+    })
+  },
+  formSubmit:function(e){//取消订单
+    console.log(e)
   }
 })

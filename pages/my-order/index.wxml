@@ -1,37 +1,67 @@
 <!--pages/my-order/index.wxml-->
-<view>
+<view class="{{maskFlag?'page':''}}">
   <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
 
 
-    <!-- <scroll-view scroll-y="true"> -->
-      <zan-panel class="cell-panel-demo" wx:for="{{order}}" wx:key="id">
-        <zan-cell title="{{item.order_id}}" value="{{item.orderText}}" color="#FF6600;"></zan-cell>
-        <zan-card card-class="test-card" thumb="{{item.fileName}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" bindtap="orderdetail" data-id="{{item.order_id}}">
-          <view slot="detail-slot" class="zan-card__detail order-info">
-            <view>{{item.gName}}</view>
-            <view>订购时间：{{item.addDate}}</view>
-          </view>
-        </zan-card>
-        <view class='order-pay'>
-          <view>
-            <text hidden='{{item.status==1?false:true}}'>需</text>
-            <text hidden='{{item.status==1?true:false}}'>已</text>支付：
-            <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元</view>
-          <button size="mini" bindtap='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>
-          <button size="mini" bindtap='sureharvest' hidden='{{item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>签收</button>
+  <!-- <scroll-view scroll-y="true"> -->
+  <zan-panel class="cell-panel-demo" wx:for="{{order}}" wx:key="id">
+    <zan-cell title="{{item.order_id}}" value="{{item.orderText}}" color="#FF6600;"></zan-cell>
+    <zan-card card-class="test-card" thumb="{{item.fileName}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}" bindtap="orderdetail" data-id="{{item.order_id}}">
+      <view slot="detail-slot" class="zan-card__detail order-info">
+        <view>{{item.gName}}</view>
+        <view>订购时间：{{item.addDate}}</view>
+      </view>
+    </zan-card>
+    <view class='order-pay'>
+      <view>
+        <text hidden='{{item.status==1?false:true}}'>需</text>
+        <text hidden='{{item.status==1?true:false}}'>已</text>支付：
+        <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元</view>
+      <button size="mini" bindtap='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>
+      <button size="mini" bindtap='cancelOrder' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>取消订单</button>
+      <button size="mini" bindtap='sureharvest' hidden='{{item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>签收</button>
+    </view>
+  </zan-panel>
+
+  <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+  <view class="loadmore" wx:else>已经没有更多了</view>
+  <!-- </scroll-view> -->
+
+
+
+
+  <view hidden='{{!maskFlag}}'>
+    <view class='mask' bindtap='hideMask'></view>
+    <view class='dialog {{dialogpos}}'>
+      <view class='dialog-hd'>
+        <view class='dialog-hd-title'>选择取消订单的原因</view>
+      </view>
+      <form bindsubmit="formSubmit">
+        <view class='dialog-bd'>
+          <radio-group class="radio-group" bindchange="radioChange" name="radio">
+            <label class="radio">
+              <radio value="1" checked="{{checked}}" style='transform:scale(0.7);'/>1.下错单了,想重新下单
+            </label>
+            <label class="radio">
+              <radio value="2"  style='transform:scale(0.7);'/>2.暂时不想买了
+            </label>
+            <label class="radio">
+              <radio value="3"  style='transform:scale(0.7);'/>3.地址填错了
+            </label>
+            <label class="radio">
+              <radio value="4" style='transform:scale(0.7);'/>4.其他
+            </label>
+            <textarea hidden='{{!textareaFlag}}' placeholder="请填写其他原因" name="textarea" show-confirm-bar="{{false}}"
+              adjust-position="{{false}}" bindfocus="focusHandle" bindblur="blurHandle" value='{{textareaValue}}'/>
+          </radio-group>
         </view>
-      </zan-panel>
-
-      <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
-      <view class="loadmore" wx:else>已经没有更多了</view>
-    <!-- </scroll-view> -->
-
-
- 
+        <view class='dialog-ft'>
+          <view class='dialog-ft-cancel' bindtap='hideMask'>取消</view>
+          <button class='dialog-ft-sure'  formType="submit">确定</button>
+        </view>
 
 
-  
-
-
-
+      </form>
+    </view>
+  </view>
 </view>

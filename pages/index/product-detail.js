@@ -19,8 +19,7 @@ Page({
     },
     selectedId: 1,
     stepper: {
-      stepper: 1,
-      min: 1
+      min:1
     }
   
   },
@@ -71,9 +70,16 @@ Page({
       success: (res) => {
         if (res.data.code == 200) {
           var max = "stepper.max"
+          var skuNum=res.data.data.sku.skuNum
+          if (skuNum==0){
+            this.data.stepper.stepper=0
+          }else{
+            this.data.stepper.stepper = 1
+          }
           this.setData({
             goodObj: res.data.data,
-            [max]: res.data.data.sku.skuNum
+            [max]: skuNum,
+            stepper: this.data.stepper
           })
         }
       }
@@ -100,9 +106,11 @@ Page({
     })
   },
   buynow:function(e){
-    wx.navigateTo({
-      url: "/pages/check-out/index?skuid=" + this.data.goodObj.sku.skuId + "&&numcount=" + this.data.stepper.stepper
-    })
+    if (this.data.stepper.max){
+      wx.navigateTo({
+        url: "/pages/check-out/index?skuid=" + this.data.goodObj.sku.skuId + "&&numcount=" + this.data.stepper.stepper
+      })
+    }
   },
   // inputNum: function (e) { //输入框选数量
   //   let amount = e.detail.value;

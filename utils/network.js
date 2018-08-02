@@ -55,7 +55,8 @@ function share(params) {
   }
   return {
     title: "乐语销售系统",
-    path: path
+    path: path,
+    imageUrl:'../../imgs/share.jpg'
   }
 }
 

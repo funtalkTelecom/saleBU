@@ -1,4 +1,5 @@
 // pages/index/search-result.js
+var network = require("../../utils/network.js")
 Page({
 
   /**
@@ -24,6 +25,10 @@ Page({
     more: false,
     array: ['美1111111111国', '中国', '巴西', '日本'],
     index: 0,
+    hasMore: true,
+    pageNum: 0,
+    limit: 20,
+    numberTypeList: [],
   
   },
 
@@ -31,7 +36,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      searchPhone: options.searchPhone
+    })
   },
 
   /**
@@ -45,7 +52,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      hasMore: true,
+      pageNum: 0,
+      numberTypeList: []
+
+    })
+    this.loadMore()
   },
 
   /**
@@ -73,7 +86,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    this.loadMore();
   },
 
   /**
@@ -86,6 +99,30 @@ Page({
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
+    })
+  },
+  loadMore: function () {
+    // 2.2如果没有更多数据，就直接返回
+    if (!this.data.hasMore) return;
+    network.GET({
+      url: "fand-number",
+      params: {
+        pageNum: ++this.data.pageNum,
+        limit: this.data.limit,
+        num: this.data.searchPhone
+      },
+      success: (res) => {
+        if (res.data.code == 200) {
+          console.log(res)
+          var numberTypeList = this.data.numberTypeList.concat(res.data.data.list);
+          var count = parseInt(res.data.data.total);
+          var flag = this.data.pageNum * this.data.limit < count;
+          this.setData({
+            numberTypeList: numberTypeList,
+            hasMore: flag,
+          })
+        }
+      }
     })
   }
 })

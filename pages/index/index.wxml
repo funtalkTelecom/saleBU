@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- <view class='header scrolled'>
-    <view class='location'>
+   <view class='header scrolled'>
+    <!-- <view class='location'>
 
       <text class='iconfont icon-dizhi'></text>
       <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
@@ -9,12 +9,12 @@
           号码归属地：{{region[1]}}
         </view>
       </picker>
-    </view>
+    </view> -->
     <view class='search' bindtap='tapSearch'>
 
       <text class='iconfont icon-icon--'></text> 生日，车牌号等
     </view>
-  </view> -->
+  </view> 
 
   <scroll-view class='main' scroll-into-view="{{toView}}" scroll-y="true">
     <view>

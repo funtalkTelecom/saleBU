@@ -1,13 +1,14 @@
 page{
   display: flex;  
   flex-direction: column;  
-  height: 100%;
+  /* height: 100%; */
+  background-color: #f2f2f2;
   }
 .container {
   flex: auto;  
   display: flex;  
   flex-direction: column;  
-  background: #fff;  
+  /* background: #fff;   */
 }
 .filters{
 display: flex;
@@ -62,3 +63,42 @@ border-right: 0;
   /* position: relative;
   right: -43rpx; */
 } 
+/* ---------------------------- */
+.cardbody-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cardbody-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rpx;
+  width: 49%;
+  background-color: #fff;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.item-phone {
+  font-weight: 700;
+}
+
+.item-price, .item-desc {
+  font-size: 14px;
+}
+
+.color-cyan {
+  color: #00b2ee;
+}
+
+.color-orange {
+  color: orange;
+  font-weight: 700;
+}
+.item-contact {
+  font-size: 12px;
+  color: #999;
+}

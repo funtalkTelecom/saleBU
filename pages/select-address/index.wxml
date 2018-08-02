@@ -1,8 +1,8 @@
 <view>
   <zan-panel>
     <radio-group class="radio-group" bindchange="radioChange">
-<block wx:for="{{addressList}}" wx:key="id">
-      <zan-row row-class="addr">
+<!-- <block wx:for="{{addressList}}" wx:key="id"> -->
+      <zan-row row-class="addr" wx:for="{{addressList}}" wx:key="id">
         <zan-col col="24">
           <zan-row row-class="addr-user">
             <zan-col col="5"> {{item.personName}} </zan-col>
@@ -18,9 +18,11 @@
               </label>
             </zan-col>
             <zan-col col="4" >
-              <navigator url="/pages/address-add/index?id={{item.id}}" hover-class="none">
+              <!-- <navigator url="/pages/address-add/index?id={{item.id}}" hover-class="none"> -->
+              <view bindtap='editaddr' data-id='{{item.id}}'>
               <text class='iconfont icon-bianji'></text>编辑
-              </navigator>
+              </view>
+              <!-- </navigator> -->
               
             </zan-col>
             <zan-col col="4" offset="1" bindtap='remove' data-id="{{item.id}}" data-index='{{index}}'>
@@ -28,7 +30,7 @@
           </zan-row>
         </zan-col>
       </zan-row>
-      </block>
+      <!-- </block> -->
     </radio-group>
   </zan-panel>
 

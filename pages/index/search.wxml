@@ -3,14 +3,14 @@
   <view class='header'>
     <view class='search'>
       <view><text class='iconfont icon-icon--'></text></view>
-      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11"></input></view>
+      <view><input placeholder="手机号"  focus="true" bindinput="inputSearch" maxlength="11" type='number'></input></view>
     </view>
     <view class='but'>
       <button class="yellow {{searchPhone.length?'':'disabled'}}" disabled="{{!searchPhone.length}}" bindtap="doSearch">搜索</button>
     </view>
   </view>
 
-  <view class='main' hidden="{{flag ? true : false}}">
+   <!-- <view class='main' hidden="{{flag ? true : false}}">
     <view class='lianghao'>
       <view class='lianghao-th'>
         <view class='float-left'><text class='title'>靓号类型 </text></view>
@@ -19,8 +19,6 @@
       <view class='options'>
         <block wx:for="{{lianghao}}" wx:if="{{index<count}}" wx:key="id">
             <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>  
-             <!-- <button size='mini' class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</button>   -->
-
         </block>
       </view>
     </view> 
@@ -61,10 +59,10 @@
     </view>
 
 
-  </view>
+  </view>  -->
 
 
-  <view class='result' hidden="{{flag ? false : true}}">
+  <!-- <view class='result' hidden="{{flag ? false : true}}">
     <view class='filters'>
       <view>靓号类型<text class='iconfont icon-extend'></text></view>
       <view>运营商</view>
@@ -99,5 +97,5 @@
       <view class="loading">努力加载中…</view>
     </scroll-view>
     </view>
-  </view>  
+  </view>   -->
 </view>

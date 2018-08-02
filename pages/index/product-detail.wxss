@@ -106,3 +106,9 @@ image {
  .footer-box view{
   width: 100%;
 } 
+.footer-box .buy {
+background-color:red;
+}
+.footer-box .disabled{
+  background-color:#ccc;
+}

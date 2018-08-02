@@ -53,7 +53,7 @@
 
   <view class='footer-box' bindtap='buynow'>
     <!-- <view style='background-color:orange'>加入购物车</view> -->
-    <view style='background-color:red'>立即购买</view>
+    <view class="{{stepper.max?'buy':'disabled'}}">{{stepper.max?'立即购买':'已售罄'}}</view>
   </view>
 
 

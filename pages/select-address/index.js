@@ -117,5 +117,13 @@ Page({
         }
       }
     })
+  },
+  editaddr:function(e){
+    wx.navigateTo({
+      url: '/pages/address-add/index?id=' + e.currentTarget.dataset.id
+    })
+    this.setData({
+      addressList:[]
+    })
   }
 })

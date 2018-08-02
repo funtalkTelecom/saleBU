@@ -10,6 +10,7 @@ Page({
     wxpay: 'true',
     mealObj:{},//套餐数据
     numberObj:{},//号码数据
+    addrindex:0
   },
 
   /**
@@ -82,7 +83,7 @@ Page({
         if (res.data.code == 200) {
           if (res.data.data.length>0){
             this.setData({
-              curAddressObj: res.data.data[0],
+              curAddressObj: res.data.data[this.data.addrindex],
               addressList: res.data.data
             })
           }else{
@@ -144,7 +145,8 @@ Page({
   selectAddr:function(e){
     const index = e.currentTarget.dataset.index;
     this.setData({
-      curAddressObj: this.data.addressList[index]
+      curAddressObj: this.data.addressList[index],
+      addrindex:index
     })
     this.toggleBottomPopup(); 
   }

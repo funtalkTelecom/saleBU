@@ -61,7 +61,7 @@ Page({
     //   flag:true
     // })
     wx.navigateTo({
-      url: "/pages/index/search-result"
+      url: "/pages/index/search-result?searchPhone=" + this.data.searchPhone
     })
   },
   morebut:function(){

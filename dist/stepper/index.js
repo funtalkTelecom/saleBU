@@ -26,6 +26,10 @@ Component({
     width: {
       type: String,
       value: ''
+    },
+    inputType: {
+      type: String,
+      value: ''
     }
   },
 

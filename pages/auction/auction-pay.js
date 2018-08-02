@@ -8,6 +8,7 @@ Page({
   data: {
     wxpay:1,
     tempFilePaths: [null, null, null],
+    addrindex: 0
   },
 
   /**
@@ -112,7 +113,7 @@ Page({
         if (res.data.code == 200) {
           if (res.data.data.length > 0) {
             this.setData({
-              curAddressObj: res.data.data[0],
+              curAddressObj: res.data.data[this.data.addrindex],
               addressList: res.data.data
             })
           } else {
@@ -127,7 +128,8 @@ Page({
   selectAddr: function (e) {
     const index = e.currentTarget.dataset.index;
     this.setData({
-      curAddressObj: this.data.addressList[index]
+      curAddressObj: this.data.addressList[index],
+      addrindex: index
     })
     this.toggleBottomPopup();
   },
@@ -199,7 +201,11 @@ Page({
                 }
               })
             }
-          } else {
+          } else if (this.data.wxpay == 4) {
+            wx.navigateTo({
+              url: '/pages/instalments/index?src=' + encodeURIComponent(res.data.data.trade_qrcode),
+            })
+          }else {
             wx.showToast({
               title: "登记成功，请您及时付款",
               icon: 'none',

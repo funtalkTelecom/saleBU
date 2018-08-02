@@ -19,7 +19,7 @@ input {
   border-bottom: 1rpx solid #ccc;
 }
 .cell > view {
-  width: 18%;
+  width: 20%;
 }
 .cell input,
 .cell picker {
@@ -52,7 +52,7 @@ input {
 }
 .cell-license {
   line-height: 100rpx;
-  width: 18%;
+  width: 20%;
 }
 .license-img-but {
   display: flex;

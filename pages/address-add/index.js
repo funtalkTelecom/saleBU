@@ -63,7 +63,11 @@ Page({
       return
     }
     if (!formData.personTel) {
-      Toptips('请输入联系方式');
+      Toptips('请输入联系号码');
+      return
+    }
+    if (!(/^1[3456789]\d{9}$/.test(formData.personTel))) {
+      Toptips('联系号码格式有误');
       return
     }
     if (!this.data.provinceId) {
@@ -98,7 +102,9 @@ Page({
             icon: 'success',
             duration: 2000,
             success: function (res) {
-              wx.navigateBack();
+              wx.navigateBack({
+                delta:1
+              });
             }
           })
         }

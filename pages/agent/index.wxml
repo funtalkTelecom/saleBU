@@ -23,19 +23,19 @@
           <zan-panel title="关联账号信息"></zan-panel>
         </view>
       <view class='cell'>
-        <view>公司名称</view>
+        <view>公司名称：</view>
         <input name="commpayName" placeholder="请输入公司名称" value='{{agentObj.commpay_name}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
-        <view>法人姓名</view>
+        <view>法人姓名：</view>
         <input maxlength="4" name="person" placeholder="请输入法人姓名" value='{{agentObj.person}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
-        <view>联系电话</view>
-        <input maxlength="11" name="phone" type="number" placeholder="请输入联系方式" value='{{agentObj.phone}}' disabled="{{agentStatus==1||agentStatus==2}}" />
+        <view>联系号码：</view>
+        <input maxlength="11" name="phone" type="number" placeholder="请输入联系号码" value='{{agentObj.phone}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
       <view class='cell'>
-        <view>注册地区</view>
+        <view>注册地区：</view>
         <picker mode="multiSelector" range-key="name" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{objectMultiArray}}" disabled="{{agentStatus==1||agentStatus==2}}">
           <view class="picker {{selectaddr=='请选择'?'hui':''}}">
             {{selectaddr}}
@@ -43,12 +43,12 @@
         </picker>
       </view>
       <view class='cell'>
-        <view>街道地址</view>
+        <view>街道地址：</view>
         <input placeholder="请输入街道详细地址" name="address" value='{{agentObj.address}}' disabled="{{agentStatus==1||agentStatus==2}}" />
       </view>
 
       <view class='license'>
-        <view class='cell-license'>营业执照</view>
+        <view class='cell-license'>营业执照：</view>
         <view class='license-img-but'>
           <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="widthFix" style='width:320rpx;' name="img" bindtap="previewImage"></image>
           <button bindtap="selectimg" size="mini" class='license-but' hidden='{{agentStatus==1||agentStatus==2}}'>选择文件</button>
@@ -104,11 +104,11 @@
         <view class="spacing">
           <form bindsubmit="correlation">
             <view class='cell'>
-              <view>乐语账号</view>
+              <view>乐语账号：</view>
               <input name="loginName" placeholder="请输入乐语账号" value='{{loginNameValue}}' />
             </view>
             <view class='cell'>
-              <view>乐语密码</view>
+              <view>乐语密码：</view>
               <input name="pwd" placeholder="请输入乐语密码" password value='{{pwdValue}}'/>
             </view>
             <view class='cell cell-submit'>
