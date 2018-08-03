@@ -59,7 +59,8 @@ App({
   globalData: {
     userInfo: null,
     header: {'content-type':'application/json','Cookie':''},
-    API_URL:'https://www.egt365.com/zjc/lff/api/'
+    API_URL:'https://www.egt365.com/zjc/lff/api/',
+    SOCKET_URL:"wss://www.egt365.com/zjc/lff/websocket/"
     // API_URL: 'http://192.168.1.60:12891/api/'
   },
 })

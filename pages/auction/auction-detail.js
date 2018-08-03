@@ -250,7 +250,7 @@ Page({
 
     // console.log(util.formatTime(new Date()))
     wx.connectSocket({
-      url: "wss://www.egt365.com/zjc/lff/websocket/" + this.data.numId + "/" + this.data.gId,
+      url: getApp().globalData.SOCKET_URL + this.data.numId + "/" + this.data.gId,
       // url: "wss://192.168.1.131/zjc/zqf/websocket/" + this.data.numId + "/" + this.data.gId,
     })
   },

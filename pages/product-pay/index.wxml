@@ -4,7 +4,7 @@
       <!-- <view wx:for="{{pay}}" wx:key="id" class="{{defaultValue==item.value?item.classStyle:''}}" bindtap='usewxpay' data-wxpay="{{item.value}}">{{item.text}}</view> -->
       <view class="{{defaultValue==1?'wx':''}}" bindtap='usewxpay' data-wxpay="{{1}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/wxzf.png'></image>微信支付</view>
       <view class="{{defaultValue==2?'balance':''}}" bindtap='usewxpay' data-wxpay="{{2}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/kazhifu.png'></image>线下支付</view>
-      <view  class="{{defaultValue==4?'instalment':''}}" bindtap='usewxpay' data-wxpay="{{4}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/fenqi.png'></image>分期付款</view>
+      <view  class="{{defaultValue==4?'instalment':''}}" bindtap='usewxpay'  hidden='{{!fenqiFlag}}' data-wxpay="{{4}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/fenqi.png'></image>分期付款</view>
       </view>
       <view class='offline' wx:if="{{defaultValue==2}}">
         <view>银行：中信银行</view>
