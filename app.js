@@ -12,6 +12,7 @@ App({
     wx.login({
       success: res => {
         if (res.code) {
+          console.log(res.code)
           wx.request({
             url: this.globalData.API_URL+'get_open_id',
             data: { getcode: res.code },
@@ -21,7 +22,7 @@ App({
             // responseType: 'text',
             success: function(res) {
               // if (res.statusCode==404){
-                
+                console.log(res)
               // }else{
                 wx.setStorageSync('token', res.data.data.__sessid)
                 wx.setStorageSync('consumer_id', res.data.data.consumer_id)
@@ -59,7 +60,7 @@ App({
   globalData: {
     userInfo: null,
     header: {'content-type':'application/json','Cookie':''},
-    API_URL:'https://www.egt365.com/zjc/lff/api/',
+    API_URL:'https://www.egt365.com/zjc/wmq/api/',
     SOCKET_URL:"wss://www.egt365.com/zjc/lff/websocket/"
     // API_URL: 'http://192.168.1.60:12891/api/'
   },

@@ -10,7 +10,7 @@ Page({
     pageNum: 0,
     limit: 10,
     hasMore: true,
-    order: []
+    goodList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -32,10 +32,11 @@ Page({
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit },
       success: (res) => {
         if (res.data.code == 200) {
+          var goodList = this.data.goodList.concat(res.data.data.list);
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
           this.setData({
-            goodList: res.data.data.list,
+            goodList: goodList,
             hasMore: flag,
           })
         }
