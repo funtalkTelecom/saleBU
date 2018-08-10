@@ -14,8 +14,8 @@
         <view class="name"> 
             {{item.gName}}
         </view> 
-        <view class='price'>
-          直供价 ： ￥ {{item.skuTobPrice}}
+        <view >
+          直供价 ： <text class='price'>￥ {{item.skuTobPrice}}</text>
         </view>
         <view class='supplier'>
           供应商 ： {{item.gSellerName}}

@@ -42,6 +42,10 @@
   padding-bottom: 60rpx;
   font-weight: 600;
 }
+.price {
+  font-weight: 700;
+  color: red;
+}
 .supplier {
   font-size: 26rpx;
   vertical-align:text-bottom;
@@ -50,13 +54,13 @@
   white-space:nowrap; 
   overflow:hidden; 
 }
-.content text {
+/* .content text {
   position: absolute;
   bottom: 0rpx;
   right: 40rpx;
   font-size: 40rpx;
   color: #ccc;
-}
+} */
 .content .active {
   color: red;
 }

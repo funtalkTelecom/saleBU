@@ -1,7 +1,7 @@
 <view class='container'>
   <view class='main'>
-    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528709548462&di=a658923191ad89ca4916f66f3f48f0aa&imgtype=0&src=http%3A%2F%2Fimg.91jm.com%2F2016%2F05%2F15475742B68.jpg"></image>
-    <text class='title'>乐语销售申请获得以下权限</text>
+    <image src="/imgs/personal/logo.png" mode="aspectFit"></image>
+    <text class='title'>靓号优选申请获得以下权限</text>
     <text class='auth-text'>获得您的公开信息(昵称，头像等)</text>
     <button open-type="getUserInfo" class='but' bindgetuserinfo="bindGetUserInfo">确认授权</button>
 

@@ -27,7 +27,7 @@ Page({
    this.queryAgent()
   },
   previewImage:function(){
-    var url = this.data.agentObj.tradingImgUrl||this.data.avatarUrl
+    var url = this.data.avatarUrl||this.data.agentObj.tradingImgUrl 
     wx.previewImage({
       urls: [url] // 需要预览的图片http链接列表
     })

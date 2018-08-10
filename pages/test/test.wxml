@@ -3,6 +3,8 @@
   <text>pages/test.wxml</text>
   <button bindtap='share'>分享朋友圈</button>
     <button bindtap='toweb'>web-view</button>
+    <!-- <image src='http://cdn4.freepik.com/image/th/318-36288.jpg'></image>
+    <image src='https://photo.16pic.com/00/20/61/16pic_2061376_b.jpg'></image> -->
   <view>11111111111</view>
   <view>11111111111</view>
   <view>11111111111</view>

@@ -92,7 +92,7 @@ Page({
                   addressList: this.data.addressList
                 })
                 wx.showToast({
-                  title: '操作成功',
+                  title: '删除成功',
                   icon: 'success',
                   duration: 2000
                 })

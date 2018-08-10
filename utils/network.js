@@ -54,7 +54,7 @@ function share(params) {
     path+=params
   }
   return {
-    title: "乐语销售系统",
+    title: "靓号优选",
     path: path,
     imageUrl:'../../imgs/share.jpg'
   }

@@ -10,7 +10,7 @@
   <view class='sideBar'>
     <view class='sideBar-left'>
       <navigator url='/pages/ep-rule/index?id={{epSalesId}}'>竞拍规则 >></navigator>
-      <view>竞拍流程 >></view>
+      <!-- <view>竞拍流程 >></view> -->
     </view>
     <view class='sideBar-right'>
       <text class="iconfont icon-remind {{remindStart?'icon-remindfill':''}}" bindtap='remind'></text>

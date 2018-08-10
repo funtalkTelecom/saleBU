@@ -11,6 +11,8 @@ App({
     // 登录
     wx.login({
       success: res => {
+        console.log("success")
+        console.log(res)
         if (res.code) {
           console.log(res.code)
           wx.request({
@@ -41,6 +43,14 @@ App({
         } else {
           console.log('登录失败！' + res.errMsg)
         }
+      },
+      fail:res=>{
+        console.log("fail")
+        console.log(res)
+      },
+      complete:res=>{
+        console.log("complete")
+        console.log(res)
       }
     });
      // 异步加载省市区json数据
@@ -60,7 +70,7 @@ App({
   globalData: {
     userInfo: null,
     header: {'content-type':'application/json','Cookie':''},
-    API_URL:'https://www.egt365.com/zjc/wmq/api/',
+    API_URL:'https://www.egt365.com/zjc/lff/api/',
     SOCKET_URL:"wss://www.egt365.com/zjc/lff/websocket/"
     // API_URL: 'http://192.168.1.60:12891/api/'
   },
