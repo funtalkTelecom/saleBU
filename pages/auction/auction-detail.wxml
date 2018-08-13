@@ -24,9 +24,9 @@
       当前价
       <text>￥ {{epSaleGoods.currentPrice||epSaleGoods.gStartPrice}}</text>
     </view>
-    <view class='collection'>
-      <text class="iconfont icon-shoucang1 {{shoucang?'active':''}}" bindtap="collection"></text>
-      <view>收藏</view>
+    <view class='collection'  bindtap="collection" hidden="{{epSaleGoods.gSatus==3 ? true : false}}">
+      <text class="iconfont icon-shoucang1 {{collectionStart?'active':''}}"></text>
+      <view>{{collectionStart?'取消收藏':'收藏'}}</view>
     </view>
   </view>
   <!-- 规则部分 -->

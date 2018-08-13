@@ -21,9 +21,10 @@ Page({
     stepper: {},
     goodsAuctionListFlag: true,  //状态一变成状态二时开始请求出价数据
     clearTimeoutCountDown: '',  //倒计时定时器的值
-    clearTimeoutgoodsAuctionList: '', //数据请求定时器的值
+    // clearTimeoutgoodsAuctionList: '', //数据请求定时器的值
     getFocus: false, //input框是否有焦点,
-    websocketFlag:false
+    websocketFlag:false,
+    collectionStart: false,// 收藏
 
 
   },
@@ -33,6 +34,7 @@ Page({
       numId: options.numId
     })
     this.goodsInfo(options.gId);
+    this.getGoodsFocus(options.numId,options.gId)
   },
 
   onShow: function () {
@@ -45,7 +47,7 @@ Page({
   },
   onUnload: function () {
     clearTimeout(this.data.clearTimeoutCountDown)
-    clearTimeout(this.data.clearTimeoutgoodsAuctionList)
+    // clearTimeout(this.data.clearTimeoutgoodsAuctionList)
     if (this.data.websocketFlag) {
       this.closeSocket()
     }
@@ -53,14 +55,77 @@ Page({
   },
   onHide: function () {
     clearTimeout(this.data.clearTimeoutCountDown)
-    clearTimeout(this.data.clearTimeoutgoodsAuctionList)
+    // clearTimeout(this.data.clearTimeoutgoodsAuctionList)
     if (this.data.websocketFlag) {
       this.closeSocket()
     }
   },
+  onShareAppMessage: function () {
+    return network.share("gId=" + this.data.gId + "&&numId=" + this.data.numId);
+  },
   handleTabChange: function (e) {
     this.setData({
       selectedId: e.detail
+    })
+  },
+  //收藏
+  // collection: function () {
+  //   let flag = !this.data.collectionStart;
+  //   this.setData({
+  //     collectionStart: flag
+  //   })
+  // },
+  // 查询收藏
+  getGoodsFocus: function (numId, gId) {
+    network.GET({
+      url: "goodsFocus/" + numId+"/"+gId,
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          console.log(res)
+          if (res.data.data.length > 0) {
+            this.setData({
+              collectionStart:true
+            })
+          } else {
+            this.setData({
+              collectionStart: false
+            })
+          }
+        }
+      }
+    })
+  },
+  // 收藏功能
+  collection: function () {
+    network.POST({
+      url: "goodsFocus",
+      params: {
+        skuId: this.data.epSaleGoods.skuId,
+        numId: this.data.epSaleGoods.numId,
+        num: this.data.epSaleGoods.num,
+        gId: this.data.epSaleGoods.gId,
+        gName: this.data.epSaleGoods.gName,
+        price: this.data.stepper.stepper
+      },
+      success: (res) => {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'success',
+            duration: 2000
+          })
+          this.setData({
+            collectionStart: !this.data.collectionStart
+          })
+        } else {
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
     })
   },
   goodsInfo: function (gid) {

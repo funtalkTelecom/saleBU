@@ -12,9 +12,9 @@
       <navigator url='/pages/ep-rule/index?id={{epSalesId}}'>竞拍规则 >></navigator>
       <!-- <view>竞拍流程 >></view> -->
     </view>
-    <view class='sideBar-right'>
-      <text class="iconfont icon-remind {{remindStart?'icon-remindfill':''}}" bindtap='remind'></text>
-      <view>设置提醒</view>
+    <view class='sideBar-right' bindtap='remindpop' hidden="{{activeObj.erSatus==3 ? true : false}}">
+      <text class="iconfont icon-remind {{isNotice==1?'icon-remindfill':''}}" ></text>
+      <view>{{isNotice==1?'取消提醒':'设置提醒'}}</view>
     </view>
   </view>
   <view class='content' wx:for="{{goodsList}}" wx:key="id" bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}'>
@@ -35,6 +35,23 @@
     </view>
   </view>
 
+<!-- 设置提醒弹出框 -->
+<view hidden='{{!maskFlag}}' catchtouchmove='true'>
+    <view class='mask' bindtap='hideMask'></view>
+    <view class='dialog {{dialogpos}}'>
+      <view class='dialog-hd'>
+        <view class='dialog-hd-title'>请填写设置提醒号码</view>
+      </view>
+      <form bindsubmit="formSubmit">
+        <input class='dialog-bd' type='number' placeholder='请填写设置提醒号码' maxlength='11' name="phone"
+        bindfocus="focusHandle" bindblur="blurHandle" value='{{phone}}'></input>
+        <view class='dialog-ft'>
+          <view class='dialog-ft-cancel' bindtap='hideMask'>取消</view>
+          <button class='dialog-ft-sure'  formType="submit">确定</button>
+        </view>
+      </form>
+    </view>
+  </view>
 
 
 </view>

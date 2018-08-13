@@ -54,6 +54,7 @@ image {
   top: 20rpx;
   right: 32rpx;
   text-align: center;
+  display: none;
 }
 .collection text {
   color: #ccc;

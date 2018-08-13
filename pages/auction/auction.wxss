@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 } */
+.icon-remind {
+  font-size: 40rpx;
+}
 .container {
   margin-bottom: 30rpx;
 }
@@ -58,8 +61,8 @@
   text-align: center;
   float: right;
   border-left: 1rpx solid #ccc;
-  margin-right: 20rpx;
-  padding-left: 20rpx;
+  /* margin-right: 20rpx; */
+  padding: 0 20rpx;
 }
 .content {
   padding: 12rpx 0 0 8rpx;
@@ -97,5 +100,70 @@
   color: red;
 }
 .icon-remindfill {
-  color: yellow;
+  color: orange;
 }
+/* 遮罩 */
+ .mask {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color:rgba(0, 0, 0, 0.5);
+}
+.dialog {
+  position: fixed;
+    z-index: 5000;
+    width: 80%;
+    max-width: 600rpx;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.dialogpos {
+  top: 40%;
+}
+.dialog-hd {
+  padding: 40rpx 50rpx 24rpx;
+}
+.dialog-hd-title {
+  font-size: 16px;
+}
+.dialog-bd {
+  margin: 0 50rpx 24rpx;
+  border: 1px solid #ccc;
+  font-size: 24px;
+  line-height:84rpx;
+  height:84rpx;
+
+}
+
+.dialog-ft {
+  position: relative;
+    line-height: 96rpx;
+    font-size: 16px;
+    display: -webkit-flex;
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+.dialog-ft-cancel,
+.dialog-ft-sure {
+flex: 1;
+}
+.dialog-ft-sure {
+  color: #0bb20c;
+  border-left: 1px solid #ccc;
+  box-sizing: border-box;
+  padding:0;
+  font-size: 16px;
+  line-height: 96rpx;
+  border-radius:0;
+  background-color:#fff;
+}
+.dialog-ft-sure::after{ border: none; }

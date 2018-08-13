@@ -73,13 +73,18 @@ swiper image {
 }
 .collection {
   position: absolute;
-   top: 50%;
-   margin-top: -34rpx;
+   top: 20%;
+   /* margin-top: -34rpx; */
    right: 28rpx;
    text-align: center;
+   width: 120rpx;
+}
+.collection .active {
+  color: red;
 }
 .collection text {
   color: #ccc;
+  font-size: 40rpx;
 }
 .collection view {
   font-size: 26rpx;
