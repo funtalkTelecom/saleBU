@@ -21,6 +21,8 @@ const orderText = status => {
     statusText = "已完成"
   } else if (status == 7) {
     statusText = "已取消"
+  } else if (status == 11 || status == 12 || status == 13 || status == 14) {
+    statusText = "退款中"
   }
 
   return statusText;
