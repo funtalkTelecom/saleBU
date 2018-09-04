@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //console.log(options)
     network.BarTitle("保证金支付")
     this.setData({
       skuId: options.skuId,
@@ -22,6 +23,7 @@ Page({
       gName: options.gName,
       price: options.price,
       gDeposit: options.gDeposit,
+      erIsPack: options.erIsPack
     })
 
   },
@@ -75,15 +77,26 @@ Page({
 
   },
   paybail: function () {
+    var skuId, numId, num
+    if (this.data.erIsPack == 1) {
+      skuId = 0
+      numId = 0
+      num = ""
+    } else {
+      skuId = this.data.skuId
+      numId = this.data.numId
+      num = this.data.num
+    }
     network.POST({
       url: "epSaleGoodsAuciton",
       params: {
-        skuId: this.data.skuId,
-        numId: this.data.numId,
-        num: this.data.num,
+        skuId: skuId,
+        numId: numId,
+        num: num,
         gId: this.data.gId,
         gName: this.data.gName,
-        price: this.data.price
+        price: this.data.price,
+        erISPack: this.data.erIsPack
       },
       success: (res) => {
         if (res.data.code == 604) {

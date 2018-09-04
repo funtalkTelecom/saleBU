@@ -17,8 +17,11 @@
   </view>
   <!-- 标题部分 -->
   <view class='ep-title'>
-    <view class='ep-name'>
+    <view class='ep-name' wx:if="{{epSaleGoods.erIsPack==0}}">
       {{epSaleGoods.num}} 
+    </view>
+    <view class='ep-name' wx:else>
+      {{epSaleGoods.gName}} 
     </view>
     <view class="ep-now-price">
       当前价

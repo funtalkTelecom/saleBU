@@ -17,11 +17,14 @@
       <view>{{isNotice==1?'取消提醒':'设置提醒'}}</view>
     </view>
   </view>
-  <view class='content' wx:for="{{goodsList}}" wx:key="id" bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}'>
+  <view class='content' wx:for="{{goodsList}}" wx:key="id" bindtap='gojoin' data-gid='{{item.gId}}' data-numid='{{item.numId}}' data-erispack='{{activeObj.erIsPack}}'>
     <image src='{{item.gImg}}' mode="aspectFit"></image>
     <view>
-      <view class='p-name'>
+      <view class='p-name' wx:if="{{activeObj.erIsPack==0}}">
         {{item.num}}
+      </view>
+      <view class='p-name' wx:else>
+        {{item.gName}}
       </view>
       <view class='p-num'>
         共

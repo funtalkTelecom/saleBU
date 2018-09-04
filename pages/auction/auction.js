@@ -46,7 +46,7 @@ Page({
   gojoin: function (e) {
     // console.log(e)
     wx.navigateTo({
-      url: 'auction-detail?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid
+      url: 'auction-detail?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid + "&&erIsPack=" + e.currentTarget.dataset.erispack 
       });
     // wx.navigateTo({
     //   url: '/pages/auction-text/index?gId=' + e.currentTarget.dataset.gid + "&&numId=" + e.currentTarget.dataset.numid

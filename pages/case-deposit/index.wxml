@@ -1,10 +1,11 @@
 <view>
-  <navigator wx:for="{{auctionDepositList}}" wx:key="id" url='/pages/auction/auction-detail?gId={{item.gId}}&numId={{item.numId}}' hover-class="none">
+  <navigator wx:for="{{auctionDepositList}}" wx:key="id" url='/pages/auction/auction-detail?gId={{item.gId}}&numId={{item.numId}}&erIsPack={{item.erIsPack}}' hover-class="none">
 
     <zan-panel>
       <zan-card card-class="test-card" thumb="{{item.gImg}}" useThumbSlot="{{ true }}" useDetailSlot="{{ true }}">
         <view slot="detail-slot" class="zan-card__detail order-info">
-          <view>{{item.num}}</view>
+          <view wx:if="{{item.erIsPack==0}}" >{{item.num}}</view>
+          <view wx:else>{{item.gName}}</view>
           <view>金额：
             <text class='red'>{{item.price}}</text>元</view>
           <view class='case'>

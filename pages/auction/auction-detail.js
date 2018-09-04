@@ -29,12 +29,15 @@ Page({
 
   },
   onLoad: function (options) {
+    // console.log(options)
+    if (options.erIsPack == 1) { options.numId = 0 }
     this.setData({
       gId: options.gId,
-      numId: options.numId
+      numId: options.numId,
+      erIsPack: options.erIsPack
     })
     this.goodsInfo(options.gId);
-    this.getGoodsFocus(options.numId,options.gId)
+    this.getGoodsFocus(options.numId, options.gId, options.erIsPack)
   },
 
   onShow: function () {
@@ -42,7 +45,7 @@ Page({
       goodsAuctionListFlag: true
     })
     //初始化数据
-    this.initGood(this.data.gId, this.data.numId)
+    this.initGood(this.data.gId, this.data.numId, this.data.erIsPack)
 
   },
   onUnload: function () {
@@ -76,13 +79,13 @@ Page({
   //   })
   // },
   // 查询收藏
-  getGoodsFocus: function (numId, gId) {
+  getGoodsFocus: function (numId, gId, erIsPack) {
     network.GET({
-      url: "goodsFocus/" + numId+"/"+gId,
+      url: "goodsFocus/" + numId + "/" + gId + "/" + erIsPack,
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
-          console.log(res)
+          // console.log(res)
           if (res.data.data.length > 0) {
             this.setData({
               collectionStart:true
@@ -106,7 +109,8 @@ Page({
         num: this.data.epSaleGoods.num,
         gId: this.data.epSaleGoods.gId,
         gName: this.data.epSaleGoods.gName,
-        price: this.data.stepper.stepper
+        price: this.data.stepper.stepper,
+        erISPack: this.data.epSaleGoods.erIsPack
       },
       success: (res) => {
         if (res.data.code == 200) {
@@ -160,22 +164,32 @@ Page({
   paybail: function () {
     var price = (parseFloat(this.data.epSaleGoods.gPriceUp) + parseFloat(this.data.epSaleGoods.currentPrice)) || parseFloat(this.data.epSaleGoods.gStartPrice)
     wx.navigateTo({
-      url: '/pages/auction/pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price + "&&gDeposit=" + this.data.epSaleGoods.gDeposit
+      url: '/pages/auction/pay-bail?skuId=' + this.data.epSaleGoods.skuId + "&&numId=" + this.data.epSaleGoods.numId + "&&num=" + this.data.epSaleGoods.num + "&&gId=" + this.data.epSaleGoods.gId + "&&gName=" + this.data.epSaleGoods.gName + "&&price=" + price + "&&gDeposit=" + this.data.epSaleGoods.gDeposit + "&&erIsPack=" + this.data.epSaleGoods.erIsPack
     });
   },
   //根据id查数据
-  initGood: function (gId, numId) {
+  initGood: function (gId, numId, erIsPack) {
     var goodsAuctionList = null;
     network.GET({
-      url: "epSaleGoods/" + numId + "/" + gId,
+      url: "epSaleGoods/" + numId + "/" + gId + "/" + erIsPack,
       params: {},
       success: (res) => {
 
         if (res.data.code == 200) {
           var epSaleGoods = res.data.data
-          wx.setNavigationBarTitle({
-            title: epSaleGoods.num + "--竞拍"
-          })
+          if (epSaleGoods.erIsPack==1){
+            epSaleGoods.skuId = 0
+            epSaleGoods.numId = 0
+            epSaleGoods.num == ''
+            wx.setNavigationBarTitle({
+              title: epSaleGoods.gName + "--竞拍"
+            })
+          }
+          else{
+            wx.setNavigationBarTitle({
+              title: epSaleGoods.num + "--竞拍"
+            })
+          }
           //判断是否有出价记录数据
           if (epSaleGoods.goodsAuctionList) {
             goodsAuctionList = epSaleGoods.goodsAuctionList.map(this.substring)
@@ -263,11 +277,12 @@ Page({
       url: "epSaleGoodsAuciton",
       params: {
         skuId: this.data.epSaleGoods.skuId,
-        numId: this.data.epSaleGoods.numId,
+        numId: this.data.epSaleGoods. numId,
         num: this.data.epSaleGoods.num,
         gId: this.data.epSaleGoods.gId,
         gName: this.data.epSaleGoods.gName,
-        price: this.data.stepper.stepper
+        price: this.data.stepper.stepper,
+        erISPack: this.data.epSaleGoods.erIsPack
       },
       success: (res) => {
         if (res.data.code == 200) {
@@ -315,7 +330,7 @@ Page({
 
     // console.log(util.formatTime(new Date()))
     wx.connectSocket({
-      url: getApp().globalData.SOCKET_URL + this.data.numId + "/" + this.data.gId,
+      url: getApp().globalData.SOCKET_URL + this.data.numId + "/" + this.data.gId + "/" + this.data.erIsPack,
       // url: "wss://192.168.1.131/zjc/zqf/websocket/" + this.data.numId + "/" + this.data.gId,
     })
   },
