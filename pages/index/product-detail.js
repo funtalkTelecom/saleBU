@@ -69,16 +69,15 @@ Page({
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
-          var max = "stepper.max"
           var skuNum=res.data.data.sku.skuNum
           if (skuNum==0){
             this.data.stepper.stepper=0
           }else{
             this.data.stepper.stepper = 1
           }
+          this.data.stepper.max = skuNum
           this.setData({
             goodObj: res.data.data,
-            [max]: skuNum,
             stepper: this.data.stepper
           })
         }
