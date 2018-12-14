@@ -65,13 +65,14 @@ Page({
         payMenthodId: that.data.defaultValue
       },
       success: (res) => {
+        console.log(res)
         if (res.data.code == 200) {
           if (that.data.defaultValue==1){//微信
             wx.requestPayment({
               'timeStamp': res.data.data.timeStamp,
               'nonceStr': res.data.data.nonceStr,
               'package': res.data.data.package,
-              'signType': 'MD5',
+              'signType': res.data.data.signType,
               'paySign': res.data.data.paySign,
               'success': function (res) {
                 if (that.data.skuGoodsType == 3) {
