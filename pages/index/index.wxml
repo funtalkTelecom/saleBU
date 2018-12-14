@@ -52,7 +52,7 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
             <!-- </view> -->
           </navigator>
@@ -83,7 +83,7 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -113,7 +113,7 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -142,7 +142,7 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
@@ -171,7 +171,7 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
             <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
           </navigator>
         </block>
