@@ -43,7 +43,7 @@
     <navigator url='/pages/num-check/index?id={{item.id}}'  hover-class="none" class='cardbody-item' wx:for="{{numberTypeList}}" wx:key="id">
       <!-- <view class='cardbody-item' wx:for="{{numberTypeList}}" wx:key="id" bindtap='tonumcheck' data-id='{{item.id}}'> -->
         <text class='item-phone'>{{item.numBlock[0]}}{{item.numBlock[1]}}<text class='.color-cyan'>{{item.numBlock[2]}}</text></text>
-        <text class='item-price' >售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+        <text class='item-price' >售价：<text class='color-orange'>{{item.price}}</text>元</text>
         <text class='item-desc'>保底消费：{{item.lowConsume}}元</text>
       <!-- </view> -->
       </navigator>
