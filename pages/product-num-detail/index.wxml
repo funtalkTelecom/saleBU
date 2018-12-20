@@ -3,7 +3,7 @@
   <view class='cardbody-main'>
     <view class='cardbody-item' wx:for="{{numberTypeList}}" wx:key="id" bindtap='tonumcheck' data-id='{{item.id}}' data-isAgent='{{item.isAgent}}'>
       <text class='item-phone' >{{item.numBlock[0]}}{{item.numBlock[1]}}<text class='.color-cyan'>{{item.numBlock[2]}}</text></text>
-      <text class='item-price' hidden='{{item.isAgent==0}}'>售价：<text class='color-orange'>{{item.skuTobPrice}}</text>元</text>
+      <text class='item-price' hidden='{{item.isAgent==0}}'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
       <text class='item-desc' hidden='{{item.isAgent==0}}'>保底消费：{{item.lowConsume}}元</text>
       <text class='item-contact' hidden='{{item.isAgent==1}}'>联系人：{{item.name}}</text>
       <text class='item-contact' hidden='{{item.isAgent==1}}'>联系电话：{{item.phone}}</text>
