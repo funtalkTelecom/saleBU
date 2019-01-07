@@ -17,9 +17,9 @@
 
     <zan-panel title="套餐信息">
       <view class='setmeal s-info'>
-        <view>{{mealObj.mealName}}</view>
-        <!-- <view>4G畅爽国内不限量</view>
-        <view>4G畅爽国内不限量</view> -->
+        <view wx:for="{{mealArr}}" wx:key="mid" class="{{selectMealIndex==index?'active':''}}" data-index='{{index}}' bindtap="selectMeal">
+          {{item.mealName}}
+        </view>
       </view>
     </zan-panel>
 

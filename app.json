@@ -52,12 +52,8 @@
         "text": "靓号"
       },
       {
-        "pagePath": "pages/ep-active/index",
-        "text": "竞拍"
-      },
-      {
-        "pagePath": "pages/product-num-detail/index",
-        "text": "普号"
+        "pagePath": "pages/index/search",
+        "text": "搜索"
       },
       {
         "pagePath": "pages/personal/personal",

@@ -8,9 +8,11 @@ Page({
   data: {
     showBottomPopup: false,//地址弹窗
     wxpay: 'true',
+    mealArr:[],
     mealObj:{},//套餐数据
     numberObj:{},//号码数据
-    addrindex:0
+    addrindex:0,
+    selectMealIndex:0
   },
 
   /**
@@ -69,6 +71,7 @@ Page({
       success: (res) => {
         if (res.data.code == 200) {
           this.setData({
+            mealArr: res.data.data,
             mealObj: res.data.data[0]
           })
         }
@@ -99,6 +102,14 @@ Page({
     this.setData({
       showBottomPopup: !this.data.showBottomPopup
     });
+  },
+  selectMeal(e){
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      selectMealIndex:index,
+      mealObj: this.data.mealArr[index]
+
+    })
   },
   createOrder:function(e){
     if (!this.data.curAddressObj) {

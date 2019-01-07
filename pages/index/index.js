@@ -51,8 +51,12 @@ Page({
     return network.share();
   },
   tapSearch: function () {
-    wx.navigateTo({ url: 'search' });
+    // wx.navigateTo({ url: 'search' });
+    wx.switchTab({
+      url: 'search'
+    })
   },
+  
   //选择地区
   bindRegionChange: function (e) {
     this.setData({

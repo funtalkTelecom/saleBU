@@ -93,12 +93,12 @@
   <zan-panel class="cell-panel-demo bob" title="常用设置">
     <zan-cell-group>
  
-        <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
+        <!-- <zan-cell title="我是代理商" is-link url="/pages/agent/index"></zan-cell>
 
       <view hidden='{{toBingding?false:true}}'>
         <zan-cell title="号码绑定" is-link url="/pages/agent-num/index"></zan-cell>
       </view>
-      <zan-cell title="我的保证金" is-link url="/pages/case-deposit/index"></zan-cell>
+      <zan-cell title="我的保证金" is-link url="/pages/case-deposit/index"></zan-cell> -->
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
       
       <!-- <zan-cell title="我的分享" is-link url="/pages/agent-num/index"></zan-cell> -->
@@ -109,7 +109,7 @@
     <zan-row row-class="service">
       <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
         <view>微信：E购通</view>
-        <image src='../../imgs/personal/qrcode.jpg' class='qrcode'></image>
+        <image src='../../imgs/personal/qrcode.jpg' class='qrcode' bindtap="previewImage"></image>
       </zan-col>
       <zan-col col="24" col-class="custom-zan-col tel">
         <view>客服热线：4009-183-365</view>

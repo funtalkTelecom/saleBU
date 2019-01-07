@@ -28,10 +28,14 @@ page {
 .s-info view{
   border: 1rpx solid orange;
   border-radius: 20rpx;
-  width: 100%;
+  width: 42%;
   margin-bottom: 20rpx;
   padding: 10rpx 20rpx;
   line-height: 44rpx;
+}
+.s-info .active{
+  color:#FFF;
+  background:orange;
 }
 .postage view {
   border: 1rpx solid orange;
