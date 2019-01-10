@@ -98,12 +98,13 @@ picker {
 }
 .box-item{
   width: 46%;
-  text-align: center;
+  text-align: left;
   margin: 2%;
   /* box-sizing:border-box; */
   padding: 3% 0;
   box-shadow: 6rpx 6rpx 22rpx #ddd;
   border-radius: 20rpx;
+  font-size:24rpx;
 }
 .liang {
   display: inline-block;
@@ -135,20 +136,25 @@ picker {
   height: 34rpx;
   line-height: 34rpx;
   margin-bottom: 12rpx;
+  text-align:center;
 }
- .phone-desc{
+ /* .phone-desc{
   display: block;
-  font-size: 25rpx;
+  font-size: 25rpx; */
   /* position: relative;
   right: -25rpx; */
-}
+/* }
 .phone-price{
   display: block;
   font-size: 24rpx;
-  line-height: 40rpx;
+  line-height: 40rpx; */
   /* position: relative;
   right: -43rpx; */
-} 
+/* }  */
+
+.padlf-68{
+  padding-left:68rpx;
+}
 .border-bottom{
   width: 90%;
   margin: 50rpx auto 20rpx;
@@ -221,7 +227,8 @@ picker {
    font-size: 30rpx;
 }
 .color-orange{
-  color: #f9810c;
+  color:red;
+  font-weight: 700;
 }
 .color-cyan{
   color: #00b2ee;

@@ -5,8 +5,10 @@
         <zan-col col="7" col-class="red-weight">
           <text>{{numberObj.numBlock[0]}}</text><text class='phone-mg'>{{numberObj.numBlock[1]}}</text><text>{{numberObj.numBlock[2]}}</text>
         </zan-col>
-        <zan-col col="10">{{numberObj.cityName}}</zan-col>
-        <zan-col col="7">保底消费 {{numberObj.lowConsume}}元</zan-col>
+        <zan-col col="10">归属地：{{numberObj.city_name}}</zan-col>
+        <zan-col col="7">保底消费：{{numberObj.lowConsume}}元</zan-col>
+        <zan-col col="7">制式：{{numberObj.netType}}</zan-col>
+        <zan-col col="10">运营商：{{numberObj.teleType}}</zan-col>
       </zan-row>
       <!-- <zan-row row-class="num-info num-money">
         <zan-col col="24">

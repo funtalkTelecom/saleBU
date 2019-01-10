@@ -2,12 +2,12 @@ page{
   display: flex;  
   flex-direction: column;  
   /* height: 100%; */
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   }
 .container {
   flex: auto;  
   display: flex;  
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   flex-direction: column;
 }
 .filters{
@@ -53,22 +53,33 @@ page{
   margin: 2%;
 }
 .box-item{
-  width: 47%;
-  text-align: center;
-  margin: 1.5%;
+  width: 46%;
+  text-align: left;
+  margin: 2%;
   /* box-sizing:border-box; */
-  background-color: #fff;
-  padding: 2% 0 3%;
+  padding: 3% 0;
+  box-shadow: 6rpx 6rpx 22rpx #ddd;
   border-radius: 20rpx;
-  box-shadow: 4rpx 4rpx 12rpx #ddd;
+  font-size:24rpx;
 }
-.phone{
+.phone {
+  font-weight:600;
+  font-size: 32rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  margin-bottom: 12rpx;
+  text-align:center;
+}
+.padlf-68{
+  padding-left:50rpx;
+}
+/* .phone{
   font-weight:600;
   font-size: 28rpx;
   height: 30rpx;
   line-height: 30rpx;
   margin-bottom: 12rpx;
-}
+} */
 .phone-desc{
   display: block;
   font-size: 25rpx;
@@ -98,6 +109,8 @@ page{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin:0 2%;
+
 }
 
 .cardbody-item {

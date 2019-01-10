@@ -17,22 +17,22 @@
   </view> 
 
   <scroll-view class='main' scroll-into-view="{{toView}}" scroll-y="true">
-    <view>
+    <!-- <view>
       <swiper class='banner' indicator-dots="true" autoplay="true" interval="3000" duration="500">
         <block wx:for="{{posterList}}" wx:key="id">
           <swiper-item>
-            <image src="{{item.pic}}"  data-id='{{item.id}}' mode="aspectFit" />  <!--bindtap="tapBanner"-->
+            <image src="{{item.pic}}"  data-id='{{item.id}}' mode="aspectFit" />  bindtap="tapBanner"
           </swiper-item>
         </block>
       </swiper>
-    </view>
+    </view> -->
     <!-- <view class="nav">
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list1"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list2"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list3"></image>
       <image src="{{imgUrls[0]}}" class='images' bindtap="scrollToViewFn" data-id="list4"></image>
     </view> -->
-    <view class='content fenjie'>
+    <view class='content fenjie' style='margin-top:150rpx'>
       <view class='border-bottom color-cyan'>
         <view class='round'>
           <text class='iconfont icon-jingdian'></text>
@@ -52,8 +52,11 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+            <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>归属地：{{item.province_name+'-'+item.city_name}}</view>  
             <!-- </view> -->
           </navigator>
         </block>
@@ -83,8 +86,11 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+             <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
           </navigator>
         </block>
       </view>
@@ -113,8 +119,11 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+             <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
           </navigator>
         </block>
       </view>
@@ -142,8 +151,11 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+            <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
           </navigator>
         </block>
       </view>
@@ -171,8 +183,13 @@
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
             </view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text>
+            <!-- <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
+            <text class='phone-desc'>保底消费：{{item.lowConsume}}元</text> -->
+             <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
           </navigator>
         </block>
       </view>
