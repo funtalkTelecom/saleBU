@@ -12,8 +12,8 @@
         <text class='phone-mg'>{{item.numBlock[1]}}</text>
         <text class='color-cyan'>{{item.numBlock[2]}}</text>
       </view>
-      <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
-           <view class='padlf-68' >秒杀价：<text class='color-orange'>{{item.activityPrice}}</text>元</view>
+      <view class='padlf-68' >秒杀价：<text class='color-orange'>{{item.activityPrice}}</text>元</view>
+      <view class='padlf-68' >原价：<text style='text-decoration:line-through;color:#888'>{{item.price}}</text>元</view>
       <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
       <view class='padlf-68'>制式：{{item.netType}}</view>
       <view class='padlf-68'>运营商：{{item.teleType}}</view>
