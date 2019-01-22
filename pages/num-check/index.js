@@ -1,5 +1,6 @@
 // pages/num-check/index.js
 var network = require("../../utils/network.js")
+const util = require('../../utils/util.js')
 Page({
 
   /**
@@ -12,20 +13,24 @@ Page({
     mealObj:{},//套餐数据
     numberObj:{},//号码数据
     addrindex:0,
-    selectMealIndex:0
+    selectMealIndex:0,
+    intervalId:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id: options.id
-    })
+    
     network.BarTitle("靓号订购")
     this.initNumber(options.id);
     this.initMeal(options.id);
     
+  },
+  onUnload: function () {
+    if (this.data.intervalId){
+      clearInterval(that.data.intervalId)
+    }
   },
 
   /**
@@ -34,7 +39,30 @@ Page({
   onShow: function () {
     this.initAddress();
   },
+  setInterval:function(){
+    var that=this;
+    
+    this.data.intervalId = setInterval(function () {
+      that.data.numberObj.newDate = that.data.numberObj.newDate + 1000
+      if (that.data.numberObj.activitySdate - that.data.numberObj.newDate >= 0) {
+        
+      }else if (that.data.numberObj.activityEdate - that.data.numberObj.newDate>= 0) {
+            that.setData({
+              enddatetext: util.parseIntDayTime((that.data.numberObj.activityEdate - that.data.numberObj.newDate) / 1000),
+              status: 2
+          })
+        }else if (that.data.numberObj.activityEdate - that.data.numberObj.newDate < 0){
+          clearInterval(that.data.intervalId)
+        that.setData({
+          enddatetext: util.parseIntDayTime((that.data.numberObj.activityEdate - that.data.numberObj.newDate) / 1000),
+          status: 3
+        })
+        }
 
+      }, 1000)
+   
+    
+  },
 
 
   
@@ -52,14 +80,45 @@ Page({
   //   })
   // },
   initNumber:function(id){
+    var that=this;
     network.GET({
       url: "number/" + id,
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
+          var status =3;
+          // this.setData({
+          //   numberObj: res.data.data
+          // })
+          // var begindate = res.data.data.activitySdate;
+          // var enddate = res.data.data.activityEdate;
+          // var currdate = res.data.data.newDate;
+          if (res.data.data.activityType && res.data.data.activityType==1){
+            if (res.data.data.activitySdate - res.data.data.newDate > 0) {
+              status = 1
+            }
+            else if (res.data.data.activityEdate - res.data.data.newDate > 0) {
+              status = 2
+            }
+            // if (res.data.data.activityEdate - res.data.data.newDate <= 0) {
+            //   status = 3
+            // }
+            
+          }
+
           this.setData({
-            numberObj: res.data.data
+            numberObj: res.data.data,
+            begindatetext: util.formatminute(new Date(res.data.data.activitySdate)),
+            enddatetext: util.parseIntDayTime((res.data.data.activityEdate - res.data.data.newDate) / 1000),
+            status: status
+            // begindate: begindate,
+            // enddate: enddate,
+            // currdate: currdate,
           })
+          if (status!=3){
+            this.setInterval();
+          }
+         
         }
       }
     })

@@ -8,6 +8,27 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+const formatminute = date => {
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+  return [ month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+}
+// const formatminute = date => {
+//   console.log(date)
+//   const hour = date.getHours()
+//   const minute = date.getMinutes()
+//   return [hour, minute].map(formatNumber).join(':')
+// }
+const formatsecond = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [hour, minute, second].map(formatNumber).join(':')
+}
 
 const orderText = status => {
   var statusText;
@@ -108,10 +129,21 @@ const parseIntTime = time => {
   let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60, 10);
   return [day, hou, min, sec].map(formatNumber);
 }
+const parseIntDayTime = time => {
+  let day = parseInt(time / (60 * 60 * 24), 10);
+  let hou = parseInt(time % (60 * 60 * 24) / 3600, 10);
+  let min = parseInt(time % (60 * 60 * 24) % 3600 / 60, 10);
+  let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60, 10);
+  return [day*24+hou, min, sec].map(formatNumber);
+}
 module.exports = {
   activeObjFormatTime: activeObjFormatTime,
   formatTime: formatTime,
+  formatminute:formatminute,
+  formatsecond: formatsecond,
   epSaleGoodFormatTime: epSaleGoodFormatTime,
   epSalesItemFormatTime: epSalesItemFormatTime,
-  orderText: orderText
+  orderText: orderText,
+  parseIntTime: parseIntTime,
+  parseIntDayTime: parseIntDayTime
 }

@@ -1,14 +1,21 @@
 <view>
+  <view class='miaosha' wx:if="{{numberObj.activityType==1}}">
+    <view wx:if="{{status==1}}">此号码将于<text class='date'>{{begindatetext}}</text>参与秒杀</view>
+    <view wx:if="{{status==2}}">此号码正在参与秒杀
+      <text class='afterdate'>{{enddatetext[0]}}</text> :
+      <text class='afterdate'>{{enddatetext[1]}}</text> :
+      <text class='afterdate'>{{enddatetext[2]}}</text>后恢复原价</view>
+  </view>
   <view class='abc'>
     <zan-panel title="号码信息" class="spacing">
       <zan-row row-class="num-info">
         <zan-col col="7" col-class="red-weight">
           <text>{{numberObj.numBlock[0]}}</text><text class='phone-mg'>{{numberObj.numBlock[1]}}</text><text>{{numberObj.numBlock[2]}}</text>
         </zan-col>
-        <zan-col col="10">归属地：{{numberObj.city_name}}</zan-col>
+        <zan-col col="10">制式：{{numberObj.netType}}</zan-col>
         <zan-col col="7">保底消费：{{numberObj.lowConsume}}元</zan-col>
-        <zan-col col="7">制式：{{numberObj.netType}}</zan-col>
         <zan-col col="10">运营商：{{numberObj.teleType}}</zan-col>
+        <zan-col col="14">归属地：{{numberObj.city_name}}</zan-col>
       </zan-row>
       <!-- <zan-row row-class="num-info num-money">
         <zan-col col="24">
@@ -70,7 +77,12 @@
     <view>确认支付</view>
   </view> -->
   <view class="bottom_bar">
-    <view class='bail'> ￥{{numberObj.price?numberObj.price:numberObj.skuTobPrice}}元</view>
+    <view class='bail'>
+    <text wx:if="{{status==3}}"> ￥{{numberObj.price?numberObj.price:numberObj.skuTobPrice}}元</text>
+    <text wx:if="{{status==1}}" style='color:#000' > ￥{{numberObj.activityPrice}}元<text style='color:red'>(秒杀价￥{{numberObj.price}}元)</text></text>
+    <text wx:if="{{status==2}}"> 秒杀价￥{{numberObj.activityPrice}}元    <text style='text-decoration:line-through;color:#ccc'>{{numberObj.price}}</text></text>
+    </view>
+    
     <view class='pay' bindtap='createOrder'>立即购买</view>
   </view>
 

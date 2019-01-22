@@ -170,7 +170,6 @@ Page({
     })
   },
   cancelOrder: function (e) {//显示遮罩
-    console.log(e.currentTarget.dataset.id)
     this.setData({
       maskFlag: true,
       cancelOrderId: e.currentTarget.dataset.id
@@ -190,12 +189,18 @@ Page({
     }
   },
   hideMask: function () {//隐藏遮罩
+    var arr=this.data.rodioList.map(function(item){
+      item.checked=false
+      return item
+    })
+    arr[0].checked = "checked"
     this.setData({
       maskFlag: false,
       textareaValue: '',
       textareaFlag: false,
       checked: "checked",
-      cancelOrderId: null
+      cancelOrderId: null,
+      rodioList: arr
       // radioValue:1
     })
   },
