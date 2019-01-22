@@ -1,0 +1,59 @@
+<view>
+  <view class='search-header'>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >靓号类型</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="numTypeChange" value="{{index}}" range="{{array}}" range-key="value" class="select">
+            <view class="picker">{{array[index].value}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >运营商</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="value" class="select">
+            <view class="picker">{{array[index].value}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >吉利号码</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="value" class="select">
+            <view class="picker">{{array[index].value}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >地市</zan-col>
+        <zan-col col="18" offset="1">
+          <picker mode="multiSelector" range-key="name" value="{{multiIndex}}" range="{{objectMultiArray}}"
+          bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="select"> 
+            <view class="picker">{{selectaddr}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码</zan-col>
+        <zan-col col="18" offset="1" col-class="phones">
+          <input  type='number' maxlength="1" class="select input" wx:key="id"
+          wx:for="{{numInputs}}" focus="{{item}}" bindinput="test" data-index="{{index}}"  />
+        </zan-col>
+    </zan-row>
+   <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >价格</zan-col>
+        <zan-col col="4" offset="1">
+          <input class="select"> </input>
+        </zan-col>
+        <zan-col col="4" offset="2">
+          <input class="select"> </input>
+        </zan-col>
+        <zan-col col="5" offset="2">
+          <button size="small" class='but'>搜索</button>
+        </zan-col>
+    </zan-row>
+  
+  
+  </view>
+
+</view>

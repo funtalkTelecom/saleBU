@@ -29,7 +29,7 @@ Page({
   },
   onUnload: function () {
     if (this.data.intervalId){
-      clearInterval(that.data.intervalId)
+      clearInterval(this.data.intervalId)
     }
   },
 

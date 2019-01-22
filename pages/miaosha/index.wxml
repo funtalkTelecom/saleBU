@@ -1,0 +1,25 @@
+<view>
+  <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
+  <view class='header' wx:if="{{ numList.length> 0}}">
+    <view >{{text[0]}}</view>
+    <view>{{text[1]}} <text>{{enddatetext[0]}}</text>：<text>{{enddatetext[1]}}</text> : <text>{{enddatetext[2]}}</text></view>
+  </view>
+  <view class='main'>
+    <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none" wx:for="{{numList}}" wx:key="id">
+      <view class='phone'>
+        <view class='liang'>秒杀</view>
+        <text>{{item.numBlock[0]}}</text>
+        <text class='phone-mg'>{{item.numBlock[1]}}</text>
+        <text class='color-cyan'>{{item.numBlock[2]}}</text>
+      </view>
+      <view class='padlf-68' >售价：<text class='color-orange'>{{item.price}}</text>元</view>
+           <view class='padlf-68' >秒杀价：<text class='color-orange'>{{item.activityPrice}}</text>元</view>
+      <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+      <view class='padlf-68'>制式：{{item.netType}}</view>
+      <view class='padlf-68'>运营商：{{item.teleType}}</view>
+      <view class='padlf-68'>归属地：{{item.province_name+'-'+item.city_name}}</view>  
+    </navigator>
+  </view>
+  <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+  <view class="loadmore nomore" wx:else><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>已经没有更多了~</view>
+</view>
