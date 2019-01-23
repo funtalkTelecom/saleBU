@@ -1,6 +1,6 @@
 <view>
   <zan-tab list="{{ tab.list }}" selected-id="{{selectedId}}" fixed="true" bindtabchange="handleTabChange" />
-  <view class='header' wx:if="{{ numList.length> 0}}">
+  <view class='header' >
     <view >{{text[0]}}</view>
     <view>{{text[1]}} <text>{{enddatetext[0]}}</text>：<text>{{enddatetext[1]}}</text> : <text>{{enddatetext[2]}}</text></view>
   </view>
