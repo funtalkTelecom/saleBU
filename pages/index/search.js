@@ -18,7 +18,7 @@ Page({
     featherlist:[],
     taglist:[],
     yyslist:[],
-    limit: 4,
+    limit: 10,
     pageNum: 1,
     numList:[],
     nodata:false
@@ -124,9 +124,12 @@ Page({
     })
   },
   formSubmit(e) {
+    this.setData({
+      pageNum:1
+    })
     var formData= e.detail.value
     if (this.data.featherlist[this.data.featherIndex].id!=-1){
-      formData.feature=this.data.featherlist[this.data.featherIndex].id
+      formData.feature = this.data.featherlist[this.data.featherIndex].keyValue
     } 
     if (this.data.taglist[this.data.tagIndex].id != -1) {
       formData.numTags = this.data.taglist[this.data.tagIndex].id
@@ -221,7 +224,6 @@ Page({
   //   }
   // },
   test: function (e) {
-    console.log(e.detail.value)
     if (e.detail.value) {
       var list = this.data.numInputs.map(function (item) {
         item.focus = false
@@ -285,7 +287,7 @@ Page({
       params: this.formData,
       success: (res) => {
         if (res.data.code == 200) {
-          var nodata=this.data.nodata
+          var nodata=false
           if (res.data.data.list.length==0){
               nodata=true
           }
