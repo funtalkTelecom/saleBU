@@ -121,14 +121,21 @@ Page({
         if (res.data.code == 200) {
           var date={}
           var enddatetext
-          date.beginDate = new Date(res.data.data.beginDate).getTime()
-          date.endDate = new Date(res.data.data.endDate).getTime()
-          date.newDate = new Date(res.data.data.newDate).getTime()
+          date.beginDate = new Date(res.data.data.beginDate.replace(/\-/g, '/')).getTime()
+          date.endDate = new Date(res.data.data.endDate.replace(/\-/g, '/')).getTime()
+          date.newDate = new Date(res.data.data.newDate.replace(/\-/g, '/')).getTime()
+
+          // console.log(res.data.data.beginDate)
+          // console.log(new Date(res.data.data.beginDate.replace(/\-/g, '/')))
+          // console.log(date.beginDate)
+          // console.log(date.endDate)
+          // console.log(date.newDate)
           if (that.data.selectedId===1){
             enddatetext = util.parseIntDayTime((date.endDate - date.newDate) / 1000)
           } else if (that.data.selectedId === 2){
             enddatetext = util.parseIntDayTime((date.beginDate - date.newDate) / 1000)
           }
+          // console.log(enddatetext)
           that.setData({ date, enddatetext})
           that.setInterval()
         }
