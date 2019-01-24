@@ -112,7 +112,7 @@
         <image src='../../imgs/personal/qrcode.jpg' class='qrcode' bindtap="previewImage"></image>
       </zan-col>
       <zan-col col="24" col-class="custom-zan-col tel">
-        <view>客服热线：4009-183-365</view>
+        <view>客服热线：17759085090</view>
       </zan-col>
     </zan-row>
   </zan-panel>
