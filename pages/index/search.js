@@ -132,7 +132,7 @@ Page({
       formData.feature = this.data.featherlist[this.data.featherIndex].keyValue
     } 
     if (this.data.taglist[this.data.tagIndex].id != -1) {
-      formData.numTags = this.data.taglist[this.data.tagIndex].id
+      formData.numTags = this.data.taglist[this.data.tagIndex].keyId
     }
     if (this.data.yyslist[this.data.yysIndex].id != -1) {
       formData.netType = this.data.yyslist[this.data.yysIndex].keyValue
