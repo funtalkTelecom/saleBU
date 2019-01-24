@@ -104,7 +104,7 @@
         <view class='round'>
           <text class='iconfont icon-king'></text>
         </view>
-        <view class='nametype'>典藏靓号</view>
+        <view class='nametype'>事业靓号</view>
         <view class='round'>
           <text class='iconfont icon-king'></text>
         </view>
@@ -114,7 +114,7 @@
           <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
 
             <view class='phone'>
-              <view class='liang diancang'>藏</view>
+              <view class='liang diancang'>业</view>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>
@@ -132,7 +132,7 @@
           <text class='iconfont icon-huanyihuan'></text>换一批</view>
       </view>
     </view>
-    <view class='content fenjie' id="list3">
+    <!-- <view class='content fenjie' id="list3">
       <view class='border-bottom color-cyan'>
         <view class='round'>
           <text class='iconfont icon-shengri'></text>
@@ -163,7 +163,7 @@
         <view class='exchange' bindtap='exchange' data-tag='3'>
           <text class='iconfont icon-huanyihuan'></text>换一批</view>
       </view>
-    </view>
+    </view> -->
     <view class='content fenjie' id="list4">
       <view class='border-bottom color-cyan'>
         <view class='round'>

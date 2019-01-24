@@ -43,7 +43,7 @@ Page({
     this.getnumber(0);
     this.getnumber(1);
     this.getnumber(2);
-    this.getnumber(3);
+    // this.getnumber(3);
     this.getnumber(4);
 
   },
