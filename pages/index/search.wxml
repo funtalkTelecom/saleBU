@@ -1,6 +1,6 @@
 <view>
   <view class='search-header'>
-  <form bindsubmit="formSubmit" >
+  <form bindsubmit="formSubmit"  bindreset="formReset">
     <zan-row row-class="row-box">
         <zan-col col="5" col-class="col-left" >靓号类型</zan-col>
         <zan-col col="18" offset="1">
@@ -41,24 +41,49 @@
           wx:for="{{numInputs}}" focus="{{item}}" bindinput="test" data-index="{{index}}"  />
         </zan-col>
     </zan-row> -->
-    <zan-row row-class="row-box">
+    <!-- <zan-row row-class="row-box">
         <zan-col col="5" col-class="col-left" >号码</zan-col>
         <zan-col col="18" offset="1" col-class="phones">
           <input  type='number' maxlength="1" class="select input" wx:key="id"
           wx:for="{{numInputs}}" focus="{{item.focus}}" bindinput="test" data-index="{{index}}"  value="{{item.value}}"
           bindfocus="test1" bindblur="test2" />
         </zan-col>
-    </zan-row>
+    </zan-row> -->
+
+    <!-- <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码1</zan-col>
+        <zan-col col="18" offset="1" col-class="phones1">
+          <view class="panbox">
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          </view>
+          <input  type='number' maxlength="11" class="select input" />
+        </zan-col>
+    </zan-row> -->
+
+
    <zan-row row-class="row-box">
         <zan-col col="5" col-class="col-left" >价格</zan-col>
         <zan-col col="4" offset="1">
           <input class="select" name="priceS"> </input>
         </zan-col>
-        <zan-col col="4" offset="2">
+        <zan-col col="4" offset="1">
           <input class="select" name="priceE"> </input>
         </zan-col>
-        <zan-col col="5" offset="2">
+        <zan-col col="4" offset="1">
           <button size="small" class='but' form-type="submit">搜索</button>
+        </zan-col>
+        <zan-col col="3" offset="1">
+          <button size="small" class='but' form-type="reset">重置</button>
         </zan-col>
     </zan-row>
   

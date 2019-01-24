@@ -167,6 +167,21 @@ Page({
     this.searchNumber()
 
   },
+  formReset() {
+    this.setData({
+      multiIndex: [0, 0],
+      selectaddr: "请选择",
+      province: "",
+      provinceId: "",
+      city: "",
+      cityId: "",
+      objectMultiArray: [this.data.provinceData, this.data.provinceData[0].cityList],
+      featherIndex: 0,
+      tagIndex: 0,
+      yysIndex: 0,
+      nodata: false
+    })
+  },
   // 确定选择该地址
   bindMultiPickerChange: function (e) {
     var addrArrIndex = e.detail.value;
@@ -225,10 +240,11 @@ Page({
   // },
   test: function (e) {
     if (e.detail.value) {
-      var list = this.data.numInputs.map(function (item) {
-        item.focus = false
-        return item
-      })
+      var list = this.data.numInputs
+      // .map(function (item) {
+      //   item.focus = false
+      //   return item
+      // })
       if (e.currentTarget.dataset.index < this.data.numInputs.length - 1) {
         list[e.currentTarget.dataset.index + 1].focus = true
       }
@@ -239,6 +255,10 @@ Page({
     } else {
       var list = this.data.numInputs
       list[e.currentTarget.dataset.index].value = ""
+      if (e.currentTarget.dataset.index !=0) {
+        list[e.currentTarget.dataset.index -1].focus = true
+        list[e.currentTarget.dataset.index - 1].value = ""
+      }
       this.setData({
         numInputs: list
       })

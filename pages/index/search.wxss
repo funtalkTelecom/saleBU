@@ -1,7 +1,7 @@
 /* pages/search/index.wxss */
 .search-header {
   background: #9d9b62;
-  padding: 40rpx 60rpx 40rpx 30rpx;
+  padding: 40rpx 60rpx 40rpx 10rpx;
   font-size: 30rpx;
 }
 .row-box {
@@ -100,3 +100,26 @@
 .nomore image {
   width: 100rpx;
 }
+/* .phones1{
+  position: relative;
+  width: 100%;
+}
+.panbox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.panbox text{
+  display: inline-block;
+  width: 9.0909090909%;
+  height: 54rpx;
+  border-right: 3px solid #9d9b62;
+  box-sizing: border-box;
+}
+.phones1 input{
+  word-spacing: 20px;
+  padding-left: 7px;
+} */
+
+
