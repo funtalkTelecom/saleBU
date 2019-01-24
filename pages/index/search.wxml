@@ -1,101 +1,94 @@
-
-<view class="container">
-  <view class='header'>
-    <view class='search'>
-      <view class='sicon'><text class='iconfont icon-icon--'></text></view>
-      <view class='sinput'><input placeholder="请输入您喜欢的数字(如生日，车牌号等）"  focus="true" bindinput="inputSearch" maxlength="11" type='number'></input></view>
-    </view>
-    <view class='but'>
-      <button class="yellow {{searchPhone.length?'':'disabled'}}" disabled="{{!searchPhone.length}}" bindtap="doSearch">搜索</button>
-    </view>
+<view>
+  <view class='search-header'>
+  <form bindsubmit="formSubmit" >
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >靓号类型</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="featherChange" value="{{featherIndex}}" range="{{featherlist}}" range-key="keyValue" class="select">
+            <view class="picker">{{featherlist[featherIndex].keyValue}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >运营商</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="yysChange" value="{{yysIndex}}" range="{{yyslist}}" range-key="keyValue" class="select">
+            <view class="picker">{{yyslist[yysIndex].keyValue}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >吉利号码</zan-col>
+        <zan-col col="18" offset="1">
+          <picker bindchange="tagChange" value="{{tagIndex}}" range="{{taglist}}" range-key="keyValue" class="select">
+            <view class="picker">{{taglist[tagIndex].keyValue}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >地市</zan-col>
+        <zan-col col="18" offset="1">
+          <picker mode="multiSelector" range-key="name" value="{{multiIndex}}" range="{{objectMultiArray}}"
+          bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="select"> 
+            <view class="picker">{{selectaddr}}</view>
+          </picker>
+        </zan-col>
+    </zan-row>
+    <!-- <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码</zan-col>
+        <zan-col col="18" offset="1" col-class="phones">
+          <input  type='number' maxlength="1" class="select input" wx:key="id"
+          wx:for="{{numInputs}}" focus="{{item}}" bindinput="test" data-index="{{index}}"  />
+        </zan-col>
+    </zan-row> -->
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码</zan-col>
+        <zan-col col="18" offset="1" col-class="phones">
+          <input  type='number' maxlength="1" class="select input" wx:key="id"
+          wx:for="{{numInputs}}" focus="{{item.focus}}" bindinput="test" data-index="{{index}}"  value="{{item.value}}"
+          bindfocus="test1" bindblur="test2" />
+        </zan-col>
+    </zan-row>
+   <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >价格</zan-col>
+        <zan-col col="4" offset="1">
+          <input class="select" name="priceS"> </input>
+        </zan-col>
+        <zan-col col="4" offset="2">
+          <input class="select" name="priceE"> </input>
+        </zan-col>
+        <zan-col col="5" offset="2">
+          <button size="small" class='but' form-type="submit">搜索</button>
+        </zan-col>
+    </zan-row>
+  
+  </form>
   </view>
 
-   <!-- <view class='main' hidden="{{flag ? true : false}}">
-    <view class='lianghao'>
-      <view class='lianghao-th'>
-        <view class='float-left'><text class='title'>靓号类型 </text></view>
-        <view class='float-right' bindtap='morebut'><text class=" iconfont {{more?'icon-shrink':'icon-extend'}}"></text></view>
-      </view>
-      <view class='options'>
-        <block wx:for="{{lianghao}}" wx:if="{{index<count}}" wx:key="id">
-            <view class="{{lhType==item.value?'active':''}}" bindtap='selectlh' data-type="{{item.value}}">{{item.lable}}</view>
+
+<view class='box box-1'>
+        <block wx:for="{{numList}}" wx:key="id">
+         <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+            <view class='phone'>
+              <text>{{item.numBlock[0]}}</text>
+              <text class='phone-mg'>{{item.numBlock[1]}}</text>
+              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            </view>
+             <view class='padlf-68' >售价：<text class='color-orange'>{{item.price_range}}</text>元</view>
+            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
+            <view class='padlf-68'>制式：{{item.netType}}</view>
+            <view class='padlf-68'>运营商：{{item.teleType}}</view>
+            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
+          </navigator>
         </block>
       </view>
-    </view> 
-    <view class='yunying'>
-      <text class='title'>运营商</text> 
-      <view class='options spacing '>
-        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">电信</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">联通</view>
-      </view>
-    </view>
-    
-    <view class='yunying'>
-      <text class='title'>价格</text> 
-      <view class='options'>
-        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">200以下</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">200-500</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">500-1000</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">1000-3000</view>
-      </view>
-    </view>
-    <view class='yunying'>
-      <text class='title'>吉利号码</text> 
-      <view class='options'>
-        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">大展宏图</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">伴你一生</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">长长久久</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">520</view>
-      </view>
-    </view>
-    <view class='yunying'>
-      <text class='title'>保底消费</text> 
-      <view class='options'>
-        <view class="{{yysType==1?'active':''}}" bindtap='selectyys' data-type="1">89元</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">189元</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">289元</view>
-        <view class="{{yysType==2?'active':''}}" bindtap='selectyys' data-type="2">59元</view>
-      </view>
-    </view>
+
+<view class='refresh' wx:if="{{numList.length>0}}">
+        <view class='exchange' bindtap='exchange' data-tag='0'>
+          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+      </view> 
+
+      <view class="loadmore nomore" wx:if="{{nodata}}"><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>没有数据~</view>     
 
 
-  </view>  -->
-
-
-  <!-- <view class='result' hidden="{{flag ? false : true}}">
-    <view class='filters'>
-      <view>靓号类型<text class='iconfont icon-extend'></text></view>
-      <view>运营商</view>
-      <view>最低消费</view>
-      <view>筛选</view>
-    </view>
-    <view>
-    <scroll-view  scroll-y="true">
-      <view class='box box-1'>
-        <block wx:for="{{phones}}" wx:key="id">
-          <view class='box-item'>
-            <view><text class='phone'>{{item.phone}}</text></view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
-          </view>
-        </block>
-        <block wx:for="{{phones}}" wx:key="id">
-          <view class='box-item'>
-            <view><text class='phone'>{{item.phone}}</text></view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
-          </view>
-        </block>
-        <block wx:for="{{phones}}" wx:key="id">
-          <view class='box-item'>
-            <view><text class='phone'>{{item.phone}}</text></view>
-            <text class='phone-price'>售价：<text class='color-orange'>{{item.price}}</text>元</text>
-            <text class='phone-desc'>保底消费：{{item.desc}}元</text>
-          </view>
-        </block>
-      </view>
-      <view class="loading">努力加载中…</view>
-    </scroll-view>
-    </view>
-  </view>   -->
 </view>

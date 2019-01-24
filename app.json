@@ -36,8 +36,7 @@
     "pages/ep-rule/index",
     "pages/auction-text/index",
     "pages/instalments/index",
-    "pages/temp/index",
-    "pages/search/index"
+    "pages/temp/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",
@@ -54,7 +53,7 @@
         "text": "靓号"
       },
       {
-        "pagePath": "pages/search/index",
+        "pagePath": "pages/index/search",
         "text": "搜索"
       },
       {
