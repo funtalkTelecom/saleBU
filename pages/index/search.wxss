@@ -118,7 +118,6 @@
   box-sizing: border-box;
 }
 .phones1 input{
-  word-spacing: 20px;
   padding-left: 7px;
 } */
 

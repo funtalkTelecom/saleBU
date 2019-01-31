@@ -46,38 +46,26 @@
         <zan-col col="18" offset="1" col-class="phones">
           <input  type='number' maxlength="1" class="select input" wx:key="id"
           wx:for="{{numInputs}}" focus="{{item.focus}}" bindinput="test" data-index="{{index}}"  value="{{item.value}}"
-          bindfocus="test1" bindblur="test2" />
+          bindfocus="test1" bindblur="test2" confirm-hold="true" cursor-spacing="12" />
+        </zan-col>
+    </zan-row>
+
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码</zan-col>
+        <zan-col col="18" offset="1" col-class="phones">
+          <input  type='number' maxlength="1" class="select input" wx:key="id"
+          wx:for="{{8}}" focus="{{index==focusIndex}}" bindinput="heleadinput" data-index="{{index}}" confirm-hold="true" cursor-spacing="12" />
         </zan-col>
     </zan-row> -->
 
-    <!-- <zan-row row-class="row-box">
-        <zan-col col="5" col-class="col-left" >号码1</zan-col>
-        <zan-col col="18" offset="1" col-class="phones1">
-          <view class="panbox">
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          <text></text>
-          </view>
-          <input  type='number' maxlength="11" class="select input" />
-        </zan-col>
-    </zan-row> -->
-
-
+  
    <zan-row row-class="row-box">
         <zan-col col="5" col-class="col-left" >价格</zan-col>
         <zan-col col="4" offset="1">
-          <input class="select" name="priceS"> </input>
+          <input class="select" name="priceS" type='number' > </input>
         </zan-col>
         <zan-col col="4" offset="1">
-          <input class="select" name="priceE"> </input>
+          <input class="select" name="priceE" type='number'> </input>
         </zan-col>
         <zan-col col="4" offset="1">
           <button size="small" class='but' form-type="submit">搜索</button>

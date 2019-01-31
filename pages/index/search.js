@@ -239,30 +239,48 @@ Page({
   //   }
   // },
   test: function (e) {
-    if (e.detail.value) {
+    if (e.detail.keyCode == 8){
+      var list = this.data.numInputs
+      if (list[e.currentTarget.dataset.index].value){
+        list[e.currentTarget.dataset.index].value=""
+      }else{
+        if (e.currentTarget.dataset.index != 0) {
+          // list[e.currentTarget.dataset.index].focus = false
+          list[e.currentTarget.dataset.index - 1].focus = true
+          list[e.currentTarget.dataset.index - 1].value = ""
+        }
+      }
+      this.setData({
+        numInputs: list
+      })
+
+    }else  {
       var list = this.data.numInputs
       // .map(function (item) {
       //   item.focus = false
       //   return item
       // })
       if (e.currentTarget.dataset.index < this.data.numInputs.length - 1) {
-        list[e.currentTarget.dataset.index + 1].focus = true
+        if (e.detail.value){
+          list[e.currentTarget.dataset.index + 1].focus = true
+        }
       }
       list[e.currentTarget.dataset.index].value = e.detail.value
       this.setData({
         numInputs: list
       })
-    } else {
-      var list = this.data.numInputs
-      list[e.currentTarget.dataset.index].value = ""
-      if (e.currentTarget.dataset.index !=0) {
-        list[e.currentTarget.dataset.index -1].focus = true
-        list[e.currentTarget.dataset.index - 1].value = ""
-      }
-      this.setData({
-        numInputs: list
-      })
-    }
+    } 
+    // else {
+    //   var list = this.data.numInputs
+    //   list[e.currentTarget.dataset.index].value = ""
+    //   if (e.currentTarget.dataset.index !=0) {
+    //     list[e.currentTarget.dataset.index -1].focus = true
+    //     list[e.currentTarget.dataset.index - 1].value = ""
+    //   }
+    //   this.setData({
+    //     numInputs: list
+    //   })
+    // }
   },
   test1: function (e){
     var list = this.data.numInputs
@@ -274,9 +292,10 @@ Page({
   test2: function (e) {
     var list = this.data.numInputs
     list[e.currentTarget.dataset.index].focus = false
-    this.setData({
-      numInputs: list
-    })
+    this.data.numInputs = list
+    // this.setData({
+    //   numInputs: list
+    // })
   },
   getparamet: function (e) {
     network.GET({

@@ -121,9 +121,9 @@ Page({
         if (res.data.code == 200) {
           var date={}
           var enddatetext
-          date.beginDate = new Date(res.data.data.beginDate.replace(/\-/g, '/')).getTime()
-          date.endDate = new Date(res.data.data.endDate.replace(/\-/g, '/')).getTime()
-          date.newDate = new Date(res.data.data.newDate.replace(/\-/g, '/')).getTime()
+          date.beginDate = res.data.data.beginDate
+          date.endDate = res.data.data.endDate
+          date.newDate = res.data.data.newDate
 
           // console.log(res.data.data.beginDate)
           // console.log(new Date(res.data.data.beginDate.replace(/\-/g, '/')))
