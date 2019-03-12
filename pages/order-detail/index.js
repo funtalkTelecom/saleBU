@@ -39,7 +39,8 @@ Page({
           // console.log(this.formatTime(res.data.data.order))
          this.setData({
            order: this.formatTime(res.data.data.order),
-           orderItem: res.data.data.orderItem.map(this.formatName)
+           orderItem: res.data.data.orderItem.map(this.formatName),
+           meal: res.data.data.mealList[0]
          })
         }
       }

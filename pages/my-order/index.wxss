@@ -126,3 +126,9 @@ flex: 1;
   z-index: 1;
   overflow: hidden;
 }
+.price-test {
+  font-size: 28rpx;
+  text-align: right;
+  margin-bottom: 4rpx;
+  margin-right:30rpx;
+}

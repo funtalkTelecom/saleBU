@@ -132,6 +132,11 @@ Page({
       });
     }
   },
+  tologistics: function (e){
+    wx.navigateTo({
+      url: '/pages/logistics/index?orderid=' + e.currentTarget.dataset.id
+    });
+  },
   //签收
   sureharvest: function (e) {
     // e.currentTarget.dataset.id

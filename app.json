@@ -36,7 +36,8 @@
     "pages/ep-rule/index",
     "pages/auction-text/index",
     "pages/instalments/index",
-    "pages/temp/index"
+    "pages/temp/index",
+    "pages/logistics/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",
