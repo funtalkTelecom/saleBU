@@ -1,0 +1,25 @@
+<view>
+  <zan-panel title="">
+    <zan-row row-class="simple-info bbor">
+      <zan-col col="24">快递公司：{{logistics.expName}}</zan-col>
+      <zan-col col="24">快递单号：{{logistics.number}}</zan-col>
+    </zan-row>
+  </zan-panel>
+  
+  <zan-panel title="">
+    <view wx:for="{{logistics.list}}" wx:key="status"  class="box {{index==0?'active':''}}">
+      <view class="time" ><view class='hide'>{{item.time}}</view><view class='show'>{{item.time}}</view></view>
+      <view class="status"><view class='hide'>{{item.status}}</view><view class='show'>{{item.status}}</view></view>
+    </view>
+  </zan-panel>
+  
+
+
+
+
+
+
+
+
+
+</view>

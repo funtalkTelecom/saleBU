@@ -1,0 +1,50 @@
+/* pages/logistics/index.wxss */
+.simple-info {
+  font-size: 28rpx;
+  padding: 20rpx 30rpx;
+  line-height: 50rpx;
+}
+.box {
+  display:flex;
+  font-size:28rpx;
+  color:#888;
+}
+.time {
+  width:30%;
+  border-right:1px dotted rgba(0, 0, 0, 0.3);
+  position:relative;
+  padding:20rpx 20rpx;
+}
+.time::before{
+  content: "";
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    right: -10rpx;
+    top: 50%;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    transform: translate3d(0,-50%,0) rotate(45deg);
+     -webkit-transform: translate3d(0,-50%,0) rotate(45deg);
+}
+.status {
+  position: relative;
+  width:70%;padding:20rpx 20rpx;
+}
+.hide{
+  opacity: 0;
+  visibility:hidden;
+}
+.show{
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 85%;
+    text-align: center;
+}
+.active {
+  color: orange;
+}
