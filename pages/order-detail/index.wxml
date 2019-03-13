@@ -46,17 +46,17 @@
   </zan-panel> -->
 
   <zan-panel title="商品清单">
-    <view wx:for="{{orderItem}}" wx:key="id" hidden="{{item.isShipment==1&&item.skuGoodsType==2}}" style='display:flex'>
+    <view wx:for="{{orderItem}}" wx:key="id" hidden="{{item.isShipment==1&&item.skuGoodsType==2}}" style='display:flex;padding-bottom:32rpx;'>
       <view style='width:32%'>
       <image src='{{item.picUrl}}' mode="aspectFit" style='width:180rpx;height:180rpx;padding:30rpx 0 16rpx 30rpx;'></image>
-      <view style='font-size:28rpx;text-align:center;'>{{item.num}}</view>
+      <view style='font-size:32rpx;text-align:center;font-weight:700'>{{item.num}}</view>
       </view>
-      <view style='width:68%;font-size:28rpx;display:flex;flex-direction:column;justify-content:space-around'>
-        <view style='display:flex;justify-content:space-around'>
+      <view style='width:68%;font-size:28rpx;display:flex;flex-direction:column;justify-content:center'>
+        <view style='display:flex;justify-content:space-around;line-height:70rpx;'>
           <text>运营商：{{item.teleType}}</text>
           <text>制式：{{item.netType}}</text>
         </view>
-        <view style='display:flex;justify-content:space-around'>
+        <view style='display:flex;justify-content:space-around;line-height:70rpx;'>
           <text>地市：{{item.cityName}}</text>
           <text>低消：{{item.lowConsume}}元</text>
         </view>
@@ -67,7 +67,7 @@
 
   <zan-panel title="套餐">
     <view style='font-size:32rpx;padding:20rpx 30rpx'>{{meal.mealName}}</view>
-    <view style='font-size:26rpx;padding:10rpx 30rpx;'>{{meal.mealDesc}}</view>
+    <view style='font-size:26rpx;padding:10rpx 30rpx 32rpx 30rpx;'>{{meal.mealDesc}}</view>
   </zan-panel>
 
 
