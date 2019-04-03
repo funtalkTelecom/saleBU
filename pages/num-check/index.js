@@ -87,7 +87,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return network.share("id=" + this.data.numberObj.id );
+    return network.share("num_id=" + this.data.numberObj.id );
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);
@@ -143,6 +143,17 @@ Page({
           if (status!=3){
             this.setInterval();
           }
+        } else if (res.data.code == 888){
+          wx.showToast({
+            title: res.data.data,
+            icon: 'none',
+            duration: 2000,
+            success:function(){
+              wx.switchTab({
+                url: '/pages/index/index'
+              })
+            }
+          })
         }else{
           util.showToast(res.data.data)
         }
