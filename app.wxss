@@ -72,3 +72,33 @@
     }
 }
 
+.service-box{
+  position:fixed;
+  right:0;
+  bottom:100px;
+  width:100rpx;
+  height:100rpx;
+}
+.service-box button {
+  opacity:0;
+  width:100rpx;
+  height:100rpx;
+  position:absolute;
+  z-index:100;
+}
+.service-box>view {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100rpx;
+  height:100rpx;
+}
+.icon-xiaoxi {
+  font-size:50rpx;
+  text-align:center;
+  color:#FF7F00;
+}
+.service-text{
+ font-size:28rpx;
+ text-align:center;
+}

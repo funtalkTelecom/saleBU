@@ -86,6 +86,17 @@
   </view>
 
 
+    <!-- 客服 -->
+<view class='service-box'>
+    <button open-type="contact" >
+    </button>
+    <view >
+      <view class='iconfont icon-xiaoxi'></view>
+      <view class="service-text">客服</view>
+    </view>
+  </view>
+
+
 <view class='box box-1'>
         <block wx:for="{{numList}}" wx:key="id">
          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">

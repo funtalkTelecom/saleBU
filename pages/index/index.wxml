@@ -200,4 +200,15 @@
       </view>
     </view>
   </scroll-view>
+
+
+   <!-- 客服 -->
+  <view class='service-box'>
+    <button open-type="contact" >
+    </button>
+    <view >
+      <view class='iconfont icon-xiaoxi'></view>
+      <view class="service-text">客服</view>
+    </view>
+  </view>
 </view>

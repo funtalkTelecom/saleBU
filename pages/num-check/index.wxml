@@ -89,7 +89,15 @@
     <!-- <view class='pay' bindtap='createOrder'>立即购买</view> -->
     <button open-type="getUserInfo" class='pay' bindgetuserinfo="bindGetUserInfo">立即购买</button>
   </view>
-
+  <!-- 客服 -->
+<view class='service-box'>
+    <button open-type="contact" >
+    </button>
+    <view >
+      <view class='iconfont icon-xiaoxi'></view>
+      <view class="service-text">客服</view>
+    </view>
+  </view>
 
   <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
