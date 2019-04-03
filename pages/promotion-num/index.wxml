@@ -3,13 +3,13 @@
   <view class='num-title'>号码信息</view>
   <view class='num'>
     <view style='color:red;font-weight:700'>{{numObj.num_resource}}</view>
-    <view>福建 {{numObj.city_name}}</view>
+    <view>{{numObj.city_name}}</view>
     <view>制式：{{numObj.net_type}}</view>
     <view style='color:red;font-weight:700'>￥{{numObj.sale_price}}</view>
     <view>运营商：{{numObj.tele_type}}</view>
     <view>保底消费：{{numObj.low_consume}}元</view>
     <view wx:if="{{numObj.is_pp!=0}}">预期收益:<text style='color:red'>{{numObj.income}}</text>元</view>
-    <view wx:if="{{numObj.is_pp!=0}}" class='flex'>{{numObj.valid_date}}</view>
+    <view wx:if="{{numObj.is_pp!=0}}" class='flex'>到期时间：{{numObj.valid_date}}</view>
   </view>
 </view>
 <view class='share-head'>
