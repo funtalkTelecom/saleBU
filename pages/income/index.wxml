@@ -1,7 +1,7 @@
 <view class='info-box'>
   <view class="info-head">
     <text>可用余额</text>
-    <text  class="all-income">{{partnerObj.all_income}}</text><text>元</text>
+    <text  class="all-income">{{partnerObj.balance}}</text><text>元</text>
     <button size='mini' bindtap='toWithdraw'>提现</button>
   </view>
   <view class="info-main">
