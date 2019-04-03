@@ -44,7 +44,7 @@
       </view>
       <view class='box box-1'>
         <block wx:for="{{number1}}" wx:key="id">
-         <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+         <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <view class='liang jixiang'>吉</view>
               <text>{{item.numBlock[0]}}</text>
@@ -76,7 +76,7 @@
       </view>
       <view class='box box-1'>
         <block wx:for="{{number2}}" wx:key="id">
-          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
 
             <view class='phone'>
               <view class='liang diancang'>业</view>
@@ -109,7 +109,7 @@
       </view>
       <view class='box box-1'>
         <block wx:for="{{number3}}" wx:key="id">
-          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <view class='liang shengri'>生日</view>
               <text>{{item.numBlock[0]}}</text>
@@ -141,7 +141,7 @@
       </view>
       <view class='box box-1'>
         <block wx:for="{{number4}}" wx:key="id">
-          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <view class='liang aiqing'>爱</view>
               <text>{{item.numBlock[0]}}</text>
@@ -177,7 +177,7 @@
       </view>
       <view class='box box-1'>
         <block wx:for="{{number0}}" wx:key="id">
-          <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <!-- <view> -->
              <view class='phone'>
               <view class='liang'>靓</view>

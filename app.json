@@ -37,7 +37,13 @@
     "pages/auction-text/index",
     "pages/instalments/index",
     "pages/temp/index",
-    "pages/logistics/index"
+    "pages/logistics/index",
+    "pages/copartner/index",
+    "pages/promotion-detail/index",
+    "pages/income/index",
+    "pages/promotion-num/index",
+    "pages/apply-copartner/index",
+    "pages/withdraw/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",

@@ -27,8 +27,8 @@
   justify-content: space-between;
 }
 .phones input{
-  width: 10%;
-  text-align: center;
+  width: 100%;
+  /* text-align: center; */
 }
 .but {
   height: 56rpx;

@@ -5,7 +5,7 @@
     <view>{{text[1]}} <text>{{enddatetext[0]}}</text>：<text>{{enddatetext[1]}}</text> : <text>{{enddatetext[2]}}</text></view>
   </view>
   <view class='main'>
-    <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none" wx:for="{{numList}}" wx:key="id">
+    <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none" wx:for="{{numList}}" wx:key="id">
       <view class='phone'>
         <view class='liang'>秒杀</view>
         <text>{{item.numBlock[0]}}</text>

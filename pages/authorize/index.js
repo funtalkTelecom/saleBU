@@ -15,6 +15,7 @@ Page({
     
   },
   bindGetUserInfo: function (e) {
+    console.log(e)
     if(!e.detail.userInfo) {
       return;
     }

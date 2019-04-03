@@ -30,7 +30,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.queryAgent()
+    // this.queryAgent()
+    this.setData({
+      isPartner:wx.getStorageSync('isPartner'),
+      testUser:wx.getStorageSync('testUser' )
+    })
   },
 
   /**
@@ -74,20 +78,13 @@ Page({
     })
   },
   queryAgent: function () {
-    var toBingding = false;
     network.GET({
       url: "query-agent_by_consumerid",
       params: {},
       success: (res) => {
         if (res.data.code == 200) {
-          var agentObj = res.data.data
-          if (agentObj.isAgent == "true") {
-            if (agentObj.status == 2) {
-              toBingding=true
-            }
-          }
           this.setData({
-            toBingding: toBingding
+              agentObj: res.data.data
           })
         }
       }

@@ -36,7 +36,12 @@
     box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.1) inset;
 }
 /* 功能封装：加载更多样式 */
-
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
+}
 .loadmore {
     color: #00b2ee;
     font-size: 32rpx;

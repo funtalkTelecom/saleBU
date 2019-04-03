@@ -21,11 +21,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
     network.BarTitle("靓号订购")
-    this.initNumber(options.id);
-    this.initMeal(options.id);
-    
+    this.initNumber(options);
+    this.initMeal(options.num_id);
+    // var pages = getCurrentPages() //获取加载的页面
+    // console.log(pages)
+    // var currentPage = pages[pages.length - 1] //获取当前页面的对象
+    // console.log(currentPage)
+    // var url = currentPage.route //当前页面url
+    // console.log(url)
+    // var options = currentPage.options 
+    // console.log(options)
+    if (options.share_id){
+      this.setData({
+        share_id: options.share_id
+      })
+    }
   },
   onUnload: function () {
     if (this.data.intervalId){
@@ -38,6 +50,10 @@ Page({
    */
   onShow: function () {
     this.initAddress();
+    this.setData({
+      isPartner: wx.getStorageSync('isPartner'),
+      testUser: wx.getStorageSync('testUser')
+    })
   },
   setInterval:function(){
     var that=this;
@@ -71,7 +87,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return network.share("id=" + this.data.id );
+    return network.share("id=" + this.data.numberObj.id );
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);
@@ -79,11 +95,20 @@ Page({
   //     wxpay: e.currentTarget.dataset.wxpay
   //   })
   // },
-  initNumber:function(id){
+  initNumber:function(option){
     var that=this;
+    var open_url=""
+    for (var key in option) {
+      open_url+= `${key}=${option[key]}&`
+    } 
     network.GET({
-      url: "number/" + id,
-      params: {},
+      url: "number/" + option.num_id,
+      params: {
+        open_url: "pages/num-check/index?" + open_url,
+        num_id: option.num_id,
+        share_id: option.share_id ? option.share_id : "",
+        chennel: wx.getStorageSync('chennel')? wx.getStorageSync('chennel') : "",
+      },
       success: (res) => {
         if (res.data.code == 200) {
           var status =3;
@@ -118,7 +143,8 @@ Page({
           if (status!=3){
             this.setInterval();
           }
-         
+        }else{
+          util.showToast(res.data.data)
         }
       }
     })
@@ -170,7 +196,7 @@ Page({
 
     })
   },
-  createOrder:function(e){
+  valideAddr:function(){
     if (!this.data.curAddressObj) {
       // wx.hideLoading();
       wx.showModal({
@@ -179,13 +205,28 @@ Page({
       })
       return;
     }
+    var curAddressObj=this.data.curAddressObj
+    wx.showModal({
+      title: '确认收货地址',
+      content: curAddressObj.provinceName + curAddressObj.cityName + curAddressObj.districtName + curAddressObj.address,
+      success:(res)=> {
+        if (res.confirm) {
+          this.createOrder()
+        }
+      }
+    })
+
+  },
+  createOrder:function(e){
     var params=new Object();
     params.type=2;
     params.addrid = this.data.curAddressObj.id;
     params.numid = this.data.numberObj.id;
     params.skuid = this.data.numberObj.skuId;
     params.mealid = this.data.mealObj.mid;
-
+    if (this.data.share_id){
+      params.share_id = this.data.share_id
+    }
     network.POST({
       url: "order",
       params: params,
@@ -219,5 +260,34 @@ Page({
       addrindex:index
     })
     this.toggleBottomPopup(); 
+  },
+  bindGetUserInfo: function (e) {
+    console.log(e)
+    if (!e.detail.userInfo) {
+      return;
+    }
+    var userInfo = e.detail.userInfo;
+    wx.setStorageSync('userInfo', userInfo);
+    network.PUT({
+      url: "Consumer",
+      params: {
+        'loginName': "",
+        'livePhone': "",
+        'nickName': userInfo.nickName,
+        'sex': userInfo.gender,
+        'img': userInfo.avatarUrl,
+        'province': userInfo.province,
+        'city': userInfo.city
+      },
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.valideAddr();
+        }
+      },
+      fail: () => {
+        //失败后的逻辑
+
+      }
+    })
   }
 })

@@ -1,6 +1,7 @@
 App({
   onLaunch: function (options) {
-    // console.log(options)
+    console.log(options)
+    wx.setStorageSync('chennel', options.scene)
     // console.log(options.scene)
     // var scene = decodeURIComponent(options.scene)
 
@@ -40,46 +41,42 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log("success")
         console.log(res)
         if (res.code) {
-          console.log(res.code)
           wx.request({
             url: this.globalData.API_URL+'get_open_id',
             data: { getcode: res.code },
-            // header: {},
             method: 'GET',
             dataType: 'json',
-            // responseType: 'text',
             success: function(res) {
-              // if (res.statusCode==404){
-                console.log(res)
-              // }else{
+              console.log(res)
+              if(res.data.code==200){
                 wx.setStorageSync('token', res.data.data.__sessid)
                 wx.setStorageSync('consumer_id', res.data.data.consumer_id)
+                wx.setStorageSync('isPartner', res.data.data.isPartner)
+                wx.setStorageSync('partnerCheck', res.data.data.partnerCheck)
+                wx.setStorageSync('testUser', res.data.data.testUser)
                 that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
-              // }
-              
+              }else{
+                wx.showToast({
+                  title: res.data.data,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
             },
             fail: function(res) {
-              // console.log("fail");
-              // wx.navigateBack({
-              //   delta: 1
-              // })
             },
             complete: function(res) {},
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       },
       fail:res=>{
         console.log("fail")
         console.log(res)
       },
-      complete:res=>{
-        console.log("complete")
-        console.log(res)
+      complete:()=>{
       }
     });
      // 异步加载省市区json数据

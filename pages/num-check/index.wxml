@@ -14,8 +14,8 @@
         </zan-col>
         <zan-col col="10">制式：{{numberObj.netType}}</zan-col>
         <zan-col col="7">保底消费：{{numberObj.lowConsume}}元</zan-col>
-        <zan-col col="10">运营商：{{numberObj.teleType}}</zan-col>
-        <zan-col col="14">归属地：{{numberObj.city_name}}</zan-col>
+        <zan-col offset="7" col="10">运营商：{{numberObj.teleType}}</zan-col>
+        <zan-col col="7">归属地：{{numberObj.city_name}}</zan-col>
       </zan-row>
       <!-- <zan-row row-class="num-info num-money">
         <zan-col col="24">
@@ -70,6 +70,9 @@
         <view>温馨提示：付款时请备注所拍得到号码，如有任何疑问可拨打客服热线4009-183-365</view>
       </view>
     </zan-panel> -->
+
+
+    <navigator wx:if="{{testUser==='1'&&isPartner==1}}" url='/pages/promotion-num/index?numid={{numberObj.id}}' class='toshare' hover-class="none" >去推广</navigator>
   </view> 
 
   <!-- <view class='pay'>
@@ -83,7 +86,8 @@
     <text wx:if="{{status==2}}"> 秒杀价￥{{numberObj.activityPrice}}元    <text style='text-decoration:line-through;color:#ccc'>{{numberObj.price}}</text></text>
     </view>
     
-    <view class='pay' bindtap='createOrder'>立即购买</view>
+    <!-- <view class='pay' bindtap='createOrder'>立即购买</view> -->
+    <button open-type="getUserInfo" class='pay' bindgetuserinfo="bindGetUserInfo">立即购买</button>
   </view>
 
 

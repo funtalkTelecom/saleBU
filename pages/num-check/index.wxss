@@ -8,6 +8,9 @@ page {
   padding-bottom: 100rpx;
   overflow: hidden;
 } */
+.abc {
+ position: relative;
+}
 
 .num-info {
   padding-left: 32rpx;
@@ -100,6 +103,10 @@ page {
   /* width: 254rpx;  */
   background: orange;
   line-height: 80rpx;
+  font-size: 28rpx;
+  border: none;
+  border-radius: 0;
+  color: #fff;
 }
 .miaosha{
   line-height:80rpx;
@@ -115,5 +122,16 @@ page {
 .miaosha .afterdate{
   padding:5px;
 background:#fff;
+
+}
+.toshare {
+  position:absolute;
+  top:24rpx;
+  right:36rpx;
+  border:1px solid orange;
+  background:orange;
+  color:#fff;
+  padding:8rpx;
+  border-radius:12rpx;
 
 }

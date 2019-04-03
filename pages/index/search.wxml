@@ -10,7 +10,7 @@
         </zan-col>
     </zan-row>
     <zan-row row-class="row-box">
-        <zan-col col="5" col-class="col-left" >运营商</zan-col>
+        <zan-col col="5" col-class="col-left" >网络制式</zan-col>
         <zan-col col="18" offset="1">
           <picker bindchange="yysChange" value="{{yysIndex}}" range="{{yyslist}}" range-key="keyValue" class="select">
             <view class="picker">{{yyslist[yysIndex].keyValue}}</view>
@@ -32,6 +32,13 @@
           bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="select"> 
             <view class="picker">{{selectaddr}}</view>
           </picker>
+        </zan-col>
+    </zan-row>
+
+    <zan-row row-class="row-box">
+        <zan-col col="5" col-class="col-left" >号码</zan-col>
+        <zan-col col="18" offset="1" col-class="phones">
+          <input  type='number' maxlength="13" class="select"  name="num" />
         </zan-col>
     </zan-row>
     <!-- <zan-row row-class="row-box">
@@ -81,7 +88,7 @@
 
 <view class='box box-1'>
         <block wx:for="{{numList}}" wx:key="id">
-         <navigator url='/pages/num-check/index?id={{item.id}}' class='box-item' hover-class="none">
+         <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>

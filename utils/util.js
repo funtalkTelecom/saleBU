@@ -8,6 +8,12 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('-')
+}
 const formatminute = date => {
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -136,6 +142,14 @@ const parseIntDayTime = time => {
   let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60, 10);
   return [day*24+hou, min, sec].map(formatNumber);
 }
+const showToast=title=>{
+  wx.showToast({
+    title: title,
+    duration: 2000,
+    // image: "../../imgs/personal/error.png",
+    icon:"none"
+  })
+}
 module.exports = {
   activeObjFormatTime: activeObjFormatTime,
   formatTime: formatTime,
@@ -145,5 +159,7 @@ module.exports = {
   epSalesItemFormatTime: epSalesItemFormatTime,
   orderText: orderText,
   parseIntTime: parseIntTime,
-  parseIntDayTime: parseIntDayTime
+  parseIntDayTime: parseIntDayTime,
+  formatDate: formatDate,
+  showToast: showToast
 }

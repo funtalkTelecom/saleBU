@@ -48,7 +48,7 @@ Page({
   tonumcheck: function (e) {
     if (e.currentTarget.dataset.isagent == "1") {
       wx.navigateTo({
-        url: "/pages/num-check/index?id=" + e.currentTarget.dataset.id
+        url: "/pages/num-check/index?num_id=" + e.currentTarget.dataset.id
       })
     }
   },
