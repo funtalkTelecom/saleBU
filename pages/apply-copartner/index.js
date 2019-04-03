@@ -194,6 +194,7 @@ Page({
       params: formData,
       success: (res) => {
         if (res.data.code == 200) {
+          wx.setStorageSync('isPartner', "1")
           wx.showToast({
             title: res.data.data,
             icon: 'success',
