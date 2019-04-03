@@ -19,15 +19,15 @@
     <text class="arrow share-right" bindtap='toPromotionDel'>推广记录</text>
   </view>
   <view class='share-box'>
-    <view class='share-item' wx:for="{{shareList}}" wx:key="id">
+    <view class='share-item' wx:for="{{shareList}}" wx:key="id" bindtap='torem' data-sharenumid='{{item.share_num_id}}' >
       <view class='share-item-num'>分享号码 {{item.share_num}}</view>
-      <text class='iconfont icon-shanchu' bindtap='toDel' data-shareid='{{item.id}}'></text>
+      <text class='iconfont icon-shanchu' catchtap='toDel' data-shareid='{{item.id}}'></text>
        <view>号码售价：{{item.sale_price}}元</view>
        <view>预期收益：{{item.income}}元</view>
        <view class='w100'>分享时间：{{item.share_date}}</view>
        <view class='w100' wx:if="{{item.is_pp!=0}}">有效时间：{{item.valid_date}}</view>
        <!-- <view class='w100'>有效时间：2018-01-01 12:00</view> -->
-       <view class="torem {{item.num_sale==0?'disable':''}}" bindtap='torem' data-sharenumid='{{item.share_num_id}}'>去推广</view>
+       <view class="torem {{item.num_sale==0?'disable':''}}" >去推广</view>
     </view>
 
   </view>
