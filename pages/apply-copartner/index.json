@@ -1,0 +1,4 @@
+{
+  "usingComponents": {
+    "zan-popup": "../../dist/popup/index"
+  }}

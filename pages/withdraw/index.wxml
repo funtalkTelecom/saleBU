@@ -1,0 +1,27 @@
+
+<view>
+ <form bindsubmit="formSubmit">
+    <view class='pad'>
+      <view class='cell'>
+        <view>可用额度：</view>
+        <input disabled value='{{partnerObj.balance}}元'/>
+      </view>
+      <view class='cell'>
+        <view>发放方式：</view>
+        <input disabled value='微信余额'/>
+      </view>
+      <view class='cell'>
+        <view>提现金额：</view>
+        <input maxlength="11" name="amt" type="digit" value='{{amt}}' placeholder="请输入提现金额"  />
+        <button size='mini' bindtap='amtAll'>全部提现</button>
+      </view>
+      <button class='btn' formType="submit">确认提现</button>
+    </view>
+ </form> 
+
+ <view class='qa'>
+    <view class='title'>温馨提示</view>
+    <view>1、当发放方式是红包时，提现金额需不低于0.3元</view>
+    <view>2、红包将发放到当前绑定的微信号上</view>
+ </view>
+</view>

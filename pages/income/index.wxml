@@ -1,0 +1,37 @@
+<view class='info-box'>
+  <view class="info-head">
+    <text>推广收益</text>
+    <text  class="all-income">{{partnerObj.all_income}}</text><text>元</text>
+    <button size='mini' bindtap='toWithdraw'>提现</button>
+  </view>
+  <view class="info-main">
+      <view>
+        <view>{{partnerObj.wait_balance}}</view>
+        <view>待结算金额</view>
+      </view>
+      <view>
+        <view>{{partnerObj.has_balance}}</view>
+        <view>已结算金额</view>
+      </view>
+  </view>
+</view>
+
+<view class='share-head'>
+    <text class="share-left">收支明细</text>
+  </view>
+
+  <view style='padding:0 20rpx;'>
+      <view class="a" wx:for="{{financeList}}" wx:key="id">
+        <view>金额:<text style='color:red'> {{item.amt}}</text>元</view>
+        <view style='text-align:right'>{{item.status}}</view>
+        <view>类型:{{item.order_name}}</view>
+        <view>余额:{{item.after_amt}}元</view>
+        <view>日期:{{item.add_date}}</view>
+        <view>订单:{{item.contractno}}</view>
+         <!-- <view style='width:100%'>摘要:12123132</view> -->
+         <!-- <view style='width:100%;'><button style='float:right'  size='mini'>查看进度</button></view> -->
+    </view>
+
+  </view>
+   <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+    <view class="loadmore nomore" wx:else><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>已经没有更多了~</view>

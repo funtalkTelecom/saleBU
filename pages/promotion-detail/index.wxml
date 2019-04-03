@@ -1,0 +1,43 @@
+<!--pages/promotion/index.wxml-->
+
+<view class="info-box">
+  <view class="info-head">
+    <text>推广收益</text><text class="all-income" >{{partnerObj.all_income}}</text><text>元</text>
+  </view>
+  <view class='info-main'>
+      <view>
+        <view>{{partnerObj.share_count}}</view>
+        <view>推广个数</view>
+      </view>
+      <view>
+        <view>{{partnerObj.share_browse}}</view>
+        <view>浏览量</view>
+      </view>
+      <view>
+        <view>{{partnerObj.sale_count}}张</view>
+        <view>销售量</view>
+      </view>
+      <view>
+        <view>{{partnerObj.sale_price}}元</view>
+        <view>销售额</view>
+      </view>
+  </view>
+</view>
+  <view class='share-head'>
+    <text class="share-left">推广播报</text>
+  </view>
+  <view  class='share-list'>
+    <view class='share-item' wx:for="{{shareBrowseList}}" wx:key="id">
+      <image src="{{item.img||'../../imgs/personal/logo.png'}}"></image>
+      <view class='share-text'>
+        <view>您的好友{{item.nick_name}}{{item.act_type==1?'浏览':'购买'}}了您分享的{{item.num}}号码</view>
+        <view>时间：2019-03-15 15:27:10</view>
+      </view>
+    </view>
+
+  </view>
+
+  
+
+  <view class="loadmore loading" wx:if="{{ hasMore }}">正在加载...</view>
+    <view class="loadmore nomore" wx:else><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>已经没有更多了~</view>

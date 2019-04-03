@@ -1,0 +1,113 @@
+/* pages/copartner/index.wxss */
+page{
+ font-size: 28rpx;
+}
+.head {
+  padding: 30rpx 30rpx;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  box-shadow: 10rpx 10rpx 5rpx rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+}
+.line_H {
+  line-height: 50rpx;
+  padding-left: 3%;
+}
+.fw {
+  font-weight: 700;
+}
+.withdraw {
+  position: absolute;
+  top: 50%;
+   transform: translate3d(0,-50%,0);
+   right:10rpx;
+   color: #888;
+   padding: 0 40rpx;
+}
+.share-head {
+  padding: 20rpx 30rpx 0 20rpx;
+  border-bottom: 1px solid #f3f3f3;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+.share-left {
+  position:relative;
+  padding-left: 10rpx;
+}
+.share-left::before {
+  content: "";
+  position:absolute;
+  width: 6rpx;
+  height: 100%;
+  background-color: red;
+  top: 50%;
+  left: 0;
+  transform: translate(0,-50%)
+}
+.share-right {
+  float:right;
+  padding-right:50rpx;
+  color: #888;
+}
+
+.share-box{
+  padding: 0 30rpx;
+}
+.share-item{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  border-bottom: 1px dotted #888;
+}
+.share-item view{
+  width: 50%;
+  line-height: 50rpx;
+  height: 50rpx;
+}
+.share-item .share-item-num {
+  font-weight: 700;
+  width: 88%;
+}
+.icon-shanchu {
+  font-size: 40rpx;
+  vertical-align:bottom;
+
+}
+.share-item .torem {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translate(0,-50%);
+  width: 18%;
+  background-color: red;
+  padding-left: 35rpx;
+  color: #fff;
+}
+.share-item .torem.disable {
+  background-color:#888;
+  
+}
+.torem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-style: solid;
+  border-width: 25rpx 25rpx 25rpx 25rpx;
+  border-color: transparent transparent transparent #fff;
+  width: 0px;
+  height: 0px;
+}
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
+}
+.share-item .w100{
+  width: 100%;
+}

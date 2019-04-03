@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "合伙人",
+  "usingComponents": {
+    "zan-panel": "../../dist/panel/index",
+    "zan-row": "../../dist/row/index",
+    "zan-col": "../../dist/col/index"
+  }}

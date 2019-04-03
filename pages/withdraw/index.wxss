@@ -1,0 +1,49 @@
+/* pages/withdraw/index.wxss */
+page {
+  font-size: 28rpx;
+  position: relative;
+}
+input {
+  display: inline-block;
+}
+.pad {
+  padding-top: 34rpx;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cell > view {
+  width: 22%;
+}
+.cell input,
+.cell picker {
+  flex: 1
+}
+.btn {
+  margin-top: 50rpx;
+ margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #fff;
+  background-color: orange;
+  letter-spacing:30rpx;
+}
+.qa {
+  margin-top: 150rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background-color: #fdf5ed;
+  padding: 40rpx 20rpx 30rpx;
+}
+.qa .title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}

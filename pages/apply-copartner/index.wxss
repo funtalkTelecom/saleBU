@@ -1,0 +1,80 @@
+/* pages/apply-copartner/index.wxss */
+page{
+  font-size: 28rpx;
+  height: 100%;
+}
+.page-container {
+  height:100%;
+}
+.page-container>image{
+  width:100%;
+  height:100%;
+  display:block;
+  padding-bottom:70rpx;
+  box-sizing:border-box;
+}
+
+.quickly-apply {
+  position: fixed;
+  bottom:0;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #fff;
+  background: red;
+  width: 100%;
+}
+.pop-example__container {
+  overflow: hidden;
+  background: #fff;
+}
+
+.pop-example__container--bottom {
+  width: 100vw;
+}
+.apply-title {
+  line-height: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  border-bottom: 1px solid #cfcfcf;
+  position: relative;
+  font-size: 34rpx;
+}
+.form-box{
+  padding:0 30rpx;
+}
+.form-item{
+ display:flex;
+ align-items:center;
+ border-bottom:1px solid #e7e7e7;
+}
+.item-code{
+  padding:16rpx 0;
+  margin-bottom:30rpx;
+}
+.form-item-text {
+  flex:1
+}
+.input-parent{
+  width: 70%;
+}
+.ta-r {
+  text-align:right;
+}
+
+.icon-del2 {
+  position: absolute;
+  right: 30rpx;
+  font-size: 60rpx;
+}
+.icon-tubiao- {
+  font-size: 70rpx;
+}
+.submit-button {
+  height:70rpx;
+  line-height:70rpx;
+  font-size:30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}

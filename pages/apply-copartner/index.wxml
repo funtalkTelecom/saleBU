@@ -1,0 +1,51 @@
+<!--pages/apply-copartner/index.wxml-->
+
+<view class='page-container'>
+  <image src='../../imgs/share.jpg' ></image>
+  <image src='../../imgs/share.jpg' ></image>
+  <view class='quickly-apply' bindtap='toggleBottomPopup'>立刻申请</view>
+
+   <!-- 底部弹出框 -->
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
+    <view class="pop-example__container pop-example__container--bottom">
+        <view class='apply-title'>合伙人申请 <text class='iconfont icon-del2' bindtap='toggleBottomPopup'></text></view>
+        <form bindsubmit="formSubmit">
+          <view class='form-box'>
+            <view class='form-item'>
+              <view class='form-item-text'>姓名</view>
+              <view class='input-parent'> <input class='ta-r' name="name"></input></view>
+              <text class='iconfont icon-tubiao-'></text>
+            </view>
+            <view class='form-item'>
+              <view class='form-item-text'>手机号码</view>
+              <view class='input-parent'> <input type="number" class='ta-r' value="{{phone}}" name="phone"  bindinput="setphone"></input></view>
+              <text class='iconfont icon-tubiao-'></text>
+            </view>
+            <view  class='form-item'>
+              <view class='form-item-text'>身份证</view>
+              <view class='input-parent'> <input type='idcard' class='ta-r'  name="idcard"></input></view>
+              <text class='iconfont icon-tubiao-'></text>
+            </view>
+            <view  class='form-item'>
+              <view class='form-item-text'>身份证正面</view>
+              <image src='{{img1}}' style='width:100rpx;height:100rpx;' mode='aspectFit'></image>
+              <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='1'></text>
+            </view>
+            <view  class='form-item'>
+              <view class='form-item-text'>身份证反面</view>
+              <image src='{{img2}}'  style='width:100rpx;height:100rpx;' mode='aspectFit'  ></image>
+              <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='2' ></text>
+            </view>
+            <view   class='form-item item-code'>
+              <view class='form-item-text'>短信验证码</view>
+              <view style='width:30%;margin-right:20rpx;'> 
+                <input type='idcard' name="check_code" class='ta-r'></input></view>
+              <button size='mini' bindtap='getcode' hidden="{{smsFlag}}">获取验证码</button>
+              <button size='mini' hidden="{{!smsFlag}}">{{time}}秒</button>
+            </view>
+          </view>
+          <button class="submit-button" formType="submit">提交申请</button>
+        </form>
+    </view>
+  </zan-popup>
+</view>

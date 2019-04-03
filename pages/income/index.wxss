@@ -1,0 +1,59 @@
+/* pages/income/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.info-box{
+  height:240rpx;
+  background:#ffa600;
+  padding-top:60rpx;
+  color:#fff;
+}
+.info-head {
+  display:flex;
+  align-items:center;
+  padding-left:140rpx;
+  padding-bottom:40rpx;
+}
+.all-income {
+  font-size:60rpx;
+  font-weight:700;
+  padding-left:30rpx;
+}
+.info-head button{
+  border-radius:50rpx;
+}
+.info-main{
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+}
+.share-head {
+  padding: 10rpx 30rpx 0 20rpx;
+  border-bottom: 1px solid #f3f3f3;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+.share-left {
+  position:relative;
+  padding-left: 10rpx;
+}
+.share-left::before {
+  content: "";
+  position:absolute;
+  width: 6rpx;
+  height: 100%;
+  background-color: red;
+  top: 50%;
+  left: 0;
+  transform: translate(0,-50%)
+}
+.a {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 0;
+  border-bottom: 1px dotted #888;
+}
+.a view {
+  width: 50%;
+  line-height: 50rpx;
+}
