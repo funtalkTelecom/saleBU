@@ -1,6 +1,6 @@
 <view class='info-box'>
   <view class="info-head">
-    <text>推广收益</text>
+    <text>可用余额</text>
     <text  class="all-income">{{partnerObj.all_income}}</text><text>元</text>
     <button size='mini' bindtap='toWithdraw'>提现</button>
   </view>
@@ -22,8 +22,9 @@
 
   <view style='padding:0 20rpx;'>
       <view class="a" wx:for="{{financeList}}" wx:key="id">
-        <view>金额:<text style='color:red'> {{item.amt}}</text>元</view>
-        <view style='text-align:right'>{{item.status}}</view>
+        <view>金额:<text style='color:red;'> {{item.amt}}</text>元</view>
+        <!-- <view style='text-align:right'>{{item.status}}</view> -->
+        <view></view>
         <view>类型:{{item.order_name}}</view>
         <view>余额:{{item.after_amt}}元</view>
         <view>日期:{{item.add_date}}</view>
