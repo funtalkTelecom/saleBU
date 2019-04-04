@@ -28,7 +28,9 @@ Page({
     }
   },
   onShow: function () {
-
+    this.setData({
+      isPartner: wx.getStorageSync('isPartner')
+    })
     network.GET({
       url: "poster",
       params: { pageNum: 1, limit: 999 },

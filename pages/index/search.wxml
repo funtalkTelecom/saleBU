@@ -101,6 +101,7 @@
         <block wx:for="{{numList}}" wx:key="id">
          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
             <view class='phone'>
+              <text wx:if="{{isPartner==1&&item.is_pp==1}}" class="liang tui">推</text>
               <text>{{item.numBlock[0]}}</text>
               <text class='phone-mg'>{{item.numBlock[1]}}</text>
               <text class='color-cyan'>{{item.numBlock[2]}}</text>

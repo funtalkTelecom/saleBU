@@ -118,6 +118,11 @@ picker {
   margin-right: 6rpx;
   vertical-align: super;
 }
+.tui {
+  background:orange;
+  margin-left:28rpx;
+    margin-right: 8rpx;
+}
 .jixiang {
   background-color: #fb8ca8;
 }

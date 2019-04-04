@@ -100,6 +100,19 @@
 .nomore image {
   width: 100rpx;
 }
+.liang {
+  display: inline-block;
+  color: #fff;
+  background-color: orange;
+  font-size: 20rpx; 
+  line-height: 32rpx;
+  padding: 0 6rpx;
+  border-radius: 10rpx;
+  font-weight: normal;
+  margin-right: 6rpx;
+  vertical-align: super;
+}
+
 /* .phones1{
   position: relative;
   width: 100%;
