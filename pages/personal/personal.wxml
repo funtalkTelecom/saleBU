@@ -119,7 +119,7 @@
         <image src='../../imgs/personal/qrcode.jpg' class='qrcode' bindtap="previewImage"></image>
       </zan-col>
       <zan-col col="24" col-class="custom-zan-col tel">
-        <view>客服热线：17759085090</view>
+        <view>客服热线：17759085090 17759085091</view>
       </zan-col>
     </zan-row>
   </zan-panel>
