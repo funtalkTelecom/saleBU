@@ -134,7 +134,7 @@ Page({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths[0]
         wx.uploadFile({
-          url: getApp().globalData.API_URL + "upload/image?sub_path=icdard&__sessid=" + wx.getStorageSync("token"),
+          url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
           filePath: tempFilePaths,
           name: 'upload',
           header: {
