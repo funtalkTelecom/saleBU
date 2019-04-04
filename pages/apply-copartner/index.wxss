@@ -21,8 +21,9 @@ page{
   line-height: 70rpx;
   text-align: center;
   color: #fff;
-  background: red;
+  background:orange;
   width: 100%;
+  font-size: 32rpx;
 }
 .pop-example__container {
   overflow: hidden;
@@ -33,10 +34,10 @@ page{
   width: 100vw;
 }
 .apply-title {
-  line-height: 80rpx;
-  height: 80rpx;
+  line-height: 100rpx;
+  height: 100rpx;
   text-align: center;
-  border-bottom: 1px solid #cfcfcf;
+  border-bottom: 1px solid #efefef;
   position: relative;
   font-size: 34rpx;
 }
@@ -46,14 +47,32 @@ page{
 .form-item{
  display:flex;
  align-items:center;
- border-bottom:1px solid #e7e7e7;
+ border-bottom:1px solid #f6f6f6;
+ min-height:86rpx;
 }
 .item-code{
-  padding:16rpx 0;
+  /* padding:16rpx 0; */
   margin-bottom:30rpx;
 }
 .form-item-text {
-  flex:1
+  flex:1;
+}
+.form-img{
+  /* width:100rpx;
+  height:100rpx;
+  padding:10rpx; */
+  width:180rpx;
+  height:150rpx;
+  margin-right:130rpx;
+}
+.upbtn{
+  display:inline-block;
+  padding:11rpx 22rpx;
+  background-color:#00B2EE;
+  text-align:center;
+  border-radius:10rpx;
+  color:#fff;
+
 }
 .input-parent{
   width: 70%;
@@ -71,10 +90,12 @@ page{
   font-size: 70rpx;
 }
 .submit-button {
-  height:70rpx;
-  line-height:70rpx;
+  height:80rpx;
+  line-height:80rpx;
   font-size:30rpx;
   margin-bottom: 30rpx;
   margin-left: 30rpx;
   margin-right: 30rpx;
+  background:#00B2EE;
+  color:#fff;
 }

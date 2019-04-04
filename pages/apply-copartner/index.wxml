@@ -13,34 +13,42 @@
           <view class='form-box'>
             <view class='form-item'>
               <view class='form-item-text'>姓名</view>
-              <view class='input-parent'> <input class='ta-r' name="name"></input></view>
-              <text class='iconfont icon-tubiao-'></text>
+              <view class='input-parent'> 
+                <input placeholder='请输入姓名' class='ta-r' name="name" />
+              </view>
+              <!-- <text class='iconfont icon-tubiao-'></text> -->
             </view>
             <view class='form-item'>
               <view class='form-item-text'>手机号码</view>
-              <view class='input-parent'> <input type="number" class='ta-r' value="{{phone}}" name="phone"  bindinput="setphone"></input></view>
-              <text class='iconfont icon-tubiao-'></text>
+              <view class='input-parent'> 
+                <input type="number" maxlength='11' class='ta-r' placeholder='请输入手机号码' value="{{phone}}" name="phone"  bindinput="setphone" />
+              </view>
+              <!-- <text class='iconfont icon-tubiao-'></text> -->
             </view>
             <view  class='form-item'>
               <view class='form-item-text'>身份证</view>
-              <view class='input-parent'> <input type='idcard' class='ta-r'  name="idcard"></input></view>
-              <text class='iconfont icon-tubiao-'></text>
+              <view class='input-parent'> 
+                <input type='idcard' maxlength='18' class='ta-r' placeholder='请输入身份证号'  name="idcard" /></view>
+              <!-- <text class='iconfont icon-tubiao-'></text> -->
             </view>
             <view  class='form-item'>
               <view class='form-item-text'>身份证正面</view>
-              <image src='{{img1}}' style='width:100rpx;height:100rpx;' mode='aspectFit'></image>
-              <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='1'></text>
+              <image wx:if='{{img1}}' class='form-img' src='{{img1}}' mode='aspectFit'></image>
+              <text class='upbtn' bindtap='uploadImg' data-type='1'>上传</text>
+              <!-- <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='1'></text> -->
             </view>
             <view  class='form-item'>
               <view class='form-item-text'>身份证反面</view>
-              <image src='{{img2}}'  style='width:100rpx;height:100rpx;' mode='aspectFit'  ></image>
-              <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='2' ></text>
+              <image wx:if='{{img2}}' class='form-img' src='{{img2}}' mode='aspectFit'></image>
+              <text class='upbtn' bindtap='uploadImg' data-type='2'>上传</text>
+              <!-- <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='2' ></text> -->
             </view>
             <view   class='form-item item-code'>
               <view class='form-item-text'>短信验证码</view>
               <view style='width:30%;margin-right:20rpx;'> 
-                <input type='idcard' name="check_code" class='ta-r'></input></view>
-              <button size='mini' bindtap='getcode' hidden="{{smsFlag}}">获取验证码</button>
+                <input type='idcard' maxlength='6' name="check_code" class='ta-r' placeholder='验证码' />
+              </view>
+              <button style='padding:0 22rpx;' size='mini' bindtap='getcode' hidden="{{smsFlag}}">获取验证码</button>
               <button size='mini' hidden="{{!smsFlag}}">{{time}}秒</button>
             </view>
           </view>

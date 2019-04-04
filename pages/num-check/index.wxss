@@ -89,8 +89,16 @@ page {
   /* box-sizing: content-box; */
   width: 100%;
 }
+.home {
+  width: 150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color:orange;
+  border-right:1rpx solid #ccc;
+   border-top: 1rpx solid #ccc;
+}
 .bail {
-  width: 496rpx;
+  width: 350rpx;
   background: #fff;
   line-height: 80rpx;
   color: red;

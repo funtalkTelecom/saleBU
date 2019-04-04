@@ -80,6 +80,7 @@
     <view>确认支付</view>
   </view> -->
   <view class="bottom_bar">
+   <view class='home' bindtap='toHome'>回首页</view>
     <view class='bail'>
     <text wx:if="{{status==3}}"> ￥{{numberObj.price?numberObj.price:numberObj.skuTobPrice}}元</text>
     <text wx:if="{{status==1}}" style='color:#000' > ￥{{numberObj.price}}元<text style='color:red'>(秒杀价￥{{numberObj.activityPrice}}元)</text></text>

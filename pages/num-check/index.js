@@ -160,6 +160,11 @@ Page({
       }
     })
   },
+  toHome:function(){
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
+  },
   initMeal:function(id){
     network.GET({
       url: "meal/n" + id,
