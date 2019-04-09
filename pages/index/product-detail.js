@@ -50,7 +50,7 @@ Page({
   
   },
   onShareAppMessage: function () {
-    return network.share("id=" + this.data.id + "&gId=" + this.data.gId);
+    return network.share("id=" + this.data.id + "&gId=" + this.data.gId + "&userId=" + wx.getStorageSync('consumer_id'));
   },
   goodsInfo: function (gid) {
     network.GET({

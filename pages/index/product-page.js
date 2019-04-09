@@ -23,7 +23,7 @@ Page({
     this.loadMoreOrder();
   },
   onShareAppMessage: function () {
-    return network.share();
+    return network.share("userId=" + wx.getStorageSync('consumer_id'));
   },
   loadMoreOrder: function (e) {
     if (!this.data.hasMore) return;

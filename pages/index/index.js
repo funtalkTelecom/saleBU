@@ -50,7 +50,7 @@ Page({
 
   },
   onShareAppMessage: function () {
-    return network.share();
+    return network.share("userId =" + wx.getStorageSync('consumer_id'));
   },
   tapSearch: function () {
     // wx.navigateTo({ url: 'search' });

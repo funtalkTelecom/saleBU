@@ -64,7 +64,7 @@ Page({
     }
   },
   onShareAppMessage: function () {
-    return network.share("gId=" + this.data.gId + "&&numId=" + this.data.numId);
+    return network.share("gId=" + this.data.gId + "&&numId=" + this.data.numId + "&userId=" + wx.getStorageSync('consumer_id'));
   },
   handleTabChange: function (e) {
     this.setData({

@@ -28,7 +28,7 @@ Page({
    
   },
   onShareAppMessage: function () {
-    return network.share("id=" + this.data.epSalesId);
+    return network.share("id=" + this.data.epSalesId + "&userId=" + wx.getStorageSync('consumer_id'));
   },
   /**
    * 生命周期函数--监听页面显示

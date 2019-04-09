@@ -87,7 +87,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return network.share("num_id=" + this.data.numberObj.id );
+    return network.share("num_id=" + this.data.numberObj.id + "&userId=" + wx.getStorageSync('consumer_id') );
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);
@@ -282,28 +282,32 @@ Page({
     if (!e.detail.userInfo) {
       return;
     }
-    var userInfo = e.detail.userInfo;
-    wx.setStorageSync('userInfo', userInfo);
-    network.PUT({
-      url: "Consumer",
-      params: {
-        'loginName': "",
-        'livePhone': "",
-        'nickName': userInfo.nickName,
-        'sex': userInfo.gender,
-        'img': userInfo.avatarUrl,
-        'province': userInfo.province,
-        'city': userInfo.city
-      },
-      success: (res) => {
-        if (res.data.code == 200) {
-          this.valideAddr();
-        }
-      },
-      fail: () => {
-        //失败后的逻辑
+    if(wx.getStorageSync('userInfo')){
+      this.valideAddr();
+    }else{
+      var userInfo = e.detail.userInfo;
+      wx.setStorageSync('userInfo', userInfo);
+      network.PUT({
+        url: "Consumer",
+        params: {
+          'loginName': "",
+          'livePhone': "",
+          'nickName': userInfo.nickName,
+          'sex': userInfo.gender,
+          'img': userInfo.avatarUrl,
+          'province': userInfo.province,
+          'city': userInfo.city
+        },
+        success: (res) => {
+          if (res.data.code == 200) {
+            this.valideAddr();
+          }
+        },
+        fail: () => {
+          //失败后的逻辑
 
-      }
-    })
+        }
+      })
+    }
   }
 })

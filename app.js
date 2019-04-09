@@ -45,7 +45,7 @@ App({
         if (res.code) {
           wx.request({
             url: this.globalData.API_URL+'get_open_id',
-            data: { getcode: res.code },
+            data: { getcode: res.code, userId: options.query.userId||0 },
             method: 'GET',
             dataType: 'json',
             success: function(res) {

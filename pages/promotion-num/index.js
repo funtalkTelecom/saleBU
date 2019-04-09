@@ -74,7 +74,7 @@ Page({
     num_resource=num_resource.substring(0, 3) + '-' + num_resource.substring(3, 7) + '-' + num_resource.substring(7, 11)
     return {
       title: num_resource+"典藏靓号，靓出好运，购买靓号，就选靓号优选",
-      path: "pages/num-check/index?share_id=" + this.data.numObj.share_id + "&num_id=" + this.data.numObj.num_id,
+      path: this.data.path,
       imageUrl: this.data.numObj.share_image
     }
   },
@@ -86,7 +86,7 @@ Page({
         if(res.data.code==200){
           this.setData({
             numObj: res.data.data,
-            path: "pages/num-check/index?share_id=" + res.data.data.share_id + "&num_id=" + res.data.data.num_id
+            path: "pages/num-check/index?share_id=" + res.data.data.share_id + "&num_id=" + res.data.data.num_id + "&userId=" + wx.getStorageSync('consumer_id')
           })
         }
       }
