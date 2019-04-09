@@ -31,7 +31,7 @@
       <image src="{{item.img||'../../imgs/personal/logo.png'}}"></image>
       <view class='share-text'>
         <view>您的好友{{item.nick_name}}{{item.act_type}}了您分享的{{item.num}}号码</view>
-        <view>时间：2019-03-15 15:27:10</view>
+        <view>时间：{{item.add_date}}</view>
       </view>
     </view>
 
