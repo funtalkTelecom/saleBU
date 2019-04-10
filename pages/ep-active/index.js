@@ -19,7 +19,7 @@ Page({
     clearTimeout(this.data.clearTimeoutCountDown)
   },
   onShareAppMessage: function () {
-    return network.share("userId =" + wx.getStorageSync('consumer_id'));
+    return network.share();
   },
   // 竟拍活动列表
   initEpSales:function(){

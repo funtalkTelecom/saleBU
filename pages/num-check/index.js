@@ -87,7 +87,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return network.share("num_id=" + this.data.numberObj.id + "&userId=" + wx.getStorageSync('consumer_id') );
+    return network.share("num_id=" + this.data.numberObj.id);
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);

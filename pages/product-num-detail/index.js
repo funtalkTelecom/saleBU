@@ -27,7 +27,7 @@ Page({
 
   },
   onShareAppMessage: function () {
-    return network.share("userId=" + wx.getStorageSync('consumer_id'));
+    return network.share();
   },
 
   /**
