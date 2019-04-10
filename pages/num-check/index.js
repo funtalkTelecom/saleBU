@@ -147,7 +147,7 @@ Page({
           wx.showToast({
             title: res.data.data,
             icon: 'none',
-            duration: 2000,
+            duration: 4000,
             success:function(){
               wx.switchTab({
                 url: '/pages/index/index'
