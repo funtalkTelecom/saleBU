@@ -6,9 +6,9 @@
       <view class="{{defaultValue==2?'balance':''}}" bindtap='usewxpay' data-wxpay="{{2}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/kazhifu.png'></image>线下支付</view>
       <!-- <view  class="{{defaultValue==4?'instalment':''}}" bindtap='usewxpay'  hidden='{{!fenqiFlag}}' data-wxpay="{{4}}"><image class='zffs' mode='widthFix' src='../../imgs/personal/fenqi.png'></image>分期付款</view> -->
       </view>
-      <view class='offline' wx:if="{{defaultValue==1}}">
+      <!-- <view class='offline' wx:if="{{defaultValue==1}}">
         <view>由于通道原因无法使用微信支付，请暂时使用线下支付</view>
-      </view>
+      </view> -->
       <view class='offline' wx:if="{{defaultValue==2}}">
         <view>银行：中信银行</view>
         <view>户主：林永</view>
