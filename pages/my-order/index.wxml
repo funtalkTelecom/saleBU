@@ -19,7 +19,7 @@
     <view class='order-pay'>
       <button size="mini" bindtap='cancelOrder' hidden='{{item.status==1||item.status==2||item.status==3&&item.order_type!=3?false:true}}' data-id="{{item.order_id}}" >取消订单</button>
       <button size="mini" bindtap='topay' class='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>
-      <button size="mini" bindtap='tologistics' hidden='{{item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>查看物流</button>
+      <button size="mini" bindtap='tologistics' hidden='{{item.status==5||item.status==6?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>查看物流</button>
       <button size="mini" bindtap='sureharvest' hidden='{{item.status==5?false:true}}' data-id="{{item.order_id}}" data-index='{{index}}'>签收</button>
 
     </view>
