@@ -14,7 +14,10 @@ Page({
     numberObj:{},//号码数据
     addrindex:0,
     selectMealIndex:0,
-    intervalId:""
+    intervalId:"",
+    logisticArr: [{ "name": "EMS包邮", "type": 10009 }, { "name": "顺丰到付", "type": 10003 }],
+    selectLogIndex:0,
+    logObj: { "name": "EMS包邮", "type": 10009 }
   },
 
   /**
@@ -212,6 +215,14 @@ Page({
 
     })
   },
+  selectLog(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      selectLogIndex: index,
+      logObj: this.data.logisticArr[index]
+
+    })
+  },
   valideAddr:function(){
     if (!this.data.curAddressObj) {
       // wx.hideLoading();
@@ -240,6 +251,7 @@ Page({
     params.numid = this.data.numberObj.id;
     params.skuid = this.data.numberObj.skuId;
     params.mealid = this.data.mealObj.mid;
+    params.logistic_type = this.data.logObj.type;
     if (this.data.share_id){
       params.share_id = this.data.share_id
     }

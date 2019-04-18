@@ -50,6 +50,7 @@ page{}
   line-height: 80rpx;
   font-size: 36rpx;
   text-align: center;
+  border-radius:0;
 }
 .wx-bgc {
   background-color:#09bb07;

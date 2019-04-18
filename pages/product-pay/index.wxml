@@ -24,7 +24,8 @@
       </view> -->
   </zan-panel>
 
-  <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==1?'wx-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
+  <button disabled="{{disabled}}" hidden='{{defaultValue==2?true:false}}'  id="but"
+  class="{{['footer-but', defaultValue==1?'wx-bgc':'']}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</button>
   <!-- <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==4?'instalment-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view> -->
 <view class='service-box'>
     <button open-type="contact" >

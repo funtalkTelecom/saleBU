@@ -64,12 +64,21 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-
+    // var path = getCurrentPages()[getCurrentPages().length - 1].route + "?userid=" + wx.getStorageSync('consumer_id') + "&";
+    // if (params) {
+    //   path += params
+    // }
+    // var obj= {
+    //   title: "有个创业项目想邀请您一起参与~ 低门槛，高收益，零风险，0投资。",
+    //   path: path,
+    // }
+    // return obj;
+    console.log(getCurrentPages()[getCurrentPages().length - 1].route)
+    return {
+      title:  "有个创业项目想邀请您一起参与~ 低门槛，高收益，零风险，0投资。",
+      path: "pages/apply-copartner/index?userid=" + wx.getStorageSync('consumer_id')
+    }
   },
   toggleBottomPopup() {
     this.setData({

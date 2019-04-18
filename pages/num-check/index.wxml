@@ -37,6 +37,15 @@
         <view>{{mealObj.mealDesc}}</view>
       </view>
     </zan-panel>
+
+    <zan-panel title="物流方式">
+      <view class='setmeal s-info'>
+        <view wx:for="{{logisticArr}}" wx:key="type" class="{{selectLogIndex==index?'active':''}}" data-index='{{index}}' bindtap="selectLog">
+          {{item.name}}
+        </view>
+      </view>
+    </zan-panel>
+    
     <zan-panel title="收货地址">
    
        <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">

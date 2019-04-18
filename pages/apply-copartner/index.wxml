@@ -1,8 +1,7 @@
 <!--pages/apply-copartner/index.wxml-->
 
 <view class='page-container'>
-  <image src='../../imgs/share.jpg' ></image>
-  <image src='../../imgs/share.jpg' ></image>
+  <image src='../../imgs/personal/copartner.jpg' mode="widthFix" ></image>
   <view class='quickly-apply' bindtap='toggleBottomPopup'>立刻申请</view>
 
    <!-- 底部弹出框 -->

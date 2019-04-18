@@ -13,6 +13,7 @@ Page({
       // ,{ text: "分期付款", value: 4, classStyle: "instalment" }
       ],
     // fenqiFlag:false
+    disabled:false
   },
 
   /**
@@ -58,6 +59,10 @@ Page({
   },
   pay:function(){
     var that =this;
+    this.setData({
+      paytext:"支付中",
+      disabled:true
+    })
     network.POST({
       url: "pay-order",
       params: {
@@ -65,7 +70,6 @@ Page({
         payMenthodId: that.data.defaultValue
       },
       success: (res) => {
-        console.log(res)
         if (res.data.code == 200) {
           if (that.data.defaultValue==1){//微信
             wx.requestPayment({
@@ -86,6 +90,10 @@ Page({
                 }
               },
               'fail': function (res) {
+                that.setData({
+                  paytext: "微信支付",
+                  disabled: false
+                })
                 wx.showToast({
                   title: "取消支付",
                   icon: 'none',
