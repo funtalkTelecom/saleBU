@@ -13,9 +13,21 @@
       </view>
     </zan-card>
     <view class='price-test'>
+      <view class='djs' hidden='{{item.status==1?false:true}}'>
+        <text>号码释放倒计时 </text>
+        <div class='text'>
+          <!-- {{item.endDate[0]+':'+item.endDate[1]+':'+item.endDate[2]}} -->
+          <text>{{item.endDate[0]}}</text>:
+          <text>{{item.endDate[1]}}</text>:
+          <text>{{item.endDate[2]}}</text>
+        </div>
+      </view>
+    </view>
+    <view class='price-test'>
         <text hidden='{{item.status==1?false:true}}'>需</text>
         <text hidden='{{item.status==1?true:false}}'>已</text>支付：
-        <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元</view>
+        <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元
+    </view>
     <view class='order-pay'>
       <button size="mini" bindtap='cancelOrder' hidden='{{item.status==1||item.status==2||item.status==3&&item.order_type!=3?false:true}}' data-id="{{item.order_id}}" >取消订单</button>
       <button size="mini" bindtap='topay' class='topay' hidden='{{item.status==1?false:true}}' data-id="{{item.order_id}}" data-orderType='{{item.order_type}}'>去支付</button>

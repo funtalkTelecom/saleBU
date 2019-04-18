@@ -39,9 +39,14 @@ Page({
       { value: 1, checked: false, textarea: "2、其他渠道有更低的价格" },
       { value: 2, checked: false, textarea: "3、暂时不想买了" },
       { value: 3, checked: false, textarea: "4、重复下单或者误下单" },
-      { value: 4, checked: false, textarea: "5、其他原因" }]
+      { value: 4, checked: false, textarea: "5、其他原因" }],
   },
-
+  /**
+   *  点击返回清除计时器
+   */
+  onUnload:function(){
+    this.qingchu()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -49,18 +54,30 @@ Page({
     this.setData({
       selectedId: options.tabtype
     })
-    this.loadMoreOrder(options.tabtype, "up")
+    // this.loadMoreOrder(options.tabtype, "up")
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadMoreOrder(this.data.selectedId, "up")
+  },
+  /**
+   *  打开新页面清除计时器
+   */
+  onHide: function () {
+    this.setData({
+      pageNum: 0,
+      order: [],
+      hasMore: true
+    })
+    this.qingchu()
   },
   /**
   * 页面相关事件处理函数--监听用户下拉动作
   */
   onPullDownRefresh: function () {
+    this.qingchu()
     wx.showNavigationBarLoading();
     this.setData({
       pageNum: 0,
@@ -68,12 +85,14 @@ Page({
       hasMore: true
     })
     this.loadMoreOrder(this.data.selectedId, "down")
+    
   },
   // 触底加载更多
   onReachBottom: function () {
     this.loadMoreOrder(this.data.selectedId, "up");
   },
   handleTabChange: function (e) {
+    this.qingchu()
     this.setData({
       selectedId: e.detail,
       pageNum: 0,
@@ -93,10 +112,16 @@ Page({
           // var total = "totalList[" + e + "].total"
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
+          this.order = orders
           this.setData({
             order: orders,
             hasMore: flag,
           })
+          for (var i = 0; i < this.order.length; i++) {
+            if (this.order[i].djs > 0) {
+              this.Countdown(i, this.order[i].djs)
+            }
+          }
         }
       },
       complete: (res) => {
@@ -112,7 +137,37 @@ Page({
     element.addDate = util.formatTime(new Date(element.add_date))
     element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
+    element.djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+    var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+    if (djs > 0) {                                 // 倒计时时间是否大于0
+      element.endDate = util.parseIntDayTime(djs)
+    } else {
+      element.endDate = ['00', '00', '00']
+    }
     return element
+  },
+  // 倒计时
+  Countdown:function(i,num){
+    var that = this
+    // console.log(num)
+    this.data['timer'+i] = setTimeout(function () {
+        if(num>0){
+          that.Countdown(i,(num-1))
+          that.order[i].djs = num-1
+          that.order[i].endDate = util.parseIntDayTime(num-1)
+          that.setData({
+            order: that.order
+          })
+        }
+      }, 1000);
+  },
+  // 清除倒计时计时器
+  qingchu: function(){
+    for (var i = 0; i < this.order.length; i++) {
+      if (this.order[i].djs > 0) {
+        clearTimeout(this.data['timer' + i])
+      }
+    }
   },
   // 去订单详情
   orderdetail: function (e) {
