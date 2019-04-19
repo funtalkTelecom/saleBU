@@ -302,8 +302,6 @@ Page({
       network.PUT({
         url: "Consumer",
         params: {
-          'loginName': "",
-          'livePhone': "",
           'nickName': userInfo.nickName,
           'sex': userInfo.gender,
           'img': userInfo.avatarUrl,
