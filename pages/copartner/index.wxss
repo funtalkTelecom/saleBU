@@ -26,6 +26,9 @@ page{
 .icon-weirenzheng {
   color: orange;
 }
+.icon-shanchu2{
+  color: red;
+}
 .edit {
   background: orange;
   display: inline-block;

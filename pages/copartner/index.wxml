@@ -11,8 +11,8 @@
           <open-data type="userNickName" lang="zh_CN" class="fw"></open-data>
           <view style='color: #888;'>总收益{{partnerObj.all_income}}元</view>
           <view style='color: #888;'>  
-          <text class="{{['iconfont', partnerObj.partner_check=='0'?'icon-weirenzheng':'icon-yirenzheng']}}"></text>
-          {{partnerObj.partner_check=='0'?'未确认':'已确认'}} 
+          <text class="{{['iconfont', partnerObj.partner_check=='0'?'icon-weirenzheng':(partnerObj.partner_check=='2'?'icon-shanchu2':'icon-yirenzheng')]}}"></text>
+          {{partnerObj.partner_check=='0'?'未确认':(partnerObj.partner_check=='2'?'认证失败':'已确认')}} 
           <text  bindtap="edit">合伙人介绍></text> </view>
            <view class='withdraw' bindtap='toWithdraw'>收益提现</view>
         </zan-row>
