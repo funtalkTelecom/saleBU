@@ -24,8 +24,8 @@
       </view>
     </view>
     <view class='price-test'>
-        <text hidden='{{item.status==1?false:true}}'>需</text>
-        <text hidden='{{item.status==1?true:false}}'>已</text>支付：
+        <text hidden='{{item.status==1||item.status==7?false:true}}'>需</text>
+        <text hidden='{{item.status==1||item.status==7?true:false}}'>已</text>支付：
         <text class='red'>{{item.order_type==3?item.money:item.total}}</text>元
     </view>
     <view class='order-pay'>

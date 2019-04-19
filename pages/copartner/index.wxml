@@ -2,17 +2,25 @@
 <zan-panel>
     <zan-row row-class="head">
       <zan-col col="3" offset="1" col-class="custom-zan-col">
-        <image src="{{userInfo.avatarUrl||'../../imgs/personal/logo.png'}}" class='avatar' mode='aspectFit'></image>
+        <!-- <zan-row row-class="imgrow"> -->
+          <image src="{{userInfo.avatarUrl||'../../imgs/personal/logo.png'}}" class='avatar' mode='aspectFit'></image>
+         <!-- </zan-row> -->
       </zan-col>
       <zan-col col="19" offset="1" col-class="custom-zan-col">
         <zan-row row-class="line_H arrow">
           <open-data type="userNickName" lang="zh_CN" class="fw"></open-data>
           <view style='color: #888;'>总收益{{partnerObj.all_income}}元</view>
+          <view style='color: #888;'>  
+          <text class="{{['iconfont', partnerObj.partner_check=='0'?'icon-weirenzheng':'icon-yirenzheng']}}"></text>
+          {{partnerObj.partner_check=='0'?'未确认':'已确认'}} 
+          <text  bindtap="edit">合伙人介绍></text> </view>
            <view class='withdraw' bindtap='toWithdraw'>收益提现</view>
         </zan-row>
       </zan-col>
     </zan-row>
   </zan-panel>
+
+ 
 
   <view class='share-head'>
     <text class="share-left">我的分享</text>
@@ -23,7 +31,7 @@
       <view class='share-item-num'>分享号码 {{item.share_num}}</view>
       <text class='iconfont icon-shanchu' catchtap='toDel' data-shareid='{{item.id}}'></text>
        <view>号码售价：{{item.sale_price}}元</view>
-       <view>预期收益：{{item.income}}元</view>
+       <view class='w100'>预期收益：{{item.income}}元</view>
        <view class='w100'>分享时间：{{item.share_date}}</view>
        <view class='w100' wx:if="{{item.is_pp!=0}}">有效时间：{{item.valid_date}}</view>
        <!-- <view class='w100'>有效时间：2018-01-01 12:00</view> -->

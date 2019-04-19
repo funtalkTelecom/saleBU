@@ -11,10 +11,28 @@ page{
   border-radius: 50%;
   box-shadow: 10rpx 10rpx 5rpx rgba(0, 0, 0, 0.4);
   background-color: #fff;
+  margin-top: 25rpx;
+}
+.imgrow{
+  line-height: 150rpx;
 }
 .line_H {
   line-height: 50rpx;
   padding-left: 3%;
+}
+.icon-yirenzheng {
+  color: #62b900;
+}
+.icon-weirenzheng {
+  color: orange;
+}
+.edit {
+  background: orange;
+  display: inline-block;
+  padding: 0 30rpx;
+  color: #fff;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
 }
 .fw {
   font-weight: 700;

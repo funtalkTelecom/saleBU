@@ -55,7 +55,7 @@ App({
                 wx.setStorageSync('consumer_id', res.data.data.consumer_id)
                 wx.setStorageSync('isPartner', res.data.data.isPartner)
                 wx.setStorageSync('partnerCheck', res.data.data.partnerCheck)
-                wx.setStorageSync('testUser', res.data.data.testUser)
+                // wx.setStorageSync('testUser', res.data.data.testUser)
                 that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
               }else{
                 wx.showToast({

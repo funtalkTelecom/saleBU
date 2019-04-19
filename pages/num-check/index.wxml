@@ -81,7 +81,7 @@
     </zan-panel> -->
 
 
-    <navigator wx:if="{{testUser==='1'&&isPartner==1}}" url='/pages/promotion-num/index?numid={{numberObj.id}}' class='toshare' hover-class="none" >去推广</navigator>
+    <navigator wx:if="{{isPartner==1}}" url='/pages/promotion-num/index?numid={{numberObj.id}}' class='toshare' hover-class="none" >去推广</navigator>
   </view> 
 
   <!-- <view class='pay'>

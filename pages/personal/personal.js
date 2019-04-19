@@ -33,7 +33,7 @@ Page({
     // this.queryAgent()
     this.setData({
       isPartner:wx.getStorageSync('isPartner'),
-      testUser:wx.getStorageSync('testUser' )
+      // testUser:wx.getStorageSync('testUser' )
     })
   },
 

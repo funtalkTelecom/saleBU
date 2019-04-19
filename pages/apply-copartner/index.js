@@ -14,20 +14,25 @@ Page({
     img2:"",
     imgpath1:"",
     imgpath2:"",
-    phone:""
+    phone:"",
+    name:"",
+    idcard:"",
+    partnerObj:{},
+    partner_check:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getPartner()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
@@ -65,20 +70,34 @@ Page({
 
   },
   onShareAppMessage: function () {
-    // var path = getCurrentPages()[getCurrentPages().length - 1].route + "?userid=" + wx.getStorageSync('consumer_id') + "&";
-    // if (params) {
-    //   path += params
-    // }
-    // var obj= {
-    //   title: "有个创业项目想邀请您一起参与~ 低门槛，高收益，零风险，0投资。",
-    //   path: path,
-    // }
-    // return obj;
-    console.log(getCurrentPages()[getCurrentPages().length - 1].route)
     return {
       title:  "有个创业项目想邀请您一起参与~ 低门槛，高收益，零风险，0投资。",
       path: "pages/apply-copartner/index?userid=" + wx.getStorageSync('consumer_id')
     }
+  }, 
+  getPartner: function () {
+    network.GET({
+      url: "partner/user-info",
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          var partnerObj = res.data.data
+          if (partnerObj.idcard && partnerObj.name && partnerObj.phone){
+            this.setData({
+              partnerObj: partnerObj,
+              name: partnerObj.name,
+              idcard: partnerObj.idcard,
+              phone: partnerObj.phone,
+              img1: partnerObj.idcard_face,
+              img2: partnerObj.idcard_back,
+              partner_check: partnerObj.partner_check,
+              imgpath1: partnerObj.idcard_face.substr(partnerObj.idcard_face.lastIndexOf("/") + 1),
+              imgpath2: partnerObj.idcard_back.substr(partnerObj.idcard_back.lastIndexOf("/") + 1),
+            })
+          }
+        }
+      }
+    })
   },
   toggleBottomPopup() {
     this.setData({
@@ -207,7 +226,7 @@ Page({
           wx.showToast({
             title: res.data.data,
             icon: 'success',
-            duration: 2000,
+            duration: 3000,
             success:function(){
               wx.navigateTo({
                 url: '/pages/copartner/index'

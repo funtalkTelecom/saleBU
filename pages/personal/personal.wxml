@@ -101,10 +101,10 @@
       <zan-cell title="我的保证金" is-link url="/pages/case-deposit/index"></zan-cell> -->
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
 
-      <view wx:if="{{testUser==='1'&&isPartner!=1}}">
+      <!-- <view wx:if="{{testUser==='1'&&isPartner!=1}}">
         <zan-cell title="我的合伙人" is-link url="/pages/apply-copartner/index"></zan-cell>
-      </view>
-      <view wx:if="{{testUser==='1'&&isPartner==1}}">
+      </view> -->
+      <view wx:if="{{isPartner==1}}">
       <zan-cell title="我的合伙人" is-link url="/pages/copartner/index"></zan-cell>
       </view>
       

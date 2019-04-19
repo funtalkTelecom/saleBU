@@ -132,6 +132,11 @@ Page({
     //   );
     // };
   },
+  edit:function(){
+    wx.navigateTo({
+      url: '/pages/apply-copartner/index'
+    })
+  },
   getPartner:function(){
     network.GET({
       url: "partner/user-info",

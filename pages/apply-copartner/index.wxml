@@ -1,8 +1,9 @@
 <!--pages/apply-copartner/index.wxml-->
 
 <view class='page-container'>
-  <image src='../../imgs/personal/copartner.jpg' mode="widthFix" ></image>
-  <view class='quickly-apply' bindtap='toggleBottomPopup'>立刻申请</view>
+  <image src='../../imgs/personal/copartner.jpg' mode="widthFix" 
+  class="{{partner_check==0?'img-pad':''}}"></image>
+  <view class='quickly-apply' bindtap='toggleBottomPopup' wx:if="{{partner_check == 0}}">立刻申请</view>
 
    <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
@@ -13,7 +14,7 @@
             <view class='form-item'>
               <view class='form-item-text'>姓名</view>
               <view class='input-parent'> 
-                <input placeholder='请输入姓名' class='ta-r' name="name" />
+                <input placeholder='请输入姓名' class='ta-r' name="name" value='{{name}}' />
               </view>
               <!-- <text class='iconfont icon-tubiao-'></text> -->
             </view>
@@ -27,7 +28,8 @@
             <view  class='form-item'>
               <view class='form-item-text'>身份证</view>
               <view class='input-parent'> 
-                <input type='idcard' maxlength='18' class='ta-r' placeholder='请输入身份证号'  name="idcard" /></view>
+                <input type='idcard' maxlength='18' class='ta-r' placeholder='请输入身份证号'  name="idcard" 
+                value="{{idcard}}"/></view>
               <!-- <text class='iconfont icon-tubiao-'></text> -->
             </view>
             <view  class='form-item'>
