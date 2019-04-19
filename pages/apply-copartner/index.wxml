@@ -2,8 +2,8 @@
 
 <view class='page-container'>
   <image src='../../imgs/personal/copartner.jpg' mode="widthFix" 
-  class="{{partner_check==0?'img-pad':''}}"></image>
-  <view class='quickly-apply' bindtap='toggleBottomPopup' wx:if="{{partner_check == 0}}">立刻申请</view>
+  class="{{partner_check!=1?'img-pad':''}}"></image>
+  <view class='quickly-apply' bindtap='toggleBottomPopup' wx:if="{{partner_check != 1}}">立刻申请</view>
 
    <!-- 底部弹出框 -->
   <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
