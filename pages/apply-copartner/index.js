@@ -8,6 +8,7 @@ Page({
    */
   data: {
     showBottomPopup: false,//申请弹窗,
+    showContractPopup: false,//协议弹窗,
     time: 61,
     smsFlag:false,
     img1: "",
@@ -18,7 +19,8 @@ Page({
     name:"",
     idcard:"",
     partnerObj:{},
-    partner_check:0
+    partner_check:0,
+    contract:true
   },
 
   /**
@@ -75,6 +77,11 @@ Page({
       path: "pages/apply-copartner/index?userid=" + wx.getStorageSync('consumer_id')
     }
   }, 
+  checkboxChange:function(e){
+    this.setData({
+      contract: !this.data.contract
+    })
+  },
   getPartner: function () {
     network.GET({
       url: "partner/user-info",
@@ -101,6 +108,12 @@ Page({
   },
   toggleBottomPopup() {
     this.setData({
+      showBottomPopup: !this.data.showBottomPopup
+    });
+  }, 
+  toggleContractPopup() {
+    this.setData({
+      showContractPopup: !this.data.showContractPopup,
       showBottomPopup: !this.data.showBottomPopup
     });
   },
@@ -213,6 +226,10 @@ Page({
     }
     if (!formData.check_code) {
       util.showToast('请输入验证码');
+      return
+    }
+    if (!this.data.contract) {
+      util.showToast('请阅读并同意平台合伙人认证服务');
       return
     }
     formData.idcard_face_file_name = this.data.imgpath1

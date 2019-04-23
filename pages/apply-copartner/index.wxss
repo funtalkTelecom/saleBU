@@ -43,6 +43,13 @@ page{
   position: relative;
   font-size: 34rpx;
 }
+.contract-title {
+  height: 100rpx;
+  text-align: center;
+  border-bottom: 1px solid #efefef;
+  position: relative;
+  font-size: 34rpx;
+}
 .form-box{
   padding:0 30rpx;
 }
@@ -100,4 +107,14 @@ page{
   margin-right: 30rpx;
   background:#00B2EE;
   color:#fff;
+}
+
+.contract {
+  text-decoration:underline;
+  color:#00B2EE;
+}
+
+.contract-h2{
+font-size: 32rpx;
+font-weight: 700;
 }

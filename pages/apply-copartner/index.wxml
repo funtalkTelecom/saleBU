@@ -6,8 +6,8 @@
   <view class='quickly-apply' bindtap='toggleBottomPopup' wx:if="{{partner_check != 1}}">立刻申请</view>
 
    <!-- 底部弹出框 -->
-  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup">
-    <view class="pop-example__container pop-example__container--bottom">
+  <zan-popup show="{{ showBottomPopup }}" type="bottom" bindclose="toggleBottomPopup" >
+    <view class="pop-example__container pop-example__container--bottom" >
         <view class='apply-title'>合伙人申请 <text class='iconfont icon-del2' bindtap='toggleBottomPopup'></text></view>
         <form bindsubmit="formSubmit">
           <view class='form-box'>
@@ -44,7 +44,7 @@
               <text class='upbtn' bindtap='uploadImg' data-type='2'>上传</text>
               <!-- <text class='iconfont icon-tubiao-' bindtap='uploadImg' data-type='2' ></text> -->
             </view>
-            <view   class='form-item item-code'>
+            <view   class='form-item '>
               <view class='form-item-text'>短信验证码</view>
               <view style='width:30%;margin-right:20rpx;'> 
                 <input type='idcard' maxlength='6' name="check_code" class='ta-r' placeholder='验证码' />
@@ -52,9 +52,70 @@
               <button style='padding:0 22rpx;' size='mini' bindtap='getcode' hidden="{{smsFlag}}">获取验证码</button>
               <button size='mini' hidden="{{!smsFlag}}">{{time}}秒</button>
             </view>
+            <view  class='form-item item-code'>
+            <!-- <checkbox-group bindchange="checkboxChange"> -->
+             <checkbox  bindtap='checkboxChange' checked="{{contract}}" style='transform:scale(0.7);'/>我已阅读并同意<text bindtap='toggleContractPopup' class='contract'>平台合伙人认证服务</text> 
+             <!-- </checkbox-group> -->
+            </view>
           </view>
           <button class="submit-button" formType="submit">提交申请</button>
         </form>
     </view>
   </zan-popup>
+
+<!-- 底部弹出框 -->
+  <zan-popup show="{{ showContractPopup }}" type="bottom" bindclose="toggleContractPopup">
+    <scroll-view scroll-y="true" class="pop-example__container pop-example__container--bottom" catchtouchmove="true" style='height:100vh;'>
+        <view class='contract-title'>
+        <span style="display: inline-block;">“靓号优选”及“梧桐凤凰靓号”</span>
+        <span> 交易平台合伙人认证服务协议</span>
+<text class='iconfont icon-del2' bindtap='toggleContractPopup'></text></view>
+       <view style='padding:0 20rpx;'>
+        <view class='contract-h2'>【首部及导言】</view>
+<view >欢迎你选择成为“靓号优选”及“梧桐凤凰靓号”交易平台合伙人！</view>
+<view >为你成为“靓号优选”及“梧桐凤凰靓号”交易平台合伙人开展认证服务（以下简称“本服务”），你应当阅读并遵守《“靓号优选”及“梧桐凤凰靓号”交易平台合伙人认证服务协议》（以下简称“本协议”），。请你务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。限制、免责条款可能以加粗形式提示你注意。</view>
+<view >除非你已阅读并接受本协议所有条款，否则你无权使用“靓号优选”及“梧桐凤凰靓号”交易平台合伙人服务。你对本服务的登录、查看、发布信息等行为即视为你已阅读并同意本协议的约束。</view>
+<view>如果你未满18周岁，请在法定监护人的陪同下阅读本协议及其他上述协议，并特别注意未成年人使用条款。</view>
+<view class='contract-h2'>一、【协议的范围】</view>
+<view >1.1【协议适用主体范围】</view>
+<view >本协议是你与天下梧桐之间关于你使用“靓号优选”及“梧桐凤凰靓号”交易平台合伙人证服务所订立的协议。天下梧桐是天下梧桐（厦门）网络科技有限公司及其相关服务可能存在的运营关联单位。“用户”是指申请“靓号优选”及“梧桐凤凰靓号”交易平台合伙人认证服务及/或已经认证成功的“靓号优选”及“梧桐凤凰靓号”交易平台合伙人帐号用户，在本协议中更多地称为“你”。</view>
+<view >1.2【协议关系及冲突条款】</view>
+<view>本协议被视为《用户入网协议》《代理商合作协议》等协议不可分割的一部分，本协议内容同时包括天下梧桐可能不断发布的关于本服务的相关协议、服务声明、业务规则及公告指引等内容（以下统称为“专项规则”）。上述内容一经正式发布，即为本协议不可分割的组成部分，你同样应当遵守。</view>
+<view class='contract-h2'>二、【用户的权利义务】</view>
+<view  >2.1 用户应保证其提供给天下梧桐或者第三方审核机构的所有资料和信息的真实性、合法性、准确性和有效性。如用户提供服务或内容需要取得相关法律法规规定的许可或进行备案的，用户应当主动进行明确说明并提交相应的许可或备案证明。否则，天下梧桐有权拒绝或终止提供本服务，并依照本协议对违规用户进行处罚。因此给天下梧桐或第三方造成损害的，你应当依法予以赔偿。</view>
+<view>2.2 用户同意授权天下梧桐将其提交的资料和信息委托第三方审核机构进行甄别核实，第三方审核机构有权出于认证审核之必要查阅、使用及保存上述资料及信息，并有权受天下梧桐委托以自身名义与用户就认证审核事宜进行联系与沟通，用户应当配合第三方审核机构在认证审核过程中所提出的相关需求。</view>
+<view>2.3 用户理解并且同意，用户提交的资料和信息是作为认证结果的重要依据，任何资料和信息的变更将可能影响认证结果，用户应当在资料和信息变更时及时提出补充认证申请，否则天下梧桐有权依照本协议约定对用户进行处罚。天下梧桐因此遭受损失的，你也应当一并赔偿。</view>
+<view>2.4用户成为“靓号优选”及“梧桐凤凰靓号”码号交易平台合伙人后，应当妥善保护自己的交易账号和登陆密码，并对使用该交易账号和密码的一切行为承担责任。</view>
+<view>2.5 认证成功后，用户有权以认证帐号名称和认证信息所公示的身份对外运营，并通过认证标识区别于其他非认证天下梧桐用户所获得的回报。</view>
+<view class='contract-h2'>三、【天下梧桐的权利义务】</view>
+<view>3.1天下梧桐负责直供交易平台系统的建设、运行和管理，保证按照本协议内容向合伙人提供产品销售服务。</view>
+<view>3.2当用户发现其会员账户、密码被泄漏或被未经授权的人使用后并通知天下梧桐后，天下梧桐应立即采取合理的措施（包括但不限于临时冻结用户虚拟账户及账户内资金、交易），避免损失的扩大。</view>
+<view class='contract-h2'>四、【服务费用】</view>
+<view>4.1 用户理解并同意，用户申请天下梧桐合伙人可能需要向天下梧桐支付服务费用，具体费用标准以认证申请页面公示为准。用户付款后，天下梧桐将根据用户提交的发票信息向用户开具等额合法有效发票，用户应保证其提交的发票信息真实、准确及有效，否则因此导致的损失由用户自行承担。</view>
+<view>4.2 用户理解并且同意天下梧桐将根据业务情况制定合伙人销售行为的收益和费用，并遵守相关的结算流程，同时按国家的规定履行用户的纳税义务。</view>
+<view class='contract-h2'>五、【法律责任】</view>
+<view>5.1 如果天下梧桐发现或收到他人投诉用户违反法律法规、《用户入网协议》《代理商合作协议》或本协议约定的，天下梧桐有权不经通知随时视行为情节对违规用户的帐号处以包括但不限于拒绝提供本服务、终止本服务资质审核、责令用户补充资质审查资料、责令用户修改认证信息、责令用户再次申请认证、强制修改帐号名称及认证信息直至取消认证等措施。</view>
+<view>5.2 用户理解并同意，因用户违反本协议或相关服务条款的规定，导致或产生第三方主张的任何索赔、要求或损失，用户应当独立承担责任；天下梧桐因此遭受损失的，用户也应当一并赔偿。</view>
+<view class='contract-h2'>六、【其他】</view>
+<view>6.1 你使用本服务即视为你已阅读并同意受本协议的约束。天下梧桐有权在必要时修改本协议条款。你可以在相关服务页面查阅最新版本的条款。本协议条款变更后，如果你继续使用“靓号优选”及“梧桐凤凰靓号”交易平台合伙人认证服务，即视为你已接受修改后的协议。如果你不接受修改后的协议，应当停止使用“靓号优选”及“梧桐凤凰靓号”交易平台合伙人认证服务。</view>
+<view>6.2 本协议签订地为中华人民共和国福建省厦门市。</view>
+<view>6.3 本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。</view>
+<view>6.4 若你和天下梧桐之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，你同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。</view>
+<view>6.5 本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。</view>
+<view>6.6 本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。</view>
+<view>6.7 你在使用本服务过程中，如发现相关内容存在违反相关法律法规或者侵犯了你的权利，请及时向我们举报或反馈，我们将依法处理。</view>
+       <view style='text-align:right'>天下梧桐（厦门）网络科技有限公司 </view>
+<view style='text-align:right;margin-bottom:20rpx;'>2019年4月28日 </view>
+
+       
+       
+       </view>
+
+
+
+
+    </scroll-view>
+  </zan-popup>
+
+
 </view>
