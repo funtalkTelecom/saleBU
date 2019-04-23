@@ -62,13 +62,22 @@
         </form>
     </view>
   </zan-popup>
+  
+  <view class='service-box' style='background:transparent;'>
+    <button open-type="contact" >
+    </button>
+    <view >
+      <view class='iconfont icon-xiaoxi'></view>
+      <view class="service-text" style='color:#fff'>客服</view>
+    </view>
+  </view>
 
 <!-- 底部弹出框 -->
   <zan-popup show="{{ showContractPopup }}" type="bottom" bindclose="toggleContractPopup">
     <scroll-view scroll-y="true" class="pop-example__container pop-example__container--bottom" catchtouchmove="true" style='height:100vh;'>
-        <view class='contract-title'>
-        <span style="display: inline-block;">“靓号优选”及“梧桐凤凰靓号”</span>
-        <span> 交易平台合伙人认证服务协议</span>
+        <view class='apply-title'>
+        
+        平台合伙人认证服务协议
 <text class='iconfont icon-del2' bindtap='toggleContractPopup'></text></view>
        <view style='padding:0 20rpx;'>
         <view class='contract-h2'>【首部及导言】</view>

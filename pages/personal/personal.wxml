@@ -114,12 +114,13 @@
 
   <zan-panel class="cell-panel-demo footer" title="联系我们">
     <zan-row row-class="service">
-      <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
+      <!-- <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
         <view>微信：E购通</view>
         <image src='../../imgs/personal/qrcode.jpg' class='qrcode' bindtap="previewImage"></image>
-      </zan-col>
+      </zan-col> -->
       <zan-col col="24" col-class="custom-zan-col tel">
-        <view>客服热线：17759085090 17759085091</view>
+        <view>客服热线：9501310028</view>
+        <view>微信：17027022888</view>
       </zan-col>
     </zan-row>
   </zan-panel>
