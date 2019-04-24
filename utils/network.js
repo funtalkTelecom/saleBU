@@ -80,7 +80,7 @@ function request(method, requestHandler) {
             if (res.code) {
               wx.request({
                 url: API_URL + 'get_open_id',
-                data: { getcode: res.code },
+                data: { getcode: res.code, userId:0,__app:"xcx"},
                 // header: {},
                 method: 'GET',
                 dataType: 'json',

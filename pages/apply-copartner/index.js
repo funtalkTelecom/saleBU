@@ -174,24 +174,33 @@ Page({
       sourceType: ['album', 'camera'], 
       success: function (res) {
         var tempFilePaths = res.tempFilePaths[0]
-        wx.uploadFile({
-          url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
-          filePath: tempFilePaths,
-          name: 'upload',
-          header: {
-            "Content-Type": "multipart/form-data"
-          },
-          success: (res) => {
-            res=JSON.parse(res.data)
-            that.setData({
-              [img]: tempFilePaths,
-              [path]: res.data.file_name
-            })
-          }
-        })
+        if(res.tempFiles[0].size>2*1024*1024){
+          util.showToast("文件过大，请选择2M以下大小的图片")
+        }else{
+          wx.uploadFile({
+            url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
+            filePath: tempFilePaths,
+            name: 'upload',
+            header: {
+              "Content-Type": "multipart/form-data"
+            },
+            success: (res) => {
+              res = JSON.parse(res.data)
+              if (res.code == 200) {
+                that.setData({
+                  [img]: tempFilePaths,
+                  [path]: res.data.file_name
+                })
+              } else {
+                util.showToast(res.data)
+              }
+            }
+          })
+        }
+        
       },
       fail: function (res) {
-        // fail
+        util.showToast("选择图片失败")
       },
       complete: function (res) {
         // complete
