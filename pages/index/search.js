@@ -322,6 +322,7 @@ Page({
     this.formData.limit = this.data.limit,
       wx.showLoading({
         title: '加载中',
+        mask: true,
       })
     network.GET({
       url: "search-number",
@@ -332,13 +333,15 @@ Page({
           if (res.data.data.list.length==0){
               nodata=true
           }
-          wx.hideLoading()
           this.setData({
             total: res.data.data.total,
             numList: res.data.data.list,
             nodata: nodata
           })
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   },

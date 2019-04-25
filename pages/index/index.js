@@ -111,6 +111,10 @@ Page({
     wx.navigateTo({ url: 'product-page' });
   },
   getnumber:function(e){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     network.GET({
       url: "number",
       params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit,tags:e==0?"":e },
@@ -123,6 +127,9 @@ Page({
             [total]: res.data.data.total
           })
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   },

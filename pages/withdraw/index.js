@@ -102,6 +102,10 @@ Page({
       util.showToast("提现金额需不低于0.3");
       return
     }
+    wx.showLoading({
+      mask: true,
+      title: '处理中',
+    })
     network.POST({
       url: "partner/finance-withdraw",
       params: formData,
@@ -113,6 +117,9 @@ Page({
             [partnerObj.balance]: temp
           })
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   }

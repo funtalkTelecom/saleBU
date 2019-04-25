@@ -126,6 +126,10 @@ Page({
       util.showToast('联系号码格式有误');
       return
     }
+    wx.showLoading({
+      mask: true,
+      title: '',
+    })
     network.POST({
       url: "sms/ack",
       params: { phone: this.data.phone},
@@ -138,6 +142,9 @@ Page({
           })
           this.setTimeoutCode()
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
 
@@ -177,6 +184,10 @@ Page({
         if(res.tempFiles[0].size>2*1024*1024){
           util.showToast("文件过大，请选择2M以下大小的图片")
         }else{
+          wx.showLoading({
+            mask: true,
+            title: '上传中，请稍等',
+          })
           wx.uploadFile({
             url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
             filePath: tempFilePaths,
@@ -194,6 +205,9 @@ Page({
               } else {
                 util.showToast(res.data)
               }
+            },
+            complete: function () {
+              wx.hideLoading()
             }
           })
         }
@@ -243,6 +257,10 @@ Page({
     }
     formData.idcard_face_file_name = this.data.imgpath1
     formData.idcard_back_file_name = this.data.imgpath2
+    wx.showLoading({
+      mask: true,
+      title: '提交申请中',
+    })
     network.POST({
       url: "partner/user-info",
       params: formData,
@@ -262,6 +280,9 @@ Page({
         }else{
           util.showToast(res.data.data);
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   }

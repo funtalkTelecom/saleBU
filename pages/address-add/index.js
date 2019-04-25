@@ -92,6 +92,10 @@ Page({
     if (this.data.addressObj) {
       formData.id = this.data.addressObj.id;
     }
+    wx.showLoading({
+      mask: true,
+      title: '保存中',
+    })
     network.POST({
       url: "deliveryAddress",
       params: formData,
@@ -108,6 +112,9 @@ Page({
             }
           })
         }
+      },
+      complete: function () {
+        wx.hideLoading()
       }
     })
   },

@@ -200,6 +200,10 @@ Page({
       content: '您确认签收此订单吗？',
       success: (res) => {
         if (res.confirm) {
+          wx.showLoading({
+            mask: true,
+            title: '签收中',
+          })
           network.POST({
             url: "orderSign",
             params: { orderId: e.currentTarget.dataset.id },
@@ -223,6 +227,9 @@ Page({
                   duration: 2000
                 })
               }
+            },
+            complete: function () {
+              wx.hideLoading()
             }
           })
         }
@@ -291,6 +298,10 @@ Page({
         return
       }
     }
+    wx.showLoading({
+      mask:true,
+      title: '取消中',
+    })
     network.GET({
       url: "cancel-order",
       params: { orderId: this.data.cancelOrderId, reason: reason },
@@ -315,6 +326,9 @@ Page({
             duration: 2000
           })
         }
+      },
+      complete:function(){
+        wx.hideLoading()
       }
     })
   }
