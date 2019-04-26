@@ -272,9 +272,11 @@ Page({
             icon: 'success',
             duration: 3000,
             success:function(){
-              wx.navigateTo({
-                url: '/pages/copartner/index'
-              })
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '/pages/copartner/index'
+                })
+              }, 3000);
             }
           })
         }else{

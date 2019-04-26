@@ -106,9 +106,12 @@ Page({
             icon: 'success',
             duration: 2000,
             success: function (res) {
-              wx.navigateBack({
-                delta:1
-              });
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1
+                });
+              }, 2000);
+              
             }
           })
         }

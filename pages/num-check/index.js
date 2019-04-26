@@ -150,11 +150,13 @@ Page({
           wx.showToast({
             title: res.data.data,
             icon: 'none',
-            duration: 4000,
+            duration: 3000,
             success:function(){
-              wx.switchTab({
-                url: '/pages/index/index'
-              })
+              setTimeout(function(){
+                wx.switchTab({
+                  url: '/pages/index/index'
+                })
+              }, 3000);
             }
           })
         }else{
