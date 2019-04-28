@@ -102,7 +102,7 @@ page{
   border-bottom: 1px dotted #888;
 }
 .share-item view{
-  width: 55%;
+  width: 53%;
   line-height: 50rpx;
   height: 50rpx;
 }
@@ -117,5 +117,5 @@ page{
   overflow:hidden; 
 }
 .share-item .w40{
-  width: 40%;
+  width: 47%;
 }
