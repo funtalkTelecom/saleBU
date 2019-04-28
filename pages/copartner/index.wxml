@@ -1,4 +1,6 @@
 <view>
+<view class='prom' wx:if="{{partnerObj.month_flag==1}}">本月您已成功推广{{partnerObj.month_has_amount}}单，距离完成目标仅剩{{partnerObj.month_sur_amount}}单，请继续努力</view>
+<view class='prom' wx:if="{{partnerObj.month_flag==2}}">恭喜，您本月已完成最低推广要求，请再接再厉！</view>
 <zan-panel>
     <zan-row row-class="head">
       <zan-col col="3" offset="1" col-class="custom-zan-col">
@@ -23,19 +25,21 @@
  
 
   <view class='share-head'>
-    <text class="share-left">我的分享</text>
-    <text class="arrow share-right" bindtap='toPromotionDel'>推广记录</text>
+    <text class="share-left">推广订单</text>
+    <text class="arrow share-right" bindtap='toPromotionShare'>我的分享</text>
   </view>
   <view class='share-box'>
-    <view class='share-item' wx:for="{{shareList}}" wx:key="id" bindtap='torem' data-sharenumid='{{item.share_num_id}}' >
-      <view class='share-item-num'>分享号码 {{item.share_num}}</view>
-      <text class='iconfont icon-shanchu' catchtap='toDel' data-shareid='{{item.id}}'></text>
-       <view>号码售价：{{item.sale_price}}元</view>
-       <view class='w100'>预期收益：{{item.income}}元</view>
-       <view class='w100'>分享时间：{{item.share_date}}</view>
-       <view class='w100' wx:if="{{item.is_pp!=0}}">有效时间：{{item.valid_date}}</view>
-       <!-- <view class='w100'>有效时间：2018-01-01 12:00</view> -->
-       <view class="torem {{item.num_sale==0?'disable':''}}" >去推广</view>
+    <view class='share-item' wx:for="{{shareList}}" wx:key="id" >
+      <view class='share-item-num'>订单  {{item.order_id}}</view>
+      <view class='nickname'>{{item.nick_name}}</view>
+       <view>推广号码：{{item.num}}</view>
+       <view class='w40'>订单金额：{{item.order_amt}}元</view>
+       <view >购买时间：{{item.pay_date}}</view>
+       <view class='w40'>签收时间：{{item.sign_date}}</view>
+       <view >推广佣金：{{item.palt_amt}}元</view>
+       <view class='w40'>商家佣金：{{item.seller_amt}}元</view>
+       <view >订单状态：{{item.order_status_text}}</view>
+       <view class='w40'>结算状态：{{item.settle_status_text}}</view>
     </view>
 
   </view>

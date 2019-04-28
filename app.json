@@ -43,7 +43,8 @@
     "pages/income/index",
     "pages/promotion-num/index",
     "pages/apply-copartner/index",
-    "pages/withdraw/index"
+    "pages/withdraw/index",
+    "pages/promotion-share/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#66ccff",
