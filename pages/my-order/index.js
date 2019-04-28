@@ -66,12 +66,13 @@ Page({
    *  打开新页面清除计时器
    */
   onHide: function () {
+    this.qingchu()
     this.setData({
       pageNum: 0,
       order: [],
       hasMore: true
     })
-    this.qingchu()
+    
   },
   /**
   * 页面相关事件处理函数--监听用户下拉动作
@@ -102,6 +103,7 @@ Page({
     this.loadMoreOrder(e.detail, "up")
   },
   loadMoreOrder: function (e, touchType) {
+    var that=this;
     if (!this.data.hasMore) return;
     network.GET({
       url: "order",
@@ -120,8 +122,13 @@ Page({
           },function(){
             for (var i = 0; i < childlist.length; i++) {
               if (childlist[i].djs > 0) {
-                var index = orders.length - this.data.limit + i
-                this.countdown(index, childlist[i])
+                var index
+                if (orders.length - that.data.limit>=0){
+                  index = orders.length - that.data.limit + i
+                }else{
+                  index=i
+                }
+                that.countdown(index, childlist[i])
               }
             }
           })
