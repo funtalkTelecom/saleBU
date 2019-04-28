@@ -108,7 +108,8 @@ Page({
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
       success: (res) => {
         if (res.data.code == 200) {
-          var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
+          var childlist=res.data.data.list.map(this.formatTime)
+          var orders = this.data.order.concat(childlist)
           // var total = "totalList[" + e + "].total"
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
@@ -116,12 +117,15 @@ Page({
           this.setData({
             order: orders,
             hasMore: flag,
-          })
-          for (var i = 0; i < this.order.length; i++) {
-            if (this.order[i].djs > 0) {
-              this.Countdown(i, this.order[i].djs)
+          },function(){
+            for (var i = 0; i < childlist.length; i++) {
+              if (childlist[i].djs > 0) {
+                var index = orders.length - this.data.limit + i
+                this.countdown(index, childlist[i])
+              }
             }
-          }
+          })
+          
         }
       },
       complete: (res) => {
@@ -138,34 +142,34 @@ Page({
     element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
     element.djs = ((element.add_date + 3600000) - (Date.now())) / 1000
-    var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
-    if (djs > 0) {                                 // 倒计时时间是否大于0
-      element.endDate = util.parseIntDayTime(djs)
+    // var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+    if (element.djs > 0) {                                 // 倒计时时间是否大于0
+      element.endDate = util.parseIntDayTime(element.djs)
     } else {
       element.endDate = ['00', '00', '00']
     }
     return element
   },
   // 倒计时
-  Countdown:function(i,num){
+  countdown: function (index,item){
     var that = this
-    // console.log(num)
-    this.data['timer'+i] = setTimeout(function () {
-        if(num>0){
-          that.Countdown(i,(num-1))
-          that.order[i].djs = num-1
-          that.order[i].endDate = util.parseIntDayTime(num-1)
+    this.data['timer' + item.order_id] = setTimeout(function () {
+      if (item.djs>0){
+        that.countdown(index,item)
+        var djs = "order[" + index + "].djs"
+        var endDate = "order[" + index + "].endDate"
           that.setData({
-            order: that.order
+            [djs]: item.djs - 1,
+            [endDate]: util.parseIntDayTime(item.djs - 1)
           })
         }
       }, 1000);
   },
   // 清除倒计时计时器
   qingchu: function(){
-    for (var i = 0; i < this.order.length; i++) {
-      if (this.order[i].djs > 0) {
-        clearTimeout(this.data['timer' + i])
+    for (var i = 0; i < this.data.order.length; i++) {
+      if (this.data.order[i].djs > 0) {
+        clearTimeout(this.data['timer' + this.data.order[i].order_id])
       }
     }
   },
@@ -307,6 +311,7 @@ Page({
       params: { orderId: this.data.cancelOrderId, reason: reason },
       success: (res) => {
         if (res.data.code == 200) {
+          wx.hideLoading()
           wx.showToast({
             title: res.data.data,
             icon: 'success',
@@ -320,16 +325,18 @@ Page({
           })
           this.loadMoreOrder(this.data.selectedId, "up")
         } else {
+          wx.hideLoading()
           wx.showToast({
             title: res.data.data,
             icon: 'none',
             duration: 2000
           })
         }
-      },
-      complete:function(){
-        wx.hideLoading()
       }
+      // ,
+      // complete:function(){
+       
+      // }
     })
   }
 })
