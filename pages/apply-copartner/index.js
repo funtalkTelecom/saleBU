@@ -134,6 +134,7 @@ Page({
       url: "sms/ack",
       params: { phone: this.data.phone},
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.data,
@@ -142,9 +143,6 @@ Page({
           })
           this.setTimeoutCode()
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
 
@@ -196,6 +194,7 @@ Page({
               "Content-Type": "multipart/form-data"
             },
             success: (res) => {
+              wx.hideLoading()
               res = JSON.parse(res.data)
               if (res.code == 200) {
                 that.setData({
@@ -205,9 +204,6 @@ Page({
               } else {
                 util.showToast(res.data)
               }
-            },
-            complete: function () {
-              wx.hideLoading()
             }
           })
         }
@@ -265,6 +261,7 @@ Page({
       url: "partner/user-info",
       params: formData,
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.setStorageSync('isPartner', "1")
           wx.showToast({
@@ -282,9 +279,6 @@ Page({
         }else{
           util.showToast(res.data.data);
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
   }

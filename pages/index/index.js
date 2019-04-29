@@ -119,6 +119,7 @@ Page({
       url: "number",
       params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit,tags:e==0?"":e },
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           var num="number"+e
           var total = "totalList[" + e + "].total"
@@ -127,9 +128,6 @@ Page({
             [total]: res.data.data.total
           })
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
   },

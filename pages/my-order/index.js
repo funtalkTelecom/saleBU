@@ -219,6 +219,7 @@ Page({
             url: "orderSign",
             params: { orderId: e.currentTarget.dataset.id },
             success: (res) => {
+              wx.hideLoading()
               if (res.data.code == 200) {
                 wx.showToast({
                   title: '操作成功',
@@ -238,9 +239,6 @@ Page({
                   duration: 2000
                 })
               }
-            },
-            complete: function () {
-              wx.hideLoading()
             }
           })
         }
@@ -317,8 +315,8 @@ Page({
       url: "cancel-order",
       params: { orderId: this.data.cancelOrderId, reason: reason },
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
-          wx.hideLoading()
           wx.showToast({
             title: res.data.data,
             icon: 'success',
@@ -332,7 +330,6 @@ Page({
           })
           this.loadMoreOrder(this.data.selectedId, "up")
         } else {
-          wx.hideLoading()
           wx.showToast({
             title: res.data.data,
             icon: 'none',

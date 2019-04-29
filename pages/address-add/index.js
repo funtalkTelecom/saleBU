@@ -100,6 +100,7 @@ Page({
       url: "deliveryAddress",
       params: formData,
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.showToast({
             title: '操作成功',
@@ -115,9 +116,6 @@ Page({
             }
           })
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
   },

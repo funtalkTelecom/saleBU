@@ -328,6 +328,7 @@ Page({
       url: "search-number",
       params: this.formData,
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           var nodata=false
           if (res.data.data.list.length==0){
@@ -339,9 +340,6 @@ Page({
             nodata: nodata
           })
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
   },

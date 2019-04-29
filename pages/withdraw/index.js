@@ -110,6 +110,7 @@ Page({
       url: "partner/finance-withdraw",
       params: formData,
       success: (res) => {
+        wx.hideLoading()
         util.showToast(res.data.data);
         if (res.data.code == 200) {
           var temp = this.data.partnerObj.balance - formData.amt
@@ -117,9 +118,6 @@ Page({
             [partnerObj.balance]: temp
           })
         }
-      },
-      complete: function () {
-        wx.hideLoading()
       }
     })
   }
