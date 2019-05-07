@@ -1,6 +1,18 @@
 <view>
-<view class='prom' wx:if="{{partnerObj.month_flag==1}}">本月您已成功推广{{partnerObj.month_has_amount}}单，距离完成目标仅剩{{partnerObj.month_sur_amount}}单，请继续努力</view>
-<view class='prom' wx:if="{{partnerObj.month_flag==2}}">恭喜，您本月已完成最低推广要求，请再接再厉！</view>
+
+
+<view class="marquee" wx:if="{{partnerObj.month_flag==1||partnerObj.month_flag==2}}">
+    <view class="content"  wx:if="{{partnerObj.month_flag==1}}">
+         <text style="display: inline-block; width: 6em;"></text><text >本月您已成功推广{{partnerObj.month_has_amount}}单，距离完成目标仅剩{{partnerObj.month_sur_amount}}单，请继续努力，数据仅供参考,以实际订单签收为准！</text> <text style="display: inline-block; width: 6em;"></text>
+        <text >本月您已成功推广{{partnerObj.month_has_amount}}单，距离完成目标仅剩{{partnerObj.month_sur_amount}}单，请继续努力，数据仅供参考,以实际订单签收为准！</text>
+    </view>
+    <view class="content"  wx:if="{{partnerObj.month_flag==2}}">
+         <text style="display: inline-block; width: 6em;"></text><text >恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</text> <text style="display: inline-block; width: 6em;"></text>
+        <text >恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</text>
+    </view>
+</view>
+<!-- <view class='prom' wx:if="{{partnerObj.month_flag==1}}">本月您已成功推广{{partnerObj.month_has_amount}}单，距离完成目标仅剩{{partnerObj.month_sur_amount}}单，请继续努力，数据仅供参考,以实际订单签收为准！</view> -->
+<!-- <view class='prom' wx:if="{{partnerObj.month_flag==2}}">恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</view> -->
 <zan-panel>
     <zan-row row-class="head">
       <zan-col col="3" offset="1" col-class="custom-zan-col">

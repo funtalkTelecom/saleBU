@@ -119,3 +119,29 @@ page{
 .share-item .w40{
   width: 47%;
 }
+
+/*首页跑马灯效果*/
+@keyframes kf-marque-animation{ 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee{
+    width: 100%;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+    font-size: 28rpx;
+    background: orange;
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: #fff;
+}
+.marquee .content{
+    display: inline-block;
+    position: relative;
+    padding-right: 0px;
+    animation: kf-marque-animation 12s linear infinite;
+    white-space: nowrap;
+}
