@@ -1,7 +1,7 @@
 <!--pages/apply-copartner/index.wxml-->
 
 <view class='page-container'>
-  <image src='../../imgs/personal/copartner.jpg' mode="widthFix" 
+  <image src='https://www.egt365.com/hk/get-img/201905090001.png' mode="widthFix" 
   class="{{partner_check!=1?'img-pad':''}}"></image>
   <view class='quickly-apply' bindtap='toggleBottomPopup' wx:if="{{partner_check != 1}}">立刻申请</view>
 
