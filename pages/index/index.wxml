@@ -61,7 +61,7 @@
       </view>
       <view class='refresh'>
         <view class='exchange' bindtap='exchange' data-tag='1'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMoreList[1]?'加载更多':'没有更多了'}}</view>
       </view>
     </view>
     <view class='content fenjie' id="list2">
@@ -94,7 +94,7 @@
       </view>
       <view class='refresh'>
         <view class='exchange' bindtap='exchange' data-tag='2'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMoreList[2]?'加载更多':'没有更多了'}}</view>
       </view>
     </view>
     <!-- <view class='content fenjie' id="list3">
@@ -126,7 +126,7 @@
       </view>
       <view class='refresh'>
         <view class='exchange' bindtap='exchange' data-tag='3'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMoreList[3]?'加载更多':'没有更多了'}}</view>
       </view>
     </view> -->
     <view class='content fenjie' id="list4">
@@ -160,7 +160,7 @@
       </view>
       <view class='refresh'>
         <view class='exchange' bindtap='exchange' data-tag='4'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMoreList[4]?'加载更多':'没有更多了'}}</view>
       </view>
     </view>
 
@@ -196,7 +196,7 @@
       </view>
       <view class='refresh'>
         <view class='exchange' bindtap='exchange' data-tag='0'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMoreList[0]?'加载更多':'没有更多了'}}</view>
       </view>
     </view>
   </scroll-view>
