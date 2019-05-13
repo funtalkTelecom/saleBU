@@ -108,18 +108,37 @@ Page({
           //   })
           // }
         } else if (res.data.data) {
+          that.setData({
+            paytext: "微信支付",
+            disabled: false
+          })
           wx.showToast({
             title: res.data.data,
             icon: 'none',
             duration: 3000
           })
         } else {
+          that.setData({
+            paytext: "微信支付",
+            disabled: false
+          })
           wx.showToast({
             title: "支付失败",
             icon: 'none',
             duration: 3000
           })
         }
+      },
+      'fail': function (res) {
+        that.setData({
+          paytext: "微信支付",
+          disabled: false
+        })
+        wx.showToast({
+          title: "支付失败",
+          icon: 'none',
+          duration: 3000
+        })
       }
     })
   },
