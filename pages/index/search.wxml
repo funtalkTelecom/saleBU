@@ -117,7 +117,7 @@
 
 <view class='refresh' wx:if="{{numList.length>0}}">
         <view class='exchange' bindtap='exchange' data-tag='0'>
-          <text class='iconfont icon-huanyihuan'></text>换一批</view>
+          <text class='iconfont icon-huanyihuan'></text>{{hasMore?'加载更多':'没有更多了'}}</view>
       </view> 
 
       <view class="loadmore nomore" wx:if="{{nodata}}"><image mode='widthFix' src='../../imgs/personal/nomore.png'></image>没有数据~</view>     

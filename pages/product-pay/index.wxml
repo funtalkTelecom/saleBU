@@ -13,7 +13,7 @@
         <view>银行：中信银行</view>
         <view>户主：林永</view>
         <view>帐号：6217 6813 0292 6871</view>
-        <view class='tishi'>【温馨提示】付款时请备注所拍得到号码，如有任何疑问可拨打客服热线17759085090 17759085091</view>
+        <view class='tishi'>【温馨提示】付款时请备注所拍得到号码，如有任何疑问可拨打客服热线9501310028或者微信：17027022888</view>
       </view>
       <!-- <view class='offline' wx:if="{{defaultValue==4}}">
         <view class='beizhu'>备注：</view>
@@ -24,7 +24,8 @@
       </view> -->
   </zan-panel>
 
-  <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==1?'wx-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view>
+  <button disabled="{{disabled}}" hidden='{{defaultValue==2?true:false}}'  id="but"
+  class="{{['footer-but', defaultValue==1?'wx-bgc':'']}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</button>
   <!-- <view hidden='{{defaultValue==2?true:false}}' class="footer-but {{defaultValue==4?'instalment-bgc':''}}" bindtap='pay' ><image class='zficon' mode='widthFix' src='../../imgs/personal/zhifui.png'></image>{{paytext}}</view> -->
 <view class='service-box'>
     <button open-type="contact" >

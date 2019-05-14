@@ -8,26 +8,33 @@ Page({
    */
   data: {
     showBottomPopup: false,//申请弹窗,
+    showContractPopup: false,//协议弹窗,
     time: 61,
     smsFlag:false,
     img1: "",
     img2:"",
     imgpath1:"",
     imgpath2:"",
-    phone:""
+    phone:"",
+    name:"",
+    idcard:"",
+    partnerObj:{},
+    partner_check:0,
+    contract:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getPartner()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
@@ -64,15 +71,49 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-
+    return {
+      title:  "有个创业项目想邀请您一起参与~ 低门槛，高收益，零风险，0投资。",
+      path: "pages/apply-copartner/index?userid=" + wx.getStorageSync('consumer_id')
+    }
+  }, 
+  checkboxChange:function(e){
+    this.setData({
+      contract: !this.data.contract
+    })
+  },
+  getPartner: function () {
+    network.GET({
+      url: "partner/user-info",
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          var partnerObj = res.data.data
+          if (partnerObj.idcard && partnerObj.name && partnerObj.phone){
+            this.setData({
+              partnerObj: partnerObj,
+              name: partnerObj.name,
+              idcard: partnerObj.idcard,
+              phone: partnerObj.phone,
+              img1: partnerObj.idcard_face,
+              img2: partnerObj.idcard_back,
+              partner_check: partnerObj.partner_check,
+              imgpath1: partnerObj.idcard_face.substr(partnerObj.idcard_face.lastIndexOf("/") + 1),
+              imgpath2: partnerObj.idcard_back.substr(partnerObj.idcard_back.lastIndexOf("/") + 1),
+            })
+          }
+        }
+      }
+    })
   },
   toggleBottomPopup() {
     this.setData({
+      showBottomPopup: !this.data.showBottomPopup
+    });
+  }, 
+  toggleContractPopup() {
+    this.setData({
+      showContractPopup: !this.data.showContractPopup,
       showBottomPopup: !this.data.showBottomPopup
     });
   },
@@ -85,10 +126,15 @@ Page({
       util.showToast('联系号码格式有误');
       return
     }
+    wx.showLoading({
+      mask: true,
+      title: '',
+    })
     network.POST({
       url: "sms/ack",
       params: { phone: this.data.phone},
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.data,
@@ -133,24 +179,38 @@ Page({
       sourceType: ['album', 'camera'], 
       success: function (res) {
         var tempFilePaths = res.tempFilePaths[0]
-        wx.uploadFile({
-          url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
-          filePath: tempFilePaths,
-          name: 'upload',
-          header: {
-            "Content-Type": "multipart/form-data"
-          },
-          success: (res) => {
-            res=JSON.parse(res.data)
-            that.setData({
-              [img]: tempFilePaths,
-              [path]: res.data.file_name
-            })
-          }
-        })
+        if(res.tempFiles[0].size>2*1024*1024){
+          util.showToast("文件过大，请选择2M以下大小的图片")
+        }else{
+          wx.showLoading({
+            mask: true,
+            title: '上传中，请稍等',
+          })
+          wx.uploadFile({
+            url: getApp().globalData.API_URL + "upload/image?sub_path=idcard&__sessid=" + wx.getStorageSync("token"),
+            filePath: tempFilePaths,
+            name: 'upload',
+            header: {
+              "Content-Type": "multipart/form-data"
+            },
+            success: (res) => {
+              wx.hideLoading()
+              res = JSON.parse(res.data)
+              if (res.code == 200) {
+                that.setData({
+                  [img]: tempFilePaths,
+                  [path]: res.data.file_name
+                })
+              } else {
+                util.showToast(res.data)
+              }
+            }
+          })
+        }
+        
       },
       fail: function (res) {
-        // fail
+        util.showToast("选择图片失败")
       },
       complete: function (res) {
         // complete
@@ -187,22 +247,33 @@ Page({
       util.showToast('请输入验证码');
       return
     }
+    if (!this.data.contract) {
+      util.showToast('请阅读并同意平台合伙人认证服务');
+      return
+    }
     formData.idcard_face_file_name = this.data.imgpath1
     formData.idcard_back_file_name = this.data.imgpath2
+    wx.showLoading({
+      mask: true,
+      title: '提交申请中',
+    })
     network.POST({
       url: "partner/user-info",
       params: formData,
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.setStorageSync('isPartner', "1")
           wx.showToast({
             title: res.data.data,
             icon: 'success',
-            duration: 2000,
+            duration: 3000,
             success:function(){
-              wx.navigateTo({
-                url: '/pages/copartner/index'
-              })
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '/pages/copartner/index'
+                })
+              }, 3000);
             }
           })
         }else{

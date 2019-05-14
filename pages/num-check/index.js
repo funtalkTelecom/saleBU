@@ -14,7 +14,10 @@ Page({
     numberObj:{},//号码数据
     addrindex:0,
     selectMealIndex:0,
-    intervalId:""
+    intervalId:"",
+    logisticArr: [{ "name": "EMS包邮", "type": 10009 }, { "name": "顺丰到付", "type": 10003 }],
+    selectLogIndex:0,
+    logObj: { "name": "EMS包邮", "type": 10009 }
   },
 
   /**
@@ -52,7 +55,7 @@ Page({
     this.initAddress();
     this.setData({
       isPartner: wx.getStorageSync('isPartner'),
-      testUser: wx.getStorageSync('testUser')
+      // testUser: wx.getStorageSync('testUser')
     })
   },
   setInterval:function(){
@@ -87,7 +90,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return network.share("num_id=" + this.data.numberObj.id + "&userId=" + wx.getStorageSync('consumer_id') );
+    return network.share("num_id=" + this.data.numberObj.id);
   },
   // usewxpay: function (e) {
   //   console.log(e.currentTarget.dataset.wxpay);
@@ -147,11 +150,13 @@ Page({
           wx.showToast({
             title: res.data.data,
             icon: 'none',
-            duration: 4000,
+            duration: 3000,
             success:function(){
-              wx.switchTab({
-                url: '/pages/index/index'
-              })
+              setTimeout(function(){
+                wx.switchTab({
+                  url: '/pages/index/index'
+                })
+              }, 3000);
             }
           })
         }else{
@@ -212,6 +217,14 @@ Page({
 
     })
   },
+  selectLog(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      selectLogIndex: index,
+      logObj: this.data.logisticArr[index]
+
+    })
+  },
   valideAddr:function(){
     if (!this.data.curAddressObj) {
       // wx.hideLoading();
@@ -240,6 +253,7 @@ Page({
     params.numid = this.data.numberObj.id;
     params.skuid = this.data.numberObj.skuId;
     params.mealid = this.data.mealObj.mid;
+    params.logistic_type = this.data.logObj.type;
     if (this.data.share_id){
       params.share_id = this.data.share_id
     }
@@ -290,8 +304,6 @@ Page({
       network.PUT({
         url: "Consumer",
         params: {
-          'loginName': "",
-          'livePhone': "",
           'nickName': userInfo.nickName,
           'sex': userInfo.gender,
           'img': userInfo.avatarUrl,

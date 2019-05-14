@@ -15,7 +15,8 @@ Page({
     number4: [],
     limit:10,
     pageNumList: [{ pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }, { pageNum: 1 }],
-    totalList: []
+    totalList: [],
+    hasMoreList: [true, true, true, true, true],
   },
 
   onLoad: function (options) {
@@ -42,15 +43,15 @@ Page({
         }
       }
     })
-    this.getnumber(0);
-    this.getnumber(1);
-    this.getnumber(2);
-    // this.getnumber(3);
-    this.getnumber(4);
+    this.getnumber(0,false);
+    this.getnumber(1, false);
+    this.getnumber(2, false);
+    // this.getnumber(3,false);
+    this.getnumber(4, false);
 
   },
   onShareAppMessage: function () {
-    return network.share("userId =" + wx.getStorageSync('consumer_id'));
+    return network.share();
   },
   tapSearch: function () {
     // wx.navigateTo({ url: 'search' });
@@ -110,35 +111,48 @@ Page({
   tapBanner: function (e) {
     wx.navigateTo({ url: 'product-page' });
   },
-  getnumber:function(e){
-    network.GET({
-      url: "number",
-      params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit,tags:e==0?"":e },
-      success: (res) => {
-        if (res.data.code == 200) {
-          var num="number"+e
-          var total = "totalList[" + e + "].total"
-          this.setData({
-            [num]: res.data.data.list,
-            [total]: res.data.data.total
-          })
+  getnumber:function(e,flag){
+    var num = "number" + e
+    var total = "totalList[" + e + "].total"
+    var hasMoreStr = "hasMoreList[" + e + "]"
+    if (this.data[num].length == 0 || flag){
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      network.GET({
+        url: "number",
+        params: { pageNum: this.data.pageNumList[e].pageNum, limit: this.data.limit, tags: e == 0 ? "" : e },
+        success: (res) => {
+          wx.hideLoading()
+          if (res.data.code == 200) {
+            var count = parseInt(res.data.data.total);
+            var flag = this.data.pageNumList[e].pageNum * this.data.limit < count;
+            var numList = this.data[num].concat(res.data.data.list)
+            this.setData({
+              [num]: numList,
+              // [total]: count,
+              [hasMoreStr]: flag
+            })
+          }
         }
-      }
-    })
+      })
+    }
   },
   exchange:function(e){
     var tag = e.currentTarget.dataset.tag
+    var hasMore = this.data.hasMoreList[tag]
+    if (!hasMore) return
     var str = "pageNumList[" + tag + "].pageNum"
-    if (this.data.pageNumList[tag].pageNum * this.data.limit >= this.data.totalList[tag].total){
-      this.setData({
-        [str]: 1
-      })
-    }else{
+    // if (this.data.pageNumList[tag].pageNum * this.data.limit >= this.data.totalList[tag].total){
+    //   this.setData({
+    //     [str]: 1
+    //   })
+    // }else{
       this.setData({
         [str]: ++this.data.pageNumList[tag].pageNum
       })
-    }
-    
-    this.getnumber(e.currentTarget.dataset.tag)
+    // }
+    this.getnumber(e.currentTarget.dataset.tag,true)
   }
 })

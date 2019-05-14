@@ -92,7 +92,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return network.share();
   },
   loadMoreList: function (e) {
     if (!this.data.hasMore) return;

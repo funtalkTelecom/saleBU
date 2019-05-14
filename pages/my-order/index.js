@@ -39,9 +39,14 @@ Page({
       { value: 1, checked: false, textarea: "2、其他渠道有更低的价格" },
       { value: 2, checked: false, textarea: "3、暂时不想买了" },
       { value: 3, checked: false, textarea: "4、重复下单或者误下单" },
-      { value: 4, checked: false, textarea: "5、其他原因" }]
+      { value: 4, checked: false, textarea: "5、其他原因" }],
   },
-
+  /**
+   *  点击返回清除计时器
+   */
+  onUnload:function(){
+    this.qingchu()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -49,18 +54,31 @@ Page({
     this.setData({
       selectedId: options.tabtype
     })
-    this.loadMoreOrder(options.tabtype, "up")
+    // this.loadMoreOrder(options.tabtype, "up")
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadMoreOrder(this.data.selectedId, "up")
+  },
+  /**
+   *  打开新页面清除计时器
+   */
+  onHide: function () {
+    this.qingchu()
+    this.setData({
+      pageNum: 0,
+      order: [],
+      hasMore: true
+    })
+    
   },
   /**
   * 页面相关事件处理函数--监听用户下拉动作
   */
   onPullDownRefresh: function () {
+    this.qingchu()
     wx.showNavigationBarLoading();
     this.setData({
       pageNum: 0,
@@ -68,12 +86,14 @@ Page({
       hasMore: true
     })
     this.loadMoreOrder(this.data.selectedId, "down")
+    
   },
   // 触底加载更多
   onReachBottom: function () {
     this.loadMoreOrder(this.data.selectedId, "up");
   },
   handleTabChange: function (e) {
+    this.qingchu()
     this.setData({
       selectedId: e.detail,
       pageNum: 0,
@@ -83,20 +103,36 @@ Page({
     this.loadMoreOrder(e.detail, "up")
   },
   loadMoreOrder: function (e, touchType) {
+    var that=this;
     if (!this.data.hasMore) return;
     network.GET({
       url: "order",
       params: { pageNum: ++this.data.pageNum, limit: this.data.limit, status: e },
       success: (res) => {
         if (res.data.code == 200) {
-          var orders = this.data.order.concat(res.data.data.list.map(this.formatTime))
+          var childlist=res.data.data.list.map(this.formatTime)
+          var orders = this.data.order.concat(childlist)
           // var total = "totalList[" + e + "].total"
           var count = parseInt(res.data.data.total);
           var flag = this.data.pageNum * this.data.limit < count;
+          this.order = orders
           this.setData({
             order: orders,
             hasMore: flag,
+          },function(){
+            for (var i = 0; i < childlist.length; i++) {
+              if (childlist[i].djs > 0) {
+                var index
+                if (orders.length - that.data.limit>=0){
+                  index = orders.length - that.data.limit + i
+                }else{
+                  index=i
+                }
+                that.countdown(index, childlist[i])
+              }
+            }
           })
+          
         }
       },
       complete: (res) => {
@@ -112,7 +148,37 @@ Page({
     element.addDate = util.formatTime(new Date(element.add_date))
     element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
+    element.djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+    // var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+    if (element.djs > 0) {                                 // 倒计时时间是否大于0
+      element.endDate = util.parseIntDayTime(element.djs)
+    } else {
+      element.endDate = ['00', '00', '00']
+    }
     return element
+  },
+  // 倒计时
+  countdown: function (index,item){
+    var that = this
+    this.data['timer' + item.order_id] = setTimeout(function () {
+      if (item.djs>0){
+        that.countdown(index,item)
+        var djs = "order[" + index + "].djs"
+        var endDate = "order[" + index + "].endDate"
+          that.setData({
+            [djs]: item.djs - 1,
+            [endDate]: util.parseIntDayTime(item.djs - 1)
+          })
+        }
+      }, 1000);
+  },
+  // 清除倒计时计时器
+  qingchu: function(){
+    for (var i = 0; i < this.data.order.length; i++) {
+      if (this.data.order[i].djs > 0) {
+        clearTimeout(this.data['timer' + this.data.order[i].order_id])
+      }
+    }
   },
   // 去订单详情
   orderdetail: function (e) {
@@ -145,10 +211,15 @@ Page({
       content: '您确认签收此订单吗？',
       success: (res) => {
         if (res.confirm) {
+          wx.showLoading({
+            mask: true,
+            title: '签收中',
+          })
           network.POST({
             url: "orderSign",
             params: { orderId: e.currentTarget.dataset.id },
             success: (res) => {
+              wx.hideLoading()
               if (res.data.code == 200) {
                 wx.showToast({
                   title: '操作成功',
@@ -236,10 +307,15 @@ Page({
         return
       }
     }
+    wx.showLoading({
+      mask:true,
+      title: '取消中',
+    })
     network.GET({
       url: "cancel-order",
       params: { orderId: this.data.cancelOrderId, reason: reason },
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.data,
@@ -261,6 +337,10 @@ Page({
           })
         }
       }
+      // ,
+      // complete:function(){
+       
+      // }
     })
   }
 })

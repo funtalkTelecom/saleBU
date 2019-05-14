@@ -86,7 +86,7 @@ Page({
         if(res.data.code==200){
           this.setData({
             numObj: res.data.data,
-            path: "pages/num-check/index?share_id=" + res.data.data.share_id + "&num_id=" + res.data.data.num_id + "&userId=" + wx.getStorageSync('consumer_id')
+            path: "pages/num-check/index?share_id=" + res.data.data.share_id + "&num_id=" + res.data.data.num_id + "&userid=" + wx.getStorageSync('consumer_id')
           })
         }
       }
@@ -122,7 +122,7 @@ Page({
         url: "partner/share-card",
         params: formData,
         success: (res) => {
-          console.log(res)
+          wx.hideLoading()
           if (res.data.code == 200) {
             this.setData({
               imagePath: res.data.data.share_image,
@@ -132,9 +132,6 @@ Page({
           } else {
             util.showToast(res.data.data);
           }
-        },
-        complete: function () {
-          wx.hideLoading()
         }
       })
     // }

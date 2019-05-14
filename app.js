@@ -45,7 +45,7 @@ App({
         if (res.code) {
           wx.request({
             url: this.globalData.API_URL+'get_open_id',
-            data: { getcode: res.code, userId: options.query.userId||0 },
+            data: { getcode: res.code, userId: options.query.userid || 0, __app: "xcx"},
             method: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -55,7 +55,7 @@ App({
                 wx.setStorageSync('consumer_id', res.data.data.consumer_id)
                 wx.setStorageSync('isPartner', res.data.data.isPartner)
                 wx.setStorageSync('partnerCheck', res.data.data.partnerCheck)
-                wx.setStorageSync('testUser', res.data.data.testUser)
+                // wx.setStorageSync('testUser', res.data.data.testUser)
                 that.globalData.header.Cookie = 'JSESSIONID=' + wx.getStorageSync("token");
               }else{
                 wx.showToast({

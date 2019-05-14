@@ -1,13 +1,12 @@
-// pages/copartner/index.js
+// pages/promotion-share/index.js
 var network = require("../../utils/network.js");
-var util = require("../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    partnerObj:{},
+    partnerObj: {},
     hasMore: true,
     pageNum: 0,
     limit: 20,
@@ -18,9 +17,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo')
-    })
     this.getPartner();
   },
 
@@ -77,31 +73,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toWithdraw:function(){
-    wx.navigateTo({
-      url: '/pages/income/index'
-    })
-  },
-  toPromotionShare:function(){
-    wx.navigateTo({
-      url: '/pages/promotion-share/index'
-    })
-  },
-  promine:function(url,data){
-    // Promise.prototype.finally = function (callback) {
-    //   let P = this.constructor;
-    //   return this.then(
-    //     value => P.resolve(callback()).then(() => value),
-    //     reason => P.resolve(callback()).then(() => { throw reason })
-    //   );
-    // };
-  },
-  edit:function(){
-    wx.navigateTo({
-      url: '/pages/apply-copartner/index'
-    })
-  },
-  getPartner:function(){
+  getPartner: function () {
     network.GET({
       url: "partner/user-info",
       params: {},
@@ -114,32 +86,73 @@ Page({
       }
     })
   },
+  toDel: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '确定删除该条分享记录？',
+      success: (res) => {
+        if (res.confirm) {
+          network.POST({
+            url: "partner/share-del",
+            params: { share_id: e.currentTarget.dataset.shareid },
+            success: (res) => {
+              if (res.data.code == 200) {
+                wx.showToast({
+                  title: res.data.data,
+                  icon: 'success',
+                  duration: 2000
+                })
+                this.setData({
+                  pageNum: 0,
+                  shareList: [],
+                  hasMore: true
+                })
+                this.loadMore()
+              } else {
+                util.showToast(res.data.data)
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  toPromotionDel: function () {
+    wx.navigateTo({
+      url: '/pages/promotion-detail/index'
+    })
+  },
+  torem: function (e) {
+    wx.navigateTo({
+      url: '/pages/promotion-num/index?numid=' + e.currentTarget.dataset.sharenumid
+    })
+  },
   loadMore: function () {
     // 2.2如果没有更多数据，就直接返回
     if (!this.data.hasMore) return;
     network.GET({
-      url: "order-settle/list",
+      url: "partner/share",
       params: {
         pageNum: ++this.data.pageNum,
         limit: this.data.limit
       },
       success: (res) => {
-        res.data.list.forEach(function(item){
-          item.num = item.num.substring(0, 3) + '-' + item.num.substring(3, 7) + '-' + item.num.substring(7, 11)
+        res.data.list.forEach(function (item) {
+          item.share_num = item.share_num.substring(0, 3) + '-' + item.share_num.substring(3, 7) + '-' + item.share_num.substring(7, 11)
           // if (item.valid_date){
           //   item.valid_date = util.formatDate(new Date(item.valid_date))
           // }
           // item.share_date = util.formatDate(new Date(item.share_date))
         })
-          var shareList = this.data.shareList.concat(res.data.list);
-          var count = parseInt(res.data.total);
-          var flag = this.data.pageNum * this.data.limit < count;
-          this.setData({
-            shareList: shareList,
-            hasMore: flag,
-          })
-        }
-      
+        var shareList = this.data.shareList.concat(res.data.list);
+        var count = parseInt(res.data.total);
+        var flag = this.data.pageNum * this.data.limit < count;
+        this.setData({
+          shareList: shareList,
+          hasMore: flag,
+        })
+      }
+
     })
   }
 })

@@ -21,7 +21,8 @@ Page({
     limit: 10,
     pageNum: 1,
     numList:[],
-    nodata:false
+    nodata:false,
+    hasMore: true,
   },
 
   /**
@@ -68,19 +69,19 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.setData({
-      multiIndex:[0, 0],
-      selectaddr: "请选择",
-      province: "",
-      provinceId: "",
-      city: "",
-      cityId: "",
-      objectMultiArray: [this.data.provinceData, this.data. provinceData[0].cityList],
-      featherIndex: 0,
-      tagIndex: 0,
-      yysIndex: 0,
-      nodata:false
-    })
+    // this.setData({
+    //   multiIndex:[0, 0],
+    //   selectaddr: "请选择",
+    //   province: "",
+    //   provinceId: "",
+    //   city: "",
+    //   cityId: "",
+    //   objectMultiArray: [this.data.provinceData, this.data. provinceData[0].cityList],
+    //   featherIndex: 0,
+    //   tagIndex: 0,
+    //   yysIndex: 0,
+    //   nodata:false
+    // })
   },
 
   /**
@@ -108,7 +109,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return network.share();
   },
   featherChange:function(e){
     this.setData({
@@ -127,7 +128,9 @@ Page({
   },
   formSubmit(e) {
     this.setData({
-      pageNum:1
+      pageNum:1,
+      hasMore:true,
+      numList:[]
     })
     var formData= e.detail.value
     if (this.data.featherlist[this.data.featherIndex].id!=-1){
@@ -322,36 +325,41 @@ Page({
     this.formData.limit = this.data.limit,
       wx.showLoading({
         title: '加载中',
+        mask: true,
       })
     network.GET({
       url: "search-number",
       params: this.formData,
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 200) {
           var nodata=false
-          if (res.data.data.list.length==0){
+          if (res.data.data.list.length == 0 && this.data.pageNum==1){
               nodata=true
           }
-          wx.hideLoading()
+          var count = parseInt(res.data.data.total);
+          var flag = this.data.pageNum * this.data.limit < count;
           this.setData({
-            total: res.data.data.total,
-            numList: res.data.data.list,
-            nodata: nodata
+            // total: res.data.data.total,
+            numList: this.data.numList.concat(res.data.data.list),
+            nodata: nodata,
+            hasMore: flag
           })
         }
       }
     })
   },
   exchange: function () {
-    if (this.data.pageNum * this.data.limit >= this.data.total) {
-      this.setData({
-        pageNum: 1
-      })
-    } else {
+    // if (this.data.pageNum * this.data.limit >= this.data.total) {
+    //   this.setData({
+    //     pageNum: 1
+    //   })
+    // } else {
+    if (!this.data.hasMore) return;
       this.setData({
         pageNum: ++this.data.pageNum
       })
-    }
+    // }
     this.searchNumber()
   }
 })

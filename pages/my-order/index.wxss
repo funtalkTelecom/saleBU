@@ -129,6 +129,24 @@ flex: 1;
 .price-test {
   font-size: 28rpx;
   text-align: right;
+  padding:8rpx 0;
   margin-bottom: 4rpx;
   margin-right:30rpx;
 }
+.price-test .djs{
+  color:#999;
+  font-size:26rpx;
+}
+.price-test .djs .text{
+  color:#999;
+  font-size:26rpx;
+  display: inline-block;
+}
+.price-test .djs .text text{
+  color:#fff;
+  padding:4rpx 8rpx;
+  background:#FF6600;
+  border-radius:12rpx;
+  margin-right:8rpx;
+}
+

@@ -11,10 +11,31 @@ page{
   border-radius: 50%;
   box-shadow: 10rpx 10rpx 5rpx rgba(0, 0, 0, 0.4);
   background-color: #fff;
+  margin-top: 25rpx;
+}
+.imgrow{
+  line-height: 150rpx;
 }
 .line_H {
   line-height: 50rpx;
   padding-left: 3%;
+}
+.icon-yirenzheng {
+  color: #62b900;
+}
+.icon-weirenzheng {
+  color: orange;
+}
+.icon-shanchu2{
+  color: red;
+}
+.edit {
+  background: orange;
+  display: inline-block;
+  padding: 0 30rpx;
+  color: #fff;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
 }
 .fw {
   font-weight: 700;
@@ -26,6 +47,23 @@ page{
    right:10rpx;
    color: #888;
    padding: 0 40rpx;
+}
+
+.nomore {
+  margin-top: 60rpx;
+}
+.nomore image {
+  width: 100rpx;
+}
+.share-item .w100{
+  width: 100%;
+}
+.prom {
+  background: orange;
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: #fff;
 }
 .share-head {
   padding: 20rpx 30rpx 0 20rpx;
@@ -52,7 +90,6 @@ page{
   padding-right:50rpx;
   color: #888;
 }
-
 .share-box{
   padding: 0 30rpx;
 }
@@ -65,49 +102,46 @@ page{
   border-bottom: 1px dotted #888;
 }
 .share-item view{
-  width: 50%;
+  width: 53%;
   line-height: 50rpx;
   height: 50rpx;
 }
 .share-item .share-item-num {
   font-weight: 700;
-  width: 88%;
+  width: 45%;
 }
-.icon-shanchu {
-  font-size: 40rpx;
-  vertical-align:bottom;
+.nickname {
+  text-align: right;
+  white-space:nowrap; 
+  text-overflow:ellipsis;
+  overflow:hidden; 
+}
+.share-item .w40{
+  width: 47%;
+}
 
-}
-.share-item .torem {
-  position: absolute;
-  top: 50%;
-  right: -4%;
-  transform: translate(0,-50%);
-  width: 18%;
-  background-color: red;
-  padding-left: 35rpx;
+/*首页跑马灯效果*/
+@keyframes kf-marque-animation{ 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee{
+    width: 100%;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    position: relative;
+    font-size: 28rpx;
+    background: orange;
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
   color: #fff;
 }
-.share-item .torem.disable {
-  background-color:#888;
-  
-}
-.torem::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  border-style: solid;
-  border-width: 25rpx 25rpx 25rpx 25rpx;
-  border-color: transparent transparent transparent #fff;
-  width: 0px;
-  height: 0px;
-}
-.nomore {
-  margin-top: 60rpx;
-}
-.nomore image {
-  width: 100rpx;
-}
-.share-item .w100{
-  width: 100%;
+.marquee .content{
+    display: inline-block;
+    position: relative;
+    padding-right: 0px;
+    animation: kf-marque-animation 12s linear infinite;
+    white-space: nowrap;
 }

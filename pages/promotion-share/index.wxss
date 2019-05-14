@@ -1,0 +1,104 @@
+/* pages/promotion-share/index.wxss */
+page{
+  font-size: 28rpx;
+}
+.info-box{
+  height:240rpx;
+  background:#ffa600;
+  padding-top:60rpx;
+  color:#fff;
+}
+.info-head{
+  display:flex;
+  align-items:center;
+  padding-left:140rpx;
+  padding-bottom:40rpx;
+}
+.all-income {
+  font-size:60rpx;
+  font-weight:700;
+  padding-left:30rpx;
+}
+.info-main {
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+}
+.share-head {
+  padding: 20rpx 30rpx 0 20rpx;
+  border-bottom: 1px solid #f3f3f3;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+.share-left {
+  position:relative;
+  padding-left: 10rpx;
+}
+.share-left::before {
+  content: "";
+  position:absolute;
+  width: 6rpx;
+  height: 100%;
+  background-color: red;
+  top: 50%;
+  left: 0;
+  transform: translate(0,-50%)
+}
+.share-right {
+  float:right;
+  padding-right:50rpx;
+  color: #888;
+}
+
+.share-box{
+  padding: 0 30rpx;
+}
+.share-item{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  border-bottom: 1px dotted #888;
+}
+.share-item view{
+  width: 50%;
+  line-height: 50rpx;
+  height: 50rpx;
+}
+.share-item .share-item-num {
+  font-weight: 700;
+  width: 88%;
+}
+.icon-shanchu {
+  font-size: 40rpx;
+  vertical-align:bottom;
+
+}
+.share-item .torem {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translate(0,-50%);
+  width: 18%;
+  background-color: red;
+  padding-left: 35rpx;
+  color: #fff;
+}
+.share-item .torem.disable {
+  background-color:#888;
+  
+}
+.torem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-style: solid;
+  border-width: 25rpx 25rpx 25rpx 25rpx;
+  border-color: transparent transparent transparent #fff;
+  width: 0px;
+  height: 0px;
+}
+.share-item .w100{
+  width: 100%;
+}

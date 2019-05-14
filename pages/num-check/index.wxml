@@ -6,6 +6,12 @@
       <text class='afterdate'>{{enddatetext[1]}}</text> :
       <text class='afterdate'>{{enddatetext[2]}}</text>后恢复原价</view>
   </view>
+  <view class="marquee" wx:if="{{numberObj.corp_id==10}}">
+    <view class="content" >
+         <text style="display: inline-block; width: 6em;"></text><text >根据工信部要求，线上购卡须在下单之日起30天内将号码激活使用，过期未激活的，我公司将对您手中号卡进行作废回收号码处理。为避免您的经济损失，请您收到卡后尽快激活使用。</text> <text style="display: inline-block; width: 6em;"></text>
+        <text >根据工信部要求，线上购卡须在下单之日起30天内将号码激活使用，过期未激活的，我公司将对您手中号卡进行作废回收号码处理。为避免您的经济损失，请您收到卡后尽快激活使用。</text>
+    </view>
+</view>
   <view class='abc'>
     <zan-panel title="号码信息" class="spacing">
       <zan-row row-class="num-info">
@@ -37,6 +43,15 @@
         <view>{{mealObj.mealDesc}}</view>
       </view>
     </zan-panel>
+
+    <zan-panel title="物流方式">
+      <view class='setmeal s-info'>
+        <view wx:for="{{logisticArr}}" wx:key="type" class="{{selectLogIndex==index?'active':''}}" data-index='{{index}}' bindtap="selectLog">
+          {{item.name}}
+        </view>
+      </view>
+    </zan-panel>
+    
     <zan-panel title="收货地址">
    
        <navigator url='/pages/address-add/index' class='addr-add arrow' hover-class="none" hidden="{{curAddressObj}}">
@@ -72,7 +87,7 @@
     </zan-panel> -->
 
 
-    <navigator wx:if="{{testUser==='1'&&isPartner==1&&numberObj.promotionMap.is_pp==1}}" url='/pages/promotion-num/index?numid={{numberObj.id}}' class='toshare' hover-class="none" >去推广</navigator>
+    <navigator wx:if="{{isPartner==1}}" url='/pages/promotion-num/index?numid={{numberObj.id}}' class='toshare' hover-class="none" >去推广</navigator>
   </view> 
 
   <!-- <view class='pay'>

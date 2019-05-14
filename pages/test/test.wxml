@@ -1,5 +1,16 @@
 <!--pages/test.wxml-->
 <view>
+<view class="marquee_container" >
+  <view class="marquee_text">恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</view>
+</view>
+
+<view class="marquee">
+    <view class="content">
+         <text style="display: inline-block; width: 6em;"></text><text >恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</text> <text style="display: inline-block; width: 6em;"></text>
+        <text >恭喜，您本月已完成最低推广要求，请再接再厉！数据仅供参考，以实际订单签收为准！</text>
+    </view>
+</view>
+
   <text>pages/test.wxml</text>
   <button bindtap='share'>分享朋友圈</button>
     <button bindtap='toweb'>web-view</button>

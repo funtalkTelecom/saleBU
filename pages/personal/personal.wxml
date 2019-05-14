@@ -101,10 +101,10 @@
       <zan-cell title="我的保证金" is-link url="/pages/case-deposit/index"></zan-cell> -->
       <zan-cell title="地址管理" is-link url="/pages/select-address/index"></zan-cell>
 
-      <view wx:if="{{testUser==='1'&&isPartner!=1}}">
+      <!-- <view wx:if="{{testUser==='1'&&isPartner!=1}}">
         <zan-cell title="我的合伙人" is-link url="/pages/apply-copartner/index"></zan-cell>
-      </view>
-      <view wx:if="{{testUser==='1'&&isPartner==1}}">
+      </view> -->
+      <view wx:if="{{isPartner==1}}">
       <zan-cell title="我的合伙人" is-link url="/pages/copartner/index"></zan-cell>
       </view>
       
@@ -114,12 +114,13 @@
 
   <zan-panel class="cell-panel-demo footer" title="联系我们">
     <zan-row row-class="service">
-      <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
+      <!-- <zan-col col="24" col-class="custom-zan-col service-wx zcolumn">
         <view>微信：E购通</view>
         <image src='../../imgs/personal/qrcode.jpg' class='qrcode' bindtap="previewImage"></image>
-      </zan-col>
+      </zan-col> -->
       <zan-col col="24" col-class="custom-zan-col tel">
-        <view>客服热线：17759085090 17759085091</view>
+        <view>客服热线：9501310028</view>
+        <view>微信：17027022888</view>
       </zan-col>
     </zan-row>
   </zan-panel>
