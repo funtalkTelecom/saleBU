@@ -148,12 +148,14 @@ Page({
     element.addDate = util.formatTime(new Date(element.add_date))
     element.money = (element.total - element.gDeposit).toFixed(2)
     element.orderText = util.orderText(element.status)
-    element.djs = ((element.add_date + 3600000) - (Date.now())) / 1000
-    // var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
-    if (element.djs > 0) {                                 // 倒计时时间是否大于0
-      element.endDate = util.parseIntDayTime(element.djs)
-    } else {
-      element.endDate = ['00', '00', '00']
+    if (element.status==1){
+      element.djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+      // var djs = ((element.add_date + 3600000) - (Date.now())) / 1000
+      if (element.djs > 0) {                                 // 倒计时时间是否大于0
+        element.endDate = util.parseIntDayTime(element.djs)
+      } else {
+        element.endDate = ['00', '00', '00']
+      }
     }
     return element
   },
