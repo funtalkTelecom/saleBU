@@ -1,7 +1,11 @@
 .header{
   width: 100%;
   height: 200rpx;
-  background: green;
+  /* background: green; */
+  background: #00b2ee;
+  background:-webkit-gradient(linear,top,bottom, color-stop(#66ccff), color-stop(#00B2EE));
+  background:-webkit-linear-gradient(top, #66ccff, #00B2EE);
+  background:linear-gradient(top, #66ccff, #00B2EE);
   text-align: center;
   font-size: 28rpx;
   color: #fff;
