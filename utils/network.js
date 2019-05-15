@@ -56,7 +56,7 @@ function share(params) {
   return {
     title: "靓号优选",
     path: path,
-    imageUrl:'../../imgs/share.jpg'
+    imageUrl:'https://www.egt365.com/hk/get-img/201905090002.jpg'
   }
 }
 
