@@ -105,6 +105,7 @@ picker {
   box-shadow: 6rpx 6rpx 22rpx #ddd;
   border-radius: 20rpx;
   font-size:24rpx;
+  display: flex;
 }
 .liang {
   display: inline-block;
@@ -115,13 +116,14 @@ picker {
   padding: 0 6rpx;
   border-radius: 10rpx;
   font-weight: normal;
-  margin-right: 6rpx;
   vertical-align: super;
 }
 .tui {
   background:orange;
-  margin-left:28rpx;
-    margin-right: 8rpx;
+    /* margin-right: 8rpx; */
+}
+.miao {
+  background:red;
 }
 .jixiang {
   background-color: #fb8ca8;

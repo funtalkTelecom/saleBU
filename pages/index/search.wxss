@@ -76,6 +76,7 @@ box-shadow:4rpx 2rpx 2rpx #0791bf;
   box-shadow: 6rpx 6rpx 22rpx #ddd;
   border-radius: 20rpx;
   font-size:24rpx;
+  display: flex;
 }
 .phone {
   font-weight:600;
@@ -127,8 +128,10 @@ box-shadow:4rpx 2rpx 2rpx #0791bf;
   padding: 0 6rpx;
   border-radius: 10rpx;
   font-weight: normal;
-  margin-right: 6rpx;
   vertical-align: super;
+}
+.miao {
+  background:red;
 }
 
 /* .phones1{

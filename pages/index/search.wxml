@@ -100,17 +100,22 @@
 <view class='box box-1'>
         <block wx:for="{{numList}}" wx:key="id">
          <navigator url='/pages/num-check/index?num_id={{item.id}}' class='box-item' hover-class="none">
-            <view class='phone'>
-              <text wx:if="{{isPartner==1&&item.is_pp==1}}" class="liang tui">推</text>
-              <text>{{item.numBlock[0]}}</text>
-              <text class='phone-mg'>{{item.numBlock[1]}}</text>
-              <text class='color-cyan'>{{item.numBlock[2]}}</text>
+            <view style="width:32rpx;margin:0 10rpx 0 20rpx;">
+                <view wx:if="{{isPartner==1&&item.is_pp==1}}" class='liang'>推</view>
+                <view  wx:if="{{item.is_ms}}" class='liang miao'>秒</view>
             </view>
-             <view class='padlf-68' >售价：<text class='color-orange'>{{item.price_range}}</text>元</view>
-            <view class='padlf-68' >保底消费：{{item.lowConsume}}元</view>
-            <view class='padlf-68'>制式：{{item.netType}}</view>
-            <view class='padlf-68'>运营商：{{item.teleType}}</view>
-            <view class='padlf-68'>地市：{{item.province_name+'-'+item.city_name}}</view>  
+            <view> 
+              <view class='phone'>
+                <text>{{item.numBlock[0]}}</text>
+                <text class='phone-mg'>{{item.numBlock[1]}}</text>
+                <text class='color-cyan'>{{item.numBlock[2]}}</text>
+              </view>
+              <view >{{item.is_ms?'秒杀':'售'}}价：<text class='color-orange'>{{item.price_range}}</text>元</view>
+              <view >保底消费：{{item.lowConsume}}元</view>
+              <view >制式：{{item.netType}}</view>
+              <view >运营商：{{item.teleType}}</view>
+              <view >地市：{{item.province_name+'-'+item.city_name}}</view>  
+            </view>
           </navigator>
         </block>
       </view>
