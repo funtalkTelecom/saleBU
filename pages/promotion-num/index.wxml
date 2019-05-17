@@ -1,5 +1,5 @@
 <!--pages/promotion-num/index.wxml-->
-<view>
+<view wx:if="{{numid!=-1}}">
   <view class='num-title'>号码信息</view>
   <view class='num'>
     <view style='color:red;font-weight:700'>{{numObj.num_resource}}</view>
@@ -12,14 +12,14 @@
     <view wx:if="{{numObj.is_pp!=0}}" class='flex'>到期时间：{{numObj.valid_date}}</view>
   </view>
 </view>
-<view class='share-head'>
+  <view class='share-head'>
     <text class="share-left">常规转发分享</text>
   </view>
   <view class='copy-text'>
-  此页面经过处理，已带有您专属标志，直接点击页面右上角，转发给好友
+    此页面经过处理，已带有您专属标志，直接点击页面右上角，转发给好友
   </view>
 
-<view class='share-head'>
+  <view class='share-head'>
     <text class="share-left">复制链接到公众号</text>
   </view>
   <view class="path-text" bindlongtap="longTap">
@@ -31,36 +31,36 @@
     <text class="share-left">邀请卡分享</text>
   </view>
   <view class="invite-box">
-  <form bindsubmit="formSubmit" >
-  <view class="image-item">
-      <view style='flex:1'>头像</view>
-      <image src="{{userInfo.avatarUrl||'../../imgs/personal/logo.png'}}" mode='aspectFit'></image>
-      <text class='iconfont icon-tubiao-'></text>
-  </view>
+    <form bindsubmit="formSubmit" wx:if="{{numid!=-1}}" >
+      <view class="image-item">
+          <view style='flex:1'>头像</view>
+          <image src="{{userInfo.avatarUrl||'../../imgs/personal/logo.png'}}" mode='aspectFit'></image>
+          <text class='iconfont icon-tubiao-'></text>
+      </view>
 
-  <view class="invite-item">
-      <view style='flex:1'>昵称</view>
-     <input value="{{userInfo.nickName||''}}" style='text-align:right' name="nick_name" ></input>
-      <text class='iconfont icon-tubiao-'></text>
-  </view>
-   <view class="invite-item">
-      <view style='flex:1'>邀请语</view>
-      <view style='width:70%'> <input value='发现典藏靓号想推荐给你~' style='text-align:right' name="promotion_tip"></input></view>
-    
-      <text class='iconfont icon-tubiao-'></text>
-  </view>
-
-  <button formType="submit" >生成专属卡片</button>
-  </form>
-
-
-  <view class="mask" hidden='{{!maskFlag}}' >
-     <view class='mask-view' bindtap='hideMask'></view> 
-    <view class='zhongxin'>
-      <image  src="{{imagePath}}" mode='aspectFit' ></image>
+      <view class="invite-item">
+          <view style='flex:1'>昵称</view>
+         <input value="{{userInfo.nickName||''}}" style='text-align:right' name="nick_name" ></input>
+          <text class='iconfont icon-tubiao-'></text>
+      </view>
+      <view class="invite-item">
+         <view style='flex:1'>邀请语</view>
+         <view style='width:70%'> <input value='发现典藏靓号想推荐给你~' style='text-align:right' name="promotion_tip"></input></view>
+         <text class='iconfont icon-tubiao-'></text>
+      </view>
+      <button formType="submit" >生成专属卡片</button>
+    </form>
+    <view wx:else>
+      <image src="{{imagePath}}" mode="widthFix" 
+      style="width:50%;margin:30rpx auto;display:block;" bindtap='previewImage'></image>
+    <view class='save' catchtap='save'>保存专属卡片</view>
+    </view>
+    <view class="mask" hidden='{{!maskFlag}}' >
+      <view class='mask-view' bindtap='hideMask'></view> 
+      <view class='zhongxin'>
+        <image  src="{{imagePath}}" mode='aspectFit' ></image>
       <view class='save' catchtap='save'>保存分享图</view>
     </view>
-
   </view>
   
   </view>

@@ -28,6 +28,11 @@
     <text class="arrow share-right" bindtap='toPromotionDel'>推广记录</text>
   </view>
   <view class='share-box'>
+  <view class='share-item'  bindtap='torem' style='flex-direction:column ' data-sharenumid='-1'>
+       <view style='font-size:40rpx;font-weight:700' class='w100'>我的专属平台推广</view>
+       <view style='font-size:22rpx;margin-top:20rpx;'class='w100' >推广小程序后用户购买也可获得收益</view>
+       <view class="torem" >去推广</view>
+    </view>
     <view class='share-item' wx:for="{{shareList}}" wx:key="id" bindtap='torem' data-sharenumid='{{item.share_num_id}}' >
       <view class='share-item-num'>分享号码 {{item.share_num}}</view>
       <text class='iconfont icon-shanchu' catchtap='toDel' data-shareid='{{item.id}}'></text>

@@ -120,7 +120,7 @@
       </zan-col> -->
       <zan-col col="24" col-class="custom-zan-col tel">
         <view>客服热线：9501310028</view>
-        <view>微信：17027022888</view>
+        <view>手机号：17027022888</view>
       </zan-col>
     </zan-row>
   </zan-panel>

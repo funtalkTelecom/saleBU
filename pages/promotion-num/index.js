@@ -19,9 +19,15 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      userInfo: wx.getStorageSync('userInfo')
+      userInfo: wx.getStorageSync('userInfo'),
+      numid: options.numid
     })
-    this.getNumInfo(options.numid)
+    if (options.numid!=-1){
+      this.getNumInfo(options.numid)
+    }else{
+      this.getAloneInfo()
+    }
+   
   },
 
   /**
@@ -70,12 +76,20 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    var num_resource = this.data.numObj.num_resource;
-    num_resource=num_resource.substring(0, 3) + '-' + num_resource.substring(3, 7) + '-' + num_resource.substring(7, 11)
-    return {
-      title: num_resource+"典藏靓号，靓出好运，购买靓号，就选靓号优选",
-      path: this.data.path,
-      imageUrl: this.data.numObj.share_image
+    if (this.data.numid!=-1){
+      var num_resource = this.data.numObj.num_resource;
+      num_resource = num_resource.substring(0, 3) + '-' + num_resource.substring(3, 7) + '-' + num_resource.substring(7, 11)
+      return {
+        title: num_resource + "典藏靓号，靓出好运，购买靓号，就选靓号优选",
+        path: this.data.path,
+        imageUrl: this.data.numObj.share_image
+      }
+    }else{
+      return {
+        title: "典藏靓号，靓出好运，购买靓号，就选靓号优选",
+        path: this.data.path,
+        imageUrl: this.data.imagePath
+      }
     }
   },
   getNumInfo:function(id){
@@ -88,6 +102,25 @@ Page({
             numObj: res.data.data,
             path: "pages/num-check/index?share_id=" + res.data.data.share_id + "&num_id=" + res.data.data.num_id + "&userid=" + wx.getStorageSync('consumer_id')
           })
+        }else{
+          util.showToast(res.data.data);
+        }
+      }
+    })
+  },
+  getAloneInfo:function(){
+    network.POST({
+      url: "partner/share-url-alone",
+      params: {},
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.setData({
+            // numObj: res.data.data,
+            path: "pages/index/index?share_id=" + res.data.data.share_id + "&userid=" + wx.getStorageSync('consumer_id'),
+            imagePath: res.data.data.share_image
+          })
+        }else{
+          util.showToast(res.data.data);
         }
       }
     })
@@ -135,6 +168,11 @@ Page({
         }
       })
     // }
+  },
+  previewImage:function(){
+    wx.previewImage({
+      urls: [this.data.imagePath] // 需要预览的图片http链接列表
+    })
   },
   save: function () {
     wx.downloadFile({

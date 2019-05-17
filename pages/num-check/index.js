@@ -24,18 +24,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     network.BarTitle("靓号订购")
     this.initNumber(options);
     this.initMeal(options.num_id);
-    // var pages = getCurrentPages() //获取加载的页面
-    // console.log(pages)
-    // var currentPage = pages[pages.length - 1] //获取当前页面的对象
-    // console.log(currentPage)
-    // var url = currentPage.route //当前页面url
-    // console.log(url)
-    // var options = currentPage.options 
-    // console.log(options)
     if (options.share_id){
       this.setData({
         share_id: options.share_id
@@ -109,7 +100,7 @@ Page({
       params: {
         open_url: "pages/num-check/index?" + open_url,
         num_id: option.num_id,
-        share_id: option.share_id ? option.share_id : "",
+        share_id: option.share_id ? option.share_id : wx.getStorageSync('share_id'),
         chennel: wx.getStorageSync('chennel')? wx.getStorageSync('chennel') : "",
       },
       success: (res) => {
@@ -139,9 +130,6 @@ Page({
             begindatetext: util.formatminute(new Date(res.data.data.activitySdate)),
             enddatetext: util.parseIntDayTime((res.data.data.activityEdate - res.data.data.newDate) / 1000),
             status: status
-            // begindate: begindate,
-            // enddate: enddate,
-            // currdate: currdate,
           })
           if (status!=3){
             this.setInterval();
@@ -254,9 +242,7 @@ Page({
     params.skuid = this.data.numberObj.skuId;
     params.mealid = this.data.mealObj.mid;
     params.logistic_type = this.data.logObj.type;
-    if (this.data.share_id){
-      params.share_id = this.data.share_id
-    }
+    params.share_id = this.data.share_id ? this.data.share_id : wx.getStorageSync('share_id'),
     network.POST({
       url: "order",
       params: params,

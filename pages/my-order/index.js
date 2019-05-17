@@ -319,7 +319,7 @@ Page({
       success: (res) => {
         wx.hideLoading()
         if (res.data.code == 200) {
-          clearTimeout(this.data['timer' + this.data.cancelOrderId])
+          this.qingchu()
           wx.showToast({
             title: res.data.data,
             icon: 'success',

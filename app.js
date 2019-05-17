@@ -1,10 +1,12 @@
 App({
   onLaunch: function (options) {
     console.log(options)
-    wx.setStorageSync('chennel', options.scene)
-    // console.log(options.scene)
+    wx.setStorageSync('chennel', options.scene);
+    wx.removeStorageSync('share_id');
+    // if (options.path == "pages/index/index" && options.query.share_id){
+    //   wx.setStorageSync('share_id', options.query.share_id);
+    // }
     // var scene = decodeURIComponent(options.scene)
-
     if (wx.canIUse('getUpdateManager')) {
       const updateManager = wx.getUpdateManager()
       updateManager.onCheckForUpdate(function (res) {

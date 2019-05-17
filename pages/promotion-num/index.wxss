@@ -126,4 +126,5 @@ page{
   background-color: orange;
   border-radius: 20px;
   text-align: center;
+  color: #fff;
 }

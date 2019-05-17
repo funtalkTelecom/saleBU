@@ -20,6 +20,9 @@ Page({
   },
 
   onLoad: function (options) {
+    if (options.share_id){
+      wx.setStorageSync('share_id', options.share_id);
+    }
     let that = this
     let userInfo = wx.getStorageSync('userInfo')
     if (!userInfo) {
