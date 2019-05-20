@@ -52,6 +52,7 @@
        <view class='w40'>商家佣金：{{item.seller_amt}}元</view>
        <view >订单状态：{{item.order_status_text}}</view>
        <view class='w40'>结算状态：{{item.settle_status_text}}</view>
+       <view >推广来源：{{item.share_source}}</view>
     </view>
 
   </view>
