@@ -15,7 +15,7 @@ Page({
     addrindex:0,
     selectMealIndex:0,
     intervalId:"",
-    logisticArr: [{ "name": "EMS包邮", "type": 10009 }, { "name": "顺丰(快递费)到付", "type": 10003 }],
+    logisticArr: [{ "name": "EMS包邮", "type": 10009 }, { "name": "顺丰快递费到付", "type": 10003 }],
     selectLogIndex:0,
     logObj: { "name": "EMS包邮", "type": 10009 }
   },
